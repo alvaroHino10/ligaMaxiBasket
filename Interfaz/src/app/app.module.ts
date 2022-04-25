@@ -16,6 +16,10 @@ import { RegistroPComponent } from './modules/preinscripcion/registro-p/registro
 import { FooterPComponent } from './modules/preinscripcion/footer-p/footer-p.component';
 import { HeaderPComponent } from './modules/preinscripcion/header-p/header-p.component';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AppRoutingModule } from './app-routing.module';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -34,7 +38,10 @@ import { HeaderPComponent } from './modules/preinscripcion/header-p/header-p.com
     HeaderPComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

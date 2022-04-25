@@ -5,36 +5,39 @@
     <div id="fondo">
         <h1>Ficha de Preinscripcion</h1>
     </div>
-    <div class="container-fluid">
+    <form [formGroup]="formularioRegistroP"  (ngSubmit)="enviarDatos()" class="container-fluid">
         <div class="mb-3">
             <label for="Nombre completo" class="form-label">Nombre completo:</label>
-            <input type="text" class="form-control" name="Nombre completo" placeholder="Ingrese nombre completo">
+            <input type="text" class="form-control" formControlName="nombreCompleto" placeholder="Ingrese nombre completo">
         </div>
-
+    
         <div class="mb-3">
             <label for="" class="form-label">Nombre del equipo:</label>
-            <input type="text" class="form-control" name="Nombre del equipo" placeholder="Ingrese nombre del equipo">
+            <input type="text" class="form-control" formControlName="nombreDelEquipo" placeholder="Ingrese nombre del equipo">
         </div>
-
+    
         <div class="mb-3">
             <label for="" class="form-label">Categoria:</label>
-            <input type="text" class="form-control" name="Categoria" placeholder="Ingrese la categoria">
+            <input type="text" class="form-control" formControlName="categoria" placeholder="Ingrese la categoria">
         </div>
-
+    
         <div class="mb-3">
             <label for="" class="form-label">Telefono:</label>
-            <input type="text" class="form-control" name="Telefono" placeholder="Ingrese el numero de telefono">
+            <input type="text" class="form-control" formControlName="telefono" placeholder="Ingrese el numero de telefono">
         </div>
         <div class="mb-3">
             <label for="" class="form-label">Correo electronico:</label>
-            <input type="text" class="form-control" name="Telefono" placeholder="Ingrese el correo electronico">
+            <input type="text" class="form-control" formControlName="correoElectronico" placeholder="Ingrese el correo electronico">
         </div>
-
+    
         <div class="mb-3">
             <label for="" class="form-label">Codigo de transaccion:</label>
-            <input type="text" class="form-control" name="Telefono" placeholder="Ingrese el codigo de transaccion">
+            <input type="text" class="form-control" formControlName="codigoDeTransaccion" placeholder="Ingrese el codigo de transaccion">
         </div>
-    </div>
+        <button type="submit">Guardar</button>
+    </form>
+    <!--div class="container-fluid">
+    </div-->
 
     <div class="container">
         <h2>PAGOS O DEPOSITO</h2>
