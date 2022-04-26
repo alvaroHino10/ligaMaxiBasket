@@ -26,7 +26,6 @@ export class RegistroPComponent implements OnInit {
 
   enviarDatos():void{
     if(this.formularioRegistroP.valid){
-    
       console.log('Valido');
     }else{
       console.log(this.formularioRegistroP.getError);
@@ -34,4 +33,6 @@ export class RegistroPComponent implements OnInit {
     }
     //console.log(this.formularioRegistroP.value);
   }
+  get controls() { return this.formularioRegistroP.controls; }
+
 }

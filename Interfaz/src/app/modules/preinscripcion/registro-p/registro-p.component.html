@@ -2,92 +2,101 @@
 <html lang="en">
 
 <body>
-  <div id="fondo">
-    <h1>Ficha de Preinscripcion</h1>
-  </div>
-  <form [formGroup]="formularioRegistroP" (ngSubmit)="enviarDatos()" class="container-fluid">
-
-    <!--INPUT NOMBRE-->
-    <div class="mb-3">
-      <label for="Nombre completo" class="form-label">Nombre completo:</label>
-      <input type="text" class="form-control" formControlName="nombreCompleto" placeholder="Ingrese nombre completo">
+    <div id="fondo">
+        <h1>Ficha de Preinscripcion</h1>
     </div>
+    <form [formGroup]="formularioRegistroP" (ngSubmit)="enviarDatos()" class="container-fluid">
 
-    <!--INPUT NOMBRE EQUIPO-->
-    <div class="mb-3">
-      <label for="" class="form-label">Nombre del equipo:</label>
-      <input type="text" class="form-control" formControlName="nombreDelEquipo" placeholder="Ingrese nombre del equipo"
-        ngModel required>
-    </div>
-
-    <!--CATEGORIA-->
-    <div class="mb-3">
-      <label for="" class="form-label">Seleccione una categoria:</label>
-      <div class="form-control">
-        <label class="radio-inline">
-          <input type="radio" value="+30" name="categoria">
-          +30
-        </label>
-        <label class="radio-inline">
-          <input type="radio" value="+40" name="categoria">
-          +40
-        </label>
-
-        <label class="radio-inline">
-          <input type="radio" value="+50" name="categoria">
-          +50
-        </label>
-        <label class="radio-inline">
-          <input type="radio" value="+60" name="categoria">
-          +60
-        </label>
-      </div>
-    </div>
-
-    <!--INPUT TELEFONO-->
-    <div class="mb-3">
-      <label for="" class="form-label">Telefono:</label>
-      <input type="text" class="form-control" formControlName="telefono" placeholder="Ingrese el numero de telefono"
-        ngModel required>
-    </div>
-
-    <!--INPUT CORREO ELECTRONICO-->
-    <div class="mb-3">
-      <label for="" class="form-label">Correo electronico:</label>
-      <input type="text" class="form-control" formControlName="correoElectronico"
-        placeholder="Ingrese el correo electronico" ngModel required>
-    </div>
-
-    <!--INPUT CODIGO TRANSACCION-->
-    <div class="mb-3">
-      <label for="" class="form-label">Codigo de transaccion:</label>
-      <input type="text" class="form-control" formControlName="codigoDeTransaccion"
-        placeholder="Ingrese el codigo de transaccion" ngModel required>
-    </div>
-    <button type="submit" [disabled]="formularioRegistroP.invalid" class="mb-4"> Guardar</button>
-    <div class="container">
-      <h2>PAGOS O DEPOSITO</h2>
-      <h3>BANCO:</h3>
-      <h3 id="white">UNION</h3>
-      <h3>NRO. CUENTA:</h3>
-      <h3 id="white">10000011909857</h3>
-      <h3>A FAVOR DE:</h3>
-      <h3 id="white">ZULEMA RITA BRAVO DE BALDERRAMA</h3>
-      <h3>NRO. CEDULA:</h3>
-      <h3 id="white">952193</h3>
-    </div>
-  </form>
-
-  <!--INFORMACION CUENTA BANCARIA-->
-
-
-  <!--ng-template let-error let-text="text" #caracteresInvalidos>
-        <b>Error:</b>
-        <div *ngIf="error?.minlength">
-            <i>No cumple con los caracteres minimos</i>
+        <!--INPUT NOMBRE-->
+        <div class="mb-3">
+            <label class="form-label">Nombre completo:</label>
+            <input type="text" class="form-control" formControlName="nombreCompleto"
+                placeholder="Ingrese nombre completo" [ngClass]="{ 'is-invalid': controls.nombreCompleto.errors}">
+            <!--div *ngIf="submitted && controls.nombreCompleto.errors" class="invalid-feedback">
+                    <div *ngIf="controls.nombreCompleto.errors.required">Por favor, ingresa tu Nombre completo</div>
+                </div-->
         </div>
-    </ng-template>
- </ng-template-->
+
+        <!--INPUT NOMBRE EQUIPO-->
+        <div class="mb-3">
+            <label class="form-label">Nombre del equipo:</label>
+            <input type="text" class="form-control" formControlName="nombreDelEquipo"
+                placeholder="Ingrese nombre del equipo" [ngClass]="{ 'is-invalid': controls.nombreDelEquipo.errors}">
+            <!--div *ngIf="submitted && controls.nombreDelEquipo.errors" class="invalid-feedback">
+                    <div *ngIf="controls.nombreDelEquipo.errors.required">Por favor, ingresa el nombre de tu equipo</div>
+                </div-->
+        </div>
+
+        <!--CATEGORIA-->
+        <div class="mb-3">
+            <label for="" class="form-label">Seleccione una categoria:</label>
+            <div class="form-control">
+                <label class="radio-inline">
+                    <input type="radio" value="+30" name="categoria">
+                    +30
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="+40" name="categoria">
+                    +40
+                </label>
+
+                <label class="radio-inline">
+                    <input type="radio" value="+50" name="categoria">
+                    +50
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="+60" name="categoria">
+                    +60
+                </label>
+            </div>
+        </div>
+
+        <!--INPUT TELEFONO-->
+        <div class="mb-3">
+            <label for="" class="form-label">Telefono:</label>
+            <input type="text" class="form-control" formControlName="telefono"
+                placeholder="Ingrese el numero de telefono" [ngClass]="{ 'is-invalid': controls.telefono.errors}">
+            <!--div *ngIf="submitted && controls.telefono.errors" class="invalid-feedback">
+                    <div *ngIf="controls.telefono.errors.required">Por favor, ingresa tu telefono</div>
+                </div-->
+        </div>
+
+        <!--INPUT CORREO ELECTRONICO-->
+        <div class="mb-3">
+            <label for="" class="form-label">Correo electronico:</label>
+            <input type="text" class="form-control" formControlName="correoElectronico"
+                placeholder="Ingrese el correo electronico"
+                [ngClass]="{ 'is-invalid': controls.correoElectronico.errors}">
+            <!--div *ngIf="submitted && controls.correoElectronico.errors" class="invalid-feedback">
+                    <div *ngIf="controls.correoElectronico.errors.required">Por favor, ingresa tu correo electronico</div>
+                </div-->
+        </div>
+
+        <!--INPUT CODIGO TRANSACCION-->
+        <div class="mb-3">
+            <label for="" class="form-label">Codigo de transaccion:</label>
+            <input type="text" class="form-control" formControlName="codigoDeTransaccion"
+                placeholder="Ingrese el codigo de transaccion"
+                [ngClass]="{ 'is-invalid': controls.codigoDeTransaccion.errors}">
+            <!--div *ngIf="submitted && controls.codigoDeTransaccion.errors" class="invalid-feedback">
+                    <div *ngIf="controls.codigoDeTransaccion.errors.required">Por favor, ingresa el codigo de la transaccion</div>
+                </div-->
+        </div>
+        <button type="submit" [disabled]="formularioRegistroP.invalid">Guardar</button>
+    </form>
+
+    <!--INFORMACION CUENTA BANCARIA-->
+    <div class="container">
+        <h2>PAGOS O DEPOSITO</h2>
+        <h3>BANCO:</h3>
+        <h3 id="white">UNION</h3>
+        <h3>NRO. CUENTA:</h3>
+        <h3 id="white">10000011909857</h3>
+        <h3>A FAVOR DE:</h3>
+        <h3 id="white">ZULEMA RITA BRAVO DE BALDERRAMA</h3>
+        <h3>NRO. CEDULA:</h3>
+        <h3 id="white">952193</h3>
+    </div>
 
 </body>
 
