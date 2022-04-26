@@ -5,40 +5,70 @@
     <div id="fondo">
         <h1>Ficha de Preinscripcion</h1>
     </div>
-    <form [formGroup]="formularioRegistroP"  (ngSubmit)="enviarDatos()" class="container-fluid">
+    <form [formGroup]="formularioRegistroP" (ngSubmit)="enviarDatos()" class="container-fluid">
+        
+        <!--INPUT NOMBRE-->
         <div class="mb-3">
             <label for="Nombre completo" class="form-label">Nombre completo:</label>
-            <input type="text" class="form-control" formControlName="nombreCompleto" placeholder="Ingrese nombre completo">
+            <input type="text" class="form-control" formControlName="nombreCompleto"
+                placeholder="Ingrese nombre completo">
         </div>
-    
+
+        <!--INPUT NOMBRE EQUIPO-->
         <div class="mb-3">
             <label for="" class="form-label">Nombre del equipo:</label>
-            <input type="text" class="form-control" formControlName="nombreDelEquipo" placeholder="Ingrese nombre del equipo">
+            <input type="text" class="form-control" formControlName="nombreDelEquipo"
+                placeholder="Ingrese nombre del equipo" ngModel required>
         </div>
-    
+
+        <!--CATEGORIA-->
         <div class="mb-3">
-            <label for="" class="form-label">Categoria:</label>
-            <input type="text" class="form-control" formControlName="categoria" placeholder="Ingrese la categoria">
+            <label for="" class="form-label">Seleccione una categoria:</label>
+            <div class="form-control">
+                <label class="radio-inline">
+                    <input type="radio" value="+30" name="categoria">
+                    +30
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="+40" name="categoria">
+                    +40
+                </label>
+
+                <label class="radio-inline">
+                    <input type="radio" value="+50" name="categoria">
+                    +50
+                </label>
+                <label class="radio-inline">
+                    <input type="radio" value="+60" name="categoria">
+                    +60
+                </label>
+            </div>
         </div>
-    
+
+        <!--INPUT TELEFONO-->
         <div class="mb-3">
             <label for="" class="form-label">Telefono:</label>
-            <input type="text" class="form-control" formControlName="telefono" placeholder="Ingrese el numero de telefono">
+            <input type="text" class="form-control" formControlName="telefono"
+                placeholder="Ingrese el numero de telefono" ngModel required>
         </div>
+
+        <!--INPUT CORREO ELECTRONICO-->
         <div class="mb-3">
             <label for="" class="form-label">Correo electronico:</label>
-            <input type="text" class="form-control" formControlName="correoElectronico" placeholder="Ingrese el correo electronico">
+            <input type="text" class="form-control" formControlName="correoElectronico"
+                placeholder="Ingrese el correo electronico" ngModel required>
         </div>
-    
+
+        <!--INPUT CODIGO TRANSACCION-->
         <div class="mb-3">
             <label for="" class="form-label">Codigo de transaccion:</label>
-            <input type="text" class="form-control" formControlName="codigoDeTransaccion" placeholder="Ingrese el codigo de transaccion">
+            <input type="text" class="form-control" formControlName="codigoDeTransaccion"
+                placeholder="Ingrese el codigo de transaccion" ngModel required>
         </div>
-        <button type="submit">Guardar</button>
+        <button type="submit" [disabled]="formularioRegistroP.invalid">Guardar</button>
     </form>
-    <!--div class="container-fluid">
-    </div-->
-
+    
+    <!--INFORMACION CUENTA BANCARIA-->
     <div class="container">
         <h2>PAGOS O DEPOSITO</h2>
         <h3>BANCO:</h3>
@@ -50,6 +80,14 @@
         <h3>NRO. CEDULA:</h3>
         <h3 id="white">952193</h3>
     </div>
+
+    <!--ng-template let-error let-text="text" #caracteresInvalidos>
+        <b>Error:</b>
+        <div *ngIf="error?.minlength">
+            <i>No cumple con los caracteres minimos</i>
+        </div>
+    </ng-template>
+ </ng-template-->
 
 </body>
 
