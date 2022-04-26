@@ -1,0 +1,53 @@
+.container-fluid {
+    position: absolute;
+    left: -15px;
+    right: 0%;
+    top: 14%;
+    bottom: 0%;
+
+    background: rgba(230, 131, 63, 0.5);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+
+}
+
+.form-control {
+    position: absolute;
+    left: 34.71%;
+    right: 4.61%;
+    top: 20.48%;
+    bottom: 72.64%;
+
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+}
+
+#fondo h1 {
+    position: absolute;
+    left: 34.71%;
+    right: 30%;
+    top: 5%;
+    bottom: 86.08%;
+
+    font-family: 'verdana';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 34px;
+    letter-spacing: 0.14em;
+
+    color: rgba(0, 0, 0, 0.5);
+
+}
+
+.form-control-fm {
+    position: absolute;
+    width: 400px;
+    height: 39px;
+    left: 422px;
+    top: 210px;
+
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+
+}

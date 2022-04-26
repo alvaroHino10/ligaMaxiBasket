@@ -1,0 +1,39 @@
+.container-fluid {
+    position: absolute;
+    width: 1519px;
+    height: 77px;
+    left: 0px;
+    top: 1200px;
+}
+
+#fondo {
+    position: absolute;
+    left: 0%;
+    right: 0%;
+    top: 0%;
+    bottom: 0%;
+
+    background: #1B190B;
+}
+
+#fondo h1 {
+
+    position: absolute;
+    left: 56.3%;
+    right: 1.25%;
+    top: 27%;
+    bottom: 29.87%;
+
+    font-family: 'verdana';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 112%;
+
+    text-align: right;
+    letter-spacing: 0.06em;
+
+
+    color: #FFFFFF;
+
+}
