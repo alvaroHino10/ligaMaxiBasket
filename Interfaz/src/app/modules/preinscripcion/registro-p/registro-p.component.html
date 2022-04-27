@@ -11,43 +11,53 @@
         <div class="mb-3">
             <label class="form-label">Nombre completo:</label>
             <input type="text" class="form-control" formControlName="nombreCompleto"
-                placeholder="Ingrese nombre completo" [ngClass]="{ 'is-invalid': controls.nombreCompleto.errors}">
-            <!--div *ngIf="submitted && controls.nombreCompleto.errors" class="invalid-feedback">
-                    <div *ngIf="controls.nombreCompleto.errors.required">Por favor, ingresa tu Nombre completo</div>
-                </div-->
+                [ngClass]="{ 'is-invalid': submitted && controls.nombreCompleto.errors}">
+                <div *ngIf="submitted && controls.nombreCompleto.errors" class="invalid-feedback">
+                    <div *ngIf="submitted && controls.nombreCompleto.errors.required">Por favor, ingresa tu nombre completo</div>
+                    <div *ngIf="submitted && controls.nombreCompleto.errors.minLength">"El nombre debe tener al menos 5 caracteres"</div>
+                    <div *ngIf="submitted && controls.nombreCompleto.errors.maxLength">El nombre es demasiado largo</div>
+                    <div *ngIf="submitted && controls.nombreCompleto.errors.pattern">Por favor, ingresa caracteres validos</div>
+                </div>
         </div>
 
         <!--INPUT NOMBRE EQUIPO-->
         <div class="mb-3">
             <label class="form-label">Nombre del equipo:</label>
             <input type="text" class="form-control" formControlName="nombreDelEquipo"
-                placeholder="Ingrese nombre del equipo" [ngClass]="{ 'is-invalid': controls.nombreDelEquipo.errors}">
-            <!--div *ngIf="submitted && controls.nombreDelEquipo.errors" class="invalid-feedback">
-                    <div *ngIf="controls.nombreDelEquipo.errors.required">Por favor, ingresa el nombre de tu equipo</div>
-                </div-->
+                [ngClass]="{ 'is-invalid': submitted && controls.nombreDelEquipo.errors}">
+                <div *ngIf="submitted && controls.nombreDelEquipo.errors" class="invalid-feedback">
+                    <div *ngIf="submitted && controls.nombreDelEquipo.errors.required">Por favor, ingresa el nombre de tu equipo</div>
+                    <div *ngIf="submitted && controls.nombreDelEquipo.errors.pattern">Por favor, ingresa caracteres validos</div>
+                    <div *ngIf="submitted && controls.nombreDelEquipo.errors.maxLength">El nombre del equipo es demasiado largo</div>
+                </div>
         </div>
 
         <!--CATEGORIA-->
         <div class="mb-3">
             <label for="" class="form-label">Seleccione una categoria:</label>
-            <div class="form-control">
+            <div class="form-control" formControlName="categoria"
+                [ngClass]="{ 'is-invalid': submitted && controls.categoria.errors}">
+                
                 <label class="radio-inline">
-                    <input type="radio" value="+30" name="categoria">
+                    <input type="radio" value="+30" name="categoria" formControlName="categoria">
                     +30
                 </label>
                 <label class="radio-inline">
-                    <input type="radio" value="+40" name="categoria">
+                    <input type="radio" value="+40" name="categoria" formControlName="categoria">
                     +40
                 </label>
 
                 <label class="radio-inline">
-                    <input type="radio" value="+50" name="categoria">
+                    <input type="radio" value="+50" name="categoria" formControlName="categoria">
                     +50
                 </label>
                 <label class="radio-inline">
-                    <input type="radio" value="+60" name="categoria">
+                    <input type="radio" value="+60" name="categoria" formControlName="categoria">
                     +60
                 </label>
+            </div>
+            <div *ngIf="submitted && controls.categoria.errors" class="invalid-feedback">
+                <div *ngIf="submitted && controls.categoria.errors.required">Por favor, selecciona una categoria</div>
             </div>
         </div>
 
@@ -55,34 +65,42 @@
         <div class="mb-3">
             <label for="" class="form-label">Telefono:</label>
             <input type="text" class="form-control" formControlName="telefono"
-                placeholder="Ingrese el numero de telefono" [ngClass]="{ 'is-invalid': controls.telefono.errors}">
-            <!--div *ngIf="submitted && controls.telefono.errors" class="invalid-feedback">
-                    <div *ngIf="controls.telefono.errors.required">Por favor, ingresa tu telefono</div>
+                [ngClass]="{ 'is-invalid': submitted && controls.telefono.errors}">
+                <!--div *ngIf="submitted && controls.telefono.errors" class="text-danger">
+                    <div *ngIf="submitted && controls.telefono.errors.required">Por favor, ingresa tu telefono</div>
+                    <div *ngIf="submitted && controls.telefono.errors.pattern">Solo se admiten caracteres numericos</div>
+
+
                 </div-->
+                <div *ngIf="submitted && formularioRegistroP.controls.telefono.errors" class="text-danger">
+                    <div *ngIf="formularioRegistroP.controls.telefono.errors.required">Last Name is required</div>
+                    <div *ngIf="submitted && formularioRegistroP.controls.telefono.errors.pattern">Solo se admiten caracteres numericos</div>
+                </div>
         </div>
 
         <!--INPUT CORREO ELECTRONICO-->
         <div class="mb-3">
             <label for="" class="form-label">Correo electronico:</label>
             <input type="text" class="form-control" formControlName="correoElectronico"
-                placeholder="Ingrese el correo electronico"
-                [ngClass]="{ 'is-invalid': controls.correoElectronico.errors}">
-            <!--div *ngIf="submitted && controls.correoElectronico.errors" class="invalid-feedback">
-                    <div *ngIf="controls.correoElectronico.errors.required">Por favor, ingresa tu correo electronico</div>
-                </div-->
+                [ngClass]="{ 'is-invalid': submitted && controls.correoElectronico.errors}">
+                <div *ngIf="submitted && controls.correoElectronico.errors" class="invalid-feedback">
+                    <div *ngIf="submitted && controls.correoElectronico.errors.required">Por favor, ingresa tu correo electronico</div>
+                    <div *ngIf="submitted && controls.correoElectronico.errors.pattern">Por favor, ingresa un correo valido</div>
+                </div>
         </div>
 
         <!--INPUT CODIGO TRANSACCION-->
         <div class="mb-3">
             <label for="" class="form-label">Codigo de transaccion:</label>
             <input type="text" class="form-control" formControlName="codigoDeTransaccion"
-                placeholder="Ingrese el codigo de transaccion"
-                [ngClass]="{ 'is-invalid': controls.codigoDeTransaccion.errors}">
-            <!--div *ngIf="submitted && controls.codigoDeTransaccion.errors" class="invalid-feedback">
-                    <div *ngIf="controls.codigoDeTransaccion.errors.required">Por favor, ingresa el codigo de la transaccion</div>
-                </div-->
+                [ngClass]="{ 'is-invalid': submitted && controls.codigoDeTransaccion.errors}">
+                <div *ngIf="submitted && controls.codigoDeTransaccion.errors" class="invalid-feedback">
+                    <div *ngIf="submitted && controls.codigoDeTransaccion.errors.required">Por favor, ingresa el codigo de la transaccion</div>
+                    <div *ngIf="submitted && controls.codigoDeTransaccion.errors.pattern">Solo se admiten caracteres numericos</div>
+                </div>
         </div>
-        <button type="submit" [disabled]="formularioRegistroP.invalid">Guardar</button>
+        <button type="submit">Guardar</button>
+
     </form>
 
     <!--INFORMACION CUENTA BANCARIA-->
