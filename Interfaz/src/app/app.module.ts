@@ -9,7 +9,7 @@ import { RegistroJugadoresComponent } from './modules/registro-jugadores/registr
 import { RegistroResponsableComponent } from './modules/registro-responsable/registro-responsable.component';
 import { HeaderComponent } from './modules/registro-jugadores/header/header.component';
 import { NavegadorComponent } from './modules/registro-jugadores/navegador/navegador.component';
-import { RegistroComponent } from './modules/registro-jugadores/registro/registro.component';
+import { RegistroJComponent } from './modules/registro-jugadores/registro-j/registro.component';
 import { FooterComponent } from './modules/registro-jugadores/footer/footer.component';
 import { NavegadorPComponent } from './modules/preinscripcion/navegador-p/navegador-p.component';
 import { RegistroPComponent } from './modules/preinscripcion/registro-p/registro-p.component';
@@ -19,6 +19,7 @@ import { HeaderPComponent } from './modules/preinscripcion/header-p/header-p.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { RegistroEComponent } from './modules/registro-equipo/registro-e/registro-e.component';
 
 
 @NgModule({
@@ -31,12 +32,13 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     RegistroResponsableComponent,
     HeaderComponent,
     NavegadorComponent,
-    RegistroComponent,
+    RegistroJComponent,
     FooterComponent,
     NavegadorPComponent,
     RegistroPComponent,
     FooterPComponent,
-    HeaderPComponent
+    HeaderPComponent,
+    RegistroEComponent
   ],
   imports: [
     BrowserModule,

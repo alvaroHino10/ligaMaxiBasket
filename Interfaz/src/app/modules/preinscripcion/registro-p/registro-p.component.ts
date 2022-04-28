@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-registro-p',
@@ -7,32 +7,58 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./registro-p.component.css']
 })
 export class RegistroPComponent implements OnInit {
-  private emailPattern: any = "/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/";
-  public formularioRegistroP!: FormGroup;
-
+  public formularioRegistroP: FormGroup;
+  public listaCategoria: any = [ "+30", "+40", "+50", "+60"];
   submitted = false;
+  categoria = [];
 
   constructor(public formulario: FormBuilder) {
+    this.formularioRegistroP = new FormGroup({
+      nombreCompleto: new FormControl ('',
+                    [Validators.required, 
+                     Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
+                     Validators.minLength(5),
+                     Validators.maxLength(80)]),
+
+      nombreDelEquipo: new FormControl ('',
+                    [Validators.required, 
+                     Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
+                     Validators.minLength(1),
+                     Validators.maxLength(80)]),
+
+      categoria: new FormControl ('', 
+                     Validators.required),
+
+      telefono: new FormControl ('', 
+                    [Validators.required, 
+                     Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{3})(?: *x(\\d+))?\\s*$')]),
+
+      correoElectronico: new FormControl ('', 
+                    [Validators.required, 
+                     Validators.email]),
+
+      codigoDeTransaccion: new FormControl ('', 
+                    [Validators.required, 
+                     Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{3})(?: *x(\\d+))?\\s*$')]),
+    });
+
   }
 
   ngOnInit() {
-    this.formularioRegistroP = this.formulario.group({
-      nombreCompleto: ['', [Validators.required, Validators.pattern('/^[a-zA-Z ]+$/'), Validators.minLength(5), Validators.maxLength(80)]],
-      nombreDelEquipo: ['', [Validators.required, Validators.pattern('/^[a-zA-Z ]+$/'), Validators.minLength(5), Validators.maxLength(80)]],
-      categoria: ['', Validators.required],
-      telefono: ['', [Validators.required, Validators.pattern('/^[0-9]*$/')]],
-      correoElectronico: ['', [Validators.required, Validators.pattern(this.emailPattern)]],
-      codigoDeTransaccion: ['', [Validators.required, Validators.pattern('/^[0-9]\d*$/')]],
-    });
+    
   }
 
 
   enviarDatos(): void {
-    this.submitted = true;
+    
+    
     if (this.formularioRegistroP.invalid) {
       console.log('NO VALIDO');
       return;
+    }else{
+      console.log(this.formularioRegistroP.value);
     }
+    
     alert('Preinscripcion registrada correctamente');
     //console.log(this.formularioRegistroP.value);
   }

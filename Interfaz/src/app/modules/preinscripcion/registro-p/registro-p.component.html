@@ -9,94 +9,98 @@
 
         <!--INPUT NOMBRE-->
         <div class="mb-3">
-            <label class="form-label">Nombre completo:</label>
-            <input type="text" class="form-control" formControlName="nombreCompleto"
-                [ngClass]="{ 'is-invalid': submitted && controls.nombreCompleto.errors}">
-                <div *ngIf="submitted && controls.nombreCompleto.errors" class="invalid-feedback">
-                    <div *ngIf="submitted && controls.nombreCompleto.errors.required">Por favor, ingresa tu nombre completo</div>
-                    <div *ngIf="submitted && controls.nombreCompleto.errors.minLength">"El nombre debe tener al menos 5 caracteres"</div>
-                    <div *ngIf="submitted && controls.nombreCompleto.errors.maxLength">El nombre es demasiado largo</div>
-                    <div *ngIf="submitted && controls.nombreCompleto.errors.pattern">Por favor, ingresa caracteres validos</div>
-                </div>
+            <label class="form-label">Nombre completo:</label>                
+                <input 
+                    type="text" 
+                    class="form-control" 
+                    formControlName="nombreCompleto" 
+                    minlength="5"
+                    maxlength="80"
+                    required >
+                <div *ngIf="controls.nombreCompleto.touched && controls.nombreCompleto.invalid"  class="text-danger">
+                    <div *ngIf="controls.nombreCompleto.errors?.required">Por favor, ingresa tu nombre completo</div>
+                    <div *ngIf="controls.nombreCompleto.errors?.minLength">"El nombre debe tener al menos 5 caracteres"</div>
+                    <div *ngIf="controls.nombreCompleto.errors?.maxLength">El nombre es demasiado largo</div>
+                    <div *ngIf="controls.nombreCompleto.errors?.pattern">Por favor, ingresa caracteres validos</div>
+                </div>                
         </div>
 
         <!--INPUT NOMBRE EQUIPO-->
         <div class="mb-3">
             <label class="form-label">Nombre del equipo:</label>
-            <input type="text" class="form-control" formControlName="nombreDelEquipo"
-                [ngClass]="{ 'is-invalid': submitted && controls.nombreDelEquipo.errors}">
-                <div *ngIf="submitted && controls.nombreDelEquipo.errors" class="invalid-feedback">
-                    <div *ngIf="submitted && controls.nombreDelEquipo.errors.required">Por favor, ingresa el nombre de tu equipo</div>
-                    <div *ngIf="submitted && controls.nombreDelEquipo.errors.pattern">Por favor, ingresa caracteres validos</div>
-                    <div *ngIf="submitted && controls.nombreDelEquipo.errors.maxLength">El nombre del equipo es demasiado largo</div>
+            <input 
+                type="text"
+                class="form-control"
+                formControlName="nombreDelEquipo"
+                minlength="5"
+                maxlength="80"
+                required>
+                <div *ngIf="controls.nombreDelEquipo.touched && controls.nombreDelEquipo.invalid"  class="text-danger">
+                    <div *ngIf="controls.nombreDelEquipo.errors?.required">Por favor, ingresa el nombre de tu equipo</div>
+                    <div *ngIf="controls.nombreDelEquipo.errors?.pattern">Por favor, ingresa caracteres validos</div>
+                    <div *ngIf="controls.nombreDelEquipo.errors?.maxLength">El nombre del equipo es demasiado largo</div>
                 </div>
         </div>
 
         <!--CATEGORIA-->
-        <div class="mb-3">
+        <div class="col-4">
             <label for="" class="form-label">Seleccione una categoria:</label>
-            <div class="form-control" formControlName="categoria"
-                [ngClass]="{ 'is-invalid': submitted && controls.categoria.errors}">
-                
-                <label class="radio-inline">
-                    <input type="radio" value="+30" name="categoria" formControlName="categoria">
-                    +30
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" value="+40" name="categoria" formControlName="categoria">
-                    +40
-                </label>
+            <select 
+                class="form-control" 
+                name="categoria" 
+                (change)="categoria" 
+                formControlName="categoria" 
+                required>
 
-                <label class="radio-inline">
-                    <input type="radio" value="+50" name="categoria" formControlName="categoria">
-                    +50
-                </label>
-                <label class="radio-inline">
-                    <input type="radio" value="+60" name="categoria" formControlName="categoria">
-                    +60
-                </label>
-            </div>
-            <div *ngIf="submitted && controls.categoria.errors" class="invalid-feedback">
-                <div *ngIf="submitted && controls.categoria.errors.required">Por favor, selecciona una categoria</div>
-            </div>
+                <option value="" disabled>Seleccionar categoria</option>
+                <option *ngFor="let c of listaCategoria" [ngValue]="c">{{ c }}</option>
+                <div *ngIf="controls.categoria.errors?.required" class="text-danger">
+                    Por favor, selecciona una categoria
+                </div>
+            </select>
+            
         </div>
+
 
         <!--INPUT TELEFONO-->
         <div class="mb-3">
             <label for="" class="form-label">Telefono:</label>
-            <input type="text" class="form-control" formControlName="telefono"
-                [ngClass]="{ 'is-invalid': submitted && controls.telefono.errors}">
-                <!--div *ngIf="submitted && controls.telefono.errors" class="text-danger">
-                    <div *ngIf="submitted && controls.telefono.errors.required">Por favor, ingresa tu telefono</div>
-                    <div *ngIf="submitted && controls.telefono.errors.pattern">Solo se admiten caracteres numericos</div>
-
-
-                </div-->
-                <div *ngIf="submitted && formularioRegistroP.controls.telefono.errors" class="text-danger">
-                    <div *ngIf="formularioRegistroP.controls.telefono.errors.required">Last Name is required</div>
-                    <div *ngIf="submitted && formularioRegistroP.controls.telefono.errors.pattern">Solo se admiten caracteres numericos</div>
+            <input 
+                type="text" 
+                class="form-control"
+                formControlName="telefono" 
+                required>
+                <div *ngIf="controls.telefono.touched && controls.telefono.invalid" class="text-danger">
+                            Por favor, ingresa tu telefono (Solo se admiten caracteres numericos)
                 </div>
         </div>
 
         <!--INPUT CORREO ELECTRONICO-->
         <div class="mb-3">
             <label for="" class="form-label">Correo electronico:</label>
-            <input type="text" class="form-control" formControlName="correoElectronico"
-                [ngClass]="{ 'is-invalid': submitted && controls.correoElectronico.errors}">
-                <div *ngIf="submitted && controls.correoElectronico.errors" class="invalid-feedback">
-                    <div *ngIf="submitted && controls.correoElectronico.errors.required">Por favor, ingresa tu correo electronico</div>
-                    <div *ngIf="submitted && controls.correoElectronico.errors.pattern">Por favor, ingresa un correo valido</div>
+            <input 
+                type="text" 
+                class="form-control"
+                formControlName="correoElectronico"
+                required>
+                <div *ngIf="controls.correoElectronico.touched && controls.correoElectronico.invalid" class="text-danger">
+                    <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa tu correo electronico</div>
+                    <div *ngIf="controls.correoElectronico.errors?.email">Por favor, ingresa un correo valido</div>
                 </div>
         </div>
 
         <!--INPUT CODIGO TRANSACCION-->
         <div class="mb-3">
             <label for="" class="form-label">Codigo de transaccion:</label>
-            <input type="text" class="form-control" formControlName="codigoDeTransaccion"
-                [ngClass]="{ 'is-invalid': submitted && controls.codigoDeTransaccion.errors}">
-                <div *ngIf="submitted && controls.codigoDeTransaccion.errors" class="invalid-feedback">
-                    <div *ngIf="submitted && controls.codigoDeTransaccion.errors.required">Por favor, ingresa el codigo de la transaccion</div>
-                    <div *ngIf="submitted && controls.codigoDeTransaccion.errors.pattern">Solo se admiten caracteres numericos</div>
+            <input 
+                type="text"
+                class="form-control"
+                formControlName="codigoDeTransaccion"
+                minlength="5"
+                maxlength="80"
+                required>
+                <div *ngIf="controls.codigoDeTransaccion.touched && controls.codigoDeTransaccion.invalid" class="text-danger">
+                    Por favor, ingresa el código de transaccion (Solo se admiten caracteres numericos)
                 </div>
         </div>
         <button type="submit">Guardar</button>
