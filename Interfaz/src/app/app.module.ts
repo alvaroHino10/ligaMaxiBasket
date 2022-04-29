@@ -16,11 +16,15 @@ import { RegistroPComponent } from './modules/preinscripcion/registro-p/registro
 import { FooterPComponent } from './modules/preinscripcion/footer-p/footer-p.component';
 import { HeaderPComponent } from './modules/preinscripcion/header-p/header-p.component';
 
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { RegistroEComponent } from './modules/registro-equipo/registro-e/registro-e.component';
 import { HttpClientModule } from '@angular/common/http';
+import { FooterEComponent } from './modules/registro-equipo/footer-e/footer-e.component';
+import { HeaderEComponent } from './modules/registro-equipo/header-e/header-e.component';
+import { NavegadorEComponent } from './modules/registro-equipo/navegador-e/navegador-e.component';
 
 
 @NgModule({
@@ -39,7 +43,10 @@ import { HttpClientModule } from '@angular/common/http';
     RegistroPComponent,
     FooterPComponent,
     HeaderPComponent,
-    RegistroEComponent
+    RegistroEComponent,
+    FooterEComponent,
+    HeaderEComponent,
+    NavegadorEComponent
   ],
   imports: [
     BrowserModule,
