@@ -12,7 +12,9 @@ export class RegistroPComponent implements OnInit {
   submitted = false;
   categoria = [];
 
-  constructor(public formulario: FormBuilder) {
+  constructor(public formulario: FormBuilder
+    //private apiService:ApiService) {
+    ) {
     this.formularioRegistroP = new FormGroup({
       nombreCompleto: new FormControl ('',
                     [Validators.required, 
@@ -47,22 +49,41 @@ export class RegistroPComponent implements OnInit {
   ngOnInit() {
     
   }
+  get controls() { return this.formularioRegistroP.controls; }
 
-
-  enviarDatos(): void {
-    
-    
+  enviarDatos(): void {   
     if (this.formularioRegistroP.invalid) {
-      console.log('NO VALIDO');
+      alert('Existen datos incorrectos');
       return;
     }else{
       console.log(this.formularioRegistroP.value);
-    }
-    
+      this.getServicio();
+    }  
     alert('Preinscripcion registrada correctamente');
-    //console.log(this.formularioRegistroP.value);
   }
 
-  get controls() { return this.formularioRegistroP.controls; }
+
+  getServicio(){
+    const registroPreinscripcion = this.formularioRegistroP.value;
+    //this.apiService.post('preinscripcion', registroPreinscripcion);
+  }
+
+
+  api(){
+    /*let formObj = this.formularioRegistroP.getRawValue();
+    formObj.nombreCompleto
+    this.apiService.getById("nombreCompleto", this.formularioRegistroP.getRawValue().nombreCompleto);*/
+    /*let formObj = this.formularioRegistroP.getRawValue();
+      let serializedForm = JSON.stringify(formObj);
+      console.log(serializedForm);
+      this.apiService.post( "registro", this.formularioRegistroP.value).subscribe();
+      this.apiService.getById("nombreCompleto", this.formularioRegistroP.getRawValue().nombreCompleto);*/
+    /*this.http.post("www.domain.com/api", serializedForm)
+        .subscribe(
+            data => console.log("success!", data),
+            error => console.error("couldn't post because", error)
+        );*/
+  }
+
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/api-services/api-services';
 
 @Component({
   selector: 'app-registro-e',
@@ -12,7 +13,9 @@ export class RegistroEComponent implements OnInit {
   submitted = false;
   categoria = [];
 
-  constructor(public formulario: FormBuilder) {
+  constructor(public formulario: FormBuilder,
+    private apiService:ApiService) {
+    
     this.formRegistroEquipo = new FormGroup({
 
       nombreDelEquipo: new FormControl ('',
@@ -35,7 +38,6 @@ export class RegistroEComponent implements OnInit {
                       Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
                       Validators.minLength(1),
                       Validators.maxLength(80)]),
-
     });
 
   }
@@ -46,14 +48,22 @@ export class RegistroEComponent implements OnInit {
 registrarEquipo(){
   if (this.formRegistroEquipo.invalid) {
     console.log('NO VALIDO');
-    return;
-  }else{
-    console.log(this.formRegistroEquipo.value);
+    alert('Existen datos incorrectos');
+      return;
+    }else{
+      console.log(this.formRegistroEquipo.value);
+      this.getServicio();
+    }  
+    alert('Equipo registrado correctamente');
   }
-  
-  alert('Preinscripcion registrada correctamente');
-  //console.log(this.formRegistroEquipo.value);
-}
+
+
+  getServicio(){
+    const registroEquipo = this.formRegistroEquipo.value;
+    this.apiService.post('registroEquipo', registroEquipo);
+
+    this.apiService.getAll('registroEquipo', registroEquipo);
+  }
 
 get controls() { return this.formRegistroEquipo.controls; }
 

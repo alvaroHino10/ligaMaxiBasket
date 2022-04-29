@@ -9,13 +9,13 @@ const routes: Routes = [
 
     /*{path: '', pathMatch:'full', redirectTo: 'registro-p'},
     {path:'registro-p', component: RegistroPComponent},*/
-    {
+    /*{
       path: '',
       pathMatch: 'full',
       component: HomeComponent
-    },
+    },*/
     {
-      path:'preinscripcion',
+      path:'',
       component:PreinscripcionComponent
     },
     {
