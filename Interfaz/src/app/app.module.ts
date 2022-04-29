@@ -9,7 +9,7 @@ import { RegistroJugadoresComponent } from './modules/registro-jugadores/registr
 import { RegistroResponsableComponent } from './modules/registro-responsable/registro-responsable.component';
 import { HeaderComponent } from './modules/registro-jugadores/header/header.component';
 import { NavegadorComponent } from './modules/registro-jugadores/navegador/navegador.component';
-import { RegistroJComponent } from './modules/registro-jugadores/registro-j/registro.component';
+import { RegistroJComponent } from './modules/registro-jugadores/registro/registro.component';
 import { FooterComponent } from './modules/registro-jugadores/footer/footer.component';
 import { NavegadorPComponent } from './modules/preinscripcion/navegador-p/navegador-p.component';
 import { RegistroPComponent } from './modules/preinscripcion/registro-p/registro-p.component';

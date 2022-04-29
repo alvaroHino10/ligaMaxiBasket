@@ -2,123 +2,103 @@
 <html lang="en">
 
 <body>
-    <div id="fondo">
-        <h1>Ficha de Preinscripcion</h1>
+  <div id="fondo">
+    <h1>Ficha de Preinscripcion</h1>
+  </div>
+  <form [formGroup]="formularioRegistroP" (ngSubmit)="enviarDatos()" class="container-fluid">
+
+    <!--INPUT NOMBRE-->
+    <div class="mb-3">
+      <label class="form-label">Nombre completo:</label>
+      <input type="text" class="form-control" formControlName="nombreCompleto" minlength="5" maxlength="80" required>
+      <div *ngIf="controls.nombreCompleto.touched && controls.nombreCompleto.invalid" class="text-danger">
+        <div *ngIf="controls.nombreCompleto.errors?.required">Por favor, ingresa tu nombre completo</div>
+        <div *ngIf="controls.nombreCompleto.errors?.minLength">"El nombre debe tener al menos 5 caracteres"</div>
+        <div *ngIf="controls.nombreCompleto.errors?.maxLength">El nombre es demasiado largo</div>
+        <div *ngIf="controls.nombreCompleto.errors?.pattern">Por favor, ingresa caracteres validos</div>
+      </div>
     </div>
-    <form [formGroup]="formularioRegistroP" (ngSubmit)="enviarDatos()" class="container-fluid">
 
-        <!--INPUT NOMBRE-->
-        <div class="mb-3">
-            <label class="form-label">Nombre completo:</label>                
-                <input 
-                    type="text" 
-                    class="form-control" 
-                    formControlName="nombreCompleto" 
-                    minlength="5"
-                    maxlength="80"
-                    required >
-                <div *ngIf="controls.nombreCompleto.touched && controls.nombreCompleto.invalid"  class="text-danger">
-                    <div *ngIf="controls.nombreCompleto.errors?.required">Por favor, ingresa tu nombre completo</div>
-                    <div *ngIf="controls.nombreCompleto.errors?.minLength">"El nombre debe tener al menos 5 caracteres"</div>
-                    <div *ngIf="controls.nombreCompleto.errors?.maxLength">El nombre es demasiado largo</div>
-                    <div *ngIf="controls.nombreCompleto.errors?.pattern">Por favor, ingresa caracteres validos</div>
-                </div>                
-        </div>
-
-        <!--INPUT NOMBRE EQUIPO-->
-        <div class="mb-3">
-            <label class="form-label">Nombre del equipo:</label>
-            <input 
-                type="text"
-                class="form-control"
-                formControlName="nombreDelEquipo"
-                minlength="5"
-                maxlength="80"
-                required>
-                <div *ngIf="controls.nombreDelEquipo.touched && controls.nombreDelEquipo.invalid"  class="text-danger">
-                    <div *ngIf="controls.nombreDelEquipo.errors?.required">Por favor, ingresa el nombre de tu equipo</div>
-                    <div *ngIf="controls.nombreDelEquipo.errors?.pattern">Por favor, ingresa caracteres validos</div>
-                    <div *ngIf="controls.nombreDelEquipo.errors?.maxLength">El nombre del equipo es demasiado largo</div>
-                </div>
-        </div>
-
-        <!--CATEGORIA-->
-        <div class="col-4">
-            <label for="" class="form-label">Seleccione una categoria:</label>
-            <select 
-                class="form-control" 
-                name="categoria" 
-                (change)="categoria" 
-                formControlName="categoria" 
-                required>
-
-                <option value="" disabled>Seleccionar categoria</option>
-                <option *ngFor="let c of listaCategoria" [ngValue]="c">{{ c }}</option>
-                <div *ngIf="controls.categoria.errors?.required" class="text-danger">
-                    Por favor, selecciona una categoria
-                </div>
-            </select>
-            
-        </div>
-
-
-        <!--INPUT TELEFONO-->
-        <div class="mb-3">
-            <label for="" class="form-label">Telefono:</label>
-            <input 
-                type="text" 
-                class="form-control"
-                formControlName="telefono" 
-                required>
-                <div *ngIf="controls.telefono.touched && controls.telefono.invalid" class="text-danger">
-                            Por favor, ingresa tu telefono (Solo se admiten caracteres numericos)
-                </div>
-        </div>
-
-        <!--INPUT CORREO ELECTRONICO-->
-        <div class="mb-3">
-            <label for="" class="form-label">Correo electronico:</label>
-            <input 
-                type="text" 
-                class="form-control"
-                formControlName="correoElectronico"
-                required>
-                <div *ngIf="controls.correoElectronico.touched && controls.correoElectronico.invalid" class="text-danger">
-                    <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa tu correo electronico</div>
-                    <div *ngIf="controls.correoElectronico.errors?.email">Por favor, ingresa un correo valido</div>
-                </div>
-        </div>
-
-        <!--INPUT CODIGO TRANSACCION-->
-        <div class="mb-3">
-            <label for="" class="form-label">Codigo de transaccion:</label>
-            <input 
-                type="text"
-                class="form-control"
-                formControlName="codigoDeTransaccion"
-                minlength="5"
-                maxlength="80"
-                required>
-                <div *ngIf="controls.codigoDeTransaccion.touched && controls.codigoDeTransaccion.invalid" class="text-danger">
-                    Por favor, ingresa el código de transaccion (Solo se admiten caracteres numericos)
-                </div>
-        </div>
-        <button type="submit">Guardar</button>
-
-    </form>
-
-    <!--INFORMACION CUENTA BANCARIA-->
-    <div class="container">
-        <h2>PAGOS O DEPOSITO</h2>
-        <h3>BANCO:</h3>
-        <h3 id="white">UNION</h3>
-        <h3>NRO. CUENTA:</h3>
-        <h3 id="white">10000011909857</h3>
-        <h3>A FAVOR DE:</h3>
-        <h3 id="white">ZULEMA RITA BRAVO DE BALDERRAMA</h3>
-        <h3>NRO. CEDULA:</h3>
-        <h3 id="white">952193</h3>
+    <!--INPUT NOMBRE EQUIPO-->
+    <div class="mb-3">
+      <label class="form-label">Nombre del equipo:</label>
+      <input type="text" class="form-control" formControlName="nombreDelEquipo" minlength="5" maxlength="80" required>
+      <div *ngIf="controls.nombreDelEquipo.touched && controls.nombreDelEquipo.invalid" class="text-danger">
+        <div *ngIf="controls.nombreDelEquipo.errors?.required">Por favor, ingresa el nombre de tu equipo</div>
+        <div *ngIf="controls.nombreDelEquipo.errors?.pattern">Por favor, ingresa caracteres validos</div>
+        <div *ngIf="controls.nombreDelEquipo.errors?.maxLength">El nombre del equipo es demasiado largo</div>
+      </div>
     </div>
+
+    <!--CATEGORIA-->
+    <div class="col-4">
+      <label for="" class="form-label">Seleccione una categoria:</label>
+      <select class="form-control" name="categoria" (change)="categoria" formControlName="categoria" required>
+
+        <option value="" disabled>Seleccionar categoria</option>
+        <option *ngFor="let c of listaCategoria" [ngValue]="c">{{ c }}</option>
+        <div *ngIf="controls.categoria.errors?.required" class="text-danger">
+          Por favor, selecciona una categoria
+        </div>
+      </select>
+
+    </div>
+
+
+    <!--INPUT TELEFONO-->
+    <div class="mb-3">
+      <label for="" class="form-label">Telefono:</label>
+      <input type="text" class="form-control" formControlName="telefono" required>
+      <div *ngIf="controls.telefono.touched && controls.telefono.invalid" class="text-danger">
+        Por favor, ingresa tu telefono (Solo se admiten caracteres numericos)
+      </div>
+    </div>
+
+    <!--INPUT CORREO ELECTRONICO-->
+    <div class="mb-3">
+      <label for="" class="form-label">Correo electronico:</label>
+      <input type="text" class="form-control" formControlName="correoElectronico" required>
+      <div *ngIf="controls.correoElectronico.touched && controls.correoElectronico.invalid" class="text-danger">
+        <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa tu correo electronico</div>
+        <div *ngIf="controls.correoElectronico.errors?.email">Por favor, ingresa un correo valido</div>
+      </div>
+    </div>
+
+    <!--INPUT CODIGO TRANSACCION-->
+    <div class="mb-3">
+      <label for="" class="form-label">Codigo de transaccion:</label>
+      <input type="text" class="form-control" formControlName="codigoDeTransaccion" minlength="5" maxlength="80"
+        required>
+      <div *ngIf="controls.codigoDeTransaccion.touched && controls.codigoDeTransaccion.invalid" class="text-danger">
+        Por favor, ingresa el código de transaccion (Solo se admiten caracteres numericos)
+      </div>
+    </div>
+
+
+    <!--INPUT FILE IMAGEN-->
+    <div class="mb-3">
+      <label for="myfile">Seleccionar imagen:</label>
+      <input type="file" id="myfile" name="myfile">
+      <!--<div *ngIf="controls.codigoDeTransaccion.touched && controls.codigoDeTransaccion.invalid" class="text-danger">
+        Por favor, ingresa el código de transaccion (Solo se admiten caracteres numericos)-->
+    </div>
+
+    <button type="submit">Guardar</button>
+
+  </form>
+
+  <!--INFORMACION CUENTA BANCARIA-->
+  <div class="container">
+    <h2>PAGOS O DEPOSITO</h2>
+    <h3>BANCO:</h3>
+    <h3 id="white">UNION</h3>
+    <h3>NRO. CUENTA:</h3>
+    <h3 id="white">10000011909857</h3>
+    <h3>A FAVOR DE:</h3>
+    <h3 id="white">ZULEMA RITA BRAVO DE BALDERRAMA</h3>
+    <h3>NRO. CEDULA:</h3>
+    <h3 id="white">952193</h3>
+  </div>
 
 </body>
 

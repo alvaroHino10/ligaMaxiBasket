@@ -1,55 +1,83 @@
-.container-fluid {
-    display: flex;
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-    bottom: -66.46%;
-    filter: drop-shadow(0px 10px 10px rgba(14, 14, 14, 0.25));
+
+.frame{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #292929;
+  font-family: 'calibri';
+  background-image: url(/assets/Imagenes/ByN.jpg);
+  background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+header {
+   width: max-content;
+    height: max-content;
     
-}
-
-#fondo {
-    width: 1519px;
-    height: 268px;
-    background-image: url(/assets/Imagenes/ByN.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
 }
 
-#fondo h1 {
-
-    position: absolute;
-    left: 50%;
-    right: 27.66%;
-    top: 70.19%;
-    bottom: -47.83%;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 20px;
-    line-height: 30px;
-
-    letter-spacing: 0.235em;
-
-    color: #FFFFFF;
-
+.menu {
+  width: max-content;
+  height: max-content;
+  margin: 0 auto;
 }
 
-.container {
-    position: absolute;
-    left: 1%;
-    right: 90%;
-    top: 1%;
-    bottom: -50%;
-}
-
-#logo {
-    width: 297.9px;
-    height: 255px;
-    background-image: url(/assets/Imagenes/Logo.jpg);
+img {
+  width: 297.9px;
+    height: 225px;
+  
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+}
+
+nav {
+  float: right;
+}
+
+nav ul li {
+  list-style: none;
+  margin-left: 75px;
+  padding: 12px 0;
+  float: left;
+  position: relative;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+nav ul li a::before {
+  display: block;
+  content: '';
+  width: 0%;
+  background: #444;
+  height: 5px;
+  top:0;
+  position: absolute;
+  transition: width 0.2s;
+}
+
+nav ul li a:hover::before {
+  width: 100%;
+}
+
+*{
+  font-family: 'Poppins';
+font-style: normal;
+font-weight: 700;
+font-size: 32px;
+line-height: 48px;
+letter-spacing: 0.235em;
+
+color: #FFFFFF;
 }
