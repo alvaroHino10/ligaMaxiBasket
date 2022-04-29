@@ -22,9 +22,12 @@ export interface RegistroJugador{
     correoElectronico: string;
     numeroIdentidad: string;
     nacion: string;
+    estadoCivil: string;
     telefono: string;
+    sexo: string;
     domicilio: string;
     numeroJugador: string;
+    linkimg: string;
 }
 
 

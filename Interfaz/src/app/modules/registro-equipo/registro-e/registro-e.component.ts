@@ -60,9 +60,9 @@ registrarEquipo(){
 
   getServicio(){
     const registroEquipo = this.formRegistroEquipo.value;
-    this.apiService.post('registroEquipo', registroEquipo);
+    this.apiService.post('registroEquipo', registroEquipo).subscribe();
 
-    this.apiService.getAll('registroEquipo', registroEquipo);
+    this.apiService.getAll('registroEquipo', registroEquipo).subscribe();
   }
 
 get controls() { return this.formRegistroEquipo.controls; }

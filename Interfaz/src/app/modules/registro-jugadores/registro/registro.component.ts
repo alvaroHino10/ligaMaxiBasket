@@ -13,8 +13,8 @@ export class RegistroJComponent implements OnInit {
   categoria = [];
 
   constructor(public formulario: FormBuilder
-    //private apiService:ApiService) {
-    ) {
+    ,private apiService:ApiService) {
+    //) {
     this.formRegistroJugador = new FormGroup({
       nombre: new FormControl ('',
                     [Validators.required, 
@@ -59,7 +59,7 @@ export class RegistroJComponent implements OnInit {
                      Validators.maxLength(80)]),
       numeroJugador: new FormControl ('', 
                      [Validators.required, 
-                      Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{3})(?: *x(\\d+))?\\s*$')]),
+                      Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{1})[-. )]*(\\d{1})[-. ]*$')]),
 
     }
                      );
@@ -72,6 +72,7 @@ export class RegistroJComponent implements OnInit {
   registrarJugador(){
     if (this.formRegistroJugador.invalid) {
       alert('Existen datos incorrectos');
+      console.log(this.formRegistroJugador.controls);
       return;
     }else{
       console.log(this.formRegistroJugador.value);
@@ -81,11 +82,11 @@ export class RegistroJComponent implements OnInit {
     alert('Jugador registrado correctamente');
   }
   getServicio() {
-    //this.apiService.get('registroJugador');
+   this.apiService.getAll('registroJugador').subscribe();
   }
   postServicio(){
-    const registroPreinscripcion = this.formRegistroJugador.value;
-    //this.apiService.post('preinscripcion', registroPreinscripcion);
+    const registroJugadores = this.formRegistroJugador.value;
+    this.apiService.post('registroJugador', registroJugadores).subscribe();
   }
 
 }

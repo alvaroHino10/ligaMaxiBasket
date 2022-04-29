@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/api-services/api-services';
 
 @Component({
   selector: 'app-registro-p',
@@ -13,8 +14,8 @@ export class RegistroPComponent implements OnInit {
   categoria = [];
 
   constructor(public formulario: FormBuilder
-    //private apiService:ApiService) {
-    ) {
+     ,private apiService:ApiService) {
+    //) {
     this.formularioRegistroP = new FormGroup({
       nombreCompleto: new FormControl ('',
                     [Validators.required, 
@@ -65,7 +66,8 @@ export class RegistroPComponent implements OnInit {
 
   getServicio(){
     const registroPreinscripcion = this.formularioRegistroP.value;
-    //this.apiService.post('preinscripcion', registroPreinscripcion);
+    this.apiService.post('preinscripcion', registroPreinscripcion).subscribe();
+    this.apiService.getAll('preinscripcion').subscribe();
   }
 
 
