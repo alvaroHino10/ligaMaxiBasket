@@ -8,7 +8,7 @@ import { ApiService } from 'src/app/api-services/api-services';
   styleUrls: ['./registro-e.component.css']
 })
 export class RegistroEComponent implements OnInit {
-  public formRegistroEquipo: FormGroup;
+  public formularioRegistroEquipo: FormGroup;
   public listaCategoria: any = [ "+30", "+40", "+50", "+60"];
   submitted = false;
   categoria = [];
@@ -16,7 +16,7 @@ export class RegistroEComponent implements OnInit {
   constructor(public formulario: FormBuilder,
     private apiService:ApiService) {
     
-    this.formRegistroEquipo = new FormGroup({
+    this.formularioRegistroEquipo = new FormGroup({
 
       nombreDelEquipo: new FormControl ('',
                     [Validators.required, 
@@ -46,12 +46,12 @@ export class RegistroEComponent implements OnInit {
   }
 
 registrarEquipo(){
-  if (this.formRegistroEquipo.invalid) {
+  if (this.formularioRegistroEquipo.invalid) {
     console.log('NO VALIDO');
     alert('Existen datos incorrectos');
       return;
     }else{
-      console.log(this.formRegistroEquipo.value);
+      console.log(this.formularioRegistroEquipo.value);
       this.getServicio();
     }  
     alert('Equipo registrado correctamente');
@@ -59,12 +59,12 @@ registrarEquipo(){
 
 
   getServicio(){
-    const registroEquipo = this.formRegistroEquipo.value;
+    const registroEquipo = this.formularioRegistroEquipo.value;
     this.apiService.post('registroEquipo', registroEquipo).subscribe();
 
     this.apiService.getAll('registroEquipo', registroEquipo).subscribe();
   }
 
-get controls() { return this.formRegistroEquipo.controls; }
+get controls() { return this.formularioRegistroEquipo.controls; }
 
 }
