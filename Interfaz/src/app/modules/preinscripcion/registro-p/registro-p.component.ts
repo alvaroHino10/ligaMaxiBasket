@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/api-services/api-services';
 export class RegistroPComponent implements OnInit {
   public formularioRegistroP: FormGroup;
   public listaCategoria: any = [ "+30", "+40", "+50", "+60"];
-  submitted = false;
+  public submited = false;
   categoria = [];
 
   constructor(public formulario: FormBuilder
@@ -19,22 +19,22 @@ export class RegistroPComponent implements OnInit {
     this.formularioRegistroP = new FormGroup({
       nombreCompleto: new FormControl ('',
                     [Validators.required, 
-                     Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
                      Validators.minLength(5),
-                     Validators.maxLength(80)]),
+                     Validators.maxLength(80),
+                     Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
 
       nombreDelEquipo: new FormControl ('',
                     [Validators.required, 
-                     Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
                      Validators.minLength(1),
-                     Validators.maxLength(80)]),
+                     Validators.maxLength(80),
+                     Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
 
       categoria: new FormControl ('', 
                      Validators.required),
 
       telefono: new FormControl ('', 
                     [Validators.required, 
-                     Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{3})(?: *x(\\d+))?\\s*$')]),
+                     Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{2})(?: *x(\\d+))?\\s*$')]),
 
       correoElectronico: new FormControl ('', 
                     [Validators.required, 
@@ -51,10 +51,13 @@ export class RegistroPComponent implements OnInit {
     
   }
   get controls() { return this.formularioRegistroP.controls; }
+  
 
-  enviarDatos(): void {   
+  guardarPreinscripcion(): void {  
+    this.submited = true; 
     if (this.formularioRegistroP.invalid) {
-      alert('Existen datos incorrectos');
+      this.formularioRegistroP.controls;
+      alert('Por favor ingrese datos validos, correspondientes a todos los campos');
       return;
     }else{
       console.log(this.formularioRegistroP.value);

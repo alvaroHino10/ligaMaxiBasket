@@ -13,7 +13,8 @@
       <input type="text" class="form-control" formControlName="nombreDelEquipo" minlength="5" maxlength="80" required>
       <div *ngIf="controls.nombreDelEquipo.touched && controls.nombreDelEquipo.invalid" class="text-danger">
         <div *ngIf="controls.nombreDelEquipo.errors?.required">Por favor, ingresa el nombre de tu equipo</div>
-        <div *ngIf="controls.nombreDelEquipo.errors?.pattern">Por favor, ingresa caracteres validos</div>
+        <div *ngIf="controls.nombreDelEquipo.errors?.pattern">Por favor, ingresa solo caracteres alfabeticos</div>
+        <div *ngIf="controls.nombreDelEquipo.errors?.minLength">El nombre del equipo es demasiado corto</div>
         <div *ngIf="controls.nombreDelEquipo.errors?.maxLength">El nombre del equipo es demasiado largo</div>
       </div>
     </div>
@@ -22,22 +23,19 @@
     <div class="col-4">
       <label for="" class="form-label">Seleccione una categoria:</label>
       <select class="form-control" name="categoria" (change)="categoria" formControlName="categoria" required>
-
-        <option value="+30">+30</option>
-        <option value="+40">+40</option>
-        <option value="+50">+50</option>
-        <option value="+60">+60</option>
-        <div *ngIf="controls.categoria.errors?.required" class="text-danger">
-          Por favor, selecciona una categoria
-        </div>
+          <option value="" disabled>Seleccionar categoria</option>
+          <option *ngFor="let c of listaCategoriaEquipo" [ngValue]="c">{{ c }}</option>
       </select>
+      <div *ngIf="controls.categoria.touched && controls.categoria.invalid" class="text-danger">
+        <div *ngIf="controls.categoria.errors?.required">Por favor, selecciona una categoria</div>
+      </div>
     </div>
     <br>
 
     <!--INPUT PAIS-->
     <div class="mb-3">
       <label class="form-label">Pais del Equipo:</label>
-      <select class="form-control" name="pais" formControlName="pais" required>
+      <select class="form-control" name="paisEquipo" formControlName="paisEquipo" required>
         <option value="AF">Afganistán</option>
         <option value="AL">Albania</option>
         <option value="DE">Alemania</option>
@@ -275,7 +273,6 @@
       </select>
       <div *ngIf="controls.paisEquipo.touched && controls.paisEquipo.invalid" class="text-danger">
         <div *ngIf="controls.paisEquipo.errors?.required">Por favor, ingresa el pais del equipo</div>
-        <div *ngIf="controls.paisEquipo.errors?.pattern">Por favor, ingresa caracteres validos</div>
       </div>
     </div>
 

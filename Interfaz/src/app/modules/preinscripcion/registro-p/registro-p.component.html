@@ -5,7 +5,7 @@
   <div id="fondo">
     <h1>Ficha de Preinscripcion</h1>
   </div>
-  <form [formGroup]="formularioRegistroP" (ngSubmit)="enviarDatos()" class="container-fluid">
+  <form [formGroup]="formularioRegistroP" (ngSubmit)="guardarPreinscripcion()" class="container-fluid">
 
     <!--INPUT NOMBRE-->
     <div class="mb-3">
@@ -15,7 +15,7 @@
         <div *ngIf="controls.nombreCompleto.errors?.required">Por favor, ingresa tu nombre completo</div>
         <div *ngIf="controls.nombreCompleto.errors?.minLength">"El nombre debe tener al menos 5 caracteres"</div>
         <div *ngIf="controls.nombreCompleto.errors?.maxLength">El nombre es demasiado largo</div>
-        <div *ngIf="controls.nombreCompleto.errors?.pattern">Por favor, ingresa caracteres validos</div>
+        <div *ngIf="controls.nombreCompleto.errors?.pattern">Por favor, ingresa solo caracteres alfabeticos</div>
       </div>
     </div>
 
@@ -34,14 +34,12 @@
     <div class="col-4">
       <label for="" class="form-label">Seleccione una categoria:</label>
       <select class="form-control" name="categoria" (change)="categoria" formControlName="categoria" required>
-
         <option value="" disabled>Seleccionar categoria</option>
         <option *ngFor="let c of listaCategoria" [ngValue]="c">{{ c }}</option>
-        <div *ngIf="controls.categoria.errors?.required" class="text-danger">
-          Por favor, selecciona una categoria
-        </div>
       </select>
-
+      <div *ngIf="controls.categoria.touched && controls.categoria.invalid" class="text-danger">
+        <div *ngIf="controls.categoria.errors?.required">Por favor, selecciona una categoria</div>
+      </div>
     </div>
 
 

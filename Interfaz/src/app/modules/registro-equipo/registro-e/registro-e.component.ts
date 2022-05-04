@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/api-services/api-services';
 })
 export class RegistroEComponent implements OnInit {
   public formularioRegistroEquipo: FormGroup;
-  public listaCategoria: any = [ "+30", "+40", "+50", "+60"];
+  public listaCategoriaEquipo: any = [ "+30", "+40", "+50", "+60"];
   submitted = false;
   categoria = [];
 
@@ -20,24 +20,24 @@ export class RegistroEComponent implements OnInit {
 
       nombreDelEquipo: new FormControl ('',
                     [Validators.required, 
-                     Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
                      Validators.minLength(1),
-                     Validators.maxLength(80)]),
+                     Validators.maxLength(80),
+                     Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
 
       categoria: new FormControl ('', 
                      Validators.required),
 
-      pais: new FormControl ('', 
+      paisEquipo: new FormControl ('', 
                     [Validators.required, 
-                      Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
                       Validators.minLength(1),
-                      Validators.maxLength(80)]),
+                      Validators.maxLength(80),
+                      Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
 
       colorEquipo: new FormControl ('', 
                     [Validators.required, 
-                      Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
                       Validators.minLength(1),
-                      Validators.maxLength(80)]),
+                      Validators.maxLength(80),
+                      Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
     });
 
   }
@@ -45,10 +45,11 @@ export class RegistroEComponent implements OnInit {
   ngOnInit(): void {
   }
 
-registrarEquipo(){
+  registrarEquipo(){
+    this.submitted = true;
   if (this.formularioRegistroEquipo.invalid) {
     console.log('NO VALIDO');
-    alert('Existen datos incorrectos');
+    alert('Por favor ingrese datos validos, correspondientes a todos los campos');
       return;
     }else{
       console.log(this.formularioRegistroEquipo.value);
@@ -65,6 +66,6 @@ registrarEquipo(){
     this.apiService.getAll('registroEquipo', registroEquipo).subscribe();
   }
 
-get controls() { return this.formularioRegistroEquipo.controls; }
+  get controls() { return this.formularioRegistroEquipo.controls; }
 
 }

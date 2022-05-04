@@ -10,12 +10,13 @@
     <!--INPUT NOMBRE(S)-->
     <div class="mb-3">
       <label class="form-label">Nombre(s):</label>
-      <input type="text" class="form-control" formControlName="nombre" minlength="3" maxlength="80" required>
-      <div *ngIf="controls.nombre.touched && controls.nombre.invalid" class="text-danger">
-        <div *ngIf="controls.nombre.errors?.required">Por favor, ingresa tu(s) nombre(s)</div>
-        <div *ngIf="controls.nombre.errors?.minLength">"El nombre debe tener al menos 5 caracteres"</div>
-        <div *ngIf="controls.nombre.errors?.maxLength">El nombre es demasiado largo</div>
-        <div *ngIf="controls.nombre.errors?.pattern">Por favor, ingresa caracteres validos</div>
+      <input type="text" class="form-control" formControlName="nombre" minlength="3" maxlength="80" required
+      [ngClass]="{ 'is-invalid': submitted && controls.nombre.errors}">
+      <div *ngIf="controls.nombre.touched && controls.nombre.invalid && submitted" class="text-danger">
+        <div *ngIf="submitted && controls.nombre.errors?.required">Por favor, ingresa tu(s) nombre(s)</div>
+        <div *ngIf="submitted && controls.nombre.errors?.minLength">"El nombre debe tener al menos 5 caracteres"</div>
+        <div *ngIf="submitted && controls.nombre.errors?.maxLength">El nombre es demasiado largo</div>
+        <div *ngIf="submitted && controls.nombre.errors?.pattern">Por favor, ingresa solo caracteres alfabeticos</div>
       </div>
     </div>
 
@@ -66,7 +67,7 @@
     <!--INPUT PAIS-->
     <div class="mb-3">
       <label class="form-label">Pais del Equipo:</label>
-      <select class="form-control" name="pais" formControlName="pais" required>
+      <select class="form-control" name="paisJugador" formControlName="paisJugador" required>
         <option value="AF">Afganistán</option>
         <option value="AL">Albania</option>
         <option value="DE">Alemania</option>
@@ -302,9 +303,9 @@
         <option value="ZM">Zambia</option>
         <option value="ZW">Zimbabue</option>
       </select>
-      <div *ngIf="controls.paisEquipo.touched && controls.paisEquipo.invalid" class="text-danger">
-        <div *ngIf="controls.paisEquipo.errors?.required">Por favor, ingresa el pais del equipo</div>
-        <div *ngIf="controls.paisEquipo.errors?.pattern">Por favor, ingresa caracteres validos</div>
+      <div *ngIf="controls.paisJugador.touched && controls.paisJugador.invalid" class="text-danger">
+        <div *ngIf="controls.paisJugador.errors?.required">Por favor, ingresa el pais del equipo</div>
+        <div *ngIf="controls.paisJugador.errors?.pattern">Por favor, ingresa caracteres validos</div>
       </div>
     </div>
 
@@ -313,20 +314,29 @@
     <div class="mb-3">
       <label class="form-label">Estado civil:</label>
       <select class="form-control" formControlName="estadoCivil" required>
-        <option value="soltero">Soltero</option>
+        <!--option value="soltero">Soltero</option>
         <option value="casado">Casado</option>
         <option value="divorciado">Divorciado</option>
-        <option value="viudo">Viudo</option>
+        <option value="viudo">Viudo</option-->
+        <option value="" disabled>Seleccione un estado</option>
+        <option *ngFor="let c of listaEstadoCivil" [ngValue]="c">{{ c }}</option>
       </select>
       <div *ngIf="controls.estadoCivil.touched && controls.estadoCivil.invalid" class="text-danger">
         Por favor, ingresa tu estado civil
       </div>
     </div>
+
+
+
     <!--INPUT FECHA NACIMIENTO-->
     <div class="mb-3">
       <label for="birthday">Fecha de Nacimineto:</label>
       <input type="date" id="birthday" name="birthday" formControlName="fechaNacimiento">
+      <div *ngIf="controls.fechaNacimiento.touched && controls.fechaNacimiento.invalid" class="text-danger">
+        Por favor, ingresa tu fecha de nacimiento
+      </div>
     </div>
+
     <!--INPUT TELEFONO-->
     <div class="mb-3">
       <label for="" class="form-label">Telefono:</label>
@@ -347,6 +357,7 @@
         Por favor, ingresa tu sexo
       </div>
     </div>
+    
     <!--INPUT DOMICILIO-->
     <div class="mb-3">
       <label class="form-label">Domicilio:</label>

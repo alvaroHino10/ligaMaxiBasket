@@ -8,13 +8,12 @@ import { ApiService } from 'src/app/api-services/api-services';
 })
 export class RegistroJComponent implements OnInit {
   public formRegistroJugador: FormGroup;
-  public listaCategoria: any = [ "+30", "+40", "+50", "+60"];
+  public listaEstadoCivil: any = [ "Soltero", "Casado", "Divorciado", "Viudo"];
   submitted = false;
   categoria = [];
 
   constructor(public formulario: FormBuilder
     ,private apiService:ApiService) {
-    //) {
     this.formRegistroJugador = new FormGroup({
       nombre: new FormControl ('',
                     [Validators.required, 
@@ -37,7 +36,7 @@ export class RegistroJComponent implements OnInit {
       numeroIdentidad:  new FormControl ('', 
                     [Validators.required, 
                     Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{3})(?: *x(\\d+))?\\s*$')]),
-      nacion:new FormControl ('',
+      paisJugador:new FormControl ('',
                     [Validators.required, 
                     Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
                     Validators.minLength(5),
@@ -48,7 +47,7 @@ export class RegistroJComponent implements OnInit {
                     Validators.required),             
       telefono: new FormControl ('', 
                     [Validators.required, 
-                     Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{3})(?: *x(\\d+))?\\s*$')]),
+                     Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{2})(?: *x(\\d+))?\\s*$')]),
       sexo:new FormControl('',
                     Validators.required),
 
@@ -70,8 +69,9 @@ export class RegistroJComponent implements OnInit {
   get controls() { return this.formRegistroJugador.controls; }
 
   registrarJugador(){
+    this.submitted = true;
     if (this.formRegistroJugador.invalid) {
-      alert('Existen datos incorrectos');
+      alert('Por favor ingrese datos validos, correspondientes a todos los campos');
       console.log(this.formRegistroJugador.controls);
       return;
     }else{
