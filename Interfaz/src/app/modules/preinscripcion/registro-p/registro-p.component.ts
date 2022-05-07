@@ -18,11 +18,29 @@ export class RegistroPComponent implements OnInit {
      ,private apiService:ApiService) {
     //) {
     this.formularioRegistroP = new FormGroup({
-      nombreCompleto: new FormControl ('',
+      nombreDelegado: new FormControl ('',
                     [Validators.required, 
                      Validators.minLength(5),
                      Validators.maxLength(80),
                      Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
+      apellidoDelegado: new FormControl ('',
+                    [Validators.required, 
+                     Validators.minLength(5),
+                     Validators.maxLength(80),
+                     Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
+
+      numeroIdentificacion: new FormControl ('', 
+                    [Validators.required, 
+                      Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{2})(?: *x(\\d+))?\\s*$')]),
+
+      telefono: new FormControl ('', 
+                    [Validators.required,
+                     Validators.min(1000000),
+                     Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{2})(?: *x(\\d+))?\\s*$')]),
+
+      correoElectronico: new FormControl ('', 
+                    [Validators.required, 
+                     Validators.email]),
 
       nombreDelEquipo: new FormControl ('',
                     [Validators.required, 
@@ -32,14 +50,6 @@ export class RegistroPComponent implements OnInit {
 
       categoria: new FormControl ('', 
                      Validators.required),
-
-      telefono: new FormControl ('', 
-                    [Validators.required, 
-                     Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{2})(?: *x(\\d+))?\\s*$')]),
-
-      correoElectronico: new FormControl ('', 
-                    [Validators.required, 
-                     Validators.email]),
 
       codigoDeTransaccion: new FormControl ('', 
                     [Validators.required, 
