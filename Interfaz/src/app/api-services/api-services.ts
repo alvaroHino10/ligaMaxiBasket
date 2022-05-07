@@ -1,21 +1,27 @@
 // This class make possible the connection with the API
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
+import { HttpClient } from "@angular/common/http"; // Comunicar con la API para enviar información
 import { environment } from "src/environments/environment";
-import { Observable } from "rxjs";
+import { Observable } from "rxjs"; //observa lo que sucede en el entorno html
 
 @Injectable({
   providedIn: "root",
 })
 
 export class ApiService {
+  url = environment.url;
   constructor(private http: HttpClient) {}
+
+
+  getPreinscripcion(){
+    return this.http.get(`${this.url}preinscripcion`)
+  }
   // This method is in charge for saving an object in the database
-  post(dir: string, model: object): Observable<any> {
+  /*post(dir: string, model: object): Observable<any> {
     return this.http.post<any>(`${environment.url}${dir}`, model);
   }
 
-  //This method
+  //Este método interactúa
   getAll(dir:string, model?:object): Observable<any>{
     return this.http.get<any>(`${environment.url}${dir}`, model);
   }
@@ -26,6 +32,6 @@ export class ApiService {
 
   update(dir: string, model:object): Observable<any> {
     return this.http.put<any>(`${environment.url}${dir}`, model);
-  }
+  }*/
 
 }

@@ -61,9 +61,9 @@ export class RegistroEComponent implements OnInit {
 
   getServicio(){
     const registroEquipo = this.formularioRegistroEquipo.value;
-    this.apiService.post('registroEquipo', registroEquipo).subscribe();
+    //this.apiService.post('registroEquipo', registroEquipo).subscribe();
 
-    this.apiService.getAll('registroEquipo', registroEquipo).subscribe();
+    //this.apiService.getAll('registroEquipo', registroEquipo).subscribe();
   }
 
   get controls() { return this.formularioRegistroEquipo.controls; }

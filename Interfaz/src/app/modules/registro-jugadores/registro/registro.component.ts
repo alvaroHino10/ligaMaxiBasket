@@ -58,7 +58,8 @@ export class RegistroJComponent implements OnInit {
                      Validators.maxLength(80)]),
       numeroJugador: new FormControl ('', 
                      [Validators.required, 
-                      Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{1})[-. )]*(\\d{1})[-. ]*$')]),
+                      Validators.min(1),
+                      Validators.max(80)]),
 
     }
                      );
@@ -82,11 +83,11 @@ export class RegistroJComponent implements OnInit {
     alert('Jugador registrado correctamente');
   }
   getServicio() {
-   this.apiService.getAll('registroJugador').subscribe();
+   //this.apiService.getAll('registroJugador').subscribe();
   }
   postServicio(){
     const registroJugadores = this.formRegistroJugador.value;
-    this.apiService.post('registroJugador', registroJugadores).subscribe();
+    //this.apiService.post('registroJugador', registroJugadores).subscribe();
   }
 
 }

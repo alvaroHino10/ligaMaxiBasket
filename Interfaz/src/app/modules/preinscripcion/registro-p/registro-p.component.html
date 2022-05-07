@@ -46,7 +46,7 @@
     <!--INPUT TELEFONO-->
     <div class="mb-3">
       <label for="" class="form-label">Telefono:</label>
-      <input type="text" class="form-control" formControlName="telefono" required>
+      <input type="number" class="form-control" formControlName="telefono" required>
       <div *ngIf="controls.telefono.touched && controls.telefono.invalid" class="text-danger">
         Por favor, ingresa tu telefono (Solo se admiten caracteres numericos)
       </div>
@@ -97,6 +97,15 @@
     <h3>NRO. CEDULA:</h3>
     <h3 id="white">952193</h3>
   </div>
+
+
+
+
+  <!--PRUEBA CONEXION-->
+  <div class="card" **ngFor="let preinscripcion of listaPreinscripcion">
+    {{preinscripcion.nombreDelEquipo}}
+  </div>
+
 
 </body>
 

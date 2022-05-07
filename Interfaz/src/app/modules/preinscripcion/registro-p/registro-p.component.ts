@@ -12,6 +12,7 @@ export class RegistroPComponent implements OnInit {
   public listaCategoria: any = [ "+30", "+40", "+50", "+60"];
   public submited = false;
   categoria = [];
+  listaPreinscripcion:any = [];
 
   constructor(public formulario: FormBuilder
      ,private apiService:ApiService) {
@@ -65,12 +66,18 @@ export class RegistroPComponent implements OnInit {
     }  
     alert('Preinscripcion registrada correctamente');
   }
+  putServicio() {
+    
+  }
 
 
   getServicio(){
     const registroPreinscripcion = this.formularioRegistroP.value;
-    this.apiService.post('preinscripcion', registroPreinscripcion).subscribe();
-    this.apiService.getAll('preinscripcion').subscribe();
+    this.apiService.getPreinscripcion().subscribe((data:any) => {
+      this.listaPreinscripcion = data;
+    })
+    //this.apiService.post('preinscripcion', registroPreinscripcion).subscribe();
+    //this.apiService.getAll('preinscripcion').subscribe();
   }
 
 
