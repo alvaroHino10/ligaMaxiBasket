@@ -14,7 +14,27 @@ export class ApiService {
 
 
   getPreinscripcion(){
-    return this.http.get(`${this.url}preinscripcion`)
+    return this.http.get(`${this.url}preinscripcion`);
+  }
+
+  postPreinscripcion(formPreinscripcion : object){
+    return this.http.put(`${this.url}preinscripcion`, formPreinscripcion);
+  }
+
+  getEquipos(){
+    return this.http.get(`${this.url}equipo`);
+  }
+
+  postEquipo(formEquipo : object){
+    return this.http.put(`${this.url}equipo`, formEquipo);
+  }
+
+  getJugadores(){
+    return this.http.get(`${this.url}jugador`);
+  }
+
+  postJugador(formJugador : object){
+    return this.http.put(`${this.url}jugador`, formJugador);
   }
   // This method is in charge for saving an object in the database
   /*post(dir: string, model: object): Observable<any> {

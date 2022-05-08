@@ -11,6 +11,7 @@ export class RegistroJComponent implements OnInit {
   public listaEstadoCivil: any = [ "Soltero", "Casado", "Divorciado", "Viudo"];
   submitted = false;
   categoria = [];
+  lista :any = [];
 
   constructor(public formulario: FormBuilder
     ,private apiService:ApiService) {
@@ -77,17 +78,25 @@ export class RegistroJComponent implements OnInit {
       return;
     }else{
       console.log(this.formRegistroJugador.value);
-      this.postServicio();
-      this.getServicio();
+      this.putServicio();
+      
     }  
     alert('Jugador registrado correctamente');
   }
-  getServicio() {
-   //this.apiService.getAll('registroJugador').subscribe();
+  putServicio() {
+    const registro = this.formRegistroJugador.value;
+    this.apiService.postJugador(registro).subscribe();
+    this.getServicio();
   }
-  postServicio(){
-    const registroJugadores = this.formRegistroJugador.value;
-    //this.apiService.post('registroJugador', registroJugadores).subscribe();
+
+
+  getServicio(){
+    const registro = this.formRegistroJugador.value;
+    
+    this.apiService.getJugadores().subscribe((data:any) => {
+      this.lista = data;
+    })
+    console.log(this.lista);
   }
 
 }

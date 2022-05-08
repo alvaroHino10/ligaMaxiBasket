@@ -12,6 +12,7 @@ export class RegistroEComponent implements OnInit {
   public listaCategoriaEquipo: any = [ "+30", "+40", "+50", "+60"];
   submitted = false;
   categoria = [];
+  lista : any = [];
 
   constructor(public formulario: FormBuilder,
     private apiService:ApiService) {
@@ -53,18 +54,27 @@ export class RegistroEComponent implements OnInit {
       return;
     }else{
       console.log(this.formularioRegistroEquipo.value);
-      this.getServicio();
+      this.putServicio();
     }  
     alert('Equipo registrado correctamente');
   }
 
+  putServicio() {
+    const registro = this.formularioRegistroEquipo.value;
+    this.apiService.postEquipo(registro).subscribe();
+    this.getServicio();
+  }
+
 
   getServicio(){
-    const registroEquipo = this.formularioRegistroEquipo.value;
-    //this.apiService.post('registroEquipo', registroEquipo).subscribe();
-
-    //this.apiService.getAll('registroEquipo', registroEquipo).subscribe();
+    const registro = this.formularioRegistroEquipo.value;
+    
+    this.apiService.getEquipos().subscribe((data:any) => {
+      this.lista = data;
+    })
+    console.log(this.lista);
   }
+
 
   get controls() { return this.formularioRegistroEquipo.controls; }
 
