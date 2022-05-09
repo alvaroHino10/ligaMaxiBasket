@@ -5,7 +5,7 @@
   <div id="fondo">
     <h1>Registro de jugador</h1>
   </div>
-  <form [formGroup]="formRegistroJugador" (ngSubmit)="registrarJugador()" class="container-fluid">
+  <form [formGroup]="formularioRegistroJugador" (ngSubmit)="registrarJugador()" class="container-fluid">
 
     <!--INPUT NOMBRE(S)-->
     <div class="mb-3">
@@ -64,10 +64,10 @@
         Por favor, ingresa tu numero de identidad (Solo se admiten caracteres numericos)
       </div>
     </div>
-    <!--INPUT PAIS-->
+    <!--INPUT NACION/PAIS-->
     <div class="mb-3">
-      <label class="form-label">Pais del Equipo:</label>
-      <select class="form-control" name="paisJugador" formControlName="paisJugador" required>
+      <label class="form-label">Pais jugador:</label>
+      <select class="form-control" name="nacionJugador" formControlName="nacionJugador" required>
         <option value="AF">Afganistán</option>
         <option value="AL">Albania</option>
         <option value="DE">Alemania</option>
@@ -303,9 +303,9 @@
         <option value="ZM">Zambia</option>
         <option value="ZW">Zimbabue</option>
       </select>
-      <div *ngIf="controls.paisJugador.touched && controls.paisJugador.invalid" class="text-danger">
-        <div *ngIf="controls.paisJugador.errors?.required">Por favor, ingresa el pais del equipo</div>
-        <div *ngIf="controls.paisJugador.errors?.pattern">Por favor, ingresa caracteres validos</div>
+      <div *ngIf="controls.nacionJugador.touched && controls.nacionJugador.invalid" class="text-danger">
+        <div *ngIf="controls.nacionJugador.errors?.required">Por favor, ingresa el pais del equipo</div>
+        <div *ngIf="controls.nacionJugador.errors?.pattern">Por favor, ingresa caracteres validos</div>
       </div>
     </div>
 

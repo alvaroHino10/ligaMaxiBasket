@@ -54,15 +54,33 @@ export class RegistroEComponent implements OnInit {
       return;
     }else{
       console.log(this.formularioRegistroEquipo.value);
-      this.putServicio();
+      this.postServicio();
     }  
     alert('Equipo registrado correctamente');
   }
 
-  putServicio() {
-    const registro = this.formularioRegistroEquipo.value;
-    this.apiService.postEquipo(registro).subscribe();
-    this.getServicio();
+
+  postServicio() {
+    const registroEquipo = {cod_equi:15,
+                            cod_torn:2022,
+                            cod_preinscrip: 1,
+                            nombre_equi: this.formularioRegistroEquipo.value.nombreDelEquipo,
+                            categ_equi: this.formularioRegistroEquipo.value.categoria,
+                            pais_equi:this.formularioRegistroEquipo.value.paisEquipo,
+                            discip_equi: "Basket", 
+                            color_equi: this.formularioRegistroEquipo.value.colorEquipo
+                          }
+                           
+
+  let jsonPreinscripcion = JSON.stringify(registroEquipo);
+  console.log(registroEquipo);
+  this.apiService.postJugador(registroEquipo).subscribe();
+  //this.apiService.postPreinscripcion(registroPreinscripcion).subscribe();
+  //this.apiService.postDelegado(delegadoDatos).subscribe();
+
+
+  this.getServicio();
+  
   }
 
 

@@ -1,13 +1,20 @@
 export interface Preinscripcion{
-    nombreCompleto: string;
-    nombreDelEquipo: string;
-    categoria: string;
-    telefono: string;
-    correoElectronico: string;
-    codigoDeTransaccion: string;
+    cod_preinscrip : string;
+    num_transfer_preinscrip: string;
+    costo_preinscrip: string;
+    fecha_preinscrip: string;
+    link_img_comprob: string;
 }
 
+export interface DelegadoPreinscrip {
+    cod_deleg : string,
+    cod_preinscrip : string;
+    nombre_deleg: string;
+    ap_deleg: string;
+    correo_deleg: string;
+    telf_deleg: string;
 
+}
 export interface RegistroEquipo{
     nombreDelEquio: string;
     categoria: string;

@@ -7,7 +7,7 @@ import { ApiService } from 'src/app/api-services/api-services';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroJComponent implements OnInit {
-  public formRegistroJugador: FormGroup;
+  public formularioRegistroJugador: FormGroup;
   public listaEstadoCivil: any = [ "Soltero", "Casado", "Divorciado", "Viudo"];
   submitted = false;
   categoria = [];
@@ -15,7 +15,7 @@ export class RegistroJComponent implements OnInit {
 
   constructor(public formulario: FormBuilder
     ,private apiService:ApiService) {
-    this.formRegistroJugador = new FormGroup({
+    this.formularioRegistroJugador = new FormGroup({
       nombre: new FormControl ('',
                     [Validators.required, 
                      Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
@@ -37,7 +37,7 @@ export class RegistroJComponent implements OnInit {
       numeroIdentidad:  new FormControl ('', 
                     [Validators.required, 
                     Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{3})(?: *x(\\d+))?\\s*$')]),
-      paisJugador:new FormControl ('',
+      nacionJugador:new FormControl ('',
                     [Validators.required, 
                     Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
                     Validators.minLength(5),
@@ -61,37 +61,64 @@ export class RegistroJComponent implements OnInit {
                      [Validators.required, 
                       Validators.min(1),
                       Validators.max(80)]),
+      linkImgJug: new FormControl (Validators.required)
 
-    }
-                     );
+    });
 }
   ngOnInit(): void {
   }
 
-  get controls() { return this.formRegistroJugador.controls; }
+  get controls() { return this.formularioRegistroJugador.controls; }
 
   registrarJugador(){
     this.submitted = true;
-    if (this.formRegistroJugador.invalid) {
+    if (this.formularioRegistroJugador.invalid) {
       alert('Por favor ingrese datos validos, correspondientes a todos los campos');
-      console.log(this.formRegistroJugador.controls);
+      //console.log(this.formularioRegistroJugador.controls);
+      console.log(this.formularioRegistroJugador.value.fechaNacimiento);
       return;
     }else{
-      console.log(this.formRegistroJugador.value);
-      this.putServicio();
+      console.log(this.formularioRegistroJugador.value);
+      this.postServicio();
       
     }  
     alert('Jugador registrado correctamente');
   }
-  putServicio() {
-    const registro = this.formRegistroJugador.value;
-    this.apiService.postJugador(registro).subscribe();
-    this.getServicio();
+
+
+  postServicio() {
+    const registroJugador = {cod_jug :15,
+                                  cod_equi:2,
+                                  nombre_jug: this.formularioRegistroJugador.value.nombre,
+                                  prim_ap_jug: this.formularioRegistroJugador.value.primerApellido,
+                                  seg_ap_jug:this.formularioRegistroJugador.value.segundoApellido,
+                                  correo_jug:  this.formularioRegistroJugador.value.correoElectronico,
+                                  num_iden_jug: this.formularioRegistroJugador.value.numeroIdentidad, 
+                                  nacion_jug: this.formularioRegistroJugador.value.paisJugador,
+                                  est_civil_jug:  this.formularioRegistroJugador.value.estadoCivil,
+                                  fecha_nac_jug:  this.formularioRegistroJugador.value.fechaNacimiento,
+                                  telf_jug: this.formularioRegistroJugador.value.telefono, 
+                                  sexo_jug: this.formularioRegistroJugador.value.sexo,
+                                  dom_jug:  this.formularioRegistroJugador.value.domicilio,
+                                  num_equi_jug: this.formularioRegistroJugador.value.numeroJugador,
+                                  link_img_jug: "localhost.com",
+                                }
+                           
+
+  let jsonPreinscripcion = JSON.stringify(registroJugador);
+  console.log(registroJugador);
+  this.apiService.postJugador(registroJugador).subscribe();
+  //this.apiService.postPreinscripcion(registroPreinscripcion).subscribe();
+  //this.apiService.postDelegado(delegadoDatos).subscribe();
+
+
+  this.getServicio();
+  
   }
 
 
   getServicio(){
-    const registro = this.formRegistroJugador.value;
+    const registro = this.formularioRegistroJugador.value;
     
     this.apiService.getJugadores().subscribe((data:any) => {
       this.lista = data;
