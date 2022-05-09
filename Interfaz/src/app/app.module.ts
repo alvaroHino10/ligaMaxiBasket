@@ -30,6 +30,7 @@ import { FooterCreComponent } from './modules/credencial/footer-cre/footer-cre.c
 import { HeaderCreComponent } from './modules/credencial/header-cre/header-cre.component';
 import { NavCreComponent } from   './modules/credencial/nav-cre/nav-cre.component';
 import { CredecialCardComponent } from './modules/credencial/credecial-card/credecial-card.component';
+import { FormDirective } from './directivas/form.directive';
 
 
 @NgModule({
@@ -56,7 +57,8 @@ import { CredecialCardComponent } from './modules/credencial/credecial-card/cred
     FooterCreComponent,
     HeaderCreComponent,
     NavCreComponent,
-    CredecialCardComponent
+    CredecialCardComponent,
+    FormDirective
   ],
   imports: [
     BrowserModule,

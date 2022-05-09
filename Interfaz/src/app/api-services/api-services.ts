@@ -17,8 +17,20 @@ export class ApiService {
     return this.http.get(`${this.url}preinscripcion`);
   }
 
-  postPreinscripcion(formPreinscripcion : object){
-    return this.http.put(`${this.url}preinscripcion`, formPreinscripcion);
+  postPreinscripcion(model : object){
+    return this.http.post(`${this.url}preinscripcion`, model);
+  }
+
+  post(dir: string, model: object): Observable<any> {
+    return this.http.post<any>(`${environment.url}${dir}`, model);
+  }
+
+  getDelegados(){
+    return this.http.get(`${this.url}delegado`);
+  }
+
+  postDelegado(formDelegado : object){
+    return this.http.post(`${this.url}delegado`, formDelegado);
   }
 
   getEquipos(){
@@ -26,7 +38,7 @@ export class ApiService {
   }
 
   postEquipo(formEquipo : object){
-    return this.http.put(`${this.url}equipo`, formEquipo);
+    return this.http.post(`${this.url}equipo`, formEquipo);
   }
 
   getJugadores(){
@@ -34,18 +46,16 @@ export class ApiService {
   }
 
   postJugador(formJugador : object){
-    return this.http.put(`${this.url}jugador`, formJugador);
+    return this.http.post(`${this.url}jugador`, formJugador);
   }
   // This method is in charge for saving an object in the database
-  /*post(dir: string, model: object): Observable<any> {
-    return this.http.post<any>(`${environment.url}${dir}`, model);
-  }
+
 
   //Este método interactúa
   getAll(dir:string, model?:object): Observable<any>{
     return this.http.get<any>(`${environment.url}${dir}`, model);
   }
-
+/*
   getById(dir:string, id:number): Observable<any>{
     return this.http.get<any>(`${environment.url}/${dir}/${id}`);
   }

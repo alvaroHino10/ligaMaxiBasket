@@ -5,7 +5,7 @@
   <div id="fondo">
     <h1>Ficha de Preinscripcion</h1>
   </div>
-  <form [formGroup]="formularioRegistroP" (ngSubmit)="guardarPreinscripcion()" class="container-fluid">
+  <form [formGroup]="formularioRegistroPreinscrip" (ngSubmit)="guardarPreinscripcion()" class="container-fluid">
 
     <!--INPUT NOMBRE-->
     <div class="mb-3">
@@ -32,7 +32,7 @@
     </div>
     
     
-    <!--INPUT NUMERO IDENTIFICACION PERSONAL-->
+    <!--INPUT NUMERO IDENTIFICACION PERSONAL>
     <div class="mb-3">
       <label for="" class="form-label">Numero de identificacion personal:</label>
       <input type="text" class="form-control" formControlName="numeroIdentificacion" minlength="5" maxlength="80"
@@ -40,7 +40,7 @@
       <div *ngIf="controls.numeroIdentificacion.touched && controls.numeroIdentificacion.invalid" class="text-danger">
         Por favor, ingresa el numero de tu identificacion personal
       </div>
-    </div>
+    </div-->
 
     <!--INPUT TELEFONO-->
     <div class="mb-3">
@@ -97,8 +97,8 @@
 
     <!--INPUT FILE IMAGEN-->
     <div class="mb-3">
-      <label for="myfile">Seleccionar imagen:</label>
-      <input type="file" id="myfile" name="myfile">
+      <label for="linkImgComprobante">Seleccionar imagen:</label>
+      <input type="file" id="linkImgComprobante" name="linkImgComprobante">
       <!--<div *ngIf="controls.codigoDeTransaccion.touched && controls.codigoDeTransaccion.invalid" class="text-danger">
         Por favor, ingresa el código de transaccion (Solo se admiten caracteres numericos)-->
     </div>
@@ -123,10 +123,6 @@
 
 
 
-  <!--PRUEBA CONEXION-->
-  <div class="card" *ngFor="let preinscripcion of listaPreinscripcion">
-    {{preinscripcion.nombreDelEquipo}}
-  </div>
 
 </body>
 
