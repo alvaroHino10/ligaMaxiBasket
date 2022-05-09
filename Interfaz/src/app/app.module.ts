@@ -25,6 +25,11 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterEComponent } from './modules/registro-equipo/footer-e/footer-e.component';
 import { HeaderEComponent } from './modules/registro-equipo/header-e/header-e.component';
 import { NavegadorEComponent } from './modules/registro-equipo/navegador-e/navegador-e.component';
+import { CredencialComponent } from './modules/credencial/credencial.component';
+import { FooterCreComponent } from './modules/credencial/footer-cre/footer-cre.component';
+import { HeaderCreComponent } from './modules/credencial/header-cre/header-cre.component';
+import { NavCreComponent } from   './modules/credencial/nav-cre/nav-cre.component';
+import { CredecialCardComponent } from './modules/credencial/credecial-card/credecial-card.component';
 
 
 @NgModule({
@@ -46,7 +51,12 @@ import { NavegadorEComponent } from './modules/registro-equipo/navegador-e/naveg
     RegistroEComponent,
     FooterEComponent,
     HeaderEComponent,
-    NavegadorEComponent
+    NavegadorEComponent,
+    CredencialComponent,
+    FooterCreComponent,
+    HeaderCreComponent,
+    NavCreComponent,
+    CredecialCardComponent
   ],
   imports: [
     BrowserModule,

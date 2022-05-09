@@ -4,6 +4,8 @@ import { PreinscripcionComponent } from "./modules/preinscripcion/preinscripcion
 import { RegistroJugadoresComponent } from "./modules/registro-jugadores/registro-jugadores.component";
 import { RegistroEquipoComponent } from "./modules/registro-equipo/registro-equipo.component";
 import { HomeComponent } from "./modules/home/home.component";
+import { CredencialComponent } from "./modules/credencial/credencial.component";
+
 
 const routes: Routes = [
 
@@ -25,6 +27,10 @@ const routes: Routes = [
     {
       path: 'registro-equipo',
       component: RegistroEquipoComponent,
+    },
+    {
+      path: 'credencial',
+      component: CredencialComponent,
     }
 ];
 
