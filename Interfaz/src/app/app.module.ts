@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FooterEComponent } from './modules/registro-equipo/footer-e/footer-e.component';
 import { HeaderEComponent } from './modules/registro-equipo/header-e/header-e.component';
 import { NavegadorEComponent } from './modules/registro-equipo/navegador-e/navegador-e.component';
+import { FormDirective } from './directivas/form.directive';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { NavegadorEComponent } from './modules/registro-equipo/navegador-e/naveg
     RegistroEComponent,
     FooterEComponent,
     HeaderEComponent,
-    NavegadorEComponent
+    NavegadorEComponent,
+    FormDirective
   ],
   imports: [
     BrowserModule,
