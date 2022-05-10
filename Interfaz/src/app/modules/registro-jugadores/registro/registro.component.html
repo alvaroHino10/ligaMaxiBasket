@@ -318,7 +318,7 @@
         <option value="casado">Casado</option>
         <option value="divorciado">Divorciado</option>
         <option value="viudo">Viudo</option-->
-        <option value="" disabled>Seleccione un estado</option>
+        <option value="" disabled>Seleccione el estado civil</option>
         <option *ngFor="let c of listaEstadoCivil" [ngValue]="c">{{ c }}</option>
       </select>
       <div *ngIf="(controls.estadoCivil.touched && controls.estadoCivil.invalid) || submitted" class="text-danger">
@@ -370,9 +370,9 @@
       </div>
     </div>
 
-    <!--INPUT NUMERO DEL JUGADOR EN EL EQUIPO-->
+    <!--INPUT NUMERO DE Camiseta JUGADOR EN EL EQUIPO-->
     <div class="mb-3">
-      <label class="form-label">Numero del jugador(en el equipo):</label>
+      <label class="form-label">Numero de camiseta:</label>
       <input type="number" class="form-control" formControlName="numeroJugador" min="1" max="80" required>
       <div *ngIf="(controls.numeroJugador.touched && controls.numeroJugador.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.numeroJugador.errors?.required">Por favor, ingresa el numero del jugador</div>

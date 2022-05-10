@@ -10,7 +10,7 @@
     <!--INPUT NOMBRE-->
     <div class="mb-3">
       <label class="form-label">Nombre delegado:</label>
-      <input type="text" class="form-control" formControlName="nombreDelegado" minlength="5" maxlength="80" required>
+      <input type="text" class="form-control" formControlName="nombreDelegado" minlength="3" maxlength="80" required>
       <div *ngIf="(controls.nombreDelegado.touched && controls.nombreDelegado.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.nombreDelegado.errors?.required">Por favor, ingresa el nombre del delegado</div>
         <div *ngIf="controls.nombreDelegado.errors?.minLength">"El nombre debe tener al menos 5 caracteres"</div>
@@ -22,7 +22,7 @@
      <!--INPUT APELLIDO(S) DELEGADO-->
      <div class="mb-3">
       <label class="form-label">Apellido(s) delegado:</label>
-      <input type="text" class="form-control" formControlName="apellidoDelegado" minlength="5" maxlength="80" required>
+      <input type="text" class="form-control" formControlName="apellidoDelegado" minlength="3" maxlength="80" required>
       <div *ngIf="(controls.apellidoDelegado.touched && controls.apellidoDelegado.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.apellidoDelegado.errors?.required">Por favor, ingresa el apellido del delegado</div>
         <div *ngIf="controls.apellidoDelegado.errors?.minLength">"El apellido debe tener al menos 5 caracteres"</div>
@@ -44,7 +44,7 @@
 
     <!--INPUT TELEFONO-->
     <div class="mb-3">
-      <label for="" class="form-label">Telefono de delegado:</label>
+      <label for="" class="form-label">Telefono delegado:</label>
       <input type="number" class="form-control" formControlName="telefono" required>
       <div *ngIf="(controls.telefono.touched && controls.telefono.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa un telefono valido</div>
@@ -64,7 +64,7 @@
     <!--INPUT NOMBRE EQUIPO-->
     <div class="mb-3">
       <label class="form-label">Nombre del equipo:</label>
-      <input type="text" class="form-control" formControlName="nombreDelEquipo" minlength="5" maxlength="80" required>
+      <input type="text" class="form-control" formControlName="nombreDelEquipo" minlength="1" maxlength="80" required>
       <div *ngIf="(controls.nombreDelEquipo.touched && controls.nombreDelEquipo.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.nombreDelEquipo.errors?.required">Por favor, ingresa el nombre de tu equipo</div>
         <div *ngIf="controls.nombreDelEquipo.errors?.pattern">Por favor, ingresa caracteres validos</div>
@@ -87,7 +87,7 @@
     <!--INPUT CODIGO TRANSACCION-->
     <div class="mb-3">
       <label for="" class="form-label">Codigo de transaccion:</label>
-      <input type="text" class="form-control" formControlName="codigoDeTransaccion" minlength="5" maxlength="80"
+      <input type="number" class="form-control" formControlName="codigoDeTransaccion" minlength="5" maxlength="80"
         required>
       <div *ngIf="(controls.codigoDeTransaccion.touched && controls.codigoDeTransaccion.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.codigoDeTransaccion.errors?.required">Por favor, ingresa el código de transaccion </div>
@@ -120,9 +120,6 @@
     <h3>NRO. CEDULA:</h3>
     <h3 id="white">952193</h3>
   </div>
-
-
-
 
 
 </body>
