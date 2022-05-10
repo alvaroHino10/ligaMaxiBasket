@@ -90,7 +90,8 @@
       <input type="text" class="form-control" formControlName="codigoDeTransaccion" minlength="5" maxlength="80"
         required>
       <div *ngIf="(controls.codigoDeTransaccion.touched && controls.codigoDeTransaccion.invalid) || submitted" class="text-danger">
-        Por favor, ingresa el código de transaccion
+        <div *ngIf="controls.codigoDeTransaccion.errors?.required">Por favor, ingresa el código de transaccion </div>
+        <div *ngIf="controls.codigoDeTransaccion.errors?.pattern">Por favor, ingresa un código de transaccion válido</div>
       </div>
     </div>
 

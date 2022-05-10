@@ -17,7 +17,7 @@ export class ApiService {
     return this.http.get(`${this.url}preinscripcion`);
   }
 
-  postPreinscripcion(model : object){
+  postPreinscripcion(model : object) : Observable <any>{
     return this.http.post(`${this.url}preinscripcion`, model);
   }
 
