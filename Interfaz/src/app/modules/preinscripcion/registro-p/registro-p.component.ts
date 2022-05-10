@@ -80,26 +80,13 @@ export class RegistroPComponent implements OnInit {
     alert('Preinscripcion registrada correctamente');
   }
   postServicio() {
-<<<<<<< HEAD
-    const registroPreinscripcion = {cod_preinscrip :2,
-=======
     const cod = Math.floor((Math.random() * (100 - 1 + 1)) + 1);
     const registroPreinscripcion = {cod_preinscrip : cod,
->>>>>>> 4cb8347ebd0bbc00ad6b9d352ad50dd2663b0f0f
                                   num_transfer_preinscrip:this.formularioRegistroPreinscrip.value.codigoDeTransaccion,
                                   costo_preinscrip: 200, //costoPreins
                                   fecha_preinscrip: "2022-05-13", //fecha
                                   link_img_comprob: "http://localhost.img" //linkImg
                                 }
-<<<<<<< HEAD
-                           
-    const delegadoDatos = { cod_deleg: 12, 
-                          cod_preinscrip: 2,
-                          nombre_deleg: this.formularioRegistroPreinscrip.value.nombreDelegado, 
-                          ap_deleg: this.formularioRegistroPreinscrip.value.apellidoDelegado,
-                          correo_deleg:this.formularioRegistroPreinscrip.value.correoElectronico,
-                          telf_deleg:  this.formularioRegistroPreinscrip.value.telefono
-=======
 
     const codDel = Math.floor((Math.random() * (100 - 1 + 1)) + 1);                     
     const delegadoDatos = { cod_deleg: codDel, 
@@ -108,7 +95,6 @@ export class RegistroPComponent implements OnInit {
                           ap_deleg: this.formularioRegistroPreinscrip.value.apellidoDelegado,
                           correo_deleg: this.formularioRegistroPreinscrip.value.correoElectronico,
                           telf_deleg: this.formularioRegistroPreinscrip.value.telefono
->>>>>>> 4cb8347ebd0bbc00ad6b9d352ad50dd2663b0f0f
                         }
   console.log(registroPreinscripcion);
   console.log(delegadoDatos);
