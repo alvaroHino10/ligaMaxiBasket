@@ -1,12 +1,13 @@
-.frame{
-    font-style: normal;
-    font-weight: 430;
-    font-size: 18px;
-    line-height: 28px;
-    text-decoration: none;
-    text-align: justify;
-    color: rgba(241, 94, 36, 0.651);
+*{
+  font-style: normal;
+  font-weight: 430;
+  font-size: 18px;
+  line-height: 28px;
+  text-decoration: none;
+  text-align: justify;
+  color: rgba(241, 94, 36, 0.651);
 }
+
 
 .container-fluid{
     box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.1);
@@ -14,8 +15,4 @@
     border-bottom: 10rem;
     object-position: center;
     margin: 40px;
-}
-
-a{
-  color: rgb(255, 132, 0);
 }

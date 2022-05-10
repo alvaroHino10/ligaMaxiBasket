@@ -11,8 +11,8 @@
     <div class="mb-3">
       <label class="form-label">Nombre delegado:</label>
       <input type="text" class="form-control" formControlName="nombreDelegado" minlength="5" maxlength="80" required>
-      <div *ngIf="controls.nombreDelegado.touched && controls.nombreDelegado.invalid" class="text-danger">
-        <div *ngIf="controls.nombreDelegado.errors?.required">Por favor, ingresa tu nombre Delegado</div>
+      <div *ngIf="(controls.nombreDelegado.touched && controls.nombreDelegado.invalid) || submitted" class="text-danger">
+        <div *ngIf="controls.nombreDelegado.errors?.required">Por favor, ingresa el nombre del delegado</div>
         <div *ngIf="controls.nombreDelegado.errors?.minLength">"El nombre debe tener al menos 5 caracteres"</div>
         <div *ngIf="controls.nombreDelegado.errors?.maxLength">El nombre es demasiado largo</div>
         <div *ngIf="controls.nombreDelegado.errors?.pattern">Por favor, ingresa solo caracteres alfabeticos</div>
@@ -23,7 +23,7 @@
      <div class="mb-3">
       <label class="form-label">Apellido(s) delegado:</label>
       <input type="text" class="form-control" formControlName="apellidoDelegado" minlength="5" maxlength="80" required>
-      <div *ngIf="controls.apellidoDelegado.touched && controls.apellidoDelegado.invalid" class="text-danger">
+      <div *ngIf="(controls.apellidoDelegado.touched && controls.apellidoDelegado.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.apellidoDelegado.errors?.required">Por favor, ingresa el apellido del delegado</div>
         <div *ngIf="controls.apellidoDelegado.errors?.minLength">"El apellido debe tener al menos 5 caracteres"</div>
         <div *ngIf="controls.apellidoDelegado.errors?.maxLength">El apellido es demasiado largo</div>
@@ -46,7 +46,7 @@
     <div class="mb-3">
       <label for="" class="form-label">Telefono:</label>
       <input type="number" class="form-control" formControlName="telefono" required>
-      <div *ngIf="controls.telefono.touched && controls.telefono.invalid" class="text-danger">
+      <div *ngIf="(controls.telefono.touched && controls.telefono.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa un telefono valido</div>
       </div>
     </div>
@@ -55,7 +55,7 @@
     <div class="mb-3">
       <label for="" class="form-label">Correo electronico:</label>
       <input type="text" class="form-control" formControlName="correoElectronico" required>
-      <div *ngIf="controls.correoElectronico.touched && controls.correoElectronico.invalid" class="text-danger">
+      <div *ngIf="(controls.correoElectronico.touched && controls.correoElectronico.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa tu correo electronico</div>
         <div *ngIf="controls.correoElectronico.errors?.email">Por favor, ingresa un correo valido</div>
       </div>
@@ -65,7 +65,7 @@
     <div class="mb-3">
       <label class="form-label">Nombre del equipo:</label>
       <input type="text" class="form-control" formControlName="nombreDelEquipo" minlength="5" maxlength="80" required>
-      <div *ngIf="controls.nombreDelEquipo.touched && controls.nombreDelEquipo.invalid" class="text-danger">
+      <div *ngIf="(controls.nombreDelEquipo.touched && controls.nombreDelEquipo.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.nombreDelEquipo.errors?.required">Por favor, ingresa el nombre de tu equipo</div>
         <div *ngIf="controls.nombreDelEquipo.errors?.pattern">Por favor, ingresa caracteres validos</div>
         <div *ngIf="controls.nombreDelEquipo.errors?.maxLength">El nombre del equipo es demasiado largo</div>
@@ -79,7 +79,7 @@
         <option value="" disabled>Seleccionar categoria</option>
         <option *ngFor="let c of listaCategoria" [ngValue]="c">{{ c }}</option>
       </select>
-      <div *ngIf="controls.categoria.touched && controls.categoria.invalid" class="text-danger">
+      <div *ngIf="(controls.categoria.touched && controls.categoria.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.categoria.errors?.required">Por favor, selecciona una categoria</div>
       </div>
     </div>
@@ -89,15 +89,15 @@
       <label for="" class="form-label">Codigo de transaccion:</label>
       <input type="text" class="form-control" formControlName="codigoDeTransaccion" minlength="5" maxlength="80"
         required>
-      <div *ngIf="controls.codigoDeTransaccion.touched && controls.codigoDeTransaccion.invalid" class="text-danger">
-        Por favor, ingresa el código de transaccion (Solo se admiten caracteres numericos)
+      <div *ngIf="(controls.codigoDeTransaccion.touched && controls.codigoDeTransaccion.invalid) || submitted" class="text-danger">
+        Por favor, ingresa el código de transaccion
       </div>
     </div>
 
 
     <!--INPUT FILE IMAGEN-->
     <div class="mb-3">
-      <label for="linkImgComprobante">Seleccionar imagen:</label>
+      <label for="linkImgComprobante">Seleccionar imagen del comprobante de pago:</label>
       <input type="file" id="linkImgComprobante" name="linkImgComprobante">
       <!--<div *ngIf="controls.codigoDeTransaccion.touched && controls.codigoDeTransaccion.invalid" class="text-danger">
         Por favor, ingresa el código de transaccion (Solo se admiten caracteres numericos)-->

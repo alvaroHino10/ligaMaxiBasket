@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/api-services/api-services';
 export class RegistroPComponent implements OnInit {
   public formularioRegistroPreinscrip: FormGroup;
   public listaCategoria: any = [ "+30", "+40", "+50", "+60"];
-  public submited = false;
+  public submitted = false;
   categoria = [];
   listaPreinscripcion:any = [];
   listaDelegados:any =[];
@@ -67,7 +67,7 @@ export class RegistroPComponent implements OnInit {
   
 
   guardarPreinscripcion(): void {  
-    this.submited = true; 
+    this.submitted = true; 
     if (this.formularioRegistroPreinscrip.invalid) {
       this.formularioRegistroPreinscrip.controls;
       alert('Por favor ingrese datos validos, correspondientes a todos los campos');
@@ -80,7 +80,7 @@ export class RegistroPComponent implements OnInit {
     alert('Preinscripcion registrada correctamente');
   }
   postServicio() {
-    const registroPreinscripcion = {cod_preinscrip :"preins1",
+    const registroPreinscripcion = {cod_preinscrip :2,
                                   num_transfer_preinscrip:this.formularioRegistroPreinscrip.value.codigoDeTransaccion,
                                   costo_preinscrip: 200, //costoPreins
                                   fecha_preinscrip: "2022-05-13", //fecha
@@ -88,7 +88,7 @@ export class RegistroPComponent implements OnInit {
                                 }
                            
     const delegadoDatos = { cod_deleg: "del1", 
-                          cod_preinscrip: "preins1",
+                          cod_preinscrip: 2,
                           nombre_deleg: this.formularioRegistroPreinscrip.value.nombreDelegado, 
                           ap_deleg: this.formularioRegistroPreinscrip.value.apellidoDelegado,
                           correo_deleg:  this.formularioRegistroPreinscrip.value.correoElectronico,
@@ -100,10 +100,8 @@ export class RegistroPComponent implements OnInit {
   console.log(registroPreinscripcion);
   console.log(delegadoDatos);
 
-  //this.apiService.postPreinscripcion(registroPreinscripcion).subscribe();
-  //this.apiService.postDelegado(delegadoDatos).subscribe();
-
-
+  this.apiService.postPreinscripcion(registroPreinscripcion).subscribe();
+  this.apiService.postDelegado(delegadoDatos).subscribe();
   this.getServicio();
   
   }

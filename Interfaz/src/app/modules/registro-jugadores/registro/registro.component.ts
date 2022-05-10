@@ -9,7 +9,7 @@ import { ApiService } from 'src/app/api-services/api-services';
 export class RegistroJComponent implements OnInit {
   public formularioRegistroJugador: FormGroup;
   public listaEstadoCivil: any = [ "Soltero", "Casado", "Divorciado", "Viudo"];
-  submitted = false;
+  public submitted = false;
   categoria = [];
   lista :any = [];
 

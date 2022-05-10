@@ -11,7 +11,7 @@
     <div class="mb-3">
       <label class="form-label">Nombre de equipo:</label>
       <input type="text" class="form-control" formControlName="nombreDelEquipo" minlength="5" maxlength="80" required appForm>
-      <div *ngIf="controls.nombreDelEquipo.touched && controls.nombreDelEquipo.invalid" class="text-danger">
+      <div *ngIf="(controls.nombreDelEquipo.touched && controls.nombreDelEquipo.invalid) || submitted" class="text-danger">
         <label *ngIf="controls.nombreDelEquipo.errors?.required">Por favor, ingresa el nombre de tu equipo</label>
         <label *ngIf="controls.nombreDelEquipo.errors?.pattern">Por favor, ingresa solo caracteres alfabeticos</label>
         <label *ngIf="controls.nombreDelEquipo.errors?.minLength">El nombre del equipo es demasiado corto</label>
@@ -26,7 +26,7 @@
           <option value="" disabled>Seleccionar categoria</option>
           <option *ngFor="let c of listaCategoriaEquipo" [ngValue]="c">{{ c }}</option>
       </select>
-      <div *ngIf="controls.categoria.touched && controls.categoria.invalid" class="text-danger">
+      <div *ngIf="(controls.categoria.touched && controls.categoria.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.categoria.errors?.required">Por favor, selecciona una categoria</div>
       </div>
     </div>
@@ -271,7 +271,7 @@
         <option value="ZM">Zambia</option>
         <option value="ZW">Zimbabue</option>
       </select>
-      <div *ngIf="controls.paisEquipo.touched && controls.paisEquipo.invalid" class="text-danger">
+      <div *ngIf="(controls.paisEquipo.touched && controls.paisEquipo.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.paisEquipo.errors?.required">Por favor, ingresa el pais del equipo</div>
       </div>
     </div>
@@ -280,7 +280,7 @@
     <div class="mb-3">
       <label class="form-label">Color del equipo:</label>
       <input type="text" class="form-control" formControlName="colorEquipo" minlength="5" maxlength="80" required>
-      <div *ngIf="controls.colorEquipo.touched && controls.colorEquipo.invalid" class="text-danger">
+      <div *ngIf="(controls.colorEquipo.touched && controls.colorEquipo.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.colorEquipo.errors?.required">Por favor, ingresa el color del equipo</div>
         <div *ngIf="controls.colorEquipo.errors?.minLength">"El color debe tener al menos 5 caracteres"</div>
         <div *ngIf="controls.colorEquipo.errors?.maxLength">El nombre es demasiado largo</div>

@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/api-services/api-services';
 export class RegistroEComponent implements OnInit {
   public formularioRegistroEquipo: FormGroup;
   public listaCategoriaEquipo: any = [ "+30", "+40", "+50", "+60"];
-  submitted = false;
+  public submitted = false;
   categoria = [];
   lista : any = [];
 
