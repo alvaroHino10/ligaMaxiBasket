@@ -102,6 +102,7 @@ export class RegistroPComponent implements OnInit {
   this.apiService.postPreinscripcion(registroPreinscripcion).subscribe();
   this.apiService.postDelegado(delegadoDatos).subscribe();
   this.getServicio();
+
   }
 
 
@@ -142,6 +143,4 @@ export class RegistroPComponent implements OnInit {
     this.apiService.postDelegado(delegadoDatos).subscribe();
     */
   }
-
-
 }

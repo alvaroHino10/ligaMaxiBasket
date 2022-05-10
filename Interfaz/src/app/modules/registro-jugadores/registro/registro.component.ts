@@ -87,8 +87,10 @@ export class RegistroJComponent implements OnInit {
 
 
   postServicio() {
-    const registroJugador = {cod_jug :15,
-                                  cod_equi:2,
+    const codJug= Math.floor((Math.random() * (100 - 1 + 1)) + 1);
+    const codEquip = Math.floor((Math.random() * (100 - 1 + 1)) + 1);
+    const registroJugador = {cod_jug :codJug,
+                                  cod_equi:codEquip,
                                   nombre_jug: this.formularioRegistroJugador.value.nombre,
                                   prim_ap_jug: this.formularioRegistroJugador.value.primerApellido,
                                   seg_ap_jug:this.formularioRegistroJugador.value.segundoApellido,
@@ -105,7 +107,7 @@ export class RegistroJComponent implements OnInit {
                                 }
                            
 
-  let jsonPreinscripcion = JSON.stringify(registroJugador);
+  
   console.log(registroJugador);
   this.apiService.postJugador(registroJugador).subscribe();
   //this.apiService.postPreinscripcion(registroPreinscripcion).subscribe();

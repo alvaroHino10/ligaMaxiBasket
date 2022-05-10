@@ -44,7 +44,7 @@
 
     <!--INPUT TELEFONO-->
     <div class="mb-3">
-      <label for="" class="form-label">Telefono:</label>
+      <label for="" class="form-label">Telefono de delegado:</label>
       <input type="number" class="form-control" formControlName="telefono" required>
       <div *ngIf="(controls.telefono.touched && controls.telefono.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa un telefono valido</div>

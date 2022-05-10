@@ -61,26 +61,23 @@ export class RegistroEComponent implements OnInit {
 
 
   postServicio() {
-    const registroEquipo = {cod_equi:15,
-                            cod_torn:2022,
-                            cod_preinscrip: 1,
+    const codEquip = Math.floor((Math.random() * (100 - 1 + 1)) + 1);
+    const codPre = Math.floor((Math.random() * (100 - 1 + 1)) + 1);
+    const registroEquipo = {cod_equi: codEquip,
+                            cod_torn: 2022,
+                            cod_preinscrip: codPre,
                             nombre_equi: this.formularioRegistroEquipo.value.nombreDelEquipo,
                             categ_equi: this.formularioRegistroEquipo.value.categoria,
                             pais_equi:this.formularioRegistroEquipo.value.paisEquipo,
                             discip_equi: "Basket", 
                             color_equi: this.formularioRegistroEquipo.value.colorEquipo
                           }
-                           
-
-  let jsonPreinscripcion = JSON.stringify(registroEquipo);
+                          
   console.log(registroEquipo);
   this.apiService.postJugador(registroEquipo).subscribe();
   //this.apiService.postPreinscripcion(registroPreinscripcion).subscribe();
   //this.apiService.postDelegado(delegadoDatos).subscribe();
-
-
   this.getServicio();
-  
   }
 
 
