@@ -81,7 +81,7 @@ export class RegistroPComponent implements OnInit {
   }
   postServicio() {
     const registroPreinscripcion = {cod_preinscrip :2,
-                                  num_transfer_preinscrip:123456,//this.formularioRegistroPreinscrip.value.codigoDeTransaccion,
+                                  num_transfer_preinscrip:this.formularioRegistroPreinscrip.value.codigoDeTransaccion,
                                   costo_preinscrip: 200, //costoPreins
                                   fecha_preinscrip: "2022-05-13", //fecha
                                   link_img_comprob: "http://localhost.img" //linkImg
@@ -89,10 +89,10 @@ export class RegistroPComponent implements OnInit {
                            
     const delegadoDatos = { cod_deleg: 12, 
                           cod_preinscrip: 2,
-                          nombre_deleg: "Pedro",//this.formularioRegistroPreinscrip.value.nombreDelegado, 
-                          ap_deleg: "Pedro",//this.formularioRegistroPreinscrip.value.apellidoDelegado,
-                          correo_deleg: "correo@kk.com", //this.formularioRegistroPreinscrip.value.correoElectronico,
-                          telf_deleg: 72215149 //  this.formularioRegistroPreinscrip.value.telefono
+                          nombre_deleg: this.formularioRegistroPreinscrip.value.nombreDelegado, 
+                          ap_deleg: this.formularioRegistroPreinscrip.value.apellidoDelegado,
+                          correo_deleg:this.formularioRegistroPreinscrip.value.correoElectronico,
+                          telf_deleg:  this.formularioRegistroPreinscrip.value.telefono
                         }
                         
   //let jsonPreinscripcion = JSON.stringify(registroPreinscripcion);

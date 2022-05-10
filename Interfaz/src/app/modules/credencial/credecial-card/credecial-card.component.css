@@ -9,6 +9,9 @@ body{
   width: 100%;
   max-width: 100rem;
   
+  
+
+  
 }
 
 img{
@@ -17,14 +20,15 @@ img{
 /* ===== PUBLICACIÓN ===== */
 
 .post{
-  width: 100%;
-  max-width: 100rem;
-  padding: 20px;
-  background: rgb(0, 0, 0);
   
+  background: rgb(0, 0, 0);
+  text-align: center;
   display: flex;
-  align-items: center;
+  
+  align-items: baseline;
   border-radius: 2rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .informacion-usuario{
@@ -82,7 +86,9 @@ img{
 }
 
 
-
+.Fecha-de-Nacimiento{
+  text-align: center;
+}
 
 
 /* ===== RESPONSIVE ===== */
