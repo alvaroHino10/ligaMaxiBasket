@@ -21,12 +21,12 @@ export class RegistroPComponent implements OnInit {
     this.formularioRegistroPreinscrip = new FormGroup({
       nombreDelegado: new FormControl ('',
                     [Validators.required, 
-                     Validators.minLength(5),
+                     Validators.minLength(3),
                      Validators.maxLength(80),
                      Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
       apellidoDelegado: new FormControl ('',
                     [Validators.required, 
-                     Validators.minLength(5),
+                     Validators.minLength(3),
                      Validators.maxLength(80),
                      Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
 
