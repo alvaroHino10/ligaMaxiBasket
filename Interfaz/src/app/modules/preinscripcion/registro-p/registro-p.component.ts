@@ -9,9 +9,10 @@ import { ApiService } from 'src/app/api-services/api-services';
 })
 export class RegistroPComponent implements OnInit {
   public formularioRegistroPreinscrip: FormGroup;
-  public listaCategoria: any = [ "+30", "+40", "+50", "+60"];
   public submitted = false;
-  categoria = [];
+  files:any;
+  categoria=[];
+  public listaCategoria: any = [ "+30", "+40", "+50", "+60"];
   listaPreinscripcion:any = [];
   listaDelegados:any =[];
 
@@ -55,7 +56,8 @@ export class RegistroPComponent implements OnInit {
       codigoDeTransaccion: new FormControl ('', 
                     [Validators.required, 
                      Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{2})[-. )]*(\\d{2})[-. ]*(\\d{2})(?: *x(\\d+))?\\s*$')]),
-      linkImgComprobante: new FormControl (Validators.required)
+      linkImgComprobante: new FormControl ('', 
+                     Validators.required),
     });
 
   }
@@ -71,7 +73,7 @@ export class RegistroPComponent implements OnInit {
     if (this.formularioRegistroPreinscrip.invalid) {
       this.formularioRegistroPreinscrip.controls;
       alert('Por favor ingrese datos validos, correspondientes a todos los campos');
-      this.getServicio();
+      //this.getServicio();
       return;
     }else{
       //console.log(this.formularioRegistroPreinscrip.value);
@@ -96,13 +98,12 @@ export class RegistroPComponent implements OnInit {
                           correo_deleg: this.formularioRegistroPreinscrip.value.correoElectronico,
                           telf_deleg: this.formularioRegistroPreinscrip.value.telefono
                         }
-  console.log(registroPreinscripcion);
-  console.log(delegadoDatos);
+    console.log(registroPreinscripcion);
+    console.log(delegadoDatos);
 
-  this.apiService.postPreinscripcion(registroPreinscripcion).subscribe();
-  this.apiService.postDelegado(delegadoDatos).subscribe();
-  this.getServicio();
-
+    this.apiService.postPreinscripcion(registroPreinscripcion).subscribe();
+    this.apiService.postDelegado(delegadoDatos).subscribe();
+    this.getServicio();
   }
 
 
@@ -119,28 +120,10 @@ export class RegistroPComponent implements OnInit {
     console.log(this.listaDelegados);
   }
 
-
-  api(){
-    /*let formObj = this.formularioRegistroPreinscrip.getRawValue();
-    formObj.nombreCompleto
-    this.apiService.getById("nombreCompleto", this.formularioRegistroPreinscrip.getRawValue().nombreCompleto);*/
-    /*let formObj = this.formularioRegistroPreinscrip.getRawValue();
-      let serializedForm = JSON.stringify(formObj);
-      console.log(serializedForm);
-      this.apiService.post( "registro", this.formularioRegistroPreinscrip.value).subscribe();
-      this.apiService.getById("nombreCompleto", this.formularioRegistroPreinscrip.getRawValue().nombreCompleto);*/
-    /*this.http.post("www.domain.com/api", serializedForm)
-        .subscribe(
-            data => console.log("success!", data),
-            error => console.error("couldn't post because", error)
-        );*/
-
-        /*this.apiService.post( "registro", this.formularioRegistroPreinscrip.value).subscribe();
-  this.apiService.getById("nombreCompleto", this.formularioRegistroPreinscrip.getRawValue().nombreCompleto);*/
-
-
-    /*this.apiService.postPreinscripcion(registroPreinscripcion).subscribe();
-    this.apiService.postDelegado(delegadoDatos).subscribe();
-    */
+  subirImagen(event: Event){
+    const target = event.target as HTMLInputElement;
+    const fileList = target.files as FileList;
+    this.files = fileList.item(0);
+    console.log(this.files);
   }
 }

@@ -74,7 +74,7 @@ export class RegistroEComponent implements OnInit {
                           }
                           
   console.log(registroEquipo);
-  this.apiService.postJugador(registroEquipo).subscribe();
+  this.apiService.postEquipo(registroEquipo).subscribe();
   //this.apiService.postPreinscripcion(registroPreinscripcion).subscribe();
   //this.apiService.postDelegado(delegadoDatos).subscribe();
   this.getServicio();
