@@ -13,3 +13,6 @@ export class CredecialCardComponent implements OnInit {
   }
 
 }
+
+var URLactual = window.location;
+alert(URLactual);
