@@ -1,7 +1,3 @@
-
-  
-  
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
 <body>
   <div class="post">
     <div class="img"><img src="../../../../assets/Imagenes/Logo.jpg" alt=""></div>
@@ -11,24 +7,44 @@
     </div>
   </div>
 <hr>
-  <div class="post2">
-    
-    <ul>
-      
-      <li class="nombre">Nombre:</li>
-      <br>
-      <li class="Fecha-de-Nacimiento"> Fecha de Nacimiento:</li>
-      <li class="Numero-de-Identificacion">Numero de Identificacion:</li>
-      <br>
-      <li class="club"> Club:</li> 
-      <li class="telefono">Telefono:</li>
-      <li>
-        <div class="img"><img src="../../../../assets/Imagenes/Logo.jpg" alt=""></div>
-      </li>
-    </ul>
-      
+	<main>
+		<form action="" class="formulario" id="formulario">
+			<!-- Grupo: Usuario -->
+			<div class="formulario__grupo" id="grupo__usuario">
+				<label for="nombre" class="formulario__label">Nombre:</label>
+				
+			</div>
+<br>
+			<!-- Grupo: Nombre -->
+			<div class="formulario__grupo" id="grupo__nombre">
+				<label for="Fecha-de-Nacimiento" class="formulario__label">Fecha de Nacimiento:</label>
+				
+			</div>
+
+			<!-- Grupo: Contraseña -->
+			<div class="formulario__grupo" id="grupo__password">
+				<label for="Numero-de-Identificacion" class="formulario__label">Numero de Identificacion:</label>
+				
+			</div>
+
+			<!-- Grupo: Contraseña 2 -->
+			<div class="formulario__grupo" id="grupo__password2">
+				<label for="Club" class="formulario__label">Club:</label>
+				
+			</div>
+
+			<!-- Grupo: Correo Electronico -->
+			<div class="formulario__grupo" id="grupo__correo">
+				<label for="Telefono:" class="formulario__label">Telefono:</label>
+				
+			</div>
+
+			<div class="QR" id="QR">
+      <qr-code [value]="'http://localhost:4200/'"></qr-code>
     </div>
-  
+			
+		</form>
+	</main>
 
-
+	
 </body>

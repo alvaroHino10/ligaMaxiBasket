@@ -32,6 +32,8 @@ import { NavCreComponent } from   './modules/credencial/nav-cre/nav-cre.componen
 import { CredecialCardComponent } from './modules/credencial/credecial-card/credecial-card.component';
 import { FormDirective } from './directivas/form.directive';
 
+import  {QRCodeModule}  from 'angular2-qrcode';
+
 
 @NgModule({
   declarations: [
@@ -66,9 +68,12 @@ import { FormDirective } from './directivas/form.directive';
     FormsModule,
     ReactiveFormsModule,
     NoopAnimationsModule,
+    QRCodeModule,
     HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+

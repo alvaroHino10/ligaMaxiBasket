@@ -89,7 +89,8 @@ export class RegistroPComponent implements OnInit {
                                   fecha_preinscrip: "2022-05-13", //fecha
                                   link_img_comprob: "http://localhost.img" //linkImg
                                 }
-
+                           
+                           
     const codDel = Math.floor((Math.random() * (100 - 1 + 1)) + 1);                     
     const delegadoDatos = { cod_deleg: codDel, 
                           cod_preinscrip: cod,
@@ -97,6 +98,7 @@ export class RegistroPComponent implements OnInit {
                           ap_deleg: this.formularioRegistroPreinscrip.value.apellidoDelegado,
                           correo_deleg: this.formularioRegistroPreinscrip.value.correoElectronico,
                           telf_deleg: this.formularioRegistroPreinscrip.value.telefono
+
                         }
     console.log(registroPreinscripcion);
     console.log(delegadoDatos);
