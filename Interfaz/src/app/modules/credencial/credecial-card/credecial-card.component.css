@@ -1,4 +1,6 @@
-/* ===== GENERAL ===== */
+* {
+	box-sizing: border-box;
+}
 
 body{
   background: rgba(230, 131, 63, 0.5);
@@ -14,10 +16,47 @@ body{
   
 }
 
-img{
-  width: 100%;
+main {
+	max-width: 800px;
+	width: 90%;
+	margin: auto;
+	padding: 40px;
 }
-/* ===== PUBLICACIÓN ===== */
+
+.formulario {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+}
+
+.formulario__label {
+	display: block;
+	font-weight: 700;
+	padding: 10px;
+	cursor: pointer;
+}
+
+.formulario__grupo-input {
+	position: relative;
+}
+
+.formulario__input {
+	width: 100%;
+	background: #fff;
+	border: 3px solid transparent;
+	border-radius: 3px;
+	height: 45px;
+	line-height: 45px;
+	padding: 0 40px 0 10px;
+	transition: .3s ease all;
+}
+
+.formulario__input:focus {
+	border: 3px solid #0075FF;
+	outline: none;
+	box-shadow: 3px 0px 30px rgba(163,163,163, 0.4);
+}
+
 
 .post{
   
@@ -29,10 +68,6 @@ img{
   border-radius: 2rem;
   margin-left: auto;
   margin-right: auto;
-}
-
-.informacion-usuario{
-  display: block;
 }
 
 .img{
@@ -52,23 +87,6 @@ img{
   
 }
 
-.foto{
-  min-width: 15rem;
-  max-width: 15rem;
-  height: 15rem;
-  
-  position: relative;
-}
-
-.foto img{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  border-radius: 2rem;
-  
-}
-
 .titulo{
   font-size: 2.5rem;
   margin: 1rem 0 1rem;
@@ -83,40 +101,30 @@ img{
   font-size: 1.6rem;
   font-weight: 600;
   margin: .5rem 0 1rem;
+  color: #ffffff;
 }
 
 
-.Fecha-de-Nacimiento{
-  text-align: center;
-}
 
 
-/* ===== RESPONSIVE ===== */
 
-@media screen and (max-width: 1068px){
-  .post{
-      max-width: 80rem;
-  }
-  .img{
-      min-width: 30rem;
-      max-width: 30rem;
-  }
-}
 
-@media screen and (max-width: 868px){
-  .post{
-      padding: 2.5rem;
-  }
-}
 
-@media screen and (max-width: 768px){
-  .post{
-      padding: 2.5rem;
-      flex-direction: column;
-  }
-  .img{
-      min-width: 100%;
-      max-width: 100%;
-      transform: translate(0, -8rem);
-  }
+
+
+/* ----- -----  Mediaqueries ----- ----- */
+@media screen and (max-width: 800px) {
+	.formulario {
+		grid-template-columns: 1fr;
+	}
+
+	.formulario__grupo-terminos, 
+	.formulario__mensaje,
+	.formulario__grupo-btn-enviar {
+		grid-column: 1;
+	}
+
+	.formulario__btn {
+		width: 100%;
+	}
 }
