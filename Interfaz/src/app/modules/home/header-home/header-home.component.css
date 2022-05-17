@@ -1,86 +1,76 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #292929;
+  font-family: 'calibri';
+  background-image: url(/assets/Imagenes/ByN.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+header {
+  width: max-content;
+  height: max-content;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+img {
+  width: 297.9px;
+  height: 225px;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+nav {
+  float: right;
+}
+
+nav ul li {
+  list-style: none;
+  margin-left: 75px;
+  padding: 12px 0;
+  float: left;
+  position: relative;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  font-weight: bold;
+}
+
+nav ul li a::before {
+  display: block;
+  content: '';
+  width: 0%;
+  background: #444;
+  height: 5px;
+  top: 0;
+  position: absolute;
+  transition: width 0.2s;
+}
+
+nav ul li a:hover::before {
+  width: 100%;
+}
 
 * {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    
-    font-family: 'calibri';
-    background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-  }
-  
-  header {
-     width: max-content;
-      height: max-content;
-      
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-      color: black;
-  }
-  
-  .menu {
-    background-color: #000000;
-    opacity: 0.6; 
-    width: max-content;
-    height: max-content;
-    margin: 0 auto;
-    color: black;
-  }
-  
-  img {
-    width: 297.9px;
-      height: 225px;
-    
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: center;
-  }
-  
-  nav {
-    float: right;
-  }
-  
-  nav ul li {
-    list-style: none;
-    margin-left: 75px;
-    padding: 12px 0;
-    float: left;
-    
-  }
-  
-  nav ul li a {
-    text-decoration: none;
-    color: rgb(255, 255, 255);
-    font-weight: bold;
-  }
-  
-  nav ul li a::before {
-    display: block;
-    content: '';
-    width: 0%;
-   
-    height: 5px;
-    top:0;
-    
-    transition: width 0.2s;
-  }
-  
-  nav ul li a:hover::before {
-    width: 100%;
-  }
-  
-  *{
-    font-family: 'Poppins';
+  font-family: 'Poppins';
   font-style: normal;
   font-weight: 700;
   font-size: 32px;
   line-height: 48px;
   letter-spacing: 0.235em;
-  
+
   color: #FFFFFF;
-  }
+}
