@@ -17,7 +17,7 @@ const routes: Routes = [
       component: HomeComponent
     },*/
     {
-      path:'',
+      path:'preinscripcion',
       component:PreinscripcionComponent
     },
     {
@@ -31,7 +31,11 @@ const routes: Routes = [
     {
       path: 'credencial',
       component: CredencialComponent,
-    }
+    },
+    {
+      path:'',
+      component:HomeComponent,
+    },
 ];
 
 

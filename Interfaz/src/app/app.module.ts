@@ -33,6 +33,9 @@ import { CredecialCardComponent } from './modules/credencial/credecial-card/cred
 import { FormDirective } from './directivas/form.directive';
 
 import  {QRCodeModule}  from 'angular2-qrcode';
+import { FooterHomeComponent } from './modules/home/footer-home/footer-home.component';
+import { HeaderHomeComponent } from './modules/home/header-home/header-home.component';
+import { BodyHomeComponent } from './modules/home/body-home/body-home.component';
 
 
 @NgModule({
@@ -60,7 +63,10 @@ import  {QRCodeModule}  from 'angular2-qrcode';
     HeaderCreComponent,
     NavCreComponent,
     CredecialCardComponent,
-    FormDirective
+    FormDirective,
+    FooterHomeComponent,
+    HeaderHomeComponent,
+    BodyHomeComponent
   ],
   imports: [
     BrowserModule,
