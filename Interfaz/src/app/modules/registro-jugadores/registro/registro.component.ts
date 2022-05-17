@@ -12,6 +12,7 @@ export class RegistroJComponent implements OnInit {
   public submitted = false;
   categoria = [];
   lista :any = [];
+  files: any;
 
   constructor(public formulario: FormBuilder
     ,private apiService:ApiService) {
@@ -87,35 +88,26 @@ export class RegistroJComponent implements OnInit {
 
 
   postServicio() {
-    const codJug= Math.floor((Math.random() * (100 - 1 + 1)) + 1);
-    const codEquip = Math.floor((Math.random() * (100 - 1 + 1)) + 1);
-    const registroJugador = {cod_jug :codJug,
-                                  cod_equi:codEquip,
-                                  nombre_jug: this.formularioRegistroJugador.value.nombre,
-                                  prim_ap_jug: this.formularioRegistroJugador.value.primerApellido,
-                                  seg_ap_jug:this.formularioRegistroJugador.value.segundoApellido,
-                                  correo_jug:  this.formularioRegistroJugador.value.correoElectronico,
-                                  num_iden_jug: this.formularioRegistroJugador.value.numeroIdentidad, 
-                                  nacion_jug: this.formularioRegistroJugador.value.paisJugador,
-                                  est_civil_jug:  this.formularioRegistroJugador.value.estadoCivil,
-                                  fecha_nac_jug:  this.formularioRegistroJugador.value.fechaNacimiento,
-                                  telf_jug: this.formularioRegistroJugador.value.telefono, 
-                                  sexo_jug: this.formularioRegistroJugador.value.sexo,
-                                  dom_jug:  this.formularioRegistroJugador.value.domicilio,
-                                  num_equi_jug: this.formularioRegistroJugador.value.numeroJugador,
-                                  link_img_jug: "localhost.com",
-                                }
-                           
-
-  
-  console.log(registroJugador);
-  this.apiService.postJugador(registroJugador).subscribe();
-  //this.apiService.postPreinscripcion(registroPreinscripcion).subscribe();
-  //this.apiService.postDelegado(delegadoDatos).subscribe();
-
-
+    var myFormData = new FormData();
+    myFormData.append('image', this.files);
+    const registroJugador = {nombre_jug: this.formularioRegistroJugador.value.nombre,
+                             prim_ap_jug: this.formularioRegistroJugador.value.primerApellido,
+                             seg_ap_jug:this.formularioRegistroJugador.value.segundoApellido,
+                             correo_jug:  this.formularioRegistroJugador.value.correoElectronico,
+                             num_iden_jug: this.formularioRegistroJugador.value.numeroIdentidad, 
+                             nacion_jug: this.formularioRegistroJugador.value.paisJugador,
+                             est_civil_jug:  this.formularioRegistroJugador.value.estadoCivil,
+                             fecha_nac_jug:  this.formularioRegistroJugador.value.fechaNacimiento,
+                             telf_jug: this.formularioRegistroJugador.value.telefono, 
+                             sexo_jug: this.formularioRegistroJugador.value.sexo,
+                             dom_jug:  this.formularioRegistroJugador.value.domicilio,
+                             num_equi_jug: this.formularioRegistroJugador.value.numeroJugador,
+                             link_img_jug: myFormData,
+                            }
+                          
+  this.apiService.post('jugador',registroJugador).subscribe();
   this.getServicio();
-  
+
   }
 
 
@@ -126,6 +118,13 @@ export class RegistroJComponent implements OnInit {
       this.lista = data;
     })
     console.log(this.lista);
+  }
+  
+  subirImagen(event: Event){
+    const target = event.target as HTMLInputElement;
+    const fileList = target.files as FileList;
+    this.files = fileList.item(0);
+    console.log(this.files);
   }
 
 }

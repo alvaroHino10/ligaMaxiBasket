@@ -58,14 +58,8 @@ export class RegistroEComponent implements OnInit {
     }  
     alert('Equipo registrado correctamente');
   }
-
-
   postServicio() {
-    const codEquip = Math.floor((Math.random() * (100 - 1 + 1)) + 1);
-    const codPre = Math.floor((Math.random() * (100 - 1 + 1)) + 1);
-    const registroEquipo = {cod_equi: codEquip,
-                            cod_torn: 2022,
-                            cod_preinscrip: codPre,
+    const registroEquipo = {cod_torn: 2022,
                             nombre_equi: this.formularioRegistroEquipo.value.nombreDelEquipo,
                             categ_equi: this.formularioRegistroEquipo.value.categoria,
                             pais_equi:this.formularioRegistroEquipo.value.paisEquipo,
@@ -73,10 +67,7 @@ export class RegistroEComponent implements OnInit {
                             color_equi: this.formularioRegistroEquipo.value.colorEquipo
                           }
                           
-  console.log(registroEquipo);
-  this.apiService.postEquipo(registroEquipo).subscribe();
-  //this.apiService.postPreinscripcion(registroPreinscripcion).subscribe();
-  //this.apiService.postDelegado(delegadoDatos).subscribe();
+  this.apiService.post('equipo',registroEquipo).subscribe();
   this.getServicio();
   }
 

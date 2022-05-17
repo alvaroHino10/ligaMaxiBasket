@@ -18,7 +18,6 @@ export class RegistroPComponent implements OnInit {
 
   constructor(public formulario: FormBuilder
      ,private apiService:ApiService) {
-    //) {
     this.formularioRegistroPreinscrip = new FormGroup({
       nombreDelegado: new FormControl ('',
                     [Validators.required, 
@@ -76,41 +75,33 @@ export class RegistroPComponent implements OnInit {
       //this.getServicio();
       return;
     }else{
-      //console.log(this.formularioRegistroPreinscrip.value);
       this.postServicio();
     }  
     alert('Preinscripcion registrada correctamente');
   }
   postServicio() {
-    const cod = Math.floor((Math.random() * (100 - 1 + 1)) + 1);
-    const registroPreinscripcion = {cod_preinscrip : cod,
-                                  num_transfer_preinscrip:this.formularioRegistroPreinscrip.value.codigoDeTransaccion,
-                                  costo_preinscrip: 200, //costoPreins
-                                  fecha_preinscrip: "2022-05-13", //fecha
-                                  link_img_comprob: "http://localhost.img" //linkImg
-                                }
-                           
-                           
-    const codDel = Math.floor((Math.random() * (100 - 1 + 1)) + 1);                     
-    const delegadoDatos = { cod_deleg: codDel, 
-                          cod_preinscrip: cod,
-                          nombre_deleg: this.formularioRegistroPreinscrip.value.nombreDelegado, 
-                          ap_deleg: this.formularioRegistroPreinscrip.value.apellidoDelegado,
-                          correo_deleg: this.formularioRegistroPreinscrip.value.correoElectronico,
-                          telf_deleg: this.formularioRegistroPreinscrip.value.telefono
-
+    var myFormData = new FormData();
+    myFormData.append('image', this.files);
+    const registroPreinscripcion = {num_transfer_preinscrip:this.formularioRegistroPreinscrip.value.codigoDeTransaccion,
+                                    costo_preinscrip: 200, //costoPreins
+                                    fecha_preinscrip: "2022-05-13", //fecha
+                                    //link_img_comprob: this.formularioRegistroPreinscrip.value.linkImgComprobante
+                                    link_img_comprob: myFormData
+                                  }
+                   
+    const delegadoDatos = {nombre_deleg: this.formularioRegistroPreinscrip.value.nombreDelegado, 
+                            ap_deleg: this.formularioRegistroPreinscrip.value.apellidoDelegado,
+                            correo_deleg: this.formularioRegistroPreinscrip.value.correoElectronico,
+                            telf_deleg: this.formularioRegistroPreinscrip.value.telefono
                         }
-    console.log(registroPreinscripcion);
-    console.log(delegadoDatos);
-
-    this.apiService.postPreinscripcion(registroPreinscripcion).subscribe();
-    this.apiService.postDelegado(delegadoDatos).subscribe();
+                        
+    this.apiService.post('preinscripcion', registroPreinscripcion).subscribe();
+    this.apiService.post('delegado',delegadoDatos).subscribe();
     this.getServicio();
   }
 
 
   getServicio(){
-    //const registroPreinscripcion = this.formularioRegistroPreinscrip.value;
     this.apiService.getPreinscripcion().subscribe((data:any) => {
       this.listaPreinscripcion = data;
     })

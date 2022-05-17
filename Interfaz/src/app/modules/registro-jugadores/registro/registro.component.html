@@ -380,12 +380,23 @@
         <div *ngIf="controls.numeroJugador.errors?.max">El número del jugador no es válido</div>
       </div>
     </div>
-    <!--INPUT imagen del jugador-->
-    <div class="mb-3">
-      <label for="myfile">Seleccione la imagen del jugador:</label>
-      <input type="file" id="myfile" name="myfile">
+
+    <!--INPUT FILE IMAGEN-->
+    <div class="file-upload form-group">
+      <label for="linkImgJug">Seleccionar imagen del jugador:</label>
+      <div class="custom-file">
+        <input id="linkImgJug" name="linkImgJug" type="file" class=" form-control"
+          (change)="subirImagen($event)" formControlName="linkImgJug">
+        <div *ngIf="(controls.linkImgJug.touched && controls.linkImgJug.invalid) || submitted"
+          class="text-danger">
+          <div *ngIf="controls.linkImgJug.errors?.required">
+            Por favor, ingresa la imagen del jugador
+          </div>
+
+        </div>
+      </div>
     </div>
-    <button type="submit">Guardar</button>
+    <button type="submit" class="btn btn-dark btn-m mt-3">Guardar</button>
   </form>
 
 </body>
