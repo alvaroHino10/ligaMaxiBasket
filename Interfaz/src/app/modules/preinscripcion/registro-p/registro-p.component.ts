@@ -29,7 +29,6 @@ export class RegistroPComponent implements OnInit {
                      Validators.minLength(3),
                      Validators.maxLength(80),
                      Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
-
       /*numeroIdentificacion: new FormControl ('', 
                     [Validators.required, 
                       Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{2})(?: *x(\\d+))?\\s*$')]),*/
@@ -58,7 +57,6 @@ export class RegistroPComponent implements OnInit {
       linkImgComprobante: new FormControl ('', 
                      Validators.required),
     });
-
   }
 
   ngOnInit() {
@@ -99,7 +97,6 @@ export class RegistroPComponent implements OnInit {
     this.apiService.post('delegado',delegadoDatos).subscribe();
     this.getServicio();
   }
-
 
   getServicio(){
     this.apiService.getPreinscripcion().subscribe((data:any) => {

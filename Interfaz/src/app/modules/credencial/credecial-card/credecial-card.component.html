@@ -1,50 +1,62 @@
 <body>
-  <div class="post">
-    <div class="img"><img src="../../../../assets/Imagenes/Logo.jpg" alt=""></div>
-    <div class="info">
-      <h1 class="titulo">Liga Maxi Basquet Cochabamba</h1>
-      <div class="sub-titulo">Credencial</div>
-    </div>
-  </div>
-<hr>
-	<main>
-		<form action="" class="formulario" id="formulario">
-			<!-- Grupo: Usuario -->
-			<div class="formulario__grupo" id="grupo__usuario">
-				<label for="nombre" class="formulario__label">Nombre:</label>
-				
-			</div>
-<br>
-			<!-- Grupo: Nombre -->
-			<div class="formulario__grupo" id="grupo__nombre">
-				<label for="Fecha-de-Nacimiento" class="formulario__label">Fecha de Nacimiento:</label>
-				
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="post row">
+					<div class="col-md-3 img">
+						<img src="../assets/Imagenes/Logo.jpg">
+					</div>
+					<div class="col-md-9">
+						<h1 class="text-center titulo">
+							Liga Maxi Basquet Cochabamba
+						</h1>
+						<div class="sub-titulo">Credencial</div>
+					</div>
+				</div>
 			</div>
 
-			<!-- Grupo: Contraseña -->
-			<div class="formulario__grupo" id="grupo__password">
-				<label for="Numero-de-Identificacion" class="formulario__label">Numero de Identificacion:</label>
-				
+			<div class="col-md-10">
+
+				<!--Nombre-->
+				<div class="form-group p-2 text-black" id="grupo__usuario">
+					<label for="nombre" class="formulario">Nombre completo:</label>
+					<label for=""></label>
+				</div>
+				<div class="row">
+					<div class="col-md-6">
+						<!--Fecha de nacimiento-->
+						<div class="form-group p-2 text-black" id="grupo__nombre">
+							<label for="Fecha-de-Nacimiento" class="formulario">Fecha de Nacimiento:</label>
+						</div>
+						<!--Club-->
+						<div class="form-group p-2 text-black" id="grupo__password2">
+							<label for="Club" class="formulario">Club:</label>
+
+						</div>
+					</div>
+					<div class="col-md-6">
+						<!--Numero de identificacion-->
+						<div class="form-group p-2 text-black" id="grupo__password">
+							<label for="Numero-de-Identificacion" class="formulario">Numero de
+								Identificacion:</label>
+						</div>
+						<!--Telefono-->
+						<div class="form-group p-2 text-black" id="grupo__correo">
+							<label for="Telefono:" class="formulario">Telefono:</label>
+						</div>
+					</div>
+				</div>
 			</div>
+			<div class="col-md-2">
+				<div>
+					<h1>IMAGEN</h1>
+				</div>
 
-			<!-- Grupo: Contraseña 2 -->
-			<div class="formulario__grupo" id="grupo__password2">
-				<label for="Club" class="formulario__label">Club:</label>
-				
+				<div class="QR" id="QR">
+					<qr-code [value]="urlActual"></qr-code>
+				</div>
+
 			</div>
-
-			<!-- Grupo: Correo Electronico -->
-			<div class="formulario__grupo" id="grupo__correo">
-				<label for="Telefono:" class="formulario__label">Telefono:</label>
-				
-			</div>
-
-			<div class="QR" id="QR">
-      <qr-code [value]="'http://localhost:4200/'"></qr-code>
-    </div>
-			
-		</form>
-	</main>
-
-	
+		</div>
+	</div>
 </body>

@@ -6,12 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./credecial-card.component.css']
 })
 export class CredecialCardComponent implements OnInit {
-
+  public urlActual:any;
   constructor() { }
 
   ngOnInit(): void {
+    this.urlActual = window.location.href;
+    console.log(this.urlActual)
   }
 
 }
 
-var URLactual = window.location;
