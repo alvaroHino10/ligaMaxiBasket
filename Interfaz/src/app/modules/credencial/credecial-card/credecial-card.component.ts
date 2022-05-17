@@ -20,8 +20,8 @@ export class CredecialCardComponent implements OnInit {
   ngOnInit(): void {
     this.urlActual = window.location.href;
     console.log(this.urlActual);
-    //var jugadores = this.apiService.getById('jugadores',1);
-    var jugadores = this.apiService.getJSON(1);
+    var jugadores = this.apiService.getById('jugadores',1);
+    //var jugadores = this.apiService.getJSON(0);
     this.nombrePerfil = this.apiService.infoJson.nombre_jug;
     this.fechaNaciminetoPerfil = this.apiService.infoJson.fecha_nac_jug;
     this.numeroIdentificacionPerfil = this.apiService.infoJson.num_iden_jug;

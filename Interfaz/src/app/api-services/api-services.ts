@@ -1,6 +1,6 @@
 // This class make possible the connection with the API
 import { Injectable } from "@angular/core";
-import { HttpClient } from "@angular/common/http"; // Comunicar con la API para enviar información
+import { HttpClient, HttpHeaders } from "@angular/common/http"; // Comunicar con la API para enviar información
 import { environment } from "src/environments/environment";
 import { Observable } from "rxjs"; //observa lo que sucede en el entorno html
 
@@ -15,6 +15,13 @@ export class ApiService {
 
   post(dir: string, model: object): Observable<any> {
     return this.http.post<any>(`${environment.url}${dir}`, model);
+  }
+
+  postImage(dir: string, model: object){
+    const headers = new HttpHeaders();
+    return this.http.post<any>(`${environment.url}${dir}`, model, {
+      headers: headers
+    });
   }
 
   getPreinscripcion(){

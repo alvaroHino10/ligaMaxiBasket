@@ -11,6 +11,7 @@ export class RegistroPComponent implements OnInit {
   public formularioRegistroPreinscrip: FormGroup;
   public submitted = false;
   files:any;
+  data:any;
   categoria=[];
   public listaCategoria: any = [ "+30", "+40", "+50", "+60"];
   listaPreinscripcion:any = [];
@@ -28,9 +29,9 @@ export class RegistroPComponent implements OnInit {
                      Validators.minLength(3),
                      Validators.maxLength(80),
                      Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
-      numeroIdentificacion: new FormControl ('', 
-                    [Validators.required, 
-                      Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
+      //numeroIdentificacion: new FormControl ('', 
+      //              [Validators.required, 
+      //                Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
 
       telefono: new FormControl ('', 
                     [Validators.required,
@@ -77,7 +78,16 @@ export class RegistroPComponent implements OnInit {
   }
   postServicio() {
     var myFormData = new FormData();
-    myFormData.append('image', this.files);
+    myFormData.append('num_transfer_preinscrip', this.formularioRegistroPreinscrip.value.codigoDeTransaccion);
+
+    myFormData.append('costo_preinscrip', '200');
+
+    myFormData.append("fecha_preinscrip", "2022-05-05");
+    
+
+    myFormData.append('image', this.files, this.files.name);
+
+    console.log(myFormData);
     const registroPreinscripcion = {num_transfer_preinscrip:this.formularioRegistroPreinscrip.value.codigoDeTransaccion,
                                     costo_preinscrip: 200, //costoPreins
                                     fecha_preinscrip: "2022-05-13", //fecha
@@ -85,13 +95,16 @@ export class RegistroPComponent implements OnInit {
                                     link_img_comprob: myFormData
                                   }
                    
-    const delegadoDatos = {nombre_deleg: this.formularioRegistroPreinscrip.value.nombreDelegado, 
+    const delegadoDatos = { cod_preinscrip: 10,
+                            nombre_deleg: this.formularioRegistroPreinscrip.value.nombreDelegado, 
                             ap_deleg: this.formularioRegistroPreinscrip.value.apellidoDelegado,
                             correo_deleg: this.formularioRegistroPreinscrip.value.correoElectronico,
                             telf_deleg: this.formularioRegistroPreinscrip.value.telefono
                         }
                         
-    this.apiService.post('preinscripcion', registroPreinscripcion).subscribe();
+    this.apiService.postImage('preinscripcion', myFormData).subscribe(res => {
+      this.data = res;
+    });
     this.apiService.post('delegado',delegadoDatos).subscribe();
     this.getServicio();
   }
