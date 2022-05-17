@@ -21,7 +21,7 @@ export class CredecialCardComponent implements OnInit {
     this.urlActual = window.location.href;
     console.log(this.urlActual);
     //var jugadores = this.apiService.getById('jugadores',1);
-    var jugadores = this.apiService.getJSON();
+    var jugadores = this.apiService.getJSON(1);
     this.nombrePerfil = this.apiService.infoJson.nombre_jug;
     this.fechaNaciminetoPerfil = this.apiService.infoJson.fecha_nac_jug;
     this.numeroIdentificacionPerfil = this.apiService.infoJson.num_iden_jug;
@@ -29,7 +29,7 @@ export class CredecialCardComponent implements OnInit {
     this.telefonoPerfil = this.apiService.infoJson.telf_jug;
     console.log(jugadores);
   }  
-  
+
   getJsonContent(){
     this.apiService.getJugadores().subscribe(this.data);
   }

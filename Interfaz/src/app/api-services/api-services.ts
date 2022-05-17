@@ -45,8 +45,8 @@ export class ApiService {
     return this.http.get<any>(`${this.url}/${dir}/${id}`);
   }
 
-  getJSON(){
-    return this.http.get(`${this.url}jugador`).subscribe(resp =>
+  getJSON(id:number){
+    return this.http.get(`${this.url}jugador/${id}`).subscribe(resp =>
       this.infoJson = resp);
   }
 /*
