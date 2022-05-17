@@ -30,21 +30,6 @@ right: 100px;*/
     border-radius: 10px;
 }
 
-.mb-3{
-  display: flow-root;
-    margin-right: 500px;
-}
-
-.mb-4{
-  color: black;
-    margin-right: 1500px;
-    display: flex;
-    background: rgba(219, 207, 199, 0.5);
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-}
-
-
 #fondo h1 {
     font-family: 'verdana';
     font-style: normal;

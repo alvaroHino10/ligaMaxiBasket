@@ -62,7 +62,8 @@ export class RegistroJComponent implements OnInit {
                      [Validators.required, 
                       Validators.min(1),
                       Validators.max(80)]),
-      linkImgJug: new FormControl (Validators.required)
+      linkImgJug: new FormControl ('',
+                      Validators.required)
 
     });
 }
@@ -75,8 +76,6 @@ export class RegistroJComponent implements OnInit {
     this.submitted = true;
     if (this.formularioRegistroJugador.invalid) {
       alert('Por favor ingrese datos validos, correspondientes a todos los campos');
-      //console.log(this.formularioRegistroJugador.controls);
-      console.log(this.formularioRegistroJugador.value.fechaNacimiento);
       return;
     }else{
       console.log(this.formularioRegistroJugador.value);
