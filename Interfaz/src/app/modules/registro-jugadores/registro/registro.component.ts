@@ -20,43 +20,41 @@ export class RegistroJComponent implements OnInit {
       nombre: new FormControl ('',
                     [Validators.required, 
                      Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
-                     Validators.minLength(5),
+                     Validators.minLength(1),
                      Validators.maxLength(80)]),
       primerApellido:new FormControl ('',
                       [Validators.required, 
                       Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
-                      Validators.minLength(5),
+                      Validators.minLength(1),
                       Validators.maxLength(80)]),
       segundoApellido:new FormControl ('',
                       [Validators.required, 
                       Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
-                      Validators.minLength(5),
+                      Validators.minLength(1),
                       Validators.maxLength(80)]),
       correoElectronico: new FormControl ('', 
                     [Validators.required, 
                      Validators.email]),
       numeroIdentidad:  new FormControl ('', 
                     [Validators.required, 
-                    Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{3})(?: *x(\\d+))?\\s*$')]),
+                    Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{1})[-. )]*(\\d{2})[-. ]*(\\d{2})(?: *x(\\d+))?\\s*$')]),
       nacionJugador:new FormControl ('',
                     [Validators.required, 
-                    Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
-                    Validators.minLength(5),
-                    Validators.maxLength(80)]),
+                    Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
       estadoCivil: new FormControl('',
                     Validators.required),
       fechaNacimiento: new FormControl('',
                     Validators.required),             
       telefono: new FormControl ('', 
                     [Validators.required, 
-                     Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{2})(?: *x(\\d+))?\\s*$')]),
+                     Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{2})[-. )]*(\\d{2})[-. ]*(\\d{2})(?: *x(\\d+))?\\s*$')]),
       sexo:new FormControl('',
                     Validators.required),
 
       domicilio:new FormControl ('',
                      [Validators.required, 
                      Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
-                     Validators.minLength(5),
+                     Validators.minLength(1),
                      Validators.maxLength(80)]),
       numeroJugador: new FormControl ('', 
                      [Validators.required, 
@@ -76,9 +74,9 @@ export class RegistroJComponent implements OnInit {
     this.submitted = true;
     if (this.formularioRegistroJugador.invalid) {
       alert('Por favor ingrese datos validos, correspondientes a todos los campos');
+      console.log(this.formularioRegistroJugador.errors);
       return;
     }else{
-      console.log(this.formularioRegistroJugador.value);
       this.postServicio();
       
     }  
