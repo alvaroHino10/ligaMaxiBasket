@@ -10,6 +10,7 @@ import { Observable } from "rxjs"; //observa lo que sucede en el entorno html
 
 export class ApiService {
   url = environment.url;
+  public infoJson:any={};
   constructor(private http: HttpClient) {}
 
   post(dir: string, model: object): Observable<any> {
@@ -37,11 +38,16 @@ export class ApiService {
 
   //Este método interactúa
   getAll(dir:string, model?:object): Observable<any>{
-    return this.http.get<any>(`${environment.url}${dir}`, model);
+    return this.http.get<any>(`${this.url}${dir}`, model);
   }
 
   getById(dir:string, id:number): Observable<any>{
-    return this.http.get<any>(`${environment.url}/${dir}/${id}`);
+    return this.http.get<any>(`${this.url}/${dir}/${id}`);
+  }
+
+  getJSON(){
+    return this.http.get(`${this.url}jugador`).subscribe(resp =>
+      this.infoJson = resp);
   }
 /*
   update(dir: string, model:object): Observable<any> {

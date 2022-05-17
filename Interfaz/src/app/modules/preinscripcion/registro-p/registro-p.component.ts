@@ -16,8 +16,7 @@ export class RegistroPComponent implements OnInit {
   listaPreinscripcion:any = [];
   listaDelegados:any =[];
 
-  constructor(public formulario: FormBuilder
-     ,private apiService:ApiService) {
+  constructor(public formulario: FormBuilder,private apiService:ApiService) {
     this.formularioRegistroPreinscrip = new FormGroup({
       nombreDelegado: new FormControl ('',
                     [Validators.required, 
@@ -29,14 +28,13 @@ export class RegistroPComponent implements OnInit {
                      Validators.minLength(3),
                      Validators.maxLength(80),
                      Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
-      /*numeroIdentificacion: new FormControl ('', 
+      numeroIdentificacion: new FormControl ('', 
                     [Validators.required, 
-                      Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{2})(?: *x(\\d+))?\\s*$')]),*/
+                      Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
 
       telefono: new FormControl ('', 
                     [Validators.required,
-                     Validators.min(1000000),
-                     Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{3})[-. ]*(\\d{2})(?: *x(\\d+))?\\s*$')]),
+                     Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{2})[-. )]*(\\d{2})[-. ]*(\\d{2})(?: *x(\\d+))?\\s*$')]),
 
       correoElectronico: new FormControl ('', 
                     [Validators.required, 

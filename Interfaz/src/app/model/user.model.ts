@@ -37,6 +37,24 @@ export interface RegistroJugador{
     linkimg: string;
 }
 
+export interface Jugador{
+    cod_jug: string;
+    cod_equi: string;
+    nombre_jug: string;
+    prim_ap_jug: string;
+    seg_ap_jug: string;
+    correo_jug: string;
+    num_iden_jug: string;
+    nacion_jug: string;
+    est_civil_jug: string;
+    fecha_nac_jug: string;
+    telf_jug: string;
+    sexo_jug: string;
+    dom_jug: string;
+    num_equi_jug: string;
+    link_img_jug: string;
+}
+
 
 
 /*

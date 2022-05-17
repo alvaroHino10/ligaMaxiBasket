@@ -10,8 +10,10 @@
     <!--INPUT NOMBRE EQUIPO-->
     <div class="mb-3">
       <label class="form-label">Nombre de equipo:</label>
-      <input type="text" class="form-control" formControlName="nombreDelEquipo" minlength="5" maxlength="80" required appForm>
-      <div *ngIf="(controls.nombreDelEquipo.touched && controls.nombreDelEquipo.invalid) || submitted" class="text-danger">
+      <input type="text" class="form-control" formControlName="nombreDelEquipo" minlength="5" maxlength="80" required
+        appForm>
+      <div *ngIf="(controls.nombreDelEquipo.touched && controls.nombreDelEquipo.invalid) || submitted"
+        class="text-danger">
         <label *ngIf="controls.nombreDelEquipo.errors?.required">Por favor, ingresa el nombre de tu equipo</label>
         <label *ngIf="controls.nombreDelEquipo.errors?.pattern">Por favor, ingresa solo caracteres alfabeticos</label>
         <label *ngIf="controls.nombreDelEquipo.errors?.minLength">El nombre del equipo es demasiado corto</label>
@@ -23,8 +25,8 @@
     <div class="col-4">
       <label for="" class="form-label">Seleccione una categoria:</label>
       <select class="form-control" name="categoria" (change)="categoria" formControlName="categoria" required>
-          <option value="" disabled>Seleccionar categoria</option>
-          <option *ngFor="let c of listaCategoriaEquipo" [ngValue]="c">{{ c }}</option>
+        <option value="" disabled>Seleccionar categoria</option>
+        <option *ngFor="let c of listaCategoriaEquipo" [ngValue]="c">{{ c }}</option>
       </select>
       <div *ngIf="(controls.categoria.touched && controls.categoria.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.categoria.errors?.required">Por favor, selecciona una categoria</div>
@@ -289,10 +291,7 @@
     </div>
 
     <button type="submit" class="btn btn-dark btn-m mt-3">Guardar</button>
-
   </form>
-
-
 </body>
 
 </html>

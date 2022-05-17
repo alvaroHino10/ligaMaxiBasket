@@ -28,7 +28,10 @@ body {
   background: rgba(0, 0, 0, 0.4);
   color: white;
   border-radius: 10px;
+}
 
+#birthday{
+  width: 40%;
 }
 
 #fondo h1 {

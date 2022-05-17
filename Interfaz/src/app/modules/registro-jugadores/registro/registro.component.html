@@ -11,7 +11,6 @@
     <div class="mb-3">
       <label class="form-label">Nombre(s):</label>
       <input type="text" class="form-control" formControlName="nombre" minlength="1" maxlength="80" required>
-      <!--[ngClass]="{ 'is-invalid': submitted && controls.nombre.errors}"-->
       <div *ngIf="(controls.nombre.touched && controls.nombre.invalid) || submitted" class="text-danger">
         <div *ngIf="submitted && controls.nombre.errors?.required">Por favor, ingresa tu(s) nombre(s)</div>
         <div *ngIf="submitted && controls.nombre.errors?.minLength">"El nombre debe tener al menos 5 caracteres"</div>
@@ -48,7 +47,7 @@
     <!--INPUT CORREO ELECTRONICO-->
     <div class="mb-3">
       <label for="" class="form-label">Correo electronico:</label>
-      <input type="text" class="form-control" formControlName="correoElectronico" required>
+      <input type="email" class="form-control" formControlName="correoElectronico" required>
       <div *ngIf="(controls.correoElectronico.touched && controls.correoElectronico.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa tu correo electronico</div>
         <div *ngIf="controls.correoElectronico.errors?.email">Por favor, ingresa un correo valido</div>
@@ -58,10 +57,10 @@
     <!--INPUT NUMERO DE IDENTIDAD-->
     <div class="mb-3">
       <label for="" class="form-label">Numero de identidad:</label>
-      <input type="number" class="form-control" formControlName="numeroIdentidad" required>
+      <input type="text" class="form-control" formControlName="numeroIdentidad" required>
       <div *ngIf="(controls.numeroIdentidad.touched && controls.numeroIdentidad.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.numeroIdentidad.errors?.required">
-          Por favor, ingresa tu numero de identidad (Solo se admiten caracteres numericos)
+          Por favor, ingresa tu numero de identidad
         </div>
         
       </div>
@@ -312,14 +311,9 @@
     </div>
 
     <!--INPUT ESTADO CIVIL-->
-
     <div class="mb-3">
       <label class="form-label">Estado civil:</label>
       <select class="form-control" formControlName="estadoCivil" required>
-        <!--option value="soltero">Soltero</option>
-        <option value="casado">Casado</option>
-        <option value="divorciado">Divorciado</option>
-        <option value="viudo">Viudo</option-->
         <option value="" disabled>Seleccione el estado civil</option>
         <option *ngFor="let c of listaEstadoCivil" [ngValue]="c">{{ c }}</option>
       </select>
@@ -330,12 +324,10 @@
       </div>
     </div>
 
-
-
     <!--INPUT FECHA NACIMIENTO-->
     <div class="mb-3">
       <label for="birthday">Fecha de Nacimiento:</label>
-      <input type="date" id="birthday" name="birthday" formControlName="fechaNacimiento">
+      <input type="date" id="birthday" name="birthday" formControlName="fechaNacimiento" class="form-control">
       <div *ngIf="(controls.fechaNacimiento.touched && controls.fechaNacimiento.invalid) || submitted" class="text-danger">
         <div *ngIf = "controls.fechaNacimiento.errors?.required">
           Por favor, ingresa tu fecha de nacimiento
@@ -346,7 +338,7 @@
     <!--INPUT TELEFONO-->
     <div class="mb-3">
       <label for="" class="form-label">Telefono:</label>
-      <input type="number" class="form-control" formControlName="telefono" required>
+      <input type="text" class="form-control" formControlName="telefono" required>
       <div *ngIf="(controls.telefono.touched && controls.telefono.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.telefono.errors?.required">
           Por favor, ingresa tu telefono

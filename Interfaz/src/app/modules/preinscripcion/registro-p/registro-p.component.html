@@ -39,22 +39,22 @@
             </div>
           </div>
 
-
-          <!--INPUT NUMERO IDENTIFICACION PERSONAL>
+          <!--INPUT NUMERO IDENTIFICACION PERSONAL-->
           <div class="form-group">
             <label for="" class="form-label">Numero de identificacion personal:</label>
             <input type="text" class="form-control" formControlName="numeroIdentificacion" minlength="5" maxlength="80"
               required>
-            <div *ngIf="controls.numeroIdentificacion.touched && controls.numeroIdentificacion.invalid"
-              class="text-danger">
-              Por favor, ingresa el numero de tu identificacion personal
+            <div *ngIf="controls.numeroIdentificacion.touched && controls.numeroIdentificacion.invalid" class="text-danger">
+              <div *ngIf="controls.numeroIdentidad.errors?.required">
+                Por favor, ingresa el numero de tu identificacion personal
+              </div>
             </div>
-          </div-->
+          </div>
 
           <!--INPUT TELEFONO-->
           <div class="form-group">
             <label for="" class="form-label">Telefono delegado:</label>
-            <input type="number" class="form-control" formControlName="telefono" required>
+            <input type="text" class="form-control" formControlName="telefono" required>
             <div *ngIf="(controls.telefono.touched && controls.telefono.invalid) || submitted" class="text-danger">
               <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa un telefono valido</div>
             </div>
@@ -63,7 +63,7 @@
           <!--INPUT CORREO ELECTRONICO-->
           <div class="form-group">
             <label for="" class="form-label">Correo electronico:</label>
-            <input type="text" class="form-control" formControlName="correoElectronico" required>
+            <input type="email" class="form-control" formControlName="correoElectronico" required>
             <div *ngIf="(controls.correoElectronico.touched && controls.correoElectronico.invalid) || submitted"
               class="text-danger">
               <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa tu correo electronico</div>

@@ -47,10 +47,9 @@ export class RegistroJComponent implements OnInit {
                     Validators.required),             
       telefono: new FormControl ('', 
                     [Validators.required, 
-                     Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{2})[-. )]*(\\d{2})[-. ]*(\\d{2})(?: *x(\\d+))?\\s*$')]),
+                     Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{1})[-. )]*(\\d{2})[-. ]*(\\d{2})(?: *x(\\d+))?\\s*$')]),
       sexo:new FormControl('',
                     Validators.required),
-
       domicilio:new FormControl ('',
                      [Validators.required, 
                      Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
@@ -104,7 +103,6 @@ export class RegistroJComponent implements OnInit {
                           
   this.apiService.post('jugador',registroJugador).subscribe();
   this.getServicio();
-
   }
 
 
