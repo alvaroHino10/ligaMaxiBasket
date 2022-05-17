@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CredecialCardComponent implements OnInit {
   public urlActual:any;
+  public nombrePerfil:any;
+  public fechaNaciminetoPerfil:any ;
+  public numeroIdentificacionPerfil:any;
+  public clubPerfil:any;
+  public telefonoPerfil:any;
   constructor() { }
 
   ngOnInit(): void {
@@ -14,5 +19,6 @@ export class CredecialCardComponent implements OnInit {
     console.log(this.urlActual)
   }
 
+  
 }
 
