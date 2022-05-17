@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from 'src/app/api-services/api-services';
 
 @Component({
   selector: 'app-credecial-card',
@@ -12,13 +13,13 @@ export class CredecialCardComponent implements OnInit {
   public numeroIdentificacionPerfil:any;
   public clubPerfil:any;
   public telefonoPerfil:any;
-  constructor() { }
+  constructor(private apiService:ApiService) { }
 
   ngOnInit(): void {
     this.urlActual = window.location.href;
-    console.log(this.urlActual)
-  }
-
-  
+    console.log(this.urlActual);
+    var jugadores = this.apiService.getById('jugadores',1);
+    console.log(jugadores);
+  }  
 }
 

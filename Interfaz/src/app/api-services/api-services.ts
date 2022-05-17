@@ -12,14 +12,13 @@ export class ApiService {
   url = environment.url;
   constructor(private http: HttpClient) {}
 
-
-  getPreinscripcion(){
-    return this.http.get(`${this.url}preinscripcion`);
-  }
-
   post(dir: string, model: object): Observable<any> {
     return this.http.post<any>(`${environment.url}${dir}`, model);
   }
+
+  getPreinscripcion(){
+    return this.http.get(`${this.url}preinscripcion`);
+  } 
 
   getDelegados(){
     return this.http.get(`${this.url}delegado`);
@@ -40,11 +39,11 @@ export class ApiService {
   getAll(dir:string, model?:object): Observable<any>{
     return this.http.get<any>(`${environment.url}${dir}`, model);
   }
-/*
+
   getById(dir:string, id:number): Observable<any>{
     return this.http.get<any>(`${environment.url}/${dir}/${id}`);
   }
-
+/*
   update(dir: string, model:object): Observable<any> {
     return this.http.put<any>(`${environment.url}${dir}`, model);
   }*/
