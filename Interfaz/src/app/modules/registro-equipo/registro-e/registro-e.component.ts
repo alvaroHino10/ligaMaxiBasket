@@ -51,31 +51,31 @@ export class RegistroEComponent implements OnInit {
   if (this.formularioRegistroEquipo.invalid) {
     console.log('NO VALIDO');
     alert('Por favor ingrese datos validos, correspondientes a todos los campos');
-      return;
+    this.getServicio();  
+    return;
     }else{
       console.log(this.formularioRegistroEquipo.value);
       this.postServicio();
+      return;
     }  
-    alert('Equipo registrado correctamente');
   }
   postServicio() {
-    const registroEquipo = {cod_torn: 2022,
+    const registroEquipo = {cod_torn: 1,
+                            cod_preinscrip: 1,
                             nombre_equi: this.formularioRegistroEquipo.value.nombreDelEquipo,
                             categ_equi: this.formularioRegistroEquipo.value.categoria,
                             pais_equi:this.formularioRegistroEquipo.value.paisEquipo,
                             discip_equi: "Basket", 
                             color_equi: this.formularioRegistroEquipo.value.colorEquipo
-                          }
-                          
+                          }                          
   this.apiService.post('equipo',registroEquipo).subscribe();
-  this.getServicio();
+  alert('Equipo registrado correctamente');
   }
 
 
   getServicio(){
     const registro = this.formularioRegistroEquipo.value;
-    
-    this.apiService.getEquipos().subscribe((data:any) => {
+    this.apiService.getAll('equipo').subscribe((data:any) => {
       this.lista = data;
     })
     console.log(this.lista);

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/api-services/api-services';
 
 @Component({
@@ -7,31 +8,49 @@ import { ApiService } from 'src/app/api-services/api-services';
   styleUrls: ['./credecial-card.component.css']
 })
 export class CredecialCardComponent implements OnInit {
-  public urlActual:any;
-  public nombrePerfil:any;
-  public fechaNaciminetoPerfil:any ;
-  public numeroIdentificacionPerfil:any;
-  public equipoPerfil:any;
-  public telefonoPerfil:any;
-  data:any;
+  public urlActual: any;
+  public credencial: FormGroup;
+  jugador: any = [];
+  listaEquipos: any = [];
+  listaJugadores: any=[];
+  codEquipo = -1;
+  equipoJugador: any;
 
-  constructor(private apiService:ApiService) { }
-
-  ngOnInit(): void {
+  constructor(private apiService: ApiService) {
     this.urlActual = window.location.href;
     console.log(this.urlActual);
-    var jugadores = this.apiService.getById('jugadores',1);
-    //var jugadores = this.apiService.getJSON(0);
-    this.nombrePerfil = this.apiService.infoJson.nombre_jug;
-    this.fechaNaciminetoPerfil = this.apiService.infoJson.fecha_nac_jug;
-    this.numeroIdentificacionPerfil = this.apiService.infoJson.num_iden_jug;
-    this.equipoPerfil = this.apiService.infoJson.nombre_equi;
-    this.telefonoPerfil = this.apiService.infoJson.telf_jug;
-    console.log(jugadores);
-  }  
 
-  getJsonContent(){
-    this.apiService.getJugadores().subscribe(this.data);
+    this.credencial = new FormGroup({
+      equipos: new FormControl('',
+        Validators.required),
+      jugadores: new FormControl('',
+        Validators.required),
+      
+    });
+  }
+
+  ngOnInit(): void {
+    this.getJsonContent();
+  }
+
+  actualizarCredencial(event: Event){
+    console.log(event);
+    this.equipoJugador = this.credencial.value.equipos;
+    this.codEquipo = this.credencial.value.equipos.cod_equi;
+    this.getJsonContent();
+  }
+  
+  get controls() { return this.credencial.controls; }
+
+  getJsonContent() {
+    this.apiService.getAll('equipo').subscribe((data: any = []) => {
+      this.listaEquipos = data;
+    }); 
+
+    //Dado el codEquipo generar los jugadores de ese equipo
+    this.apiService.getJSON('jugador', 2).subscribe((data: any = []) => {
+      this.jugador = data['cuerpotecnico'];
+    });    
   }
 }
 

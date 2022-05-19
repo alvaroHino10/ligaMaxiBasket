@@ -32,8 +32,8 @@ export class ApiService {
     return this.http.get(`${this.url}delegado`);
   }
 
-  getEquipos(){
-    return this.http.get(`${this.url}equipo`);
+  getAll(dir: string){
+    return this.http.get<any>(`${this.url}${dir}`);
   }
 
   getJugadores(){
@@ -44,17 +44,16 @@ export class ApiService {
 
 
   //Este método interactúa
-  getAll(dir:string, model?:object): Observable<any>{
+  /*getAll(dir:string, model?:object): Observable<any>{
     return this.http.get<any>(`${this.url}${dir}`, model);
-  }
+  }*/
 
   getById(dir:string, id:number): Observable<any>{
     return this.http.get<any>(`${this.url}/${dir}/${id}`);
   }
 
-  getJSON(id:number){
-    return this.http.get(`${this.url}jugador/${id}`).subscribe(resp =>
-      this.infoJson = resp);
+  getJSON(dir:string, id:number){
+    return this.http.get(`${this.url}${dir}/${id}`);
   }
 /*
   update(dir: string, model:object): Observable<any> {

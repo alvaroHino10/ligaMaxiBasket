@@ -115,7 +115,7 @@
           <div class="file-upload form-group">
             <label for="linkImgComprobante">Seleccionar imagen del comprobante de pago:</label>
             <div class="custom-file">
-              <input id="linkImgComprobante" name="linkImgComprobante" type="file" class=" form-control"
+              <input id="linkImgComprobante" name="linkImgComprobante" type="file" class="form-control"
                 (change)="subirImagen($event)" formControlName="linkImgComprobante">
               <div *ngIf="(controls.linkImgComprobante.touched && controls.linkImgComprobante.invalid) || submitted"
                 class="text-danger">

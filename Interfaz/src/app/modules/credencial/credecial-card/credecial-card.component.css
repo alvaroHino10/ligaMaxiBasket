@@ -10,17 +10,7 @@ body {
 	margin: 80px;
 	width: 100%;
 	max-width: 100rem;
-
 }
-
-/*
-main {
-	max-width: 800px;
-	width: 90%;
-	margin: auto;
-	padding: 40px;
-}
-*/
 
 .formulario {
 	/*
@@ -32,25 +22,11 @@ main {
 	gap: 20px;
 }
 
-
-
-.formulario__input {
-	width: 100%;
-	background: #fff;
-	border: 3px solid transparent;
-	border-radius: 3px;
-	height: 45px;
-	line-height: 45px;
-	padding: 0 40px 0 10px;
-	transition: .3s ease all;
+.form-control {
+    background: rgba(0, 0, 0, 0.4);
+    color:white;
+    border-radius: 10px;
 }
-
-.formulario__input:focus {
-	border: 3px solid #0075FF;
-	outline: none;
-	box-shadow: 3px 0px 30px rgba(163, 163, 163, 0.4);
-}
-
 
 .post {
 	background: rgb(0, 0, 0);
@@ -62,13 +38,6 @@ main {
 	margin-left: auto;
 	margin-right: auto;
 }
-
-/*
-.img{
-  
-  
-  position: relative;
-}*/
 
 .img img {
 	min-width: 15rem;
