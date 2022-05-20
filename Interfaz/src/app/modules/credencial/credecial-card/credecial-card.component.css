@@ -1,22 +1,15 @@
-* {
-	box-sizing: border-box;
-}
-
 body {
 	background: rgba(230, 131, 63, 0.5);
 	box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
 	border-radius: 2rem;
 	font-family: 'verdana';
 	margin: 80px;
-	width: 100%;
-	max-width: 100rem;
+	min-width:500px;
+	/*width: 100%;
+	max-width: 100rem;*/
 }
 
 .formulario {
-	/*
-	grid-template-columns: 1fr 1fr;
-	display: grid;
-	*/
 	font-weight: 700;
 	padding: 10px;
 	gap: 20px;
@@ -70,5 +63,4 @@ body {
 	.formulario {
 		grid-template-columns: 1fr;
 	}
-
 }

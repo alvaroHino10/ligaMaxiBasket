@@ -1,19 +1,19 @@
 <body>
 	<div class="container-fluid">
-		<div class="row mb-3">
-			<form [formGroup]="credencial" class="container-fluid" (change)="actualizarCredencial($event)">
+		<div class="row">
+			<form [formGroup]="credencial" class="container-fluid" (ngSubmit)="actualizarCredencial()">
 				<div class="row">
 					<div class="col-md-6 mb-2">
 						<!--Seleccionar Equipo-->
 						<label for="" class="form-label">Seleccione un equipo:</label>
-						<select class="form-control" name="equipos" (change)="listaEquipos" 
+						<select class="form-control" name="equipos" (change)="listaEquipos"
 							formControlName="equipos" required>
 							<option value="" disabled>Seleccionar equipo</option>
 							<option *ngFor="let equipo of listaEquipos" [ngValue]="equipo"> {{ equipo.nombre_equi }}
 							</option>
-
 						</select>
 					</div>
+					
 					<div class="col-md-6 mb-2">
 						<!--Seleccionar Jugador-->
 						<label for="" class="form-label">Seleccione un jugador:</label>
