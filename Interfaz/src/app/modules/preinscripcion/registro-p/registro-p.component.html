@@ -49,12 +49,12 @@
                 Por favor, ingresa el numero de tu identificacion personal
               </div>
             </div>
-          </div>--
+          </div-->
 
           <!--INPUT TELEFONO-->
           <div class="form-group">
             <label for="" class="form-label">Telefono delegado:</label>
-            <input type="text" class="form-control" formControlName="telefono" required>
+            <input type="number" class="form-control" formControlName="telefono" required>
             <div *ngIf="(controls.telefono.touched && controls.telefono.invalid) || submitted" class="text-danger">
               <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa un telefono valido</div>
             </div>

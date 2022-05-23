@@ -10,7 +10,7 @@ import { ApiService } from 'src/app/api-services/api-services';
 export class RegistroPComponent implements OnInit {
   public formularioRegistroPreinscrip: FormGroup;
   public submitted = false;
-  files:any;
+  fileImage: any;
   data:any;
   categoria=[];
   public listaCategoria: any = [ "+30", "+40", "+50", "+60"];
@@ -69,7 +69,6 @@ export class RegistroPComponent implements OnInit {
     if (this.formularioRegistroPreinscrip.invalid) {
       this.formularioRegistroPreinscrip.controls;
       alert('Por favor ingrese datos validos, correspondientes a todos los campos');
-      //this.getServicio();
       return;
     }else{
       this.postServicio();
@@ -78,22 +77,14 @@ export class RegistroPComponent implements OnInit {
   }
   postServicio() {
     var myFormData = new FormData();
+
     myFormData.append('num_transfer_preinscrip', this.formularioRegistroPreinscrip.value.codigoDeTransaccion);
-
     myFormData.append('costo_preinscrip', '200');
-
     myFormData.append("fecha_preinscrip", "2022-05-05");
-    
 
-    myFormData.append('image', this.files, this.files.name);
-
-    console.log(myFormData);
-    const registroPreinscripcion = {num_transfer_preinscrip:this.formularioRegistroPreinscrip.value.codigoDeTransaccion,
-                                    costo_preinscrip: 200, //costoPreins
-                                    fecha_preinscrip: "2022-05-13", //fecha
-                                    //link_img_comprob: this.formularioRegistroPreinscrip.value.linkImgComprobante
-                                    link_img_comprob: myFormData
-                                  }
+    console.log(this.formularioRegistroPreinscrip.value.linkImgComprobante);
+    myFormData.append('link_img_comprob', this.fileImage, this.fileImage.name );
+    //myFormData.append('image', this.fileImage, this.fileImage.name );
                    
     const delegadoDatos = { cod_preinscrip: 10,
                             nombre_deleg: this.formularioRegistroPreinscrip.value.nombreDelegado, 
@@ -104,6 +95,7 @@ export class RegistroPComponent implements OnInit {
                         
     this.apiService.postImage('preinscripcion', myFormData).subscribe(res => {
       this.data = res;
+      console.log(this.data);
     });
     this.apiService.post('delegado',delegadoDatos).subscribe();
     this.getServicio();
@@ -121,10 +113,10 @@ export class RegistroPComponent implements OnInit {
     console.log(this.listaDelegados);
   }
 
-  subirImagen(event: Event){
-    const target = event.target as HTMLInputElement;
-    const fileList = target.files as FileList;
-    this.files = fileList.item(0);
-    console.log(this.files);
+  subirImagen(event:any) {
+    if (event.target.files.length > 0) {
+      this.fileImage = event.target.files[0];
+      this.formularioRegistroPreinscrip.value.linkImgComprobante = this.fileImage;
+    }
   }
 }

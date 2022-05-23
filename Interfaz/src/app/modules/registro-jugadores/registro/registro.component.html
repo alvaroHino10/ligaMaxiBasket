@@ -23,7 +23,8 @@
     <div class="mb-3">
       <label class="form-label">Primer apellido:</label>
       <input type="text" class="form-control" formControlName="primerApellido" minlength="1" maxlength="80" required>
-      <div *ngIf="(controls.primerApellido.touched && controls.primerApellido.invalid) || submitted" class="text-danger">
+      <div *ngIf="(controls.primerApellido.touched && controls.primerApellido.invalid) || submitted"
+        class="text-danger">
         <div *ngIf="controls.primerApellido.errors?.required">Por favor, ingresa tu primer apellido</div>
         <div *ngIf="controls.primerApellido.errors?.minLength">"El apellido debe tener al menos 5 caracteres"</div>
         <div *ngIf="controls.primerApellido.errors?.maxLength">El apellido es demasiado largo</div>
@@ -36,7 +37,8 @@
     <div class="mb-3">
       <label class="form-label">Segundo apellido:</label>
       <input type="text" class="form-control" formControlName="segundoApellido" minlength="1" maxlength="80" required>
-      <div *ngIf="(controls.segundoApellido.touched && controls.segundoApellido.invalid) || submitted" class="text-danger">
+      <div *ngIf="(controls.segundoApellido.touched && controls.segundoApellido.invalid) || submitted"
+        class="text-danger">
         <div *ngIf="controls.segundoApellido.errors?.required">Por favor, ingresa tu segundo apellido</div>
         <div *ngIf="controls.segundoApellido.errors?.minLength">"El apellido debe tener al menos 5 caracteres"</div>
         <div *ngIf="controls.segundoApellido.errors?.maxLength">El apellido es demasiado largo</div>
@@ -48,7 +50,8 @@
     <div class="mb-3">
       <label for="" class="form-label">Correo electronico:</label>
       <input type="email" class="form-control" formControlName="correoElectronico" required>
-      <div *ngIf="(controls.correoElectronico.touched && controls.correoElectronico.invalid) || submitted" class="text-danger">
+      <div *ngIf="(controls.correoElectronico.touched && controls.correoElectronico.invalid) || submitted"
+        class="text-danger">
         <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa tu correo electronico</div>
         <div *ngIf="controls.correoElectronico.errors?.email">Por favor, ingresa un correo valido</div>
       </div>
@@ -58,11 +61,11 @@
     <div class="mb-3">
       <label for="" class="form-label">Numero de identidad:</label>
       <input type="text" class="form-control" formControlName="numeroIdentidad" required>
-      <div *ngIf="(controls.numeroIdentidad.touched && controls.numeroIdentidad.invalid) || submitted" class="text-danger">
+      <div *ngIf="(controls.numeroIdentidad.touched && controls.numeroIdentidad.invalid) || submitted"
+        class="text-danger">
         <div *ngIf="controls.numeroIdentidad.errors?.required">
           Por favor, ingresa tu numero de identidad
         </div>
-        
       </div>
     </div>
     <!--INPUT NACION/PAIS-->
@@ -328,8 +331,9 @@
     <div class="mb-3">
       <label for="birthday">Fecha de Nacimiento:</label>
       <input type="date" id="birthday" name="birthday" formControlName="fechaNacimiento" class="form-control">
-      <div *ngIf="(controls.fechaNacimiento.touched && controls.fechaNacimiento.invalid) || submitted" class="text-danger">
-        <div *ngIf = "controls.fechaNacimiento.errors?.required">
+      <div *ngIf="(controls.fechaNacimiento.touched && controls.fechaNacimiento.invalid) || submitted"
+        class="text-danger">
+        <div *ngIf="controls.fechaNacimiento.errors?.required">
           Por favor, ingresa tu fecha de nacimiento
         </div>
       </div>
@@ -338,7 +342,7 @@
     <!--INPUT TELEFONO-->
     <div class="mb-3">
       <label for="" class="form-label">Telefono:</label>
-      <input type="text" class="form-control" formControlName="telefono" required>
+      <input type="number" class="form-control" formControlName="telefono" required>
       <div *ngIf="(controls.telefono.touched && controls.telefono.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.telefono.errors?.required">
           Por favor, ingresa tu telefono
@@ -359,7 +363,7 @@
         </div>
       </div>
     </div>
-    
+
     <!--INPUT DOMICILIO-->
     <div class="mb-3">
       <label class="form-label">Domicilio:</label>
@@ -387,10 +391,9 @@
     <div class="file-upload form-group">
       <label for="linkImgJug">Seleccionar imagen del jugador:</label>
       <div class="custom-file">
-        <input id="linkImgJug" name="linkImgJug" type="file" class=" form-control"
-          (change)="subirImagen($event)" formControlName="linkImgJug">
-        <div *ngIf="(controls.linkImgJug.touched && controls.linkImgJug.invalid) || submitted"
-          class="text-danger">
+        <input id="linkImgJug" name="linkImgJug" type="file" class=" form-control" (change)="subirImagen($event)"
+          formControlName="linkImgJug">
+        <div *ngIf="(controls.linkImgJug.touched && controls.linkImgJug.invalid) || submitted" class="text-danger">
           <div *ngIf="controls.linkImgJug.errors?.required">
             Por favor, ingresa la imagen del jugador
           </div>
