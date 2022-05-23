@@ -354,8 +354,8 @@
     <div class="mb-3">
       <label class="form-label">Sexo:</label>
       <select class="form-control" formControlName="sexo" required>
-        <option value="masculino">Masculino</option>
-        <option value="femenino">Femenino</option>
+        <option value="M">Masculino</option>
+        <option value="F">Femenino</option>
       </select>
       <div *ngIf="(controls.sexo.touched && controls.sexo.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.sexo.errors?.required">
