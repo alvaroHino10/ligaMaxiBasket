@@ -29,14 +29,11 @@ export class RegistroEComponent implements OnInit {
                      Validators.required),
 
       paisEquipo: new FormControl ('', 
-                    [Validators.required, 
-                      Validators.minLength(1),
-                      Validators.maxLength(80),
-                      Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
+                    Validators.required),
 
       colorEquipo: new FormControl ('', 
                     [Validators.required, 
-                      Validators.minLength(1),
+                      Validators.minLength(3),
                       Validators.maxLength(80),
                       Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
     });
@@ -54,7 +51,6 @@ export class RegistroEComponent implements OnInit {
     this.getServicio();  
     return;
     }else{
-      console.log(this.formularioRegistroEquipo.value);
       this.postServicio();
       return;
     }  
@@ -80,7 +76,6 @@ export class RegistroEComponent implements OnInit {
     })
     console.log(this.lista);
   }
-
 
   get controls() { return this.formularioRegistroEquipo.controls; }
 

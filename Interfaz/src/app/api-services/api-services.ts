@@ -17,7 +17,8 @@ export class ApiService {
     return this.http.post<any>(`${environment.url}${dir}`, model);
   }
 
-  postImage(dir: string, model: object){
+  postAndImage(dir: string, model: object){
+    console.log(environment.url);
     const headers = new HttpHeaders();
     return this.http.post<any>(`${environment.url}${dir}`, model, {
       headers: headers
@@ -36,8 +37,8 @@ export class ApiService {
     return this.http.get<any>(`${this.url}${dir}`);
   }
 
-  getJugadores(){
-    return this.http.get(`${this.url}jugador`);
+  getEquipos(){
+    return this.http.get(`${this.url}equipo`);
   }
 
   // This method is in charge for saving an object in the database

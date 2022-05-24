@@ -14,7 +14,8 @@ export class CredecialCardComponent implements OnInit {
   listaEquipos: any = [];
   listaJugadores: any=[];
   codEquipo = -1;
-  //equipoJugador: any;
+  imageJugador: any;
+
 
   constructor(private apiService: ApiService) {
     this.urlActual = window.location.href;
@@ -41,12 +42,13 @@ export class CredecialCardComponent implements OnInit {
   get equipoJugador(){ return this.credencial.value.equipos;}
 
   getJsonContent() {
-    this.apiService.getAll('equipo').subscribe((data: any = []) => {
-      this.listaEquipos = data;
+    this.apiService.getEquipos().subscribe((dataequipo: any = []) => {
+      this.listaEquipos = dataequipo;
     });
     //Dado el codEquipo generar los jugadores de ese equipo
-    this.apiService.getJSON('jugador', 2).subscribe((data: any = []) => {
+    this.apiService.getJSON('jugador', 5).subscribe((data: any = []) => {
       this.jugador = data['jugador'];
+      this.imageJugador = this.jugador.link_img_jug;
       console.log(this.jugador)
     });    
   }

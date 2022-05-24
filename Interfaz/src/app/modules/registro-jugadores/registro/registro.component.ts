@@ -21,7 +21,7 @@ export class RegistroJComponent implements OnInit {
       nombre: new FormControl('',
         [Validators.required,
         Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$'),
-        Validators.minLength(1),
+        Validators.minLength(2),
         Validators.maxLength(80)]),
       primerApellido: new FormControl('',
         [Validators.required,
@@ -38,7 +38,9 @@ export class RegistroJComponent implements OnInit {
         Validators.email]),
       numeroIdentidad: new FormControl('',
         [Validators.required,
-        Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{1})[-. )]*(\\d{2})[-. ]*(\\d{2})(?: *x(\\d+))?\\s*$')]),
+        Validators.pattern("^[0-9]*$"),//'^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{4})[-. ]*(\\d{3})(?: *x(\\d+))?\\s*$'),
+        Validators.minLength(5),
+        Validators.maxLength(15)]),
       nacionJugador: new FormControl('',
         [Validators.required,
         Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
@@ -46,9 +48,13 @@ export class RegistroJComponent implements OnInit {
         Validators.required),
       fechaNacimiento: new FormControl('',
         Validators.required),
+
       telefono: new FormControl('',
         [Validators.required,
-        Validators.pattern('^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{1})[-. )]*(\\d{2})[-. ]*(\\d{2})(?: *x(\\d+))?\\s*$')]),
+        Validators.pattern("^[0-9]*$"),//'^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{4})[-. ]*(\\d{3})(?: *x(\\d+))?\\s*$'),
+        Validators.minLength(5),
+        Validators.maxLength(15)]),
+
       sexo: new FormControl('',
         Validators.required),
       domicilio: new FormControl('',
@@ -62,13 +68,13 @@ export class RegistroJComponent implements OnInit {
         Validators.max(80)]),
       linkImgJug: new FormControl('',
         Validators.required)
-
     });
   }
   ngOnInit(): void {
   }
 
   get controls() { return this.formularioRegistroJugador.controls; }
+
 
   registrarJugador() {
     this.submitted = true;
@@ -85,7 +91,7 @@ export class RegistroJComponent implements OnInit {
 
   postServicio() {
     var registroJugador = new FormData();
-    registroJugador.append('cod_equi',      "2");
+    registroJugador.append('cod_equi', "2");
     registroJugador.append('nombre_jug',    this.formularioRegistroJugador.value.nombre);
     registroJugador.append('prim_ap_jug',   this.formularioRegistroJugador.value.primerApellido);
     registroJugador.append('seg_ap_jug',    this.formularioRegistroJugador.value.segundoApellido);
@@ -99,21 +105,7 @@ export class RegistroJComponent implements OnInit {
     registroJugador.append('dom_jug',       this.formularioRegistroJugador.value.domicilio);
     registroJugador.append('num_equi_jug',  this.formularioRegistroJugador.value.numeroJugador);
     registroJugador.append('link_img_jug',  this.fileImage);
-    /*const registroJugador = {nombre_jug: this.formularioRegistroJugador.value.nombre,
-                             prim_ap_jug: this.formularioRegistroJugador.value.primerApellido,
-                             seg_ap_jug:this.formularioRegistroJugador.value.segundoApellido,
-                             correo_jug:  this.formularioRegistroJugador.value.correoElectronico,
-                             num_iden_jug: this.formularioRegistroJugador.value.numeroIdentidad, 
-                             nacion_jug: this.formularioRegistroJugador.value.paisJugador,
-                             est_civil_jug:  this.formularioRegistroJugador.value.estadoCivil,
-                             fecha_nac_jug:  this.formularioRegistroJugador.value.fechaNacimiento,
-                             telf_jug: this.formularioRegistroJugador.value.telefono, 
-                             sexo_jug: this.formularioRegistroJugador.value.sexo,
-                             dom_jug:  this.formularioRegistroJugador.value.domicilio,
-                             num_equi_jug: this.formularioRegistroJugador.value.numeroJugador,
-                             link_img_jug: myFormData,
-                            }*/
-    this.apiService.postImage('jugador', registroJugador).subscribe(res => {
+    this.apiService.postAndImage('jugador', registroJugador).subscribe(res => {
       this.data = res;
       console.log(this.data);
     });
@@ -124,7 +116,7 @@ export class RegistroJComponent implements OnInit {
   getServicio() {
     const registro = this.formularioRegistroJugador.value;
 
-    this.apiService.getJugadores().subscribe((data: any) => {
+    this.apiService.getAll('jugadores').subscribe((data: any) => {
       this.lista = data;
     })
     console.log(this.lista);
