@@ -42,14 +42,15 @@ export class CredecialCardComponent implements OnInit {
   get equipoJugador(){ return this.credencial.value.equipos;}
 
   getJsonContent() {
-    this.apiService.getEquipos().subscribe((dataequipo: any = []) => {
+    this.apiService.getAll('equipo').subscribe((dataequipo: any = []) => {
       this.listaEquipos = dataequipo;
     });
     //Dado el codEquipo generar los jugadores de ese equipo
-    this.apiService.getJSON('jugador', 5).subscribe((data: any = []) => {
+    this.apiService.getJSON('jugador', 6).subscribe((data: any = []) => {
       this.jugador = data['jugador'];
       this.imageJugador = this.jugador.link_img_jug;
       console.log(this.jugador)
+      console.log(this.imageJugador);
     });    
   }
 }

@@ -56,9 +56,9 @@
 				</div>
 			</div>
 
-			<div *ngIf="(!controls.equipos.errors?.required)" class="col-md-10">
+			<div class="col-md-10">
 				<!--Nombre-->
-				<div class="form-group p-2 text-black">
+				<div *ngIf="(!controls.equipos.errors?.required)" class="form-group p-2 text-black">
 					<label for="nombre" class="formulario">Nombre completo:</label>
 					<label>{{jugador.nombre_jug}}</label>
 				</div>
@@ -91,15 +91,13 @@
 					</div>
 				</div>
 			</div>
-			<div *ngIf="(!controls.equipos.errors?.required) " class="col-md-2">
+			<div *ngIf="(!controls.equipos.errors?.required)" class="col-md-2">
 				<div>
-					<img src="{{imageJugador}}">
+					<img src="{{imageJugador}}" class="imgJugador"/>
 				</div>
-
 				<div class="QR" id="QR">
 					<qr-code [value]="urlActual"></qr-code>
 				</div>
-
 			</div>
 		</div>
 	</div>
