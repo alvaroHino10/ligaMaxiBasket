@@ -13,6 +13,7 @@ body {
 	font-weight: 700;
 	padding: 10px;
 	gap: 20px;
+	font-size: 1.1rem;
 }
 
 .form-control {
@@ -40,11 +41,6 @@ body {
 	object-fit: cover;
 	display: inline-block;
 	border-radius: 2rem;
-}
-
-.img imgJugador{
-	width: 50%;
-	height: 50%;
 }
 
 .titulo {

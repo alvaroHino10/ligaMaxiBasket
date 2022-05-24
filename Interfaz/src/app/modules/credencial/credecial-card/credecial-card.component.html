@@ -56,9 +56,9 @@
 				</div>
 			</div>
 
-			<div class="col-md-10">
+			<div *ngIf="(!controls.equipos.errors?.required)"class="col-md-8">
 				<!--Nombre-->
-				<div *ngIf="(!controls.equipos.errors?.required)" class="form-group p-2 text-black">
+				<div class="form-group p-2 text-black row ">
 					<label for="nombre" class="formulario">Nombre completo:</label>
 					<label>{{jugador.nombre_jug}}</label>
 				</div>
@@ -66,34 +66,34 @@
 				<div class="row">
 					<div class="col-md-6">
 						<!--Fecha de nacimiento-->
-						<div class="form-group p-2 text-black">
+						<div class="form-group p-2 text-black row">
 							<label for="Fecha-de-Nacimiento" class="formulario">Fecha de Nacimiento:</label>
 							<label> {{jugador.fecha_nac_jug}}</label>
 						</div>
 						<!--Equipo-->
-						<div class="form-group p-2 text-black">
+						<div class="form-group p-2 text-black row">
 							<label for="Equipo" class="formulario">Equipo:</label>
 							<label *ngIf="!controls.equipos.invalid">{{ equipoJugador.nombre_equi }}</label>
 						</div>
 					</div>
 					<div class="col-md-6">
 						<!--Numero de identificacion-->
-						<div class="form-group p-2 text-black">
+						<div class="form-group p-2 text-black row">
 							<label for="Numero-de-Identificacion" class="formulario">Numero de
 								Identificacion:</label>
 							<label>{{jugador.num_iden_jug}}</label>
 						</div>
 						<!--Telefono-->
-						<div class="form-group p-2 text-black">
+						<div class="form-group p-2 text-black row">
 							<label for="Telefono:" class="formulario">Telefono:</label>
 							<label>{{jugador.telf_jug}}</label>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div *ngIf="(!controls.equipos.errors?.required)" class="col-md-2">
-				<div>
-					<img src="{{imageJugador}}" class="imgJugador"/>
+			<div *ngIf="(!controls.equipos.errors?.required)" class="col-md-4 text-center">
+				<div class="p-3">
+					<img src="{{imageJugador}}" class="img-fluid" alt="Imagen jugador"/>
 				</div>
 				<div class="QR" id="QR">
 					<qr-code [value]="urlActual"></qr-code>
