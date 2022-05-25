@@ -5,6 +5,7 @@ import { RegistroJugadoresComponent } from "./modules/registro-jugadores/registr
 import { RegistroEquipoComponent } from "./modules/registro-equipo/registro-equipo.component";
 import { HomeComponent } from "./modules/home/home.component";
 import { CredencialComponent } from "./modules/credencial/credencial.component";
+import { RegistroControlPartidoComponent } from "./modules/registro-control-partido/registro-control-partido.component";
 
 
 const routes: Routes = [
@@ -31,6 +32,10 @@ const routes: Routes = [
     {
       path: 'credencial',
       component: CredencialComponent,
+    },
+    {
+      path: 'registro-control-equipo',
+      component: RegistroControlPartidoComponent,
     },
     {
       path:'',

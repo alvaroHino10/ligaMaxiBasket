@@ -30,12 +30,16 @@ import { FooterCreComponent } from './modules/credencial/footer-cre/footer-cre.c
 import { HeaderCreComponent } from './modules/credencial/header-cre/header-cre.component';
 import { NavCreComponent } from './modules/credencial/nav-cre/nav-cre.component';
 import { CredecialCardComponent } from './modules/credencial/credecial-card/credecial-card.component';
-import { FormDirective } from './directivas/form.directive';
 
 import { QRCodeModule } from 'angular2-qrcode';
 import { FooterHomeComponent } from './modules/home/footer-home/footer-home.component';
 import { HeaderHomeComponent } from './modules/home/header-home/header-home.component';
 import { BodyHomeComponent } from './modules/home/body-home/body-home.component';
+import { RegistroControlPartidoComponent } from './modules/registro-control-partido/registro-control-partido.component';
+import { FooterCpComponent } from './modules/registro-control-partido/footer-cp/footer-cp.component';
+import { HeaderCpComponent } from './modules/registro-control-partido/header-cp/header-cp.component';
+import { NavegadorCpComponent } from './modules/registro-control-partido/navegador-cp/navegador-cp.component';
+import { RegistroCpComponent } from './modules/registro-control-partido/registro-cp/registro-cp.component';
 
 
 @NgModule({
@@ -63,10 +67,14 @@ import { BodyHomeComponent } from './modules/home/body-home/body-home.component'
     HeaderCreComponent,
     NavCreComponent,
     CredecialCardComponent,
-    FormDirective,
     FooterHomeComponent,
     HeaderHomeComponent,
-    BodyHomeComponent
+    BodyHomeComponent,
+    RegistroControlPartidoComponent,
+    FooterCpComponent,
+    HeaderCpComponent,
+    NavegadorCpComponent,
+    RegistroCpComponent
   ],
   imports: [
     BrowserModule,
