@@ -9,8 +9,8 @@ import { ApiService } from 'src/app/api-services/api-services';
 })
 export class RegistroCpComponent implements OnInit {
   public formularioRegistroControlP: FormGroup;
-  public submitted = false;
-  categoria = [];
+  submitted = false;
+  roles = ['Arbitro', 'Fiscal', 'Mesa'];
   lista: any = [];
   fileImage: any;
   data: any;
@@ -69,27 +69,23 @@ export class RegistroCpComponent implements OnInit {
     } else {
       this.postServicio();
     }
-    alert('Jugador registrado correctamente');
+    alert(this.formularioRegistroControlP.value.rol.concat('registrado correctamente'));
   }
 
 
   postServicio() {
-    var registroJugador = new FormData();
-    registroJugador.append('cod_equi', "2");
-    registroJugador.append('nombre_jug',    this.formularioRegistroControlP.value.nombre);
-    registroJugador.append('prim_ap_jug',   this.formularioRegistroControlP.value.primerApellido);
-    registroJugador.append('seg_ap_jug',    this.formularioRegistroControlP.value.segundoApellido);
-    registroJugador.append('correo_jug',    this.formularioRegistroControlP.value.correoElectronico);
-    registroJugador.append('num_iden_jug',  this.formularioRegistroControlP.value.numeroIdentidad);
-    registroJugador.append('nacion_jug',    this.formularioRegistroControlP.value.paisJugador);
-    registroJugador.append('est_civil_jug', this.formularioRegistroControlP.value.estadoCivil);
-    registroJugador.append('fecha_nac_jug', this.formularioRegistroControlP.value.fechaNacimiento);
-    registroJugador.append('telf_jug',      this.formularioRegistroControlP.value.telefono);
-    registroJugador.append('sexo_jug',      this.formularioRegistroControlP.value.sexo);
-    registroJugador.append('dom_jug',       this.formularioRegistroControlP.value.domicilio);
-    registroJugador.append('num_equi_jug',  this.formularioRegistroControlP.value.numeroJugador);
-    registroJugador.append('link_img_jug',  this.fileImage);
-    this.apiService.postAndImage('jugador', registroJugador).subscribe(res => {
+    var registroCP = new FormData();
+    registroCP.append('cod_equi', "2");
+    registroCP.append('nombre_jug',    this.formularioRegistroControlP.value.nombre);
+    registroCP.append('prim_ap_jug',   this.formularioRegistroControlP.value.primerApellido);
+    registroCP.append('seg_ap_jug',    this.formularioRegistroControlP.value.segundoApellido);
+    registroCP.append('correo_jug',    this.formularioRegistroControlP.value.correoElectronico);
+    registroCP.append('num_iden_jug',  this.formularioRegistroControlP.value.numeroIdentidad);
+    registroCP.append('fecha_nac_jug', this.formularioRegistroControlP.value.fechaNacimiento);
+    registroCP.append('telf_jug',      this.formularioRegistroControlP.value.telefono);
+    registroCP.append('rol',      this.formularioRegistroControlP.value.rol);
+    registroCP.append('link_img_jug',  this.fileImage);
+    this.apiService.postAndImage('ControlPartido', registroCP).subscribe(res => {
       this.data = res;
       console.log(this.data);
     });
@@ -100,7 +96,7 @@ export class RegistroCpComponent implements OnInit {
   getServicio() {
     const registro = this.formularioRegistroControlP.value;
 
-    this.apiService.getAll('jugadores').subscribe((data: any) => {
+    this.apiService.getAll('controlpartido').subscribe((data: any) => {
       this.lista = data;
     })
     console.log(this.lista);
