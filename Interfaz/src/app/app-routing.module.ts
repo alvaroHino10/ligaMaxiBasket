@@ -34,7 +34,7 @@ const routes: Routes = [
       component: CredencialComponent,
     },
     {
-      path: 'registro-control-equipo',
+      path: 'registro-control-partido',
       component: RegistroControlPartidoComponent,
     },
     {
