@@ -56,7 +56,7 @@ export class RegistroEComponent implements OnInit {
     }  
   }
   postServicio() {
-    const registroEquipo = {cod_torn: 1,
+  const registroEquipo = {cod_torn: 1,
                             cod_preinscrip: 1,
                             nombre_equi: this.formularioRegistroEquipo.value.nombreDelEquipo,
                             categ_equi: this.formularioRegistroEquipo.value.categoria,

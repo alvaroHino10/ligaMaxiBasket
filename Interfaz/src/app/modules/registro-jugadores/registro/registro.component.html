@@ -68,10 +68,26 @@
         <div *ngIf="controls.numeroIdentidad.errors?.maxlength">El número es demasiado largo</div>
       </div>
     </div>
+
+    <!--INPUT EQUIPO-->
+    <div class="mb-3">
+      <!--Seleccionar Equipo-->
+      <label for="" class="form-label">Equipo del jugador:</label>
+      <select class="form-control" name="equipo" (change)="listaEquipos" formControlName="equipo" required>
+        <option value="" disabled>Seleccionar equipo</option>
+        <option *ngFor="let equipos of listaEquipos" [ngValue]="equipos"> {{ equipos.nombre_equi }}
+        </option>
+      </select>
+      <div *ngIf="(controls.equipo.touched && controls.equipo.invalid) || submitted" class="text-danger">
+        <div *ngIf="controls.equipo.errors?.required">Por favor, ingresa el equipo</div>
+      </div>
+    </div>
+
     <!--INPUT NACION/PAIS-->
     <div class="mb-3">
       <label class="form-label">Pais jugador:</label>
       <select class="form-control" name="nacionJugador" formControlName="nacionJugador" required>
+        <option value="" disabled>Seleccione un pais</option>
         <option value="AF">Afganistán</option>
         <option value="AL">Albania</option>
         <option value="DE">Alemania</option>
@@ -379,8 +395,9 @@
       <input type="number" class="form-control" formControlName="numeroJugador" min="1" max="80" required>
       <div *ngIf="(controls.numeroJugador.touched && controls.numeroJugador.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.numeroJugador.errors?.required">Por favor, ingresa el numero del jugador</div>
-        <div *ngIf="controls.numeroJugador.errors?.min">El número del jugador no es válido</div>
-        <div *ngIf="controls.numeroJugador.errors?.max">El número del jugador no es válido</div>
+        <div *ngIf="controls.numeroJugador.errors?.min || controls.numeroJugador.errors?.max">
+          El número del jugador no es válido
+        </div>
       </div>
     </div>
 
