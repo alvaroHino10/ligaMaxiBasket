@@ -15,6 +15,7 @@ export class RegistroJComponent implements OnInit {
   listaJugadores: any = [];
   fileImage: any;
   dataPost: any;
+  mensajeError: any;
 
   constructor(public formulario: FormBuilder,
     private apiService: ApiService) {
@@ -80,6 +81,7 @@ export class RegistroJComponent implements OnInit {
   getEquipos(){
      this.apiService.getAll('equipo').subscribe((dataequipo: any = []) => {
           this.listaEquipos = dataequipo;
+          console.log(this.listaEquipos);
      });
   }
 
@@ -88,13 +90,12 @@ export class RegistroJComponent implements OnInit {
     if (this.formularioRegistroJugador.invalid) {
       alert('Por favor ingrese datos validos, correspondientes a todos los campos');
       console.log(this.formularioRegistroJugador.controls.invalid);
-      this.validarCategoria();
       return;
     } else {
-      
+      this.validarCategoria();
       this.postServicio();
     }
-    alert('Jugador registrado correctamente');
+    
   }
 
   validarCategoria() {
@@ -153,11 +154,20 @@ export class RegistroJComponent implements OnInit {
     registroJugador.append('dom_jug', this.formularioRegistroJugador.value.domicilio);
     registroJugador.append('num_equi_jug', this.formularioRegistroJugador.value.numeroJugador);
     registroJugador.append('link_img_jug', this.fileImage);
+    
+    
+    
     this.apiService.postAndImage('jugador', registroJugador).subscribe(res => {
       this.dataPost = res;
       console.log(this.dataPost);
+    },(error) => {
+      this.mensajeError = error;
+      console.log(this.mensajeError.error['mensaje']);
     });
+
+
     this.getServicio();
+    alert('Jugador registrado correctamente');
   }
 
   getServicio() {

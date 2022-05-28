@@ -14,6 +14,7 @@ export class RegistroCpComponent implements OnInit {
   lista: any = [];
   fileImage: any;
   data: any;
+  mensajeError: any;
 
   constructor(public formulario: FormBuilder
     , private apiService: ApiService) {
@@ -88,7 +89,11 @@ export class RegistroCpComponent implements OnInit {
     this.apiService.postAndImage('ControlPartido', registroCP).subscribe(res => {
       this.data = res;
       console.log(this.data);
-    });
+    });/*,(error) => {
+      this.mensajeError = error;
+      console.log(this.mensajeError.error['mensaje']);
+    });*/
+    
     this.getServicio();
   }
 

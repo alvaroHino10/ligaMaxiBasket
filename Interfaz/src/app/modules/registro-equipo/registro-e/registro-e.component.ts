@@ -13,6 +13,8 @@ export class RegistroEComponent implements OnInit {
   public submitted = false;
   categoria = [];
   lista : any = [];
+  mensajeError: any;
+  dataPost: any;
 
   constructor(public formulario: FormBuilder,
     private apiService:ApiService) {
@@ -64,7 +66,13 @@ export class RegistroEComponent implements OnInit {
                             discip_equi: "Basket", 
                             color_equi: this.formularioRegistroEquipo.value.colorEquipo
                           }                          
-  this.apiService.post('equipo',registroEquipo).subscribe();
+  this.apiService.post('equipo',registroEquipo).subscribe((data:any) => {
+    this.dataPost = data;
+      console.log(this.dataPost);
+    },(error) => {
+      this.mensajeError = error;
+      console.log(this.mensajeError.error['mensaje']);
+    });
   alert('Equipo registrado correctamente');
   }
 

@@ -16,6 +16,8 @@ export class RegistroPComponent implements OnInit {
   public listaCategoria: any = ["+30", "+40", "+50", "+60"];
   listaPreinscripcion: any = [];
   listaDelegados: any = [];
+  mensajeError: any;
+  dataPost: any;
 
   constructor(public formulario: FormBuilder, private apiService: ApiService) {
     this.formularioRegistroPreinscrip = new FormGroup({
@@ -96,18 +98,30 @@ export class RegistroPComponent implements OnInit {
     this.apiService.postAndImage('preinscripcion', myFormData).subscribe(res => {
       this.data = res;
       console.log(this.data);
+    },(error) => {
+      this.mensajeError = error;
+      console.log(this.mensajeError.error['mensaje']);
     });
-    this.apiService.post('delegado', delegadoDatos).subscribe();
+
+
+    this.apiService.post('delegado', delegadoDatos).subscribe((data:any) => {
+    this.dataPost = data;
+      console.log(this.dataPost);
+    },(error) => {
+      this.mensajeError = error;
+      console.log(this.mensajeError.error['mensaje']);
+    });
+    
     this.getServicio();
   }
 
   getServicio() {
-    this.apiService.getPreinscripcion().subscribe((data: any) => {
+    this.apiService.getAll('preinscripcion').subscribe((data: any) => {
       this.listaPreinscripcion = data;
     })
     console.log(this.listaPreinscripcion);
 
-    this.apiService.getDelegados().subscribe((data: any) => {
+    this.apiService.getAll('delegado').subscribe((data: any) => {
       this.listaDelegados = data;
     })
     console.log(this.listaDelegados);
