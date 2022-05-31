@@ -1,3 +1,4 @@
+import { FixtureComponent } from './modules/fixture/fixture.component';
 import { NgModule } from "@angular/core";
 import { Router, RouterModule, Routes } from "@angular/router";
 import { PreinscripcionComponent } from "./modules/preinscripcion/preinscripcion.component";
@@ -40,6 +41,10 @@ const routes: Routes = [
     {
       path:'',
       component:HomeComponent,
+    },
+    {
+      path:'fixture',
+      component:FixtureComponent,
     },
 ];
 

@@ -27,6 +27,8 @@ export class CredecialCardComponent implements OnInit {
       jugadores: new FormControl('',
         Validators.required), 
     });
+    
+    
   }
 
   ngOnInit(): void {
@@ -54,4 +56,8 @@ export class CredecialCardComponent implements OnInit {
     });    
   }
 }
+
+
+
+
 
