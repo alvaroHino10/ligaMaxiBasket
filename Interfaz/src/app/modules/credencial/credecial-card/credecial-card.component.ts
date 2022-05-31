@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/api-services/api-services';
-
+import pdfMake from  'pdfmake/build/pdfmake';
+import pdfFonts from 'pdfmake/build/vfs_fonts';
+pdfMake.vfs = pdfFonts.pdfMake.vfs;
 @Component({
   selector: 'app-credecial-card',
   templateUrl: './credecial-card.component.html',
@@ -55,9 +57,20 @@ export class CredecialCardComponent implements OnInit {
       console.log(this.imageJugador);
     });    
   }
+  createPdf(){
+
+    const pdfDefinition: any = {
+      content: [
+        {
+          text: 'Hola mundo'
+        }
+      ]
+    }
+
+    const pdf = pdfMake.createPdf(pdfDefinition);
+    pdf.download();
+
+  }
+  
+  
 }
-
-
-
-
-
