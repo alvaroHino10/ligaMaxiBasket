@@ -76,8 +76,6 @@ export class RegistroJComponent implements OnInit {
       this.getEquipos();
   }
 
-  get controls() { return this.formularioRegistroJugador.controls; }
-  
   getEquipos(){
      this.apiService.getAll('equipo').subscribe((dataequipo: any = []) => {
           this.listaEquipos = dataequipo;
@@ -95,7 +93,6 @@ export class RegistroJComponent implements OnInit {
       this.validarCategoria();
       this.postServicio();
     }
-    
   }
 
   validarCategoria() {
@@ -108,6 +105,65 @@ export class RegistroJComponent implements OnInit {
     return false;
   }
 
+  subirImagen(event: any) {
+     if (event.target.files.length > 0) {
+        this.fileImage = event.target.files[0];
+        this.formularioRegistroJugador.value.linkImgComprobante = this.fileImage;
+     }
+  }
+
+  postServicio() {
+    var registroJugador = this.setRegistro();
+    var mensajeResponse;
+
+    this.apiService.postAndImage('jugador', registroJugador).subscribe(res => {
+      this.dataPost = res;
+      console.log(this.dataPost);
+      mensajeResponse = this.dataPost['mensaje'];
+      alert(mensajeResponse);
+
+    },(error) => {
+      
+      this.mensajeError = error;
+      console.log(this.mensajeError.error['mensaje']);
+      mensajeResponse = this.mensajeError.error['mensaje'];
+      alert(mensajeResponse);
+    });
+    this.getServicio();
+  }
+
+  getServicio() {
+    const registro = this.formularioRegistroJugador.value;
+    this.apiService.getAll('jugadores').subscribe((data: any) => {
+      this.listaJugadores = data;
+    })
+    console.log(this.listaJugadores);
+  }
+
+  
+  setRegistro() {
+    var registroJugador = new FormData();
+    registroJugador.append('cod_equi', this.formularioRegistroJugador.value.equipo.cod_equi);
+    registroJugador.append('nombre_jug', this.formularioRegistroJugador.value.nombre);
+    registroJugador.append('prim_ap_jug', this.formularioRegistroJugador.value.primerApellido);
+    registroJugador.append('seg_ap_jug', this.formularioRegistroJugador.value.segundoApellido);
+    registroJugador.append('correo_jug', this.formularioRegistroJugador.value.correoElectronico);
+    registroJugador.append('num_iden_jug', this.formularioRegistroJugador.value.numeroIdentidad);
+    //registroJugador.append('equipo_jug', this.formularioRegistroJugador.value.equipo);
+    registroJugador.append('nacion_jug', this.formularioRegistroJugador.value.paisJugador);
+    registroJugador.append('est_civil_jug', this.formularioRegistroJugador.value.estadoCivil);
+    registroJugador.append('fecha_nac_jug', this.formularioRegistroJugador.value.fechaNacimiento);
+    registroJugador.append('telf_jug', this.formularioRegistroJugador.value.telefono);
+    registroJugador.append('sexo_jug', this.formularioRegistroJugador.value.sexo);
+    registroJugador.append('dom_jug', this.formularioRegistroJugador.value.domicilio);
+    registroJugador.append('num_equi_jug', this.formularioRegistroJugador.value.numeroJugador);
+    registroJugador.append('link_img_jug', this.fileImage);
+    console.log("codEqui:", this.formularioRegistroJugador.value.equipo.cod_equi);
+    return registroJugador;
+  }
+
+  get controls() { return this.formularioRegistroJugador.controls; }
+  
   get categoriaJugador(){
     const fechaNacJug  = new Date(this.formularioRegistroJugador.value.fechaNacimiento);
     const tiempo = Math.abs(Date.now() - fechaNacJug.getTime());
@@ -129,55 +185,5 @@ export class RegistroJComponent implements OnInit {
       return;
     }
   }
-
-  subirImagen(event: any) {
-     if (event.target.files.length > 0) {
-        this.fileImage = event.target.files[0];
-        this.formularioRegistroJugador.value.linkImgComprobante = this.fileImage;
-     }
-  }
-
-  postServicio() {
-    var registroJugador = new FormData();
-    registroJugador.append('cod_equi', "2"); //( 'cod_equi',this.formularioRegistroJugador.value.equipo.cod_equi)
-    registroJugador.append('nombre_jug', this.formularioRegistroJugador.value.nombre);
-    registroJugador.append('prim_ap_jug', this.formularioRegistroJugador.value.primerApellido);
-    registroJugador.append('seg_ap_jug', this.formularioRegistroJugador.value.segundoApellido);
-    registroJugador.append('correo_jug', this.formularioRegistroJugador.value.correoElectronico);
-    registroJugador.append('num_iden_jug', this.formularioRegistroJugador.value.numeroIdentidad);
-    //registroJugador.append('equipo_jug', this.formularioRegistroJugador.value.equipo);
-    registroJugador.append('nacion_jug', this.formularioRegistroJugador.value.paisJugador);
-    registroJugador.append('est_civil_jug', this.formularioRegistroJugador.value.estadoCivil);
-    registroJugador.append('fecha_nac_jug', this.formularioRegistroJugador.value.fechaNacimiento);
-    registroJugador.append('telf_jug', this.formularioRegistroJugador.value.telefono);
-    registroJugador.append('sexo_jug', this.formularioRegistroJugador.value.sexo);
-    registroJugador.append('dom_jug', this.formularioRegistroJugador.value.domicilio);
-    registroJugador.append('num_equi_jug', this.formularioRegistroJugador.value.numeroJugador);
-    registroJugador.append('link_img_jug', this.fileImage);
-    
-    
-    
-    this.apiService.postAndImage('jugador', registroJugador).subscribe(res => {
-      this.dataPost = res;
-      console.log(this.dataPost);
-    },(error) => {
-      this.mensajeError = error;
-      console.log(this.mensajeError.error['mensaje']);
-    });
-
-
-    this.getServicio();
-    alert('Jugador registrado correctamente');
-  }
-
-  getServicio() {
-    const registro = this.formularioRegistroJugador.value;
-
-    this.apiService.getAll('jugadores').subscribe((data: any) => {
-      this.listaJugadores = data;
-    })
-    console.log(this.listaJugadores);
-  }
-
-  
 }
+

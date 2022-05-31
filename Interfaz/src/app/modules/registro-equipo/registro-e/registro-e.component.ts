@@ -43,6 +43,7 @@ export class RegistroEComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getServicio();
   }
 
   registrarEquipo(){
@@ -57,34 +58,45 @@ export class RegistroEComponent implements OnInit {
       return;
     }  
   }
+
   postServicio() {
-  const registroEquipo = {cod_torn: 1,
-                            cod_preinscrip: 1,
-                            nombre_equi: this.formularioRegistroEquipo.value.nombreDelEquipo,
-                            categ_equi: this.formularioRegistroEquipo.value.categoria,
-                            pais_equi:this.formularioRegistroEquipo.value.paisEquipo,
-                            discip_equi: "Basket", 
-                            color_equi: this.formularioRegistroEquipo.value.colorEquipo
-                          }                          
+  var mensajeResponse;
+  var registroEquipo = this.setRegistro();  
+
   this.apiService.post('equipo',registroEquipo).subscribe((data:any) => {
-    this.dataPost = data;
+      this.dataPost = data;
       console.log(this.dataPost);
+      mensajeResponse = this.dataPost['mensaje'];
+      alert(mensajeResponse);
+
     },(error) => {
+      
       this.mensajeError = error;
       console.log(this.mensajeError.error['mensaje']);
+      mensajeResponse = this.mensajeError.error['mensaje'];
+      alert(mensajeResponse);
     });
-  alert('Equipo registrado correctamente');
   }
-
 
   getServicio(){
     const registro = this.formularioRegistroEquipo.value;
     this.apiService.getAll('equipo').subscribe((data:any) => {
       this.lista = data;
+      console.log(this.lista);
     })
-    console.log(this.lista);
   }
-
+  
+  setRegistro(){
+    const registroEquipo = {cod_torn:1,
+                            cod_preinscrip: 1,
+                            nombre_equi:      this.formularioRegistroEquipo.value.nombreDelEquipo,
+                            categ_equi:       this.formularioRegistroEquipo.value.categoria,
+                            pais_equi:        this.formularioRegistroEquipo.value.paisEquipo,
+                            discip_equi:      "Basket", 
+                            color_equi:       this.formularioRegistroEquipo.value.colorEquipo
+    }        
+    return registroEquipo;
+  }
   get controls() { return this.formularioRegistroEquipo.controls; }
 
 }

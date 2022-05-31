@@ -18,11 +18,17 @@ export class ApiService {
   }
 
   postAndImage(dir: string, model: object){
-    console.log(environment.url);
     const headers = new HttpHeaders();
     return this.http.post<any>(`${environment.url}${dir}`, model, {
       headers: headers
     }).pipe(catchError(this.handleError));
+  }
+
+  postAndImageNE(dir: string, model: object){
+    const headers = new HttpHeaders();
+    return this.http.post<any>(`${environment.url}${dir}`, model, {
+      headers: headers
+    });
   }
 
   getAll(dir: string){
