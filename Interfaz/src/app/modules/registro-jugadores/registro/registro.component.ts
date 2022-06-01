@@ -182,7 +182,7 @@ export class RegistroJComponent implements OnInit {
       return catJug;
     }else{
       alert('Fecha de nacimiento no valida');
-      return;
+      return -1;
     }
   }
 }
