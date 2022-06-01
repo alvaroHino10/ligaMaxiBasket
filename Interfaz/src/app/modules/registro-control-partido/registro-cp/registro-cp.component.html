@@ -87,9 +87,8 @@
     <div class="mb-3">
       <label class="form-label">Rol:</label>
       <select class="form-control" formControlName="rol" required>
-        <option value="arbitro">Arbitro</option>
-        <option value="fiscal">Fiscal</option>
-        <option value="mesa">Mesa</option>
+        <option value="" disabled>Seleccionar rol</option>
+        <option *ngFor="let rol of roles" [value]="rol">{{ rol }}</option>
       </select>
       <div *ngIf="(controls.rol.touched && controls.rol.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.rol.errors?.required">Por favor, ingresa tu rol</div>

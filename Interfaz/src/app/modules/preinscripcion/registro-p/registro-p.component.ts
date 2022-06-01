@@ -11,11 +11,13 @@ export class RegistroPComponent implements OnInit {
   public formularioRegistroPreinscrip: FormGroup;
   public submitted = false;
   fileImage: any;
-  data: any;
   categoria = [];
   public listaCategoria: any = ["+30", "+40", "+50", "+60"];
-  listaPreinscripcion: any = [];
-  listaDelegados: any = [];
+  listaResponse: any = [];
+  mensajeError: any;
+  dataPost: any;
+  mensajeResponse: any;
+  response: any;
 
   constructor(public formulario: FormBuilder, private apiService: ApiService) {
     this.formularioRegistroPreinscrip = new FormGroup({
@@ -62,11 +64,8 @@ export class RegistroPComponent implements OnInit {
   }
 
   ngOnInit() {
-
   }
-  get controls() { return this.formularioRegistroPreinscrip.controls; }
-
-
+  
   guardarPreinscripcion(): void {
     this.submitted = true;
     if (this.formularioRegistroPreinscrip.invalid) {
@@ -76,41 +75,53 @@ export class RegistroPComponent implements OnInit {
     } else {
       this.postServicio();
     }
-    alert('Preinscripcion registrada correctamente');
   }
   postServicio() {
-    var myFormData = new FormData();
-
-    myFormData.append('num_transfer_preinscrip', this.formularioRegistroPreinscrip.value.codigoDeTransaccion);
-    myFormData.append('costo_preinscrip', '200');
-    myFormData.append("fecha_preinscrip", "2022-05-05");
-    myFormData.append('link_img_comprob', this.fileImage, this.fileImage.name);
-
-    const delegadoDatos = {cod_preinscrip: 10,
+    var cod = this.postPreinscripcion();
+    const delegadoDatos = {cod_preinscrip: cod,
                           nombre_deleg:   this.formularioRegistroPreinscrip.value.nombreDelegado,
                           ap_deleg:       this.formularioRegistroPreinscrip.value.apellidoDelegado,
                           correo_deleg:   this.formularioRegistroPreinscrip.value.correoElectronico,
                           telf_deleg:     this.formularioRegistroPreinscrip.value.telefono
     }
 
-    this.apiService.postAndImage('preinscripcion', myFormData).subscribe(res => {
-      this.data = res;
-      console.log(this.data);
+    this.apiService.post('delegado', delegadoDatos).subscribe((data:any) => {
+    this.dataPost = data;
+      console.log(this.dataPost);
     });
-    this.apiService.post('delegado', delegadoDatos).subscribe();
-    this.getServicio();
+    /*,(error) => {
+      this.mensajeError = error;
+      console.log(this.mensajeError);
+      console.log(this.mensajeError.error['mensaje']);
+    });*/
+  }
+  
+  postPreinscripcion() {
+    var cod = 0;
+    var formDataPreins = new FormData();
+    formDataPreins.append('num_transfer_preinscrip', this.formularioRegistroPreinscrip.value.codigoDeTransaccion);
+    formDataPreins.append('costo_preinscrip', '200');
+    formDataPreins.append("fecha_preinscrip", "2022-05-05");
+    formDataPreins.append('link_img_comprob', this.fileImage, this.fileImage.name);
+
+    this.apiService.postAndImageNE('preinscripcion', formDataPreins).subscribe(res => {
+      this.response = res;
+      console.log("preinscripcion:",this.response['data']);
+      cod = (this.response['data'])['cod_preinscrip'];
+      this.mensajeResponse = this.response['mensaje'];
+      alert(this.mensajeResponse);
+    });
+    /*,(error) => {
+      this.mensajeError = error;
+      console.log(this.mensajeError.error['mensaje']);
+    });*/
+    return cod;
   }
 
-  getServicio() {
-    this.apiService.getPreinscripcion().subscribe((data: any) => {
-      this.listaPreinscripcion = data;
-    })
-    console.log(this.listaPreinscripcion);
-
-    this.apiService.getDelegados().subscribe((data: any) => {
-      this.listaDelegados = data;
-    })
-    console.log(this.listaDelegados);
+  getServicio(nombre : string) {
+    this.apiService.getAll(nombre).subscribe((data: any) => {
+      this.listaResponse = data;
+    });
   }
 
   subirImagen(event: any) {
@@ -119,4 +130,6 @@ export class RegistroPComponent implements OnInit {
       this.formularioRegistroPreinscrip.value.linkImgComprobante = this.fileImage;
     }
   }
+
+  get controls() { return this.formularioRegistroPreinscrip.controls;}
 }
