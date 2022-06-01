@@ -44,6 +44,10 @@ import { FooterCpComponent } from './modules/registro-control-partido/footer-cp/
 import { HeaderCpComponent } from './modules/registro-control-partido/header-cp/header-cp.component';
 import { NavegadorCpComponent } from './modules/registro-control-partido/navegador-cp/navegador-cp.component';
 import { RegistroCpComponent } from './modules/registro-control-partido/registro-cp/registro-cp.component';
+import { FixtureComponent } from './modules/fixture/fixture.component';
+import { HeaderFixtureComponent } from './modules/fixture/header-fixture/header-fixture.component';
+import { BodyFixtureComponent } from './modules/fixture/body-fixture/body-fixture.component';
+import { FooterFixtureComponent } from './modules/fixture/footer-fixture/footer-fixture.component';
 
 
 @NgModule({
@@ -78,7 +82,11 @@ import { RegistroCpComponent } from './modules/registro-control-partido/registro
     FooterCpComponent,
     HeaderCpComponent,
     NavegadorCpComponent,
-    RegistroCpComponent
+    RegistroCpComponent,
+    FixtureComponent,
+    HeaderFixtureComponent,
+    BodyFixtureComponent,
+    FooterFixtureComponent
   ],
   imports: [
     BrowserModule,
