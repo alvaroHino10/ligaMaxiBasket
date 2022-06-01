@@ -1,14 +1,21 @@
 body{
-  background-image: url(/assets/Imagenes/fondo-home.jpg);
+  /*background-image: url(/assets/Imagenes/fondo-home.jpg);*/
+  background-color: peru;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: left;
+  font-family: Arial;
+  letter-spacing: 1.2px;
+  line-height: 30px;
 }
 
+.container-fluid h1{
+  font-family: 'Times New Roman';
+  font-size: 50px;
+  letter-spacing: 2px;
+}
 
-
-
-.content{
+/*.content{
   width: 1800px;
   height: 1000px;
   
@@ -16,7 +23,7 @@ body{
  
   position: relative;
 
-}
+}*/
 .content .par{
   padding-left: 20px;
   padding-bottom: 25px;
@@ -24,6 +31,7 @@ body{
   letter-spacing: 1.2px;
   line-height: 30px;
 }
+
 .content h1{
   font-family: 'Times New Roman';
   font-size: 50px;
