@@ -1,5 +1,6 @@
 <body>
 	<div class="container-fluid">
+		
 		<div class="row">
 			<form [formGroup]="credencial" class="container-fluid" (ngSubmit)="actualizarCredencial()">
 				<div class="row">
@@ -27,6 +28,7 @@
 				</div>
 			</form>
 		</div>
+		<div id="credencial">
 		<div class="row">
 			<div class="col-md-12">
 				<div class="post row">
@@ -99,7 +101,9 @@
 					<qr-code [value]="urlActual"></qr-code>
 				</div>
 			</div>
-			<button (click)="createPdf()">Crear PDF</button>
 		</div>
+		</div>
+			<button (click)="downloadPDF()">Crear PDF</button>
+		
 	</div>
 </body>
