@@ -18,7 +18,7 @@ export class CredecialCardComponent implements OnInit {
   listaEquipos: any = [];
   listaJugadores: any=[];
   codEquipo = -1;
-  imageJugador: any;
+  //imageJugador : any [];
 
 
   constructor(private apiService: ApiService) {
@@ -45,19 +45,29 @@ export class CredecialCardComponent implements OnInit {
   }
   
   get controls() { return this.credencial.controls; }
-  get equipoJugador(){ return this.credencial.value.equipos;}
+  get equipoJugador(){ return this.credencial.value.equipos; }
+  get jugadorCredencial(){ return this.credencial.value.jugadores }
+  get imageJugador(){ return this.jugadorCredencial.link_img_jug; }
 
   getJsonContent() {
     this.apiService.getAll('equipo').subscribe((dataequipo: any = []) => {
-      this.listaEquipos = dataequipo;
+      const response = dataequipo;
+      this.listaEquipos = (response['data']);
+      console.log(this.listaEquipos);
     });
     //Dado el codEquipo generar los jugadores de ese equipo
+    
+    this.apiService.getAll('jugador').subscribe((datajugadores: any = []) => {
+      this.listaJugadores = datajugadores['data'];
+      console.log(this.listaJugadores);
+    });
+    /*
     this.apiService.getJSON('jugador', 6).subscribe((data: any = []) => {
-      this.jugador = data['jugador'];
-      this.imageJugador = this.jugador.link_img_jug;
-      console.log(this.jugador)
-      console.log(this.imageJugador);
-    });    
+    this.jugador = data['jugador'];
+    this.imageJugador = this.jugador.link_img_jug;
+    console.log(this.jugador)
+    console.log(this.imageJugador);
+  });*/
   }
    // tslint:disable-next-line:typedef
    downloadPDF() {
@@ -81,9 +91,7 @@ export class CredecialCardComponent implements OnInit {
       doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
     }).then((docResult) => {
-      docResult.save(`${new Date().toISOString()}_tutorial.pdf`);
+      docResult.save(`${new Date().toISOString()}${this.jugadorCredencial}.pdf`);
     });
-  }
-  
-  
+  }  
 }

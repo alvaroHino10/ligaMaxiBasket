@@ -76,11 +76,11 @@ export class RegistroJComponent implements OnInit {
       this.getEquipos();
   }
 
-  getEquipos(){
-     this.apiService.getAll('equipo').subscribe((dataequipo: any = []) => {
-          this.listaEquipos = dataequipo;
-          console.log(this.listaEquipos);
-     });
+  getEquipos() {
+    this.apiService.getAll('equipo').subscribe((dataequipo: any = []) => {
+      this.listaEquipos = dataequipo['data'];
+      console.log(this.listaEquipos);
+    });
   }
 
   registrarJugador() {
@@ -98,7 +98,7 @@ export class RegistroJComponent implements OnInit {
   validarCategoria() {
     const valorStr = "+60"; //this.formularioRegistroJugador.value.equipo.categ_equi;
     var categEqui = parseInt(valorStr.substring(1));
-    if(categEqui == this.categoriaJugador){
+    if (categEqui == this.categoriaJugador) {
       return true;
     }
     alert('La categoria del jugador no corresponde a la categoria de su equipo');
@@ -106,10 +106,10 @@ export class RegistroJComponent implements OnInit {
   }
 
   subirImagen(event: any) {
-     if (event.target.files.length > 0) {
-        this.fileImage = event.target.files[0];
-        this.formularioRegistroJugador.value.linkImgComprobante = this.fileImage;
-     }
+    if (event.target.files.length > 0) {
+      this.fileImage = event.target.files[0];
+      this.formularioRegistroJugador.value.linkImgComprobante = this.fileImage;
+    }
   }
 
   postServicio() {
@@ -122,8 +122,8 @@ export class RegistroJComponent implements OnInit {
       mensajeResponse = this.dataPost['mensaje'];
       alert(mensajeResponse);
 
-    },(error) => {
-      
+    }, (error) => {
+
       this.mensajeError = error;
       console.log(this.mensajeError.error['mensaje']);
       mensajeResponse = this.mensajeError.error['mensaje'];
@@ -140,7 +140,7 @@ export class RegistroJComponent implements OnInit {
     console.log(this.listaJugadores);
   }
 
-  
+
   setRegistro() {
     var registroJugador = new FormData();
     registroJugador.append('cod_equi', this.formularioRegistroJugador.value.equipo.cod_equi);
@@ -163,24 +163,24 @@ export class RegistroJComponent implements OnInit {
   }
 
   get controls() { return this.formularioRegistroJugador.controls; }
-  
-  get categoriaJugador(){
-    const fechaNacJug  = new Date(this.formularioRegistroJugador.value.fechaNacimiento);
+
+  get categoriaJugador() {
+    const fechaNacJug = new Date(this.formularioRegistroJugador.value.fechaNacimiento);
     const tiempo = Math.abs(Date.now() - fechaNacJug.getTime());
-    const edadJug = Math.floor((tiempo /(3600 * 24000))/365);
+    const edadJug = Math.floor((tiempo / (3600 * 24000)) / 365);
     var catJug = 0;
-    if(edadJug >= 30 && edadJug <= 70){
-      if(edadJug < 40){
-         catJug = 30;
-      }else{
-         if(edadJug < 50){
-           catJug = 40;
-         }else{
-           catJug = (edadJug < 60) ? 50 : 60;
-         }   
+    if (edadJug >= 30 && edadJug <= 70) {
+      if (edadJug < 40) {
+        catJug = 30;
+      } else {
+        if (edadJug < 50) {
+          catJug = 40;
+        } else {
+          catJug = (edadJug < 60) ? 50 : 60;
+        }
       }
       return catJug;
-    }else{
+    } else {
       alert('Fecha de nacimiento no valida');
       return -1;
     }

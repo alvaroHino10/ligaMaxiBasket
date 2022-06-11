@@ -34,6 +34,10 @@ export class ApiService {
   getAll(dir: string){
     return this.http.get<any>(`${this.url}${dir}`);
   }
+  
+  getJSON(dir:string, id:number){
+    return this.http.get(`${this.url}${dir}/${id}`);
+  }
 
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
@@ -50,9 +54,6 @@ export class ApiService {
   }
 
 
-
-
-
   // This method is in charge for saving an object in the database
 
 
@@ -63,10 +64,6 @@ export class ApiService {
 
   getById(dir:string, id:number): Observable<any>{
     return this.http.get<any>(`${this.url}/${dir}/${id}`);
-  }
-
-  getJSON(dir:string, id:number){
-    return this.http.get(`${this.url}${dir}/${id}`);
   }
 /*
   update(dir: string, model:object): Observable<any> {
