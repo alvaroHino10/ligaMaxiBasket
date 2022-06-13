@@ -55,7 +55,10 @@ import { BodyFixtureComponent } from './modules/fixture/body-fixture/body-fixtur
 import { FooterFixtureComponent } from './modules/fixture/footer-fixture/footer-fixture.component';
 import { FixturePartidoComponent } from './modules/fixture/fixture-partido/fixture-partido.component';
 
-
+import { LoginComponent } from './modules/login/login.component';
+import { HeaderLoginComponent } from './modules/login/header-login/header-login.component';
+import { FooterLoginComponent } from './modules/login/footer-login/footer-login.component';
+import { BodyLoginComponent } from './modules/login/body-login/body-login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,7 +96,11 @@ import { FixturePartidoComponent } from './modules/fixture/fixture-partido/fixtu
     HeaderFixtureComponent,
     BodyFixtureComponent,
     FooterFixtureComponent,
-    FixturePartidoComponent
+    FixturePartidoComponent,
+    LoginComponent,
+    HeaderLoginComponent,
+    FooterLoginComponent,
+    BodyLoginComponent,
   ],
   imports: [
     BrowserModule,
