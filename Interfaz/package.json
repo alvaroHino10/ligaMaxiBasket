@@ -27,6 +27,7 @@
     "jquery": "^3.6.0",
     "jspdf": "^1.5.3",
     "mdb-ui-kit": "^4.0.0",
+    "ngx-captcha": "^11.0.0",
     "pdfmake": "^0.2.5",
     "rxjs": "~6.6.0",
     "tslib": "^2.3.0",

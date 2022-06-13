@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -103,6 +104,7 @@ import { BodyLoginComponent } from './modules/login/body-login/body-login.compon
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxCaptchaModule,
     NoopAnimationsModule,
     QRCodeModule,
     HttpClientModule,
