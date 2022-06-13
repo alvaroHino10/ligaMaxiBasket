@@ -48,6 +48,11 @@ import { FixtureComponent } from './modules/fixture/fixture.component';
 import { HeaderFixtureComponent } from './modules/fixture/header-fixture/header-fixture.component';
 import { BodyFixtureComponent } from './modules/fixture/body-fixture/body-fixture.component';
 import { FooterFixtureComponent } from './modules/fixture/footer-fixture/footer-fixture.component';
+import { LoginComponent } from './modules/login/login.component';
+import { HeaderLoginComponent } from './modules/login/header-login/header-login.component';
+import { FooterLoginComponent } from './modules/login/footer-login/footer-login.component';
+import { BodyLoginComponent } from './modules/login/body-login/body-login.component';
+
 
 
 @NgModule({
@@ -86,7 +91,12 @@ import { FooterFixtureComponent } from './modules/fixture/footer-fixture/footer-
     FixtureComponent,
     HeaderFixtureComponent,
     BodyFixtureComponent,
-    FooterFixtureComponent
+    FooterFixtureComponent,
+    LoginComponent,
+    HeaderLoginComponent,
+    FooterLoginComponent,
+    BodyLoginComponent,
+    
   ],
   imports: [
     BrowserModule,

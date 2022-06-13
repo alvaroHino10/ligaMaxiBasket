@@ -7,7 +7,7 @@ import { RegistroEquipoComponent } from "./modules/registro-equipo/registro-equi
 import { HomeComponent } from "./modules/home/home.component";
 import { CredencialComponent } from "./modules/credencial/credencial.component";
 import { RegistroControlPartidoComponent } from "./modules/registro-control-partido/registro-control-partido.component";
-
+import { LoginComponent } from "./modules/login/login.component";
 
 const routes: Routes = [
 
@@ -45,6 +45,10 @@ const routes: Routes = [
     {
       path:'fixture',
       component:FixtureComponent,
+    },
+    {
+      path:'login',
+      component:LoginComponent,
     },
 ];
 
