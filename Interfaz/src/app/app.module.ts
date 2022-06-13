@@ -9,7 +9,12 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { QRCodeModule } from 'angular2-qrcode';
 
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import {MatSelectModule} from '@angular/material/select';
+
+
 import { HomeComponent } from './modules/home/home.component';
 import { FooterHomeComponent } from './modules/home/footer-home/footer-home.component';
 import { HeaderHomeComponent } from './modules/home/header-home/header-home.component';
@@ -49,13 +54,12 @@ import { FixtureComponent } from './modules/fixture/fixture.component';
 import { HeaderFixtureComponent } from './modules/fixture/header-fixture/header-fixture.component';
 import { BodyFixtureComponent } from './modules/fixture/body-fixture/body-fixture.component';
 import { FooterFixtureComponent } from './modules/fixture/footer-fixture/footer-fixture.component';
+import { FixturePartidoComponent } from './modules/fixture/fixture-partido/fixture-partido.component';
+
 import { LoginComponent } from './modules/login/login.component';
 import { HeaderLoginComponent } from './modules/login/header-login/header-login.component';
 import { FooterLoginComponent } from './modules/login/footer-login/footer-login.component';
 import { BodyLoginComponent } from './modules/login/body-login/body-login.component';
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,11 +97,11 @@ import { BodyLoginComponent } from './modules/login/body-login/body-login.compon
     HeaderFixtureComponent,
     BodyFixtureComponent,
     FooterFixtureComponent,
+    FixturePartidoComponent,
     LoginComponent,
     HeaderLoginComponent,
     FooterLoginComponent,
     BodyLoginComponent,
-    
   ],
   imports: [
     BrowserModule,
@@ -108,7 +112,11 @@ import { BodyLoginComponent } from './modules/login/body-login/body-login.compon
     NoopAnimationsModule,
     QRCodeModule,
     HttpClientModule,
-    MatRadioModule
+    MatRadioModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatFormFieldModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]
