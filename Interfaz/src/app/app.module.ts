@@ -52,6 +52,7 @@ import { LoginComponent } from './modules/login/login.component';
 import { HeaderLoginComponent } from './modules/login/header-login/header-login.component';
 import { FooterLoginComponent } from './modules/login/footer-login/footer-login.component';
 import { BodyLoginComponent } from './modules/login/body-login/body-login.component';
+import { FixturePartidoComponent } from './modules/fixture/fixture-partido/fixture-partido.component';
 
 
 
@@ -96,6 +97,7 @@ import { BodyLoginComponent } from './modules/login/body-login/body-login.compon
     HeaderLoginComponent,
     FooterLoginComponent,
     BodyLoginComponent,
+    FixturePartidoComponent,
     
   ],
   imports: [
