@@ -4,11 +4,13 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { QRCodeModule } from 'angular2-qrcode';
 
-import { MatRadioModule } from '@angular/material/radio';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
+
 import { HomeComponent } from './modules/home/home.component';
 import { FooterHomeComponent } from './modules/home/footer-home/footer-home.component';
 import { HeaderHomeComponent } from './modules/home/header-home/header-home.component';
@@ -105,10 +107,10 @@ import { FixturePartidoComponent } from './modules/fixture/fixture-partido/fixtu
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NoopAnimationsModule,
+    BrowserAnimationsModule,
     QRCodeModule,
     HttpClientModule,
-    MatRadioModule
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]

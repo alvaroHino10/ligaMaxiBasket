@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject } from '@angular/core';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-fixture-partido',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FixturePartidoComponent implements OnInit {
 
-  constructor() { }
+  my_modal_title;
+  my_modal_content;
 
-  ngOnInit(): void {
+  constructor(public activeModal: NgbActiveModal) {}
+
+  ngOnInit() {
   }
 
 }
