@@ -10,7 +10,6 @@ import { QRCodeModule } from 'angular2-qrcode';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-
 import { HomeComponent } from './modules/home/home.component';
 import { FooterHomeComponent } from './modules/home/footer-home/footer-home.component';
 import { HeaderHomeComponent } from './modules/home/header-home/header-home.component';
@@ -21,7 +20,6 @@ import { NavegadorPComponent } from './modules/preinscripcion/navegador-p/navega
 import { RegistroPComponent } from './modules/preinscripcion/registro-p/registro-p.component';
 import { FooterPComponent } from './modules/preinscripcion/footer-p/footer-p.component';
 import { HeaderPComponent } from './modules/preinscripcion/header-p/header-p.component';
-import { RegistroResponsableComponent } from './modules/registro-responsable/registro-responsable.component';
 
 import { RegistroJugadoresComponent } from './modules/registro-jugadores/registro-jugadores.component';
 import { RegistroJComponent } from './modules/registro-jugadores/registro/registro.component';
@@ -46,16 +44,22 @@ import { FooterCpComponent } from './modules/registro-control-partido/footer-cp/
 import { HeaderCpComponent } from './modules/registro-control-partido/header-cp/header-cp.component';
 import { NavegadorCpComponent } from './modules/registro-control-partido/navegador-cp/navegador-cp.component';
 import { RegistroCpComponent } from './modules/registro-control-partido/registro-cp/registro-cp.component';
+
 import { FixtureComponent } from './modules/fixture/fixture.component';
 import { HeaderFixtureComponent } from './modules/fixture/header-fixture/header-fixture.component';
 import { BodyFixtureComponent } from './modules/fixture/body-fixture/body-fixture.component';
 import { FooterFixtureComponent } from './modules/fixture/footer-fixture/footer-fixture.component';
+import { FixturePartidoComponent } from './modules/fixture/fixture-partido/fixture-partido.component';
+
 import { LoginComponent } from './modules/login/login.component';
 import { HeaderLoginComponent } from './modules/login/header-login/header-login.component';
 import { FooterLoginComponent } from './modules/login/footer-login/footer-login.component';
 import { BodyLoginComponent } from './modules/login/body-login/body-login.component';
-import { FixturePartidoComponent } from './modules/fixture/fixture-partido/fixture-partido.component';
 
+import { RegistroDelegadoComponent } from './modules/registro-delegado/registro-delegado.component';
+import { FooterDelegadoComponent } from './modules/registro-delegado/footer-delegado/footer-delegado.component';
+import { HeaderDelegadoComponent } from './modules/registro-delegado/header-delegado/header-delegado.component';
+import { NavegadorDelegadoComponent } from './modules/registro-delegado/navegador-delegado/navegador-delegado.component';
 
 
 @NgModule({
@@ -65,7 +69,6 @@ import { FixturePartidoComponent } from './modules/fixture/fixture-partido/fixtu
     PreinscripcionComponent,
     RegistroEquipoComponent,
     RegistroJugadoresComponent,
-    RegistroResponsableComponent,
     HeaderComponent,
     NavegadorComponent,
     RegistroJComponent,
@@ -99,7 +102,11 @@ import { FixturePartidoComponent } from './modules/fixture/fixture-partido/fixtu
     HeaderLoginComponent,
     FooterLoginComponent,
     BodyLoginComponent,
-    FixturePartidoComponent
+    FixturePartidoComponent,
+    RegistroDelegadoComponent,
+    FooterDelegadoComponent,
+    HeaderDelegadoComponent,
+    NavegadorDelegadoComponent
   ],
   imports: [
     BrowserModule,
