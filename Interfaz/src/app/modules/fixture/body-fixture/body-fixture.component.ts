@@ -27,9 +27,7 @@ export class BodyFixtureComponent implements OnInit {
   }
 
   agregarPartido(): void {
-    const modalRef = this.modalService.open(FixturePartidoComponent);
-    modalRef.componentInstance.my_modal_title = 'I your title';
-    modalRef.componentInstance.my_modal_content = 'I am your content';
+    this.modalService.open(FixturePartidoComponent, { centered: true });
   }
 
 }

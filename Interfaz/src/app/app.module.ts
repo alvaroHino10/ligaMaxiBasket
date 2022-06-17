@@ -99,8 +99,7 @@ import { FixturePartidoComponent } from './modules/fixture/fixture-partido/fixtu
     HeaderLoginComponent,
     FooterLoginComponent,
     BodyLoginComponent,
-    FixturePartidoComponent,
-    
+    FixturePartidoComponent
   ],
   imports: [
     BrowserModule,

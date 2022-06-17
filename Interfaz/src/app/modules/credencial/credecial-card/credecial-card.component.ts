@@ -6,11 +6,13 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+
 @Component({
   selector: 'app-credecial-card',
   templateUrl: './credecial-card.component.html',
   styleUrls: ['./credecial-card.component.css']
 })
+
 export class CredecialCardComponent implements OnInit {
   public urlActual: any;
   public credencial: FormGroup;

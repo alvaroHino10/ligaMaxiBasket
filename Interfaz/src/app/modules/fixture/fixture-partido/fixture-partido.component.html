@@ -1,4 +1,62 @@
+<div class="modal-header">
+  <h4 class="modal-title">Agregar un partido nuevo</h4>
+  <button type="button" class="btn-close" aria-label="Close" (click)="activeModal.dismiss('Cross click')"></button>
+</div>
 
-  <div class="modal-footer">
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
-  </div>
+<div class="modal-body">
+  <form [formGroup]="formPartido" class="container-fluid" (ngSubmit)="crearPartido()">
+    
+    <div class="row mt-3">
+      <div class="col-md-5 text-center">
+        <label for="equipo1" class="form-label">Equipo 1:</label>
+        <select class="form-control" name="equipo1" (change)="listaEquipos" formControlName="equipo1" required>
+          <option value="" disabled>Seleccionar equipo</option>
+          <option *ngFor="let equipo of listaEquipos" [ngValue]="equipo"> {{ equipo.nombre_equi }}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-1 text-danger text-center">  VS  </div>
+      <div class="col-md-5 text-center">
+        <label for="equipo2" class="form-label">Equipo 2:</label>
+        <select class="form-control" name="equipo2" (change)="listaEquipos" formControlName="equipo2" required>
+          <option value="" disabled>Seleccionar equipo</option>
+          <option *ngFor="let equipo of listaEquipos" [ngValue]="equipo"> {{ equipo.nombre_equi }}
+          </option>
+        </select>
+      </div> 
+    </div>
+    
+    <label for="fechaPartido" class="form-label mt-5">Fecha del partido:</label>
+    <input type="date" name="fechaPartido" formControlName="fechaPartido" class="form-control" required>
+    <div *ngIf="(controls.fechaPartido.touched && controls.fechaNacimiento.invalid) || submitted" class="text-danger">
+      <div *ngIf="controls.fechaPartido.errors?.required">
+        Por favor, ingresa una fecha para el partido
+      </div>
+    </div>
+    <label for="horaPartido" class="form-label mt-3">Hora del partido:</label>
+    <input type="time" name="horaPartido" formControlName="horaPartido" class="form-control" required>
+    <div *ngIf="(controls.horaPartido.touched && controls.horaPartido.invalid) || submitted" class="text-danger">
+      <div *ngIf="controls.horaPartido.errors?.required">
+        Por favor, ingresa una hora para el partido
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <label class="form-label">Lugar:</label>
+      <input type="text" class="form-control" formControlName="lugarPartido" minlength="2" maxlength="80" required>
+      <div *ngIf="(controls.lugarPartido.touched && controls.lugarPartido.invalid) || submitted"
+        class="text-danger">
+        <div *ngIf="controls.lugarPartido.errors?.required">Por favor, ingresa un lugar al partido</div>
+        <div *ngIf="controls.lugarPartido.errors?.minlength">Valor invalido</div>
+        <div *ngIf="controls.lugarPartido.errors?.pattern">Por favor, ingresa caracteres validos</div>
+      </div>
+    </div>
+
+  </form>
+
+</div>
+
+<div class="modal-footer">
+  <button type="button" ngbAutofocus class="btn btn-danger" (click)="activeModal.close('Ok click')">Cancelar</button>
+  <button type="submit" class="btn btn-success" (click)="activeModal.close('Close click')">Guardar</button>
+</div>
