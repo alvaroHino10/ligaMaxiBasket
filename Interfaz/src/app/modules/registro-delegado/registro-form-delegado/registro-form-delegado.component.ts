@@ -3,12 +3,14 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ApiService } from 'src/app/api-services/api-services';
 
 @Component({
-  selector: 'app-registro-delegado',
-  templateUrl: './registro-delegado.component.html',
-  styleUrls: ['./registro-delegado.component.css']
+  selector: 'app-registro-form-delegado',
+  templateUrl: './registro-form-delegado.component.html',
+  styleUrls: ['./registro-form-delegado.component.css']
 })
-export class RegistroDelegadoComponent implements OnInit {
+export class RegistroFormDelegadoComponent implements OnInit {
+  
   public formularioDelegado: FormGroup;
+  submitted = false;
 
   constructor(public formulario: FormBuilder, private apiService: ApiService) {
     this.formularioDelegado = new FormGroup({
@@ -40,5 +42,10 @@ export class RegistroDelegadoComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
+  guardarDelegado(){
+    
+  }
+  get controls() {return this.formularioDelegado.controls}
 
 }

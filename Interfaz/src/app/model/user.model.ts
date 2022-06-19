@@ -13,8 +13,8 @@ export interface DelegadoPreinscrip {
     ap_deleg: string;
     correo_deleg: string;
     telf_deleg: string;
-
 }
+
 export interface RegistroEquipo{
     nombreDelEquio: string;
     categoria: string;

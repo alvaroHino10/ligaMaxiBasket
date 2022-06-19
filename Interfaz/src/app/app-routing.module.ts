@@ -8,48 +8,54 @@ import { HomeComponent } from "./modules/home/home.component";
 import { CredencialComponent } from "./modules/credencial/credencial.component";
 import { RegistroControlPartidoComponent } from "./modules/registro-control-partido/registro-control-partido.component";
 import { LoginComponent } from "./modules/login/login.component";
+import { RegistroDelegadoComponent } from './modules/registro-delegado/registro-delegado.component';
 
 const routes: Routes = [
 
-    /*{path: '', pathMatch:'full', redirectTo: 'registro-p'},
-    {path:'registro-p', component: RegistroPComponent},*/
-    /*{
+    /*{path: '', pathMatch:'full', redirectTo: 'registro-delegado'},
+    {path:'registro-delegado', component: RegistroDelegadoComponent},
+    {
       path: '',
       pathMatch: 'full',
-      component: HomeComponent
+      component: RegistroDelegadoComponent
     },*/
+
+    {
+      path:'registro-delegado',
+      component:RegistroDelegadoComponent,
+    },
     {
       path:'preinscripcion',
       component:PreinscripcionComponent
     },
     {
-      path: 'registro-jugadores',
-      component: RegistroJugadoresComponent,
-    },
-    {
       path: 'registro-equipo',
-      component: RegistroEquipoComponent,
+      component: RegistroEquipoComponent
     },
     {
-      path: 'credencial',
-      component: CredencialComponent,
+      path: 'registro-jugadores',
+      component: RegistroJugadoresComponent
     },
     {
       path: 'registro-control-partido',
-      component: RegistroControlPartidoComponent,
+      component: RegistroControlPartidoComponent
+    },
+    {
+      path: 'credencial',
+      component: CredencialComponent
     },
     {
       path:'',
-      component:HomeComponent,
+      component:HomeComponent
     },
     {
       path:'fixture',
-      component:FixtureComponent,
+      component:FixtureComponent
     },
     {
       path:'login',
-      component:LoginComponent,
-    },
+      component:LoginComponent
+    }
 ];
 
 

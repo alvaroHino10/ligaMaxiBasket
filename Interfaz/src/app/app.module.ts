@@ -60,6 +60,7 @@ import { RegistroDelegadoComponent } from './modules/registro-delegado/registro-
 import { FooterDelegadoComponent } from './modules/registro-delegado/footer-delegado/footer-delegado.component';
 import { HeaderDelegadoComponent } from './modules/registro-delegado/header-delegado/header-delegado.component';
 import { NavegadorDelegadoComponent } from './modules/registro-delegado/navegador-delegado/navegador-delegado.component';
+import { RegistroFormDelegadoComponent } from './modules/registro-delegado/registro-form-delegado/registro-form-delegado.component';
 
 
 @NgModule({
@@ -106,7 +107,8 @@ import { NavegadorDelegadoComponent } from './modules/registro-delegado/navegado
     RegistroDelegadoComponent,
     FooterDelegadoComponent,
     HeaderDelegadoComponent,
-    NavegadorDelegadoComponent
+    NavegadorDelegadoComponent,
+    RegistroFormDelegadoComponent
   ],
   imports: [
     BrowserModule,
