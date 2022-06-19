@@ -9,6 +9,7 @@ import { CredencialComponent } from "./modules/credencial/credencial.component";
 import { RegistroControlPartidoComponent } from "./modules/registro-control-partido/registro-control-partido.component";
 import { LoginComponent } from "./modules/login/login.component";
 import { RegistroDelegadoComponent } from './modules/registro-delegado/registro-delegado.component';
+import { EquiposComponent } from './modules/equipos/equipos.component'
 
 const routes: Routes = [
 
@@ -55,6 +56,10 @@ const routes: Routes = [
     {
       path:'login',
       component:LoginComponent
+    },
+    {
+      path:'equipos',
+      component: EquiposComponent
     }
 ];
 
