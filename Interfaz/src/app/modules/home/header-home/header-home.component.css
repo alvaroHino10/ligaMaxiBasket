@@ -20,7 +20,7 @@ nav{
   background-image: url(/assets/Imagenes/ByN.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: top;
 }
 
 nav ul{
@@ -60,10 +60,12 @@ li a.active, li a:hover{
 img {
   width: 300px;
   height: 185px;
-  background-repeat: no-repeat;
+  background-color: aliceblue;
+  /*background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;
+  background-position: center;*/
 }
+
 @media (max-width: 1800px){
   .enlace{
       padding-left: 30px;

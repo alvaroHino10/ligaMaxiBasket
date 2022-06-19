@@ -1,12 +1,13 @@
 body{
-  /*background-image: url(/assets/Imagenes/fondo-home.jpg);*/
-  background-color: peru;
+  background-image: url(/assets/Imagenes/Fondo.jpg);
+  /*background-color: rgb(255, 137, 41);*/
   background-repeat: no-repeat;
   background-size: cover;
-  background-position: left;
+  background-position: right;
   font-family: Arial;
   letter-spacing: 1.2px;
   line-height: 30px;
+
 }
 
 .container-fluid h1{
