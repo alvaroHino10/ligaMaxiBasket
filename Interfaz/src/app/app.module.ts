@@ -65,7 +65,8 @@ import { RegistroFormDelegadoComponent } from './modules/registro-delegado/regis
 import { EquiposComponent } from './modules/equipos/equipos.component';
 import { BodyEquiposComponent } from './modules/equipos/body-equipos/body-equipos.component';
 import { FooterEquiposComponent } from './modules/equipos/footer-equipos/footer-equipos.component';
-import { HeaderEquiposComponent } from './modules/equipos/header-equipos/header-equipos.component'
+import { HeaderEquiposComponent } from './modules/equipos/header-equipos/header-equipos.component';
+import { Error404Component } from './modules/error404/error404.component'
 
 
 @NgModule({
@@ -117,7 +118,8 @@ import { HeaderEquiposComponent } from './modules/equipos/header-equipos/header-
     EquiposComponent,
     BodyEquiposComponent,
     FooterEquiposComponent,
-    HeaderEquiposComponent
+    HeaderEquiposComponent,
+    Error404Component
   ],
   imports: [
     BrowserModule,

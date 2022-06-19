@@ -10,6 +10,7 @@ import { RegistroControlPartidoComponent } from "./modules/registro-control-part
 import { LoginComponent } from "./modules/login/login.component";
 import { RegistroDelegadoComponent } from './modules/registro-delegado/registro-delegado.component';
 import { EquiposComponent } from './modules/equipos/equipos.component'
+import { Error404Component } from './modules/error404/error404.component';
 
 const routes: Routes = [
 
@@ -60,7 +61,12 @@ const routes: Routes = [
     {
       path:'equipos',
       component: EquiposComponent
+    },
+    {
+      path:'error404',
+      component: Error404Component
     }
+
 ];
 
 
