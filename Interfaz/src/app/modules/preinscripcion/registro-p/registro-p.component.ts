@@ -21,30 +21,7 @@ export class RegistroPComponent implements OnInit {
 
   constructor(public formulario: FormBuilder, private apiService: ApiService) {
     this.formularioRegistroPreinscrip = new FormGroup({
-      nombreDelegado: new FormControl('',
-                    [Validators.required,
-                    Validators.minLength(3),
-                    Validators.maxLength(80),
-                    Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
-      apellidoDelegado: new FormControl('',
-                    [Validators.required,
-                    Validators.minLength(3),
-                    Validators.maxLength(80),
-                    Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
-
-      //numeroIdentificacion: new FormControl ('', 
-      //              [Validators.required, 
-      //                Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
-
-      telefono: new FormControl('',
-                    [Validators.required,
-                    Validators.pattern("^[0-9]*$"),
-                    Validators.minLength(5),
-                    Validators.maxLength(15)]),
-      correoElectronico: new FormControl('',
-                    [Validators.required,
-                    Validators.email]),
-
+    
       nombreDelEquipo: new FormControl('',
                     [Validators.required,
                     Validators.minLength(1),
@@ -77,23 +54,7 @@ export class RegistroPComponent implements OnInit {
     }
   }
   postServicio() {
-    var cod = this.postPreinscripcion();
-    const delegadoDatos = {cod_preinscrip: cod,
-                          nombre_deleg:   this.formularioRegistroPreinscrip.value.nombreDelegado,
-                          ap_deleg:       this.formularioRegistroPreinscrip.value.apellidoDelegado,
-                          correo_deleg:   this.formularioRegistroPreinscrip.value.correoElectronico,
-                          telf_deleg:     this.formularioRegistroPreinscrip.value.telefono
-    }
-
-    this.apiService.post('delegado', delegadoDatos).subscribe((data:any) => {
-    this.dataPost = data;
-      console.log(this.dataPost);
-    });
-    /*,(error) => {
-      this.mensajeError = error;
-      console.log(this.mensajeError);
-      console.log(this.mensajeError.error['mensaje']);
-    });*/
+    this.postPreinscripcion();
   }
   
   postPreinscripcion() {

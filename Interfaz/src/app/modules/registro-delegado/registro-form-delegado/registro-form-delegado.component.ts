@@ -11,6 +11,8 @@ export class RegistroFormDelegadoComponent implements OnInit {
   
   public formularioDelegado: FormGroup;
   submitted = false;
+  dataPost: any;
+  listaResponse: any;
 
   constructor(public formulario: FormBuilder, private apiService: ApiService) {
     this.formularioDelegado = new FormGroup({
@@ -44,8 +46,42 @@ export class RegistroFormDelegadoComponent implements OnInit {
   }
 
   guardarDelegado(){
-    
+    this.submitted = true;
+    if (this.formularioDelegado.invalid) {
+      this.formularioDelegado.controls;
+      alert('Por favor ingrese datos validos, correspondientes a todos los campos');
+      return;
+    } else {
+      this.postServicio();
+    }
   }
+
+  postServicio() {
+  //var cod = this.postPreinscripcion();
+    const delegadoDatos = {//cod_preinscrip: cod,
+                          nombre_deleg:   this.formularioDelegado.value.nombreDelegado,
+                          ap_deleg:       this.formularioDelegado.value.apellidoDelegado,
+                          correo_deleg:   this.formularioDelegado.value.correoElectronico,
+                          telf_deleg:     this.formularioDelegado.value.telefono
+    }
+
+    this.apiService.post('delegado', delegadoDatos).subscribe((data:any) => {
+    this.dataPost = data;
+      console.log(this.dataPost);
+    });
+    /*,(error) => {
+      this.mensajeError = error;
+      console.log(this.mensajeError);
+      console.log(this.mensajeError.error['mensaje']);
+    });*/
+  }
+
+  getServicio(nombre : string) {
+    this.apiService.getAll(nombre).subscribe((data: any) => {
+      this.listaResponse = data;
+    });
+  }
+  
   get controls() {return this.formularioDelegado.controls}
 
 }
