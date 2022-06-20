@@ -48,16 +48,13 @@ export class RegistroPComponent implements OnInit {
     if (this.formularioRegistroPreinscrip.invalid) {
       this.formularioRegistroPreinscrip.controls;
       alert('Por favor ingrese datos validos, correspondientes a todos los campos');
+      this.getServicio('preinscripcion');
       return;
     } else {
       this.postServicio();
     }
   }
   postServicio() {
-    this.postPreinscripcion();
-  }
-  
-  postPreinscripcion() {
     var cod = 0;
     var formDataPreins = new FormData();
     formDataPreins.append('num_transfer_preinscrip', this.formularioRegistroPreinscrip.value.codigoDeTransaccion);
@@ -82,6 +79,7 @@ export class RegistroPComponent implements OnInit {
   getServicio(nombre : string) {
     this.apiService.getAll(nombre).subscribe((data: any) => {
       this.listaResponse = data;
+      console.log(this.listaResponse);
     });
   }
 

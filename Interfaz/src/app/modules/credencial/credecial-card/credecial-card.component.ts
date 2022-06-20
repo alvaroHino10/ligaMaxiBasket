@@ -22,19 +22,15 @@ export class CredecialCardComponent implements OnInit {
   codEquipo = -1;
   //imageJugador : any [];
 
-
   constructor(private apiService: ApiService) {
     this.urlActual = window.location.href;
     console.log(this.urlActual);
-
     this.credencial = new FormGroup({
       equipos: new FormControl('',
         Validators.required),
       jugadores: new FormControl('',
         Validators.required), 
     });
-    
-    
   }
 
   ngOnInit(): void {
