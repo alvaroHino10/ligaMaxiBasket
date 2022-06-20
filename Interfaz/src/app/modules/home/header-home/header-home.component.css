@@ -7,31 +7,19 @@
   font-style: normal;
 
   font-weight: 700;
-  font-size: 32px;
-  line-height: 48px;
+  font-size: 20px;
+  
   letter-spacing: 0.235em;
 
-  color: #FFFFFF;
-}
-
-nav{
-  background: #292929;
-  font-family: 'calibri';
-  background-image: url(/assets/Imagenes/ByN.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top;
-}
-
-nav ul{
-  float: right;
-  margin-right: 20px;
-}
-nav ul li{
-  display: inline-block;
+  color: black;
   
-  margin: 0 30px;
 }
+
+li a.active, li a:hover{
+  background: #6f6f6f;
+  transition: .5s;
+}
+
 nav ul li a{
   color: rgb(255, 255, 255);
   font-size: 28px;
@@ -39,10 +27,22 @@ nav ul li a{
   border-radius: 3px;
   text-transform: uppercase;
 }
-li a.active, li a:hover{
-  background: #6f6f6f;
-  transition: .5s;
+/*
+nav ul{
+  margin-right: 80px;
+}*/
+/*
+nav ul li{
+  display: inline-block;
 }
+*/
+nav ul li a{
+  font-size: 28px;
+  padding: 40px 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
+/*
 .checkbtn{
   font-size: 30px;
   color: #fff;
@@ -56,14 +56,13 @@ li a.active, li a:hover{
   display: none;
 }
 
-
 img {
-  width: 300px;
+  width: 250px;
   height: 185px;
-  /*background-repeat: no-repeat;
+  background-repeat: no-repeat;
   background-size: cover;
-  background-position: center;*/
-}
+  background-position: center;
+}*/
 
 @media (max-width: 1800px){
   .enlace{
