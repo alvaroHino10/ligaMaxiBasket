@@ -25,13 +25,6 @@ body{
   position: relative;
 
 }*/
-.content .par{
-  padding-left: 20px;
-  padding-bottom: 25px;
-  font-family: Arial;
-  letter-spacing: 1.2px;
-  line-height: 30px;
-}
 
 .content h1{
   font-family: 'Times New Roman';
@@ -51,17 +44,9 @@ body{
   border-radius: 10px;
   cursor: pointer;
   transition: .4s ease;
-  
 }
-.content .cn a{
-  text-decoration: none;
-  color: #000;
-  transition: .3s ease;
-}
-.cn:hover{
-  background-color: #fff;
-}
-.content span{
-  color: #ffffff;
-  font-size: 65px
+
+button{
+  background-color: rgba(241, 94, 36, 0.651);
+  border-color: white;
 }

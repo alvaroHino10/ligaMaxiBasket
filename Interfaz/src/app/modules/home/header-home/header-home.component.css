@@ -7,10 +7,9 @@
   font-style: normal;
 
   font-weight: 700;
-  font-size: 20px;
+  font-size: 5px;
   
   letter-spacing: 0.235em;
-
   color: black;
   
 }
@@ -22,7 +21,7 @@ li a.active, li a:hover{
 
 nav ul li a{
   color: rgb(255, 255, 255);
-  font-size: 28px;
+  font-size: 5px;
   padding: 40px 5px;
   border-radius: 3px;
   text-transform: uppercase;
@@ -37,7 +36,7 @@ nav ul li{
 }
 */
 nav ul li a{
-  font-size: 28px;
+  font-size: 5px;
   padding: 40px 5px;
   border-radius: 3px;
   text-transform: uppercase;
@@ -69,8 +68,7 @@ img {
       padding-left: 30px;
   }
   nav ul li{
-    
-    
+
     margin: 0 5px;
   }
 
