@@ -109,7 +109,7 @@
 				</div>
 			</div>
 		</div>
-		<button *ngIf="(!controls.equipos.errors?.required && !controls.jugadores.errors?.required)"
+		<button 
 			(click)="downloadPDF()" class="btn btn-dark btn-l mt-3">Crear PDF</button>
 	</div>
 </body>

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { NgxCaptchaModule } from 'ngx-captcha';
 
 import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -129,7 +130,8 @@ import { Error404Component } from './modules/error404/error404.component'
     BrowserAnimationsModule,
     QRCodeModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    NgxCaptchaModule
   ],
   providers: [],
   bootstrap: [AppComponent]

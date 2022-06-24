@@ -7,7 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BodyLoginComponent implements OnInit {
 
-  constructor() { }
+  siteKey: string;
+
+  constructor() {
+    this.siteKey='6Lf-yJcgAAAAAHxzd7sG7Y0dEZo_avSBaU7RaG5-';
+   }
 
   ngOnInit(): void {
   }
