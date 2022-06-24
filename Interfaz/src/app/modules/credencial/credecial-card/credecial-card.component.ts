@@ -21,6 +21,16 @@ export class CredecialCardComponent implements OnInit {
   listaJugadores: any=[];
   codEquipo = -1;
   //imageJugador : any [];
+  //datos fake
+  public listaJugadoresfake: any = [this.setRegistro ("1paul","martinez","flores","06-08-1999","77486990"),
+  this.setRegistro ("2paul","martinez","flores","06-08-1999","77486990")
+  ,this.setRegistro ("3paul","martinez","flores","06-08-1999","77486990")
+  ,this.setRegistro ("4paul","martinez","flores","06-08-1999","77486990")
+  ,this.setRegistro ("5paul","martinez","flores","06-08-1999","77486990")
+  ,this.setRegistro ("6paul","martinez","flores","06-08-1999","77486990")
+  ,this.setRegistro ("7paul","martinez","flores","06-08-1999","77486990")
+  ,this.setRegistro ("8paul","martinez","flores","06-08-1999","77486990")
+];
 
   constructor(private apiService: ApiService) {
     this.urlActual = window.location.href;
@@ -44,8 +54,8 @@ export class CredecialCardComponent implements OnInit {
   
   get controls() { return this.credencial.controls; }
   get equipoJugador(){ return this.credencial.value.equipos; }
-  get jugadorCredencial(){ return this.credencial.value.jugadores }
-  get imageJugador(){ return this.jugadorCredencial.link_img_jug; }
+  //get jugadorCredencial(){ return this.credencial.value.jugadores }
+  //get imageJugador(){ return this.jugadorCredencial.link_img_jug; }
 
   getJsonContent() {
     this.apiService.getAll('equipo').subscribe((dataequipo: any = []) => {
@@ -70,7 +80,7 @@ export class CredecialCardComponent implements OnInit {
    // tslint:disable-next-line:typedef
    downloadPDF() {
     // Extraemos el
-    const DATA = document.getElementById('credencial');
+    const DATA = document.getElementById('credencialcita');
     const doc = new jsPDF('p', 'pt', 'a4');
     const options = {
       background: 'white',
@@ -89,7 +99,25 @@ export class CredecialCardComponent implements OnInit {
       doc.addImage(img, 'PNG', bufferX, bufferY, pdfWidth, pdfHeight, undefined, 'FAST');
       return doc;
     }).then((docResult) => {
-      docResult.save(`${new Date().toISOString()}${this.jugadorCredencial}.pdf`);
+      docResult.save(`${new Date().toISOString()}${""}.pdf`);
     });
   }  
+
+
+  //datos fake
+  setRegistro(nombre : any, p_Ap : any, m_ap : any, fecha: any, telf:any) {
+     
+    const registroJugador = {
+    nombre_jug: nombre,
+    prim_ap_jug: p_Ap,
+    seg_ap_jug: m_ap,
+    
+    fecha_nac_jug: fecha,
+    telf_jug:telf ,
+    link_img_jug:"imagen.png",
+    
+  };
+  return registroJugador;
+    
+  }
 }
