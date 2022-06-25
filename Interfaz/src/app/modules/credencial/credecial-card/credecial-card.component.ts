@@ -103,10 +103,10 @@ export class CredecialCardComponent implements OnInit {
       seg_ap_jug: m_ap,
       fecha_nac_jug: fecha,
       telf_jug: telf,
+      num_iden_jug: telf,
       link_img_jug: "imagen.png",
     };
     return registroJugador;
-
   }
 
   datosFake() {

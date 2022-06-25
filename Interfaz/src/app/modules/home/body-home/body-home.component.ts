@@ -13,7 +13,7 @@ export class BodyHomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  clickRPHome () {
+  clickRegistroHome () {
     this.router.navigate(['/registro-delegado']);
   };
   
