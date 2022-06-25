@@ -9,6 +9,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class BodyLoginComponent implements OnInit {
   public datosLogin : FormGroup;
   siteKey: string;
+  textoContrasenia: boolean;
 
   constructor() {
     this.siteKey='6Lf-yJcgAAAAAHxzd7sG7Y0dEZo_avSBaU7RaG5-';
@@ -25,7 +26,10 @@ export class BodyLoginComponent implements OnInit {
   }
 
   ingresar(){
+  }
 
+  mostrarContrasenia() {
+    this.textoContrasenia = !this.textoContrasenia;
   }
   get controls(){ return this.datosLogin.controls}
 

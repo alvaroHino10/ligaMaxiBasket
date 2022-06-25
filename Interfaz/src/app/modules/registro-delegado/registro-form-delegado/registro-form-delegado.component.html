@@ -39,7 +39,7 @@
     <div class="mb-3">
         <label for="" class="form-label">Numero de identificacion personal:</label>
         <input type="text" class="form-control" formControlName="numeroIdentificacion" minlength="5" maxlength="80" required>
-        <div *ngIf="controls.numeroIdentificacion.touched && controls.numeroIdentificacion.invalid" class="text-danger">
+        <div *ngIf="(controls.numeroIdentificacion.touched && controls.numeroIdentificacion.invalid) || submitted" class="text-danger">
             <div *ngIf="controls.numeroIdentificacion.errors?.required">
                 Por favor, ingresa el numero de tu identificacion personal
             </div>
@@ -88,19 +88,8 @@
         </div>
     </div>
 
-    <!--INPUT CORREO ELECTRONICO-->
-    <div class="mb-3">
-        <label for="" class="form-label">Correo electronico:</label>
-        <input type="email" class="form-control" formControlName="correoElectronico" required>
-        <div *ngIf="(controls.correoElectronico.touched && controls.correoElectronico.invalid) || submitted"
-            class="text-danger">
-            <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa tu correo electronico</div>
-            <div *ngIf="controls.correoElectronico.errors?.email">Por favor, ingresa un correo valido</div>
-        </div>
-    </div>
-
     <!--INPUT FILE IMAGEN-->
-    <div class="file-upload form-group">
+    <div class="file-upload form-group mb-3">
         <label for="imgDelegado">Seleccionar imagen del delegado:</label>
         <div class="custom-file">
           <input id="imgDelegado" name="imgDelegado" type="file" class="form-control"
@@ -111,6 +100,37 @@
               Por favor, ingresa la imagen del comprobante de pago
             </div>
           </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <h5><b>Informacion para inicio de sesion:</b></h5>
+      </div>
+      <!--INPUT CORREO ELECTRONICO-->
+      <div class="mb-3">
+        <label for="" class="form-label">Correo electronico:</label>
+        <input type="email" class="form-control" formControlName="correoElectronico" required>
+        <div *ngIf="(controls.correoElectronico.touched && controls.correoElectronico.invalid) || submitted"
+          class="text-danger">
+          <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa tu correo electronico</div>
+          <div *ngIf="controls.correoElectronico.errors?.email">Por favor, ingresa un correo valido</div>
+        </div>
+      </div>
+
+      <!--INPUT CONTRASEÑA-->
+      <div class="input-group mb-3">
+        <label for="email">Contraseña</label>
+        <div class="input-group">
+          <input [type]="textoContrasenia ? 'text' : 'password'" class="form-control" formControlName="password" required />
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <i class="fa" [ngClass]="{'fa-eye-slash': !textoContrasenia, 'fa-eye': textoContrasenia}"
+                (click)="mostrarContrasenia()"></i>
+            </span>
+          </div>
+        </div>
+        <div *ngIf="(controls.password.touched && controls.password.invalid)" class="text-danger">
+          <div *ngIf="controls.password.errors?.required">Por favor, ingresa tu contraseña</div>
         </div>
       </div>
 

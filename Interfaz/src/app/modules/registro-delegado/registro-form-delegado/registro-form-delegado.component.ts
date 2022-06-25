@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api-services/api-services';
 
 @Component({
@@ -14,8 +15,8 @@ export class RegistroFormDelegadoComponent implements OnInit {
   dataPost: any;
   listaResponse: any;
   fileImage: any;
-
-  constructor(public formulario: FormBuilder, private apiService: ApiService) {
+  textoContrasenia: boolean;
+  constructor(public formulario: FormBuilder, private apiService: ApiService, private router: Router ) {
     this.formularioDelegado = new FormGroup({
       nombreDelegado: new FormControl('',
                     [Validators.required,
@@ -39,13 +40,19 @@ export class RegistroFormDelegadoComponent implements OnInit {
                     Validators.pattern("^[0-9]*$"),
                     Validators.minLength(5),
                     Validators.maxLength(15)]),
+      sexo:         new FormControl('',
+                    Validators.required),
       correoElectronico: new FormControl('',
                     [Validators.required,
-                    Validators.email]),
-      sexo:         new FormControl('',
+                    Validators.email]),              
+      password:     new FormControl('',
                     Validators.required),
       imgDelegado: new FormControl('', Validators.required)
       });
+  }
+ 
+  mostrarContrasenia() {
+    this.textoContrasenia = !this.textoContrasenia;
   }
 
   ngOnInit(): void {
@@ -78,6 +85,7 @@ export class RegistroFormDelegadoComponent implements OnInit {
     this.apiService.post('delegado', delegadoDatos).subscribe((data:any) => {
     this.dataPost = data;
     console.log(this.dataPost);
+    this.router.navigate(['/login']); 
     });
     /*,(error) => {
     this.mensajeError = error;
