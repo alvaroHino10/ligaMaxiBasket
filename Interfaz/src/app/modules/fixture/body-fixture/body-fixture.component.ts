@@ -27,7 +27,7 @@ export class BodyFixtureComponent implements OnInit {
   }
 
   agregarPartido(): void {
-    this.modalService.open(FixturePartidoComponent, { centered: true });
+    this.modalService.open(FixturePartidoComponent, { centered: true , size: 'lg', scrollable: true });
   }
 
 }

@@ -14,6 +14,8 @@ export class FixturePartidoComponent implements OnInit {
   public formPartido: FormGroup;
   submitted = false;
   listaEquipos: any = [];
+  listaArbitros: any = [];
+  listaApuntadorMesa: any = [];
   time: NgbTimepicker;
 
   constructor(public activeModal: NgbActiveModal,
@@ -30,7 +32,13 @@ export class FixturePartidoComponent implements OnInit {
         Validators.required),
       lugarPartido: new FormControl('',[
         Validators.required,
-        Validators.minLength(3)])
+        Validators.minLength(3)]),
+      primerJuez: new FormControl('',
+      Validators.required),
+      segundoJuez: new FormControl ('',
+      Validators.required),
+      apuntadorMesa: new FormControl('',
+      Validators.required)
     });
   }
 

@@ -2,7 +2,12 @@
     background: rgba(230, 131, 63, 0.5);
 }
 
+#versus{
+    font-size: x-large;
+}
+
 .form-control{
     background: rgba(0, 0, 0, 0.4);
     color: white;
+    border-radius: 10px;
 }
