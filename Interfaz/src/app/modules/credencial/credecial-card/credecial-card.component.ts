@@ -22,15 +22,7 @@ export class CredecialCardComponent implements OnInit {
   codEquipo = -1;
   //imageJugador : any [];
   //datos fake
-  public listaJugadoresfake: any = [this.setRegistro ("1paul","martinez","flores","06-08-1999","77486990"),
-  this.setRegistro ("2paul","martinez","flores","06-08-1999","77486990")
-  ,this.setRegistro ("3paul","martinez","flores","06-08-1999","77486990")
-  ,this.setRegistro ("4paul","martinez","flores","06-08-1999","77486990")
-  ,this.setRegistro ("5paul","martinez","flores","06-08-1999","77486990")
-  ,this.setRegistro ("6paul","martinez","flores","06-08-1999","77486990")
-  ,this.setRegistro ("7paul","martinez","flores","06-08-1999","77486990")
-  ,this.setRegistro ("8paul","martinez","flores","06-08-1999","77486990")
-];
+  listaJugadoresfake: any ;
 
   constructor(private apiService: ApiService) {
     this.urlActual = window.location.href;
@@ -45,6 +37,7 @@ export class CredecialCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getJsonContent();
+    this.datosFake();
   }
 
   actualizarCredencial(){
@@ -79,7 +72,6 @@ export class CredecialCardComponent implements OnInit {
   }
    // tslint:disable-next-line:typedef
    downloadPDF() {
-    // Extraemos el
     const DATA = document.getElementById('credencialcita');
     const doc = new jsPDF('p', 'pt', 'a4');
     const options = {
@@ -87,7 +79,6 @@ export class CredecialCardComponent implements OnInit {
       scale: 3
     };
     html2canvas(DATA, options).then((canvas) => {
-
       const img = canvas.toDataURL('image/PNG');
 
       // Add image Canvas to PDF
@@ -105,19 +96,28 @@ export class CredecialCardComponent implements OnInit {
 
 
   //datos fake
-  setRegistro(nombre : any, p_Ap : any, m_ap : any, fecha: any, telf:any) {
-     
+  setRegistro(nombre: any, p_Ap: any, m_ap: any, fecha: any, telf: any) {
     const registroJugador = {
-    nombre_jug: nombre,
-    prim_ap_jug: p_Ap,
-    seg_ap_jug: m_ap,
-    
-    fecha_nac_jug: fecha,
-    telf_jug:telf ,
-    link_img_jug:"imagen.png",
-    
-  };
-  return registroJugador;
-    
+      nombre_jug: nombre,
+      prim_ap_jug: p_Ap,
+      seg_ap_jug: m_ap,
+      fecha_nac_jug: fecha,
+      telf_jug: telf,
+      link_img_jug: "imagen.png",
+    };
+    return registroJugador;
+
+  }
+
+  datosFake() {
+    this.listaJugadoresfake = [this.setRegistro("1paul", "martinez", "flores", "06-08-1999", "77486990"),
+    this.setRegistro("2paul", "martinez", "flores", "06-08-1999", "77486990"),
+    this.setRegistro("3paul", "martinez", "flores", "06-08-1999", "77486990"),
+    this.setRegistro("4paul", "martinez", "flores", "06-08-1999", "77486990"),
+    this.setRegistro("5paul", "martinez", "flores", "06-08-1999", "77486990"),
+    this.setRegistro("6paul", "martinez", "flores", "06-08-1999", "77486990"),
+    this.setRegistro("7paul", "martinez", "flores", "06-08-1999", "77486990"),
+    this.setRegistro("8paul", "martinez", "flores", "06-08-1999", "77486990"),
+    ];
   }
 }

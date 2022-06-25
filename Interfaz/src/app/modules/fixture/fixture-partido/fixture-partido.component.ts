@@ -16,30 +16,12 @@ export class FixturePartidoComponent implements OnInit {
   listaEquipos: any = [];
   listaArbitros: any = [];
   listaApuntadorMesa: any = [];
+  public datosPartido;
 
-  listaEquiposfake: any = [this.setRegistro("Cocos", "", "", ""),
-  this.setRegistro("Locos", "", "", ""),
-  this.setRegistro("Pedros", "", "", ""),
-  this.setRegistro("Paules", "", "", ""),
-  this.setRegistro("Los pumas azules", "", "", ""),
-  this.setRegistro("Gatos verdes", "", "", ""),
-  this.setRegistro("Pueblo azul", "", "", "")
-  ];
-  listaArbitrosfake: any = [this.setRegistro("", "martinez2", "flores", "arbitro"),
-  this.setRegistro("", "martinez3", "flores", "arbitro"),
-  this.setRegistro("", "martinez4", "flores", "arbitro"),
-  this.setRegistro("", "martinez5", "flores", "arbitro"),
-  this.setRegistro("", "martinez6", "flores", "arbitro"),
-  ];
-  listaAMfake: any = [this.setRegistro("", "martinez", "flores0", "mesa"),
-  this.setRegistro("", "martinez", "flores1", "mesa"),
-  this.setRegistro("", "martinez", "flores2", "mesa"),
-  this.setRegistro("", "martinez", "flores3", "mesa"),
-  this.setRegistro("", "martinez", "flores4", "mesa"),
-  this.setRegistro("", "martinez", "flores5", "mesa"),
-  ];
+  listaEquiposfake: any ;
+  listaArbitrosfake: any ;
+  listaAMfake: any ;
 
-  time: NgbTimepicker;
 
   constructor(public activeModal: NgbActiveModal,
     private apiService: ApiService) {
@@ -66,7 +48,8 @@ export class FixturePartidoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getEquipos();
+    //this.getEquipos();
+    this.datosFake();
   }
 
   getEquipos() {
@@ -79,6 +62,20 @@ export class FixturePartidoComponent implements OnInit {
 
   crearPartido() {
     this.submitted = true;
+  }
+
+  passBack() {
+    this.datosPartido  = {
+      fecha: this.formPartido.value.fechaPartido,
+      hora:	this.formPartido.value.horaPartido ,
+      equipo_1:	this.formPartido.value.equipo1,
+      equipo_2: this.formPartido.value.equipo2,
+      lugar: this.formPartido.value.lugarPartido,
+      primer_juez: this.formPartido.value.primerJuez,
+      segundo_juez: this.formPartido.value.segundoJuez,
+      apuntador_mesa: this.formPartido.value.apuntadorMesa
+    };
+    this.activeModal.close(this.datosPartido); 
   }
 
   get equiposIguales(){
@@ -106,6 +103,30 @@ export class FixturePartidoComponent implements OnInit {
       rol_cp: rol,
     };
     return registroJugador;
+  }
+
+  datosFake() {
+    this.listaEquiposfake = [this.setRegistro("Cocos", "", "", ""),
+    this.setRegistro("Locos", "", "", ""),
+    this.setRegistro("Pedros", "", "", ""),
+    this.setRegistro("Paules", "", "", ""),
+    this.setRegistro("Los pumas azules", "", "", ""),
+    this.setRegistro("Gatos verdes", "", "", ""),
+    this.setRegistro("Pueblo azul", "", "", "")
+    ];
+    this.listaArbitrosfake = [this.setRegistro("", "martinez2", "flores", "arbitro"),
+    this.setRegistro("", "martinez3", "flores", "arbitro"),
+    this.setRegistro("", "martinez4", "flores", "arbitro"),
+    this.setRegistro("", "martinez5", "flores", "arbitro"),
+    this.setRegistro("", "martinez6", "flores", "arbitro"),
+    ];
+    this.listaAMfake = [this.setRegistro("", "martinez", "flores0", "mesa"),
+    this.setRegistro("", "martinez", "flores1", "mesa"),
+    this.setRegistro("", "martinez", "flores2", "mesa"),
+    this.setRegistro("", "martinez", "flores3", "mesa"),
+    this.setRegistro("", "martinez", "flores4", "mesa"),
+    this.setRegistro("", "martinez", "flores5", "mesa"),
+    ];
   }
 
 }
