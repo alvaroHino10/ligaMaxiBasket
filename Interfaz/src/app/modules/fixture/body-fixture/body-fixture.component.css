@@ -10,6 +10,9 @@ p {
 .content {
   padding: 3rem 0; }
 
+#partidoVacio{
+  background-color: burlywood;
+}
 
 .custom-table {
   min-width: 700px; }

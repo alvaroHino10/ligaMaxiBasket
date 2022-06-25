@@ -1,7 +1,8 @@
 import { Component, OnInit , Inject} from '@angular/core';
 //import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FixturePartidoComponent } from '../fixture-partido/fixture-partido.component';
-import {NgbModal, ModalDismissReasons, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
+import {NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
+import { ApiService } from 'src/app/api-services/api-services';
 
 
 @Component({
@@ -13,6 +14,7 @@ export class BodyFixtureComponent implements OnInit {
   title = 'ng-bootstrap-modal-demo';
   closeResult: string;
   modalOptions:NgbModalOptions;
+  listaPartidos = [];
   partidoNuevo  = {
     fecha: '',
     hora:	'',
@@ -23,27 +25,32 @@ export class BodyFixtureComponent implements OnInit {
     segundo_juez: '',
     apuntador_mesa: ''
   };
-  constructor(private modalService: NgbModal){
-      
+
+  constructor(private modalService: NgbModal, private apiService : ApiService){
     this.modalOptions = {
       backdrop:'static',
       backdropClass:'customBackdrop'
     }
-    
-
   }
 
   ngOnInit(): void {
+    this.cargarPartidos();
+  }
+
+  cargarPartidos(){
+    this.apiService.getAll('partidos').subscribe((data: any = []) => {
+      const response = data;
+      this.listaPartidos = (response['data']);
+    });
   }
 
   existePartido(){
     return true;
   }
+
   agregarPartido(): void {
-    
     const modalFixture = this.modalService.open(FixturePartidoComponent, { centered: true , size: 'lg', scrollable: true });
     
-
     modalFixture.result.then((result) => {
       if (result) {
         this.partidoNuevo = result;
@@ -54,20 +61,12 @@ export class BodyFixtureComponent implements OnInit {
         alert(mensajeResponse);*/
         this.partidoNuevo.equipo_1 = this.partidoNuevo['equipo_1']['nombre_equi'];
         this.partidoNuevo.equipo_2 = this.partidoNuevo['equipo_2']['nombre_equi'];
+        this.listaPartidos.push(this.partidoNuevo);
+        console.log(this.listaPartidos);
       }
     });
-
-
-    /*var datosPartido  = {
-      fecha: this.formPartido.value.fechaPartido,
-      hora:	this.formPartido.value.horaPartido ,
-      equipo_1:	this.formPartido.value.equipo1,
-      equipo_2: this.formPartido.value.equipo2,
-      lugar: this.formPartido.value.lugar,
-      primer_juez: this.formPartido.value.primerJuez,
-      segundo_juez: this.formPartido.value.segundoJuez,
-      apuntador_mesa: this.formPartido.value.apuntadorMesa
-    };*/
   }
+
+
 
 }
