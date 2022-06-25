@@ -62,13 +62,13 @@ import { FooterDelegadoComponent } from './modules/registro-delegado/footer-dele
 import { HeaderDelegadoComponent } from './modules/registro-delegado/header-delegado/header-delegado.component';
 import { NavegadorDelegadoComponent } from './modules/registro-delegado/navegador-delegado/navegador-delegado.component';
 import { RegistroFormDelegadoComponent } from './modules/registro-delegado/registro-form-delegado/registro-form-delegado.component';
+import { BodyDelegadoComponent } from './modules/registro-delegado/body-delegado/body-delegado.component'
 
 import { EquiposComponent } from './modules/equipos/equipos.component';
 import { BodyEquiposComponent } from './modules/equipos/body-equipos/body-equipos.component';
 import { FooterEquiposComponent } from './modules/equipos/footer-equipos/footer-equipos.component';
 import { HeaderEquiposComponent } from './modules/equipos/header-equipos/header-equipos.component';
-import { Error404Component } from './modules/error404/error404.component'
-
+import { Error404Component } from './modules/error404/error404.component';
 
 @NgModule({
   declarations: [
@@ -120,7 +120,8 @@ import { Error404Component } from './modules/error404/error404.component'
     BodyEquiposComponent,
     FooterEquiposComponent,
     HeaderEquiposComponent,
-    Error404Component
+    Error404Component,
+    BodyDelegadoComponent
   ],
   imports: [
     BrowserModule,
