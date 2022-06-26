@@ -1,5 +1,4 @@
-<body>
-
+    <body>
 
     <div class="content">
   
@@ -8,65 +7,45 @@
   
         <div class="table-responsive">
   
-          <table class="table custom-table">
+          <table class="table table-hover">
             <thead>
               <tr>
-  
                 <th scope="col">Nombre del Equipo</th>
                 <th scope="col">Pais del Equipo</th>
                 <th scope="col">Color del Equipo</th>
                 <th scope="col">Categoria del Equipo</th>
-                
               </tr>
             </thead>
+            
             <tbody>
-              <tr scope="row">
-                <td>
-                  18/08/2022
-                </td>
-                <td>15:00</td>
-                <td>Equipo dinamita</td>
-                <td>Equipo flores</td>
-               
-              </tr>
-  
-              <tr>
-                <td>18/08/2022</td>
-                <td>15:00</td>
-                <td>Equipo dinamita</td>
-                <td>Equipo dinamita</td>
+              <tr (click)="informacionPartido()">
+                <td>calceteros</td>
+                <td>Peru</td>
+                <td>Rojo</td>
+                <td>35</td>
                 
               </tr>
-  
-              <tr>
-                <td>18/08/2022</td>
-                <td>15:00</td>
-                <td>Equipo dinamita</td>
-                <td>Equipo dinamita</td>
-                
+
+              <tr scope="row">  
               </tr>
-  
-              <tr>
-                <td>18/08/2022</td>
-                <td>15:00</td>
-                <td>Equipo dinamita</td>
-                <td>Equipo dinamita</td>
-                
+              <tr *ngFor="let partido of listaPartidos">
+                <td>{{ partido?.fecha }}</td>
+                <td>{{ partido?.hora }}</td>
+                <td>{{ partido?.equipo_1 }}</td>
+                <td>{{ partido?.equipo_2 }}</td>
+                <td>{{ partido?.lugar }}</td>
+                <td>ganador</td>
               </tr>
-  
-              
-  
             </tbody>
   
           </table>
         </div>
-        
+        <h4 class="text-center" id="partidoVacio" *ngIf="listaPartidos.length==0">NO EXISTEN EQUIPOS</h4>
+        <div>
+        </div>
   
       </div>
   
     </div>
   
-  
-  
-   
   </body>

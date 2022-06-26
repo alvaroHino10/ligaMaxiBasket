@@ -71,6 +71,7 @@ import { HeaderEquiposComponent } from './modules/equipos/header-equipos/header-
 import { Error404Component } from './modules/error404/error404.component';
 
 import { CookieService } from 'ngx-cookie-service';
+import { ModalEquipoComponent } from './modules/equipos/modal-equipo/modal-equipo.component';
 
 @NgModule({
   declarations: [
@@ -123,7 +124,8 @@ import { CookieService } from 'ngx-cookie-service';
     FooterEquiposComponent,
     HeaderEquiposComponent,
     Error404Component,
-    BodyDelegadoComponent
+    BodyDelegadoComponent,
+    ModalEquipoComponent
   ],
   imports: [
     BrowserModule,
