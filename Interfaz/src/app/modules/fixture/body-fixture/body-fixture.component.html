@@ -37,7 +37,7 @@
       </div>
       <h4 class="text-center" id="partidoVacio" *ngIf="listaPartidos.length==0">NO EXISTEN PARTIDOS</h4>
       <div>
-        <button class="btn btn-dark btn-m mt-3" (click)="agregarPartido()">
+        <button *appAccesoDelegado="existeAcceso" class="btn btn-dark btn-m mt-3" (click)="agregarPartido()">
           Agregar partido
         </button>
       </div>

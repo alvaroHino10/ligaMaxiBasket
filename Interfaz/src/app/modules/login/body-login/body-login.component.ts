@@ -36,6 +36,9 @@ export class BodyLoginComponent implements OnInit {
       this.cookieService.set('token_access', res.accessToken, 4 , '/' );
       this.router.navigate(['/']);
     });
+    //para pruebas
+    /*this.cookieService.set('token_access', this.siteKey, 4 , '/' );
+    this.router.navigate(['/']);*/
   }
 
   mostrarContrasenia() {

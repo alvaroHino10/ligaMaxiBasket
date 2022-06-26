@@ -3,7 +3,7 @@ import { Component, OnInit , Inject} from '@angular/core';
 import { FixturePartidoComponent } from '../fixture-partido/fixture-partido.component';
 import {NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from 'src/app/api-services/api-services';
-
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-body-fixture',
@@ -15,6 +15,7 @@ export class BodyFixtureComponent implements OnInit {
   closeResult: string;
   modalOptions:NgbModalOptions;
   listaPartidos = [];
+  
   partidoNuevo  = {
     fecha: '',
     hora:	'',
@@ -26,7 +27,7 @@ export class BodyFixtureComponent implements OnInit {
     apuntador_mesa: ''
   };
 
-  constructor(private modalService: NgbModal, private apiService : ApiService){
+  constructor(private modalService: NgbModal, private apiService : ApiService, private cookieService : CookieService){
     this.modalOptions = {
       backdrop:'static',
       backdropClass:'customBackdrop'
@@ -67,6 +68,5 @@ export class BodyFixtureComponent implements OnInit {
     });
   }
 
-
-
+  get existeAcceso(){ return this.cookieService.check('token_access');}
 }
