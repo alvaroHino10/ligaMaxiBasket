@@ -76,7 +76,7 @@ export class RegistroCpComponent implements OnInit {
 
   postServicio() {
     var registroCP = this.setRegistro();    
-    this.apiService.postAndImageNE('controlPartido', registroCP).subscribe(res => {
+    this.apiService.postAndImageNotErrors('controlPartido', registroCP).subscribe(res => {
       this.data = res;
       console.log(this.data);
     });/*,(error) => {
@@ -89,7 +89,6 @@ export class RegistroCpComponent implements OnInit {
 
   getServicio() {
     const registro = this.formularioRegistroControlP.value;
-
     this.apiService.getAll('controlpartido').subscribe((data: any) => {
       this.lista = data;
     })
@@ -105,16 +104,15 @@ export class RegistroCpComponent implements OnInit {
   
   setRegistro(){
     var registroCP = new FormData();
-    registroCP.append('cod_equi', "2");
-    registroCP.append('nombre_jug',    this.formularioRegistroControlP.value.nombre);
-    registroCP.append('prim_ap_jug',   this.formularioRegistroControlP.value.primerApellido);
-    registroCP.append('seg_ap_jug',    this.formularioRegistroControlP.value.segundoApellido);
-    registroCP.append('correo_jug',    this.formularioRegistroControlP.value.correoElectronico);
-    registroCP.append('num_iden_jug',  this.formularioRegistroControlP.value.numeroIdentidad);
-    registroCP.append('fecha_nac_jug', this.formularioRegistroControlP.value.fechaNacimiento);
-    registroCP.append('telf_jug',      this.formularioRegistroControlP.value.telefono);
-    registroCP.append('rol',      this.formularioRegistroControlP.value.rol);
-    registroCP.append('link_img_jug',  this.fileImage);
+    registroCP.append('nombre_contr_part',    this.formularioRegistroControlP.value.nombre);
+    registroCP.append('prim_ap_contr_part',   this.formularioRegistroControlP.value.primerApellido);
+    registroCP.append('seg_ap_contr_part',    this.formularioRegistroControlP.value.segundoApellido);
+    registroCP.append('num_iden__contr_part',  this.formularioRegistroControlP.value.numeroIdentidad);
+    registroCP.append('telf_contr_part',      this.formularioRegistroControlP.value.telefono);
+    registroCP.append('fecha_nac_contr_part', this.formularioRegistroControlP.value.fechaNacimiento);
+    registroCP.append('link_img_contr_part',  this.fileImage);
+    registroCP.append('rol_contr_part',       this.formularioRegistroControlP.value.rol);
+    //registroCP.append('correo_jug',    this.formularioRegistroControlP.value.correoElectronico);
     return registroCP;
   }
 

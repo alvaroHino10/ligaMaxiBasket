@@ -62,7 +62,7 @@ export class RegistroPComponent implements OnInit {
     formDataPreins.append("fecha_preinscrip", "2022-05-05");
     formDataPreins.append('link_img_comprob', this.fileImage, this.fileImage.name);
 
-    this.apiService.postAndImageNE('preinscripcion', formDataPreins).subscribe(res => {
+    this.apiService.postAndImageNotErrors('preinscripcion', formDataPreins).subscribe(res => {
       this.response = res;
       console.log("preinscripcion:",this.response['data']);
       cod = (this.response['data'])['cod_preinscrip'];

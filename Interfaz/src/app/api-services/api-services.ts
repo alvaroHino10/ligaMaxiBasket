@@ -24,7 +24,7 @@ export class ApiService {
     }).pipe(catchError(this.handleError));
   }
 
-  postAndImageNE(dir: string, model: object){
+  postAndImageNotErrors(dir: string, model: object){
     const headers = new HttpHeaders();
     return this.http.post<any>(`${environment.url}${dir}`, model, {
       headers: headers

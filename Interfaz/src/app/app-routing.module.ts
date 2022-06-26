@@ -34,11 +34,13 @@ const routes: Routes = [
     },
     {
       path: 'registro-equipo',
-      component: RegistroEquipoComponent
+      component: RegistroEquipoComponent,
+      canActivate: [VigilanteGuard]
     },
     {
       path: 'registro-jugadores',
-      component: RegistroJugadoresComponent
+      component: RegistroJugadoresComponent,
+      canActivate: [VigilanteGuard]
     },
     {
       path: 'registro-control-partido',

@@ -129,7 +129,7 @@
             </span>
           </div>
         </div>
-        <div *ngIf="(controls.password.touched && controls.password.invalid)" class="text-danger">
+        <div *ngIf="(controls.password.touched && controls.password.invalid) || submitted" class="text-danger">
           <div *ngIf="controls.password.errors?.required">Por favor, ingresa tu contraseña</div>
         </div>
       </div>
