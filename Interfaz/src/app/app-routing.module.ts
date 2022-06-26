@@ -11,6 +11,7 @@ import { LoginComponent } from "./modules/login/login.component";
 import { RegistroDelegadoComponent } from './modules/registro-delegado/registro-delegado.component';
 import { EquiposComponent } from './modules/equipos/equipos.component'
 import { Error404Component } from './modules/error404/error404.component';
+import { VigilanteGuard } from './guards/vigilante.guard';
 
 const routes: Routes = [
 
@@ -28,7 +29,8 @@ const routes: Routes = [
     },
     {
       path:'preinscripcion',
-      component:PreinscripcionComponent
+      component:PreinscripcionComponent,
+      canActivate: [VigilanteGuard]
     },
     {
       path: 'registro-equipo',

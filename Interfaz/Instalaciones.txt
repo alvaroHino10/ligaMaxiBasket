@@ -5,3 +5,5 @@ npm install @types/jspdf @types/html2canvas -D
 npm install --save @ng-bootstrap/ng-bootstrap@10
 
 npm i ngx-captcha@10.0.0
+
+npm i ngx-cookie-service@12.0.0

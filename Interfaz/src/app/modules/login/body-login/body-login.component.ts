@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ApiService } from 'src/app/api-services/api-services';
+import { CookieService } from 'ngx-cookie-service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-body-login',
@@ -11,7 +14,8 @@ export class BodyLoginComponent implements OnInit {
   siteKey: string;
   textoContrasenia: boolean;
 
-  constructor() {
+  constructor(private apiService: ApiService, private router: Router, 
+    private cookieService: CookieService) {
     this.siteKey='6Lf-yJcgAAAAAHxzd7sG7Y0dEZo_avSBaU7RaG5-';
     this.datosLogin = new FormGroup({
       correoElectronico: new FormControl('',
@@ -27,7 +31,11 @@ export class BodyLoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ingresar(){
+  iniciarSesion(){
+    this.apiService.post('login', this.datosLogin.value).subscribe((res: any = []) => {
+      this.cookieService.set('token_access', res.accessToken, 4 , '/' );
+      this.router.navigate(['/']);
+    });
   }
 
   mostrarContrasenia() {

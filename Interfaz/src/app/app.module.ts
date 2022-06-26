@@ -70,6 +70,8 @@ import { FooterEquiposComponent } from './modules/equipos/footer-equipos/footer-
 import { HeaderEquiposComponent } from './modules/equipos/header-equipos/header-equipos.component';
 import { Error404Component } from './modules/error404/error404.component';
 
+import { CookieService } from 'ngx-cookie-service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -134,7 +136,7 @@ import { Error404Component } from './modules/error404/error404.component';
     NgbModule,
     NgxCaptchaModule
   ],
-  providers: [],
+  providers: [ CookieService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
