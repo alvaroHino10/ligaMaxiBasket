@@ -72,7 +72,7 @@ export class RegistroFormDelegadoComponent implements OnInit {
   }
 
   postServicio() {
-    const delegadoDatos = {cod_preinscrip:35,
+    /*const delegadoDatos = {cod_preinscrip:35,
                           nombre_deleg:   this.formularioDelegado.value.nombreDelegado,
                           ap_deleg:       this.formularioDelegado.value.apellidoDelegado,
                           num_iden_deleg: this.formularioDelegado.value.numeroIdentificacion,
@@ -82,11 +82,11 @@ export class RegistroFormDelegadoComponent implements OnInit {
                           sexo_deleg:     this.formularioDelegado.value.sexoDelegado,
                           link_img_deleg: "imagenDelegado.jpg"
     }
-    this.apiService.post('delegado', delegadoDatos).subscribe((data:any) => {
+    this.apiService.postAndImage('delegado', delegadoDatos).subscribe((data:any) => {
     this.dataPost = data;
     console.log(this.dataPost);
     this.router.navigate(['/login']); 
-    });
+    });*/
     /*,(error) => {
     this.mensajeError = error;
     console.log(this.mensajeError);
@@ -94,15 +94,15 @@ export class RegistroFormDelegadoComponent implements OnInit {
     });*/
 
     //POR PROBAR (Post con imagen de delegado):
-    /*var mensajeResponse;
+    var mensajeResponse;
     var mensajeError;
     var datos = this.setRegistro();
-    this.apiService.postAndImage('delegado', datos).subscribe(res => {
+    this.apiService.postAndImageNotErrors('delegado', datos).subscribe(res => {
       this.dataPost = res;
       console.log(this.dataPost);
       mensajeResponse = this.dataPost['mensaje'];
       alert(mensajeResponse);
-    }, (error) => {
+    });/*, (error) => {
       mensajeError = error;
       console.log(mensajeError.error['mensaje']);
       mensajeResponse = mensajeError.error['mensaje'];
@@ -112,13 +112,13 @@ export class RegistroFormDelegadoComponent implements OnInit {
 
   setRegistro() {
     var delegadoDatos = new FormData
-    delegadoDatos.append('cod_preinscrip', '10');//this.formularioDelegado.value.cod_preinscrip);
     delegadoDatos.append('nombre_deleg', this.formularioDelegado.value.nombreDelegado);
-    delegadoDatos.append('ap_deleg:', this.formularioDelegado.value.apellidoDelegado);
+    delegadoDatos.append('ap_deleg', this.formularioDelegado.value.apellidoDelegado);
     delegadoDatos.append('num_iden_deleg', this.formularioDelegado.value.numeroIdentificacion);
     delegadoDatos.append('fecha_nac_deleg', this.formularioDelegado.value.fechaNacimiento);
     delegadoDatos.append('sexo_deleg', this.formularioDelegado.value.sexo);
     delegadoDatos.append('link_img_jdeleg', this.fileImage);
+    delegadoDatos.append('correo_deleg', this.formularioDelegado.value.correoElectronico);
     return delegadoDatos;
   }
 
