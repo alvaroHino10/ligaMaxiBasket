@@ -18,6 +18,8 @@ export class BodyLoginComponent implements OnInit {
             [Validators.required,
             Validators.email]),
       password: new FormControl('',
+            Validators.required),
+      captcha: new FormControl('',
             Validators.required)
     });
    }
