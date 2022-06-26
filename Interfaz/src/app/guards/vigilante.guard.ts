@@ -8,20 +8,19 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class VigilanteGuard implements CanActivate {
   constructor(private cookieService: CookieService, private router: Router){
-
   }
 
   redirect(cookie: boolean){
     if(!cookie){
-      this.router.navigate(['/','/login']);
+      this.router.navigate(['/','/home']);
     }
   }
+
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const cookie = this.cookieService.check('token_access');
     this.redirect(cookie);
-
     return cookie;
   }
   
