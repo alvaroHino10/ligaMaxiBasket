@@ -15,6 +15,8 @@ export class RegistroEComponent implements OnInit {
   listaEquipos : any ;
   mensajeError: any;
   dataPost: any;
+  torneoActual : any;
+  codTorneo: any;
 
   constructor(public formulario: FormBuilder,
     private apiService:ApiService) {
@@ -37,34 +39,46 @@ export class RegistroEComponent implements OnInit {
 
   ngOnInit(): void {
     //this.getServicio(); 
-    this.datosFake();
+    this.getServicio("torneo", this.torneoActual); 
   }
 
   registrarEquipo(){
     this.submitted = true;
   if (this.formularioRegistroEquipo.invalid) {
-    console.log(this.formularioRegistroEquipo.value);
-    console.log('NO VALIDO');
     alert('Por favor ingrese datos validos, correspondientes a todos los campos');
-    this.getServicio();  
     return;
     }else{
-      //this.postServicio();
-      this.limpiarFormulario();
+      this.postServicio();
       return;
     }  
+  }
+
+  getServicio(getDatos: string, varConsole: any){
+    this.apiService.getAll(getDatos).subscribe((data:any) => {
+      this.torneoActual = data['data'];      
+      this.getCodTorneo(this.torneoActual['length']);
+    });
+  }
+  
+  getCodTorneo(length : any){
+    this.apiService.getById('torneo', (length)).subscribe((data:any) => {
+      var torneoInf = data['data'];
+      this.codTorneo = torneoInf['cod_torn'];
+      this.listaEquipos = torneoInf['equipos'];
+      console.log(this.listaEquipos);
+    });    
   }
 
   postServicio() {
     var mensajeResponse;
     var registroEquipo = this.setRegistro();
 
-    this.apiService.post('equipo', registroEquipo).subscribe((data: any) => {
+    this.apiService.post('equipo_data', registroEquipo).subscribe((data: any) => {
       this.dataPost = data;
       console.log(this.dataPost);
       mensajeResponse = this.dataPost['mensaje'];
       alert(mensajeResponse);
-
+      this.limpiarFormulario();
     }, (error) => {
       this.mensajeError = error;
       console.log(this.mensajeError.error['mensaje']);
@@ -74,22 +88,21 @@ export class RegistroEComponent implements OnInit {
     });
   }
 
-  getServicio(){
-    this.apiService.getAll('equipo').subscribe((data:any) => {
-      this.listaEquipos = data;
-      console.log(this.listaEquipos);
-    })
-  }
-  
   setRegistro(){
-    const registroEquipo = {cod_torn:1,
-                            cod_preinscrip: 1,
-                            nombre_equi:      this.formularioRegistroEquipo.value.nombreDelEquipo,
-                            categ_equi:       this.formularioRegistroEquipo.value.categoria,
+    /*const registroEquipo = {cod_torn:         this.codTorneo,
+                            cod_preinscrip:   this.formularioRegistroEquipo.value.nombreDelEquipo.cod_preinscrip,
+                            nombre_equi:      this.formularioRegistroEquipo.value.nombreDelEquipo.nombre_equi,
+                            categ_equi:       this.formularioRegistroEquipo.value.nombreDelEquipo.categ_equi,
                             pais_equi:        this.formularioRegistroEquipo.value.paisEquipo,
                             discip_equi:      "Basquet", 
                             color_equi:       this.formularioRegistroEquipo.value.colorEquipo
-    }        
+    }*/
+    const registroEquipo = {
+      cod_equi:         this.formularioRegistroEquipo.value.nombreDelEquipo.cod_equi,
+      pais_equi:        this.formularioRegistroEquipo.value.paisEquipo,
+      discip_equi:      "Basquet", 
+      color_equi:       this.formularioRegistroEquipo.value.colorEquipo
+    }      
     return registroEquipo;
   }
 
