@@ -38,9 +38,13 @@ export class BodyLoginComponent implements OnInit {
       console.log(res);
       this.router.navigate(['/credencial']);
     });
+    /*this.apiService.post('login', this.datosLogin.value).subscribe((res: any = []) => {
+      this.cookieService.set('token_access', res.accessToken, 4 , '/' );
+      this.router.navigate(['/']);
+    });*/
     //para pruebas
-    /*this.cookieService.set('token_access', this.siteKey, 4 , '/' );
-    this.router.navigate(['/']);*/
+    //this.cookieService.set('token_access', this.siteKey, 4 , '/' );
+    //this.router.navigate(['/']);
   }
 
   setDatos(){

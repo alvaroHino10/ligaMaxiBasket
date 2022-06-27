@@ -17,19 +17,21 @@
               <th scope="col">Equipo 2</th>
               <th scope="col">Lugar</th>
               <th scope="col">Resultado</th>
+              <th scope="col">Control del Partido</th>
             </tr>
           </thead>
           
           <tbody>
             <tr scope="row">  
             </tr>
-            <tr *ngFor="let partido of listaPartidos">
+            <tr *ngFor="let partido of listaPartidos" >
               <td>{{ partido?.fecha }}</td>
               <td>{{ partido?.hora }}</td>
               <td>{{ partido?.equipo_1 }}</td>
               <td>{{ partido?.equipo_2 }}</td>
               <td>{{ partido?.lugar }}</td>
-              <td>ganador</td>
+              <td >ganador</td>
+              <td (click)="ControldelPartido()">Mesa</td>
             </tr>
           </tbody>
 

@@ -1,3 +1,4 @@
+import { ControlModalComponent } from './../control-modal/control-modal.component';
 import { Component, OnInit , Inject} from '@angular/core';
 //import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
 import { FixturePartidoComponent } from '../fixture-partido/fixture-partido.component';
@@ -38,6 +39,11 @@ export class BodyFixtureComponent implements OnInit {
     this.cargarPartidos();
   }
 
+  ControldelPartido(): void {
+    const modalFixture = this.modalService.open(ControlModalComponent, { centered: true , size: 'xl', scrollable: true });
+
+}
+
   cargarPartidos(){
     this.apiService.getAll('partidos').subscribe((data: any = []) => {
       const response = data;
@@ -50,7 +56,7 @@ export class BodyFixtureComponent implements OnInit {
   }
 
   agregarPartido(): void {
-    const modalFixture = this.modalService.open(FixturePartidoComponent, { centered: true , size: 'lg', scrollable: true });
+    const modalFixture = this.modalService.open(FixturePartidoComponent, { centered: true , size: 'xl', scrollable: true });
     
     modalFixture.result.then((result) => {
       if (result) {
