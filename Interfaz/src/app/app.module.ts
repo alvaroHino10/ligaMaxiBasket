@@ -71,6 +71,7 @@ import { HeaderEquiposComponent } from './modules/equipos/header-equipos/header-
 import { Error404Component } from './modules/error404/error404.component';
 
 import { CookieService } from 'ngx-cookie-service';
+import { ModalEquipoComponent } from './modules/equipos/modal-equipo/modal-equipo.component';
 import { AccesoDelegadoDirective } from './directives/acceso-delegado.directive';
 
 @NgModule({
@@ -125,6 +126,7 @@ import { AccesoDelegadoDirective } from './directives/acceso-delegado.directive'
     HeaderEquiposComponent,
     Error404Component,
     BodyDelegadoComponent,
+    ModalEquipoComponent,
     AccesoDelegadoDirective
   ],
   imports: [

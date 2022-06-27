@@ -7,41 +7,42 @@
   font-style: normal;
 
   font-weight: 700;
-  font-size: 5px;
-  
+  font-size: 32px;
+  line-height: 48px;
   letter-spacing: 0.235em;
-  color: black;
-  
+
+  color: #FFFFFF;
 }
 
+nav{
+  background: #292929;
+  font-family: 'calibri';
+  background-color: #000000;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+nav ul{
+  float: right;
+  margin-right: 20px;
+}
+nav ul li{
+  display: inline-block;
+  
+  margin: 0 30px;
+}
+nav ul li a{
+  color: rgb(255, 255, 255);
+  font-size: 28px;
+  padding: 40px 5px;
+  border-radius: 3px;
+  text-transform: uppercase;
+}
 li a.active, li a:hover{
   background: #6f6f6f;
   transition: .5s;
 }
-
-nav ul li a{
-  color: rgb(255, 255, 255);
-  font-size: 5px;
-  padding: 40px 5px;
-  border-radius: 3px;
-  text-transform: uppercase;
-}
-/*
-nav ul{
-  margin-right: 80px;
-}*/
-/*
-nav ul li{
-  display: inline-block;
-}
-*/
-nav ul li a{
-  font-size: 5px;
-  padding: 40px 5px;
-  border-radius: 3px;
-  text-transform: uppercase;
-}
-/*
 .checkbtn{
   font-size: 30px;
   color: #fff;
@@ -55,20 +56,21 @@ nav ul li a{
   display: none;
 }
 
+
 img {
-  width: 250px;
+  width: 300px;
   height: 185px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-}*/
-
+}
 @media (max-width: 1800px){
   .enlace{
       padding-left: 30px;
   }
   nav ul li{
-
+    
+    
     margin: 0 5px;
   }
 
