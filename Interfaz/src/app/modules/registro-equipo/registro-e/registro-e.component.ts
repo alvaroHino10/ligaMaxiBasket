@@ -12,7 +12,7 @@ export class RegistroEComponent implements OnInit {
   public listaCategoriaEquipo: any = [ "+30", "+40", "+50", "+60"];
   public submitted = false;
   categoria = [];
-  lista : any = [];
+  listaEquipos : any ;
   mensajeError: any;
   dataPost: any;
 
@@ -22,10 +22,7 @@ export class RegistroEComponent implements OnInit {
     this.formularioRegistroEquipo = new FormGroup({
 
       nombreDelEquipo: new FormControl ('',
-                    [Validators.required, 
-                     Validators.minLength(1),
-                     Validators.maxLength(80),
-                     Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
+                    Validators.required),
 
       categoria: new FormControl ('', 
                      Validators.required),
@@ -43,7 +40,8 @@ export class RegistroEComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getServicio();
+    //this.getServicio(); 
+    this.datosFake();
   }
 
   registrarEquipo(){
@@ -69,8 +67,7 @@ export class RegistroEComponent implements OnInit {
       mensajeResponse = this.dataPost['mensaje'];
       alert(mensajeResponse);
 
-    },(error) => {
-      
+    },(error) => {      
       this.mensajeError = error;
       console.log(this.mensajeError.error['mensaje']);
       mensajeResponse = this.mensajeError.error['mensaje'];
@@ -79,10 +76,9 @@ export class RegistroEComponent implements OnInit {
   }
 
   getServicio(){
-    const registro = this.formularioRegistroEquipo.value;
     this.apiService.getAll('equipo').subscribe((data:any) => {
-      this.lista = data;
-      console.log(this.lista);
+      this.listaEquipos = data;
+      console.log(this.listaEquipos);
     })
   }
   
@@ -98,5 +94,25 @@ export class RegistroEComponent implements OnInit {
     return registroEquipo;
   }
   get controls() { return this.formularioRegistroEquipo.controls; }
+  get equipoSeleccionado(){ return this.formularioRegistroEquipo.value.nombreDelEquipo}
 
+  //datos fake
+  setRegistroF(nombre: any, categoria: any) {
+    const registroJugador = {
+      nombre_equi: nombre,
+      categ_equi: categoria,
+    };
+    return registroJugador;
+  }
+
+  datosFake() {
+    this.listaEquipos = [this.setRegistroF("1paul", "+30"),
+    this.setRegistroF("2paul", "+40"),
+    this.setRegistroF("3paul", "+50"),
+    this.setRegistroF("4paul", "+30"),
+    this.setRegistroF("2paul", "+40"),
+    this.setRegistroF("3paul", "+50"),
+    this.setRegistroF("4paul", "+30"),
+    ];
+  }
 }
