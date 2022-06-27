@@ -73,6 +73,7 @@ import { Error404Component } from './modules/error404/error404.component';
 import { CookieService } from 'ngx-cookie-service';
 import { ModalEquipoComponent } from './modules/equipos/modal-equipo/modal-equipo.component';
 import { AccesoDelegadoDirective } from './directives/acceso-delegado.directive';
+import { ControlModalComponent } from './modules/fixture/control-modal/control-modal.component';
 
 @NgModule({
   declarations: [
@@ -127,7 +128,8 @@ import { AccesoDelegadoDirective } from './directives/acceso-delegado.directive'
     Error404Component,
     BodyDelegadoComponent,
     ModalEquipoComponent,
-    AccesoDelegadoDirective
+    AccesoDelegadoDirective,
+    ControlModalComponent
   ],
   imports: [
     BrowserModule,
