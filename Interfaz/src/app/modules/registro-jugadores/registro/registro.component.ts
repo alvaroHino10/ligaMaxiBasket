@@ -126,6 +126,7 @@ export class RegistroJComponent implements OnInit {
       console.log(this.mensajeError.error['mensaje']);
       mensajeResponse = this.mensajeError.error['mensaje'];
       alert(mensajeResponse);
+      this.limpiarFormulario();
     });
     this.getServicio();
   }
@@ -137,7 +138,6 @@ export class RegistroJComponent implements OnInit {
     })
     console.log(this.listaJugadores);
   }
-
 
   setRegistro() {
     var registroJugador = new FormData();
@@ -158,6 +158,11 @@ export class RegistroJComponent implements OnInit {
     registroJugador.append('link_img_jug', this.fileImage);
     console.log("codEqui:", this.formularioRegistroJugador.value.equipo.cod_equi);
     return registroJugador;
+  }
+
+  limpiarFormulario(){
+    this.formularioRegistroJugador.reset();
+    this.submitted = false;
   }
 
   get controls() { return this.formularioRegistroJugador.controls; }

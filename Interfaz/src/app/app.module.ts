@@ -74,6 +74,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { ModalEquipoComponent } from './modules/equipos/modal-equipo/modal-equipo.component';
 import { AccesoDelegadoDirective } from './directives/acceso-delegado.directive';
 import { ControlModalComponent } from './modules/fixture/control-modal/control-modal.component';
+import { BodyJugadoresComponent } from './modules/registro-jugadores/body-jugadores/body-jugadores.component';
 
 @NgModule({
   declarations: [
@@ -129,7 +130,8 @@ import { ControlModalComponent } from './modules/fixture/control-modal/control-m
     BodyDelegadoComponent,
     ModalEquipoComponent,
     AccesoDelegadoDirective,
-    ControlModalComponent
+    ControlModalComponent,
+    BodyJugadoresComponent
   ],
   imports: [
     BrowserModule,

@@ -23,10 +23,6 @@ export class RegistroEComponent implements OnInit {
 
       nombreDelEquipo: new FormControl ('',
                     Validators.required),
-
-      categoria: new FormControl ('', 
-                     Validators.required),
-
       paisEquipo: new FormControl ('', 
                     Validators.required),
 
@@ -47,31 +43,34 @@ export class RegistroEComponent implements OnInit {
   registrarEquipo(){
     this.submitted = true;
   if (this.formularioRegistroEquipo.invalid) {
+    console.log(this.formularioRegistroEquipo.value);
     console.log('NO VALIDO');
     alert('Por favor ingrese datos validos, correspondientes a todos los campos');
     this.getServicio();  
     return;
     }else{
-      this.postServicio();
+      //this.postServicio();
+      this.limpiarFormulario();
       return;
     }  
   }
 
   postServicio() {
-  var mensajeResponse;
-  var registroEquipo = this.setRegistro();  
+    var mensajeResponse;
+    var registroEquipo = this.setRegistro();
 
-  this.apiService.post('equipo',registroEquipo).subscribe((data:any) => {
+    this.apiService.post('equipo', registroEquipo).subscribe((data: any) => {
       this.dataPost = data;
       console.log(this.dataPost);
       mensajeResponse = this.dataPost['mensaje'];
       alert(mensajeResponse);
 
-    },(error) => {      
+    }, (error) => {
       this.mensajeError = error;
       console.log(this.mensajeError.error['mensaje']);
       mensajeResponse = this.mensajeError.error['mensaje'];
       alert(mensajeResponse);
+      this.limpiarFormulario();
     });
   }
 
@@ -88,11 +87,17 @@ export class RegistroEComponent implements OnInit {
                             nombre_equi:      this.formularioRegistroEquipo.value.nombreDelEquipo,
                             categ_equi:       this.formularioRegistroEquipo.value.categoria,
                             pais_equi:        this.formularioRegistroEquipo.value.paisEquipo,
-                            discip_equi:      "Basket", 
+                            discip_equi:      "Basquet", 
                             color_equi:       this.formularioRegistroEquipo.value.colorEquipo
     }        
     return registroEquipo;
   }
+
+  limpiarFormulario(){
+    this.formularioRegistroEquipo.reset();
+    this.submitted = false;
+  }
+  
   get controls() { return this.formularioRegistroEquipo.controls; }
   get equipoSeleccionado(){ return this.formularioRegistroEquipo.value.nombreDelEquipo}
 

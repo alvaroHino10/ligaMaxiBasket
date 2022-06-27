@@ -92,8 +92,7 @@ export class RegistroFormDelegadoComponent implements OnInit {
     this.apiService.postAndImageNotErrors('delegado', datos).subscribe(res => {
       this.dataPost = res;
       console.log(this.dataPost);
-      
-      var signIn = this.postDatosSign();
+      this.postDatosSign();
       
     });/*, (error) => {
       mensajeError = error;
@@ -129,6 +128,7 @@ export class RegistroFormDelegadoComponent implements OnInit {
       console.log(this.dataSign);
       var mensajeResponse = this.dataPost['mensaje'];
       alert(mensajeResponse);
+      this.limpiarFormulario();
       this.router.navigate(['/preinscripcion'],{state: {codDelegadoActual:this.codigoDelegadoActual}});
     });
   }
@@ -145,6 +145,11 @@ export class RegistroFormDelegadoComponent implements OnInit {
       this.fileImage = event.target.files[0];
       this.formularioDelegado.value.imgDelegado = this.fileImage;
     }
+  }
+
+  limpiarFormulario(){
+    this.formularioDelegado.reset();
+    this.submitted = false;
   }
   
   get controls() {return this.formularioDelegado.controls}

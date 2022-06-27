@@ -71,6 +71,7 @@ export class RegistroPComponent implements OnInit {
       cod = (this.response['data'])['cod_preinscrip'];
       this.mensajeResponse = this.response['mensaje'];
       alert(this.mensajeResponse);
+      this.limpiarFormulario();
     });
     /*,(error) => {
       this.mensajeError = error;
@@ -103,6 +104,11 @@ export class RegistroPComponent implements OnInit {
     formDataPreins.append("fecha_preinscrip", "2022-05-05");
     formDataPreins.append('link_img_comprob', this.fileImage, this.fileImage.name);
     return formDataPreins;
+  }
+
+  limpiarFormulario(){
+    this.formularioRegistroPreinscrip.reset();
+    this.submitted = false;
   }
 
   get controls() { return this.formularioRegistroPreinscrip.controls;}
