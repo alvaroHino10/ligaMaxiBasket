@@ -104,7 +104,7 @@
       </div>
 
       <div class="mb-3">
-        <h5><b>Informacion para inicio de sesion:</b></h5>
+        <h5><b>Informacion para inicio de sesion</b></h5>
       </div>
       <!--INPUT CORREO ELECTRONICO-->
       <div class="mb-3">
@@ -119,18 +119,33 @@
 
       <!--INPUT CONTRASEÑA-->
       <div class="input-group mb-3">
-        <label for="email">Contraseña</label>
+        <label for="email">Contraseña:</label>
         <div class="input-group">
           <input [type]="textoContrasenia ? 'text' : 'password'" class="form-control" formControlName="password" required />
           <div class="input-group-append">
             <span class="input-group-text">
               <i class="fa" [ngClass]="{'fa-eye-slash': !textoContrasenia, 'fa-eye': textoContrasenia}"
-                (click)="mostrarContrasenia()"></i>
+                (click)="mostrarContrasenia(true)"></i>
             </span>
           </div>
         </div>
         <div *ngIf="(controls.password.touched && controls.password.invalid) || submitted" class="text-danger">
           <div *ngIf="controls.password.errors?.required">Por favor, ingresa tu contraseña</div>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <label for="email">Confirmar contraseña:</label>
+        <div class="input-group">
+          <input [type]="textoContraseniaConf ? 'text' : 'password'" class="form-control" formControlName="passwordConf" required />
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <i class="fa" [ngClass]="{'fa-eye-slash': !textoContraseniaConf, 'fa-eye': textoContraseniaConf}"
+                (click)="mostrarContrasenia(false)"></i>
+            </span>
+          </div>
+        </div>
+        <div *ngIf="(controls.passwordConf.touched && controls.passwordConf.invalid) || submitted" class="text-danger">
+          <div *ngIf="controls.passwordConf.errors?.required">Por favor, vuelve a ingresar tu contraseña</div>
         </div>
       </div>
 

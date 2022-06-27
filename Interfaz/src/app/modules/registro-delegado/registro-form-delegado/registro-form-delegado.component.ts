@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from 'src/app/api-services/api-services';
 
 @Component({
@@ -9,14 +10,21 @@ import { ApiService } from 'src/app/api-services/api-services';
   styleUrls: ['./registro-form-delegado.component.css']
 })
 export class RegistroFormDelegadoComponent implements OnInit {
-  
   public formularioDelegado: FormGroup;
   submitted = false;
   dataPost: any;
+  dataSign: any;
   listaResponse: any;
   fileImage: any;
   textoContrasenia: boolean;
-  constructor(public formulario: FormBuilder, private apiService: ApiService, private router: Router ) {
+  textoContraseniaConf: boolean;
+  token: any;
+  
+  constructor(public formulario: FormBuilder, 
+    private apiService: ApiService, 
+    private router: Router,
+    private cookieService: CookieService
+    ) {
     this.formularioDelegado = new FormGroup({
       nombreDelegado: new FormControl('',
                     [Validators.required,
@@ -47,12 +55,15 @@ export class RegistroFormDelegadoComponent implements OnInit {
                     Validators.email]),              
       password:     new FormControl('',
                     Validators.required),
+      passwordConf:     new FormControl('',
+                    Validators.required),                  
       imgDelegado: new FormControl('', Validators.required)
       });
   }
  
-  mostrarContrasenia() {
-    this.textoContrasenia = !this.textoContrasenia;
+  mostrarContrasenia(val: boolean) {
+    val? this.textoContrasenia = !this.textoContrasenia:
+     this.textoContraseniaConf = !this.textoContraseniaConf;
   }
 
   ngOnInit(): void {
@@ -66,42 +77,21 @@ export class RegistroFormDelegadoComponent implements OnInit {
       this.getServicio('delegado');
       return;
     } else {
-      this.postServicio();
-      
+      this.postServicio();      
     }
   }
 
   postServicio() {
-    /*const delegadoDatos = {cod_preinscrip:35,
-                          nombre_deleg:   this.formularioDelegado.value.nombreDelegado,
-                          ap_deleg:       this.formularioDelegado.value.apellidoDelegado,
-                          num_iden_deleg: this.formularioDelegado.value.numeroIdentificacion,
-                          correo_deleg:   this.formularioDelegado.value.correoElectronico,
-                          telf_deleg:     this.formularioDelegado.value.telefono,
-                          fecha_nac_deleg:this.formularioDelegado.value.fechaNacimiento,
-                          sexo_deleg:     this.formularioDelegado.value.sexoDelegado,
-                          link_img_deleg: "imagenDelegado.jpg"
-    }
-    this.apiService.postAndImage('delegado', delegadoDatos).subscribe((data:any) => {
-    this.dataPost = data;
-    console.log(this.dataPost);
-    this.router.navigate(['/login']); 
-    });*/
-    /*,(error) => {
-    this.mensajeError = error;
-    console.log(this.mensajeError);
-    console.log(this.mensajeError.error['mensaje']);
-    });*/
-
     //POR PROBAR (Post con imagen de delegado):
-    var mensajeResponse;
+    
     var mensajeError;
     var datos = this.setRegistro();
     this.apiService.postAndImageNotErrors('delegado', datos).subscribe(res => {
       this.dataPost = res;
       console.log(this.dataPost);
-      mensajeResponse = this.dataPost['mensaje'];
-      alert(mensajeResponse);
+      
+      var signIn = this.postDatosSign();
+      
     });/*, (error) => {
       mensajeError = error;
       console.log(mensajeError.error['mensaje']);
@@ -109,17 +99,34 @@ export class RegistroFormDelegadoComponent implements OnInit {
       alert(mensajeResponse);
     });*/
   }
-
+  
   setRegistro() {
     var delegadoDatos = new FormData
-    delegadoDatos.append('nombre_deleg', this.formularioDelegado.value.nombreDelegado);
-    delegadoDatos.append('ap_deleg', this.formularioDelegado.value.apellidoDelegado);
+    delegadoDatos.append('nombre_deleg', this.formularioDelegado.value.nombreDelegado.toLowerCase());
+    delegadoDatos.append('ap_deleg', this.formularioDelegado.value.apellidoDelegado.toLowerCase());
     delegadoDatos.append('num_iden_deleg', this.formularioDelegado.value.numeroIdentificacion);
     delegadoDatos.append('fecha_nac_deleg', this.formularioDelegado.value.fechaNacimiento);
     delegadoDatos.append('sexo_deleg', this.formularioDelegado.value.sexo);
-    delegadoDatos.append('link_img_jdeleg', this.fileImage);
+    delegadoDatos.append('telf_deleg', this.formularioDelegado.value.telefono);
+    delegadoDatos.append('link_img_deleg', this.fileImage);
     delegadoDatos.append('correo_deleg', this.formularioDelegado.value.correoElectronico);
     return delegadoDatos;
+  }
+
+  postDatosSign(){
+    const delegadoSignUp = {cod_deleg:  this.dataPost['data']['cod_deleg'],
+      email:                    this.formularioDelegado.value.correoElectronico,
+      password:                 this.formularioDelegado.value.password,
+      password_confirmation:    this.formularioDelegado.value.passwordConf
+    } 
+    this.apiService.post('signup', delegadoSignUp).subscribe(signData => {
+      this.dataSign = signData;
+      this.cookieService.set('token_access', this.dataSign.token, 4 , '/' );
+      console.log(this.dataSign);
+      var mensajeResponse = this.dataPost['mensaje'];
+      alert(mensajeResponse);
+      this.router.navigate(['/preinscripcion']);    
+    });
   }
 
   getServicio(nombre : string) {
