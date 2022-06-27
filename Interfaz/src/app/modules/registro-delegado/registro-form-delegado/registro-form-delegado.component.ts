@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from 'src/app/api-services/api-services';
 
@@ -19,11 +19,14 @@ export class RegistroFormDelegadoComponent implements OnInit {
   textoContrasenia: boolean;
   textoContraseniaConf: boolean;
   token: any;
+  codigoDelegadoActual :any;
+
   
   constructor(public formulario: FormBuilder, 
     private apiService: ApiService, 
     private router: Router,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private route: ActivatedRoute
     ) {
     this.formularioDelegado = new FormGroup({
       nombreDelegado: new FormControl('',
@@ -114,7 +117,8 @@ export class RegistroFormDelegadoComponent implements OnInit {
   }
 
   postDatosSign(){
-    const delegadoSignUp = {cod_deleg:  this.dataPost['data']['cod_deleg'],
+    this.codigoDelegadoActual =  this.dataPost['data']['cod_deleg'];
+    const delegadoSignUp = {cod_deleg: this.codigoDelegadoActual,
       email:                    this.formularioDelegado.value.correoElectronico,
       password:                 this.formularioDelegado.value.password,
       password_confirmation:    this.formularioDelegado.value.passwordConf
@@ -125,7 +129,7 @@ export class RegistroFormDelegadoComponent implements OnInit {
       console.log(this.dataSign);
       var mensajeResponse = this.dataPost['mensaje'];
       alert(mensajeResponse);
-      this.router.navigate(['/preinscripcion']);    
+      this.router.navigate(['/preinscripcion'],{state: {codDelegadoActual:this.codigoDelegadoActual}});
     });
   }
 

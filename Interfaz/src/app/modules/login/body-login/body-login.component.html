@@ -1,3 +1,4 @@
+<link href="//use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
 <section class="vh-100">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -39,8 +40,9 @@
                         formControlName="password" required />
                       <div class="input-group-append">
                         <span class="input-group-text">
-                          <i class="fa" [ngClass]="{'fa-eye-slash': !textoContrasenia, 'fa-eye': textoContrasenia}"
-                            (click)="mostrarContrasenia()"></i>
+                          <!--i class="fa" [ngClass]="{'fa-eye-slash': !textoContrasenia, 'fa-eye': textoContrasenia}"
+                            (click)="mostrarContrasenia()"></i-->
+                            <i class="fa" [ngClass]="{'fa-eye': textoContrasenia, 'fa-eye-slash': !textoContrasenia}" aria-hidden="false" (click) = "mostrarContrasenia()"></i>
                         </span>
                       </div>
                     </div>
