@@ -74,6 +74,18 @@ import { CookieService } from 'ngx-cookie-service';
 import { ModalEquipoComponent } from './modules/equipos/modal-equipo/modal-equipo.component';
 import { AccesoDelegadoDirective } from './directives/acceso-delegado.directive';
 import { ControlModalComponent } from './modules/fixture/control-modal/control-modal.component';
+import { VistaDelegadoComponent } from './modules/vista-delegado/vista-delegado.component';
+import { VistaJugadorComponent } from './modules/vista-jugador/vista-jugador.component';
+import { VistaOrganizadorComponent } from './modules/vista-organizador/vista-organizador.component';
+import { FooterVistadelegadoComponent } from './modules/vista-delegado/footer-vistadelegado/footer-vistadelegado.component';
+import { HeaderVistadelegadoComponent } from './modules/vista-delegado/header-vistadelegado/header-vistadelegado.component';
+import { BodyVistadelegadoComponent } from './modules/vista-delegado/body-vistadelegado/body-vistadelegado.component';
+import { BodyVistadeljugadorComponent } from './modules/vista-jugador/body-vistadeljugador/body-vistadeljugador.component';
+import { FooterVistadeljugadorComponent } from './modules/vista-jugador/footer-vistadeljugador/footer-vistadeljugador.component';
+import { HeaderVistadeljugadorComponent } from './modules/vista-jugador/header-vistadeljugador/header-vistadeljugador.component';
+import { HeaderVistadelorganizadorComponent } from './modules/vista-organizador/header-vistadelorganizador/header-vistadelorganizador.component';
+import { FooterVistadelorganizadorComponent } from './modules/vista-organizador/footer-vistadelorganizador/footer-vistadelorganizador.component';
+import { BobyVistadelorganizadorComponent } from './modules/vista-organizador/boby-vistadelorganizador/boby-vistadelorganizador.component';
 
 @NgModule({
   declarations: [
@@ -129,7 +141,19 @@ import { ControlModalComponent } from './modules/fixture/control-modal/control-m
     BodyDelegadoComponent,
     ModalEquipoComponent,
     AccesoDelegadoDirective,
-    ControlModalComponent
+    ControlModalComponent,
+    VistaDelegadoComponent,
+    VistaJugadorComponent,
+    VistaOrganizadorComponent,
+    FooterVistadelegadoComponent,
+    HeaderVistadelegadoComponent,
+    BodyVistadelegadoComponent,
+    BodyVistadeljugadorComponent,
+    FooterVistadeljugadorComponent,
+    HeaderVistadeljugadorComponent,
+    HeaderVistadelorganizadorComponent,
+    FooterVistadelorganizadorComponent,
+    BobyVistadelorganizadorComponent
   ],
   imports: [
     BrowserModule,
