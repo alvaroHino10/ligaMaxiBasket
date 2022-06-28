@@ -1,10 +1,14 @@
 <body>
 	<div class="container-fluid">
 		<div class="row">
+			<div class="text-center">
+				<h2> <b> Equipo {{ equipoJugador.nombre_equi }} </b> </h2>
+				<button (click)="downloadPDF()" class="btn btn-dark btn-l col-md-6 mb-2 mt-3">Crear PDF</button>
+			</div>
+			
 			<!--form [formGroup]="credencial" class="container-fluid" (ngSubmit)="actualizarCredencial()">
-				<div class="row">
-					<div class="col-md-6 mb-2">
-						
+			<div class="row">
+				<div class="col-md-6 mb-2">			
 						<label for="" class="form-label">Seleccione un equipo:</label>
 						<select class="form-control" name="equipos" (change)="listaEquipos" formControlName="equipos"
 							required>
@@ -26,12 +30,10 @@
 					</div>
 				</div>
 			</!--form-->
-			<form [formGroup]="credencial" class="container-fluid" (ngSubmit)="actualizarCredencial()">
+			<!--form [formGroup]="credencial" class="container-fluid" (ngSubmit)="actualizarCredencial()">
 				<div class="row">
-					
-
 					<div class="col-md-6 mb-2">
-						<!--Seleccionar Jugador-->
+						<Seleccionar Jugador>
 						<label for="" class="form-label">Seleccione un jugador:</label>
 						<select class="form-control" name="jugadores" (change)="listaJugadoresfake"
 							formControlName="jugadores" required>
@@ -41,28 +43,28 @@
 						</select>
 					</div>
 				</div>
-			</form>
+			</form-->
 		</div>
 
-		<div class="row" id="credencialcita">
-			<div *ngFor="let jugadorCredencial of listaJugadoresfake"  class="col-md-6 mb-2">
-		<div id="credencial">
-			<div class="row">
-				<div class="col-md-12">
-					<div class="post row">
-						<div class="col-md-3 img">
-							<img src="../assets/Imagenes/Logo.jpg">
+		<div class="row mb-5" id="credencialcita">
+			<div *ngFor="let jugadorCredencial of listaJugadores" class="col-md-6 mb-2">
+				<div id="credencial" class="mb-4">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="post row">
+								<div class="col-md-3 img">
+									<img src="../assets/Imagenes/Logo.jpg">
+								</div>
+								<div class="col-md-9">
+									<h1 class="text-center titulo">
+										Liga Maxi Basquet Cochabamba
+									</h1>
+									<div class="sub-titulo">Credencial</div>
+								</div>
+							</div>
 						</div>
-						<div class="col-md-9">
-							<h1 class="text-center titulo">
-								Liga Maxi Basquet Cochabamba
-							</h1>
-							<div class="sub-titulo">Credencial</div>
-						</div>
-					</div>
-				</div>
 
-				<!--div *ngIf="(controls.equipos.errors?.required) || (controls.jugadores.errors?.required)"
+						<!--div *ngIf="(controls.equipos.errors?.required) || (controls.jugadores.errors?.required)"
 					class="alert alert-primary" role="alert">
 					<h3 class="alert-primary text-center">GENERANDO CREDENCIAL...</h3>
 					<div *ngIf="(controls.equipos.touched && controls.equipos.invalid)" class="text-danger text-center">
@@ -78,62 +80,70 @@
 					</div>
 				</div-->
 
-				<div 
-					class="col-md-8">
-					<!--Nombre completo-->
-					<div class="form-group p-2 text-black row ">
-						<label for="nombre" class="formulario">Nombre completo:</label>
-						<label *ngIf="!controls.jugadores.invalid">
-							{{jugadorCredencial.nombre_jug + " " +
-							jugadorCredencial.prim_ap_jug + " " +
-							jugadorCredencial.seg_ap_jug}}</label>
-					</div>
+						<div class="col-md-8">
+							<!--Nombre completo-->
+							<div class="form-group p-2 text-black row mx-2">
+								<label for="nombre" class="formulario">Nombre completo:</label>
+								<label *ngIf="!controls.jugadores.invalid">
+									{{jugadorCredencial.nombre_jug + " " +
+									jugadorCredencial.prim_ap_jug + " " +
+									jugadorCredencial.seg_ap_jug}}</label>
+							</div>
 
-					<div class="row">
-						<div class="col-md-6">
-							<!--Fecha de nacimiento-->
-							<div class="form-group p-2 text-black row">
-								<label for="Fecha-de-Nacimiento" class="formulario">Fecha de Nacimiento:</label>
-								<label *ngIf="!controls.jugadores.invalid"> {{jugadorCredencial.fecha_nac_jug}}</label>
-							</div>
-							<!--Equipo-->
-							<div class="form-group p-2 text-black row">
-								<label for="Equipo" class="formulario">Equipo:</label>
-								<label *ngIf="!controls.equipos.invalid">{{ equipoJugador.nombre_equi }}</label>
+							<div class="row">
+								<div class="col-md-4">
+									<!--Fecha de nacimiento-->
+									<div class="form-group p-2 text-black mx-2">
+										<label for="Fecha-de-Nacimiento" class="formulario">Fecha de Nacimiento:</label>
+										<label *ngIf="!controls.jugadores.invalid">
+											{{jugadorCredencial.fecha_nac_jug}}</label>
+									</div>
+
+									<!--Equipo-->
+									<div class="form-group p-2 text-black mx-2">
+										<label for="Equipo" class="formulario">Equipo:</label>
+										<label *ngIf="!controls.equipos.invalid">{{ equipoJugador.nombre_equi }}</label>
+									</div>
+								</div>
+
+								<div class="col-md-4">
+									<!--Numero de identificacion-->
+									<div class="form-group p-2 text-black row ">
+										<label for="Numero-de-Identificacion" class="formulario">N° de
+											Identificacion:</label>
+										<label
+											*ngIf="!controls.jugadores.invalid">{{jugadorCredencial.num_iden_jug}}</label>
+									</div>
+									<!--Telefono-->
+									<div class="form-group p-2 text-black row">
+										<label for="Telefono:" class="formulario">Categoria:</label>
+										<label *ngIf="!controls.jugadores.invalid">{{equipoJugador.categ_equi}}</label>
+									</div>
+								</div>
+								<div class="col-md-4">
+									<!--Telefono-->
+									<div class="form-group p-2 text-black row">
+										<label for="Telefono:" class="formulario">Telefono:</label>
+										<label
+											*ngIf="!controls.jugadores.invalid">{{jugadorCredencial.telf_jug}}</label>
+									</div>
+								</div>
 							</div>
 						</div>
-						<div class="col-md-6">
-							<!--Numero de identificacion-->
-							<div class="form-group p-2 text-black row">
-								<label for="Numero-de-Identificacion" class="formulario">Numero de
-									Identificacion:</label>
-								<label *ngIf="!controls.jugadores.invalid">{{jugadorCredencial.num_iden_jug}}</label>
+						<div class="col-md-4 text-center mb-2">
+							<div class="p-3">
+								<img src="../../../../assets/Imagenes/Logo.jpg" class="img-fluid"
+									alt="Imagen jugador" />
 							</div>
-							<!--Telefono-->
-							<div class="form-group p-2 text-black row">
-								<label for="Telefono:" class="formulario">Telefono:</label>
-								<label *ngIf="!controls.jugadores.invalid">{{jugadorCredencial.telf_jug}}</label>
+							<div class="QR" id="QR">
+								<qr-code [value]="urlActual"></qr-code>
 							</div>
 						</div>
-					</div>
-				</div>
-				<div 
-					class="col-md-4 text-center">
-					<div class="p-3">
-						<img src="../../../../assets/Imagenes/Logo.jpg" class="img-fluid" alt="Imagen jugador" />
-					</div>
-					<div class="QR" id="QR">
-						<qr-code [value]="urlActual"></qr-code>
 					</div>
 				</div>
 			</div>
 		</div>
-		</div>
-		
-		
 
-	</div>
-		<button 
-			(click)="downloadPDF()" class="btn btn-dark btn-l mt-3">Crear PDF</button>
+
 	</div>
 </body>
