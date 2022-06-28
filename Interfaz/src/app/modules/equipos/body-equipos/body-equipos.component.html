@@ -28,12 +28,10 @@
             <tr scope="row">
             </tr>
             <tr *ngFor="let equipo of listaEquipos">
-              <td>{{ equipo?.fecha }}</td>
+              <td>{{ equipo?.nombre_equi }}</td>
               <td>{{ equipo?.hora }}</td>
-              <td>{{ equipo?.equipo_1 }}</td>
-              <td>{{ equipo?.equipo_2 }}</td>
-              <td>{{ equipo?.lugar }}</td>
-              <td>ganador</td>
+              <td>{{ equipo?.equipo_1 }}</td>          
+              <td>{{ equipo?.categ_equi }}</td>
             </tr>
           </tbody>
 
