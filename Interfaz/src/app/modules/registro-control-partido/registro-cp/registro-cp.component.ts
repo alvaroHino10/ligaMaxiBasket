@@ -9,8 +9,7 @@ import { ApiService } from 'src/app/api-services/api-services';
 })
 export class RegistroCpComponent implements OnInit {
   public formularioRegistroControlP: FormGroup;
-  submitted = false;
-  roles = ['Arbitro', 'Fiscal', 'Mesa'];
+  submitted = false;  
   lista: any = [];
   fileImage: any;
   data: any;
@@ -59,41 +58,39 @@ export class RegistroCpComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.getControlPartido();
   }
 
   registrarControl() {
     this.submitted = true;
     if (this.formularioRegistroControlP.invalid) {
       alert('Por favor ingrese datos validos, correspondientes a todos los campos');
-      console.log(this.formularioRegistroControlP.controls);
       return;
     } else {
       this.postServicio();
-    }
-    alert(this.formularioRegistroControlP.value.rol.concat(' registrado correctamente'));
+    }    
   }
 
   postServicio() {
     var registroCP = this.setRegistro();    
-    this.apiService.postAndImageNotErrors('controlPartido', registroCP).subscribe(res => {
+    this.apiService.postAndImageNotErrors('control-partido', registroCP).subscribe(res => {
       this.data = res;
       console.log(this.data);
-      this.limpiarFormulario();
+      alert(this.data['mensaje']);
+      //this.limpiarFormulario();
     });/*,(error) => {
       this.mensajeError = error;
       console.log(this.mensajeError.error['mensaje']);
-    });*/
-    
-    this.getServicio();
+    });*/    
   }
 
-  getServicio() {
-    const registro = this.formularioRegistroControlP.value;
-    this.apiService.getAll('controlpartido').subscribe((data: any) => {
-      this.lista = data;
-    })
-    console.log(this.lista);
+  getControlPartido(){
+    this.apiService.getAll("control-partido");
+    console.log(this.apiService.getAll("control-partido").subscribe( res => {
+      var lista = res;
+      console.log(lista);
+    }));
   }
 
   subirImagen(event: any) {
@@ -105,15 +102,14 @@ export class RegistroCpComponent implements OnInit {
   
   setRegistro(){
     var registroCP = new FormData();
-    registroCP.append('nombre_contr_part',    this.formularioRegistroControlP.value.nombre);
-    registroCP.append('prim_ap_contr_part',   this.formularioRegistroControlP.value.primerApellido);
-    registroCP.append('seg_ap_contr_part',    this.formularioRegistroControlP.value.segundoApellido);
-    registroCP.append('num_iden__contr_part',  this.formularioRegistroControlP.value.numeroIdentidad);
+    registroCP.append('nombre_contr_part',    this.formularioRegistroControlP.value.nombre.toLowerCase());
+    registroCP.append('prim_ap_contr_part',   this.formularioRegistroControlP.value.primerApellido.toLowerCase());
+    registroCP.append('seg_ap_contr_part',    this.formularioRegistroControlP.value.segundoApellido.toLowerCase());
+    registroCP.append('num_iden_contr_part',  this.formularioRegistroControlP.value.numeroIdentidad);
     registroCP.append('telf_contr_part',      this.formularioRegistroControlP.value.telefono);
     registroCP.append('fecha_nac_contr_part', this.formularioRegistroControlP.value.fechaNacimiento);
     registroCP.append('link_img_contr_part',  this.fileImage);
     registroCP.append('rol_contr_part',       this.formularioRegistroControlP.value.rol);
-    //registroCP.append('correo_jug',    this.formularioRegistroControlP.value.correoElectronico);
     return registroCP;
   }
 

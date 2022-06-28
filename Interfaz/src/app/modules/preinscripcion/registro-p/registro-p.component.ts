@@ -48,8 +48,9 @@ export class RegistroPComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.codDelegado = 2//history.state.codDelegadoActual;
+    this.codDelegado = 1//history.state.codDelegadoActual;
     console.log(history.state.codDelegadoActual);
+    this.codTorneo = this.getCodTorneo();
     //this.setDatos();
   }
   
@@ -73,15 +74,15 @@ export class RegistroPComponent implements OnInit {
       console.log("preinscripcion:",this.response['data']);
       cod = (this.response['data'])['cod_preinscrip'];
       this.mensajeResponse = this.response['mensaje'];
-      this.getCodTorneo();
       this.guardarEquipo(cod);
       alert(this.mensajeResponse);
       this.limpiarFormulario();
-    });
-    /*,(error) => {
+    });/*,(error) => {
       this.mensajeError = error;
       console.log(this.mensajeError.error['mensaje']);
-    });*/
+      console.log(this.mensajeError.error['message']);
+    });
+*/
     return cod;
   }
 
@@ -92,7 +93,7 @@ export class RegistroPComponent implements OnInit {
       nombre_equi:     this.formularioRegistroPreinscrip.value.nombreDelEquipo,
       categ_equi:      this.formularioRegistroPreinscrip.value.categoria
     }
-    //CAMBIAR A EQUIPO DATA PAra mandar a BACKEND
+    //CAMBIAR A EQUIPO DATA PAra mandar a BACKEND??
     this.apiService.post('equipo', datosEquipo).subscribe((data: any) => {
       this.listaResponse = data;
       console.log(this.listaResponse);
@@ -101,6 +102,7 @@ export class RegistroPComponent implements OnInit {
 
   getCodTorneo(){
     this.apiService.getAll('torneo').subscribe((data:any) => {
+      console.log(data);
       var torneoInf = data['data'];
       this.codTorneo = torneoInf.length;
     });    

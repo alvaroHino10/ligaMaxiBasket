@@ -39,20 +39,16 @@ export class BodyFixtureComponent implements OnInit {
     this.cargarPartidos();
   }
 
-  ControldelPartido(): void {
+  controldelPartido(): void {
     const modalFixture = this.modalService.open(ControlModalComponent, { centered: true , size: 'xl', scrollable: true });
 
 }
 
   cargarPartidos(){
-    this.apiService.getAll('partidos').subscribe((data: any = []) => {
+    this.apiService.getAll('partido').subscribe((data: any = []) => {
       const response = data;
       this.listaPartidos = (response['data']);
     });
-  }
-
-  existePartido(){
-    return true;
   }
 
   agregarPartido(): void {

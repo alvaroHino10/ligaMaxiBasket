@@ -18,40 +18,41 @@ export class CredecialCardComponent implements OnInit {
   public credencial: FormGroup;
   jugador: any = [];
   listaEquipos: any = [];
-  listaJugadores: any=[];
+  listaJugadores: any = [];
   codEquipo = -1;
   //imageJugador : any [];
   //datos fake
   listaJugadoresfake: any ;
+  torneoActual: any;
+  codTorneo: any;
 
   constructor(private apiService: ApiService) {
     this.urlActual = window.location.href;
     console.log(this.urlActual);
     this.credencial = new FormGroup({
       equipos: new FormControl('',
-        Validators.required),
-      jugadores: new FormControl('',
-        Validators.required), 
+        Validators.required)
     });
   }
 
   ngOnInit(): void {
-    this.getJsonContent();
+    this.getCodTorneo();
   }
  
-  getJsonContent() { 
-    this.apiService.getAll('jugador').subscribe((datajugadores: any = []) => {
-      this.listaJugadores = datajugadores['data'];
-      console.log(this.listaJugadores);
-    });
+  getCodTorneo(){
+    this.apiService.getAll('torneo').subscribe((data:any) => {
+      console.log(data);
+      this.torneoActual = data['data'];
+      this.codTorneo = this.torneoActual.length;
+      this.getServicio();
+    });    
   }
   
-  getCodTorneo(length : any){
-    this.apiService.getById('torneo', (length)).subscribe((data:any) => {
-      var torneoInf = data['data'];
-      this.listaEquipos = torneoInf['equipos'];
-      console.log(this.listaEquipos);
-    });    
+  getServicio(){
+    this.apiService.getAll('torneo/' + this.codTorneo + '/equipos').subscribe((data:any) => {
+      this.listaEquipos = data['data'];         
+      console.log(this.listaEquipos);  
+    });
   }
 
   downloadPDF() {
@@ -79,7 +80,13 @@ export class CredecialCardComponent implements OnInit {
   
   get controls() { return this.credencial.controls; }
   get equipoJugador(){ return this.credencial.value.equipos; }
-  //get jugadorCredencial(){ return this.credencial.value.jugadores }
+
+  getJugadores(){
+    this.listaJugadores = this.credencial.value.equipos;
+    console.log(this.listaJugadores);
+    return this.listaJugadores;
+  }
+
   //get imageJugador(){ return this.jugadorCredencial.link_img_jug; }
 
   //datos fake

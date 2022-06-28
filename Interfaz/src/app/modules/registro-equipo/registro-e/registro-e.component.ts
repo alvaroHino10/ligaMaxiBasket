@@ -54,16 +54,17 @@ export class RegistroEComponent implements OnInit {
 
   getCodTorneo(){
     this.apiService.getAll('torneo').subscribe((data:any) => {
-      var torneoInf = data['data'];
-      this.codTorneo = torneoInf.length;
+      console.log(data);
+      this.torneoActual = data['data'];
+      this.codTorneo = this.torneoActual.length;
       this.getServicio();
     });    
   }
-  
+
   getServicio(){
     this.apiService.getAll('torneo/' + this.codTorneo + '/equipos').subscribe((data:any) => {
-      this.torneoActual = data['data'];    
-      console.log(this.torneoActual);  
+      this.listaEquipos = data['data'];    
+      console.log(this.listaEquipos);  
     });
   }
   

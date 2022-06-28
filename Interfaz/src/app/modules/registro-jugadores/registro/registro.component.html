@@ -75,7 +75,7 @@
       <label for="" class="form-label">Equipo del jugador:</label>
       <select class="form-control" name="equipo" (change)="listaEquipos" formControlName="equipo" required>
         <option value="" disabled>Seleccionar equipo</option>
-        <option *ngFor="let equipos of listaEquipos" [ngValue]="equipos"> {{ equipos.nombre_equi }}
+        <option *ngFor="let equipos of listaEquipos" [ngValue]="equipos"> {{ equipos.nombre_equi + "  " + equipos.categ_equi }}
         </option>
       </select>
       <div *ngIf="(controls.equipo.touched && controls.equipo.invalid) || submitted" class="text-danger">
