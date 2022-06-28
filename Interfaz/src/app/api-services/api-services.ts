@@ -63,7 +63,7 @@ export class ApiService {
   }*/
 
   getById(dir:string, id:number): Observable<any>{
-    return this.http.get<any>(`${this.url}/${dir}/${id}`);
+    return this.http.get<any>(`${this.url}${dir}/${id}`);
   }
 /*
   update(dir: string, model:object): Observable<any> {

@@ -1,11 +1,8 @@
 <body>
 
-
   <div class="content">
-
     <div class="container">
       <h2 class="text-center">LIGA MAXI BASQUET COCHABAMBA</h2>
-
       <div class="table-responsive">
 
         <table class="table custom-table">
@@ -20,17 +17,17 @@
               <th scope="col">Control del Partido</th>
             </tr>
           </thead>
-          
+
           <tbody>
-            <tr scope="row">  
+            <tr scope="row">
             </tr>
-            <tr *ngFor="let partido of listaPartidos" >
+            <tr *ngFor="let partido of listaPartidos">
               <td>{{ partido?.fecha }}</td>
               <td>{{ partido?.hora }}</td>
               <td>{{ partido?.equipo_1 }}</td>
               <td>{{ partido?.equipo_2 }}</td>
               <td>{{ partido?.lugar }}</td>
-              <td >ganador</td>
+              <td>ganador</td>
               <td (click)="ControldelPartido()">Mesa</td>
             </tr>
           </tbody>
@@ -43,9 +40,7 @@
           Agregar partido
         </button>
       </div>
-
     </div>
-
   </div>
 
 </body>

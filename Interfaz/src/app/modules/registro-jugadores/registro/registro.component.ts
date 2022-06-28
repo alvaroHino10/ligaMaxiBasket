@@ -96,7 +96,7 @@ export class RegistroJComponent implements OnInit {
   }
 
   validarCategoria() {
-    const valorStr = "+60"; //this.formularioRegistroJugador.value.equipo.categ_equi;
+    const valorStr = this.formularioRegistroJugador.value.equipo.categ_equi;
     var categEqui = parseInt(valorStr.substring(1));
     if (categEqui == this.categoriaJugador) {
       return true;
@@ -121,13 +121,12 @@ export class RegistroJComponent implements OnInit {
       console.log(this.dataPost);
       mensajeResponse = this.dataPost['mensaje'];
       alert(mensajeResponse);
-
     }, (error) => {
-
       this.mensajeError = error;
       console.log(this.mensajeError.error['mensaje']);
       mensajeResponse = this.mensajeError.error['mensaje'];
       alert(mensajeResponse);
+      this.limpiarFormulario();
     });
     this.getServicio();
   }
@@ -140,13 +139,12 @@ export class RegistroJComponent implements OnInit {
     console.log(this.listaJugadores);
   }
 
-
   setRegistro() {
     var registroJugador = new FormData();
     registroJugador.append('cod_equi', this.formularioRegistroJugador.value.equipo.cod_equi);
-    registroJugador.append('nombre_jug', this.formularioRegistroJugador.value.nombre);
-    registroJugador.append('prim_ap_jug', this.formularioRegistroJugador.value.primerApellido);
-    registroJugador.append('seg_ap_jug', this.formularioRegistroJugador.value.segundoApellido);
+    registroJugador.append('nombre_jug', this.formularioRegistroJugador.value.nombre.toLowerCase());
+    registroJugador.append('prim_ap_jug', this.formularioRegistroJugador.value.primerApellido.toLowerCase());
+    registroJugador.append('seg_ap_jug', this.formularioRegistroJugador.value.segundoApellido.toLowerCase());
     registroJugador.append('correo_jug', this.formularioRegistroJugador.value.correoElectronico);
     registroJugador.append('num_iden_jug', this.formularioRegistroJugador.value.numeroIdentidad);
     //registroJugador.append('equipo_jug', this.formularioRegistroJugador.value.equipo);
@@ -160,6 +158,11 @@ export class RegistroJComponent implements OnInit {
     registroJugador.append('link_img_jug', this.fileImage);
     console.log("codEqui:", this.formularioRegistroJugador.value.equipo.cod_equi);
     return registroJugador;
+  }
+
+  limpiarFormulario(){
+    this.formularioRegistroJugador.reset();
+    this.submitted = false;
   }
 
   get controls() { return this.formularioRegistroJugador.controls; }

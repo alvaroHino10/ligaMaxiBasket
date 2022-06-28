@@ -12,9 +12,11 @@ export class RegistroEComponent implements OnInit {
   public listaCategoriaEquipo: any = [ "+30", "+40", "+50", "+60"];
   public submitted = false;
   categoria = [];
-  lista : any = [];
+  listaEquipos : any ;
   mensajeError: any;
   dataPost: any;
+  torneoActual : any;
+  codTorneo: any;
 
   constructor(public formulario: FormBuilder,
     private apiService:ApiService) {
@@ -22,14 +24,7 @@ export class RegistroEComponent implements OnInit {
     this.formularioRegistroEquipo = new FormGroup({
 
       nombreDelEquipo: new FormControl ('',
-                    [Validators.required, 
-                     Validators.minLength(1),
-                     Validators.maxLength(80),
-                     Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
-
-      categoria: new FormControl ('', 
-                     Validators.required),
-
+                    Validators.required),
       paisEquipo: new FormControl ('', 
                     Validators.required),
 
@@ -43,15 +38,14 @@ export class RegistroEComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getServicio();
+    //this.getServicio(); 
+    this.getServicio("torneo", this.torneoActual); 
   }
 
   registrarEquipo(){
     this.submitted = true;
   if (this.formularioRegistroEquipo.invalid) {
-    console.log('NO VALIDO');
     alert('Por favor ingrese datos validos, correspondientes a todos los campos');
-    this.getServicio();  
     return;
     }else{
       this.postServicio();
@@ -59,44 +53,84 @@ export class RegistroEComponent implements OnInit {
     }  
   }
 
-  postServicio() {
-  var mensajeResponse;
-  var registroEquipo = this.setRegistro();  
+  getServicio(getDatos: string, varConsole: any){
+    this.apiService.getAll(getDatos).subscribe((data:any) => {
+      this.torneoActual = data['data'];      
+      this.getCodTorneo(this.torneoActual['length']);
+    });
+  }
+  
+  getCodTorneo(length : any){
+    this.apiService.getById('torneo', (length)).subscribe((data:any) => {
+      var torneoInf = data['data'];
+      this.codTorneo = torneoInf['cod_torn'];
+      this.listaEquipos = torneoInf['equipos'];
+      console.log(this.listaEquipos);
+    });    
+  }
 
-  this.apiService.post('equipo',registroEquipo).subscribe((data:any) => {
+  postServicio() {
+    var mensajeResponse;
+    var registroEquipo = this.setRegistro();
+
+    this.apiService.post('equipo_data', registroEquipo).subscribe((data: any) => {
       this.dataPost = data;
       console.log(this.dataPost);
       mensajeResponse = this.dataPost['mensaje'];
       alert(mensajeResponse);
-
-    },(error) => {
-      
+      this.limpiarFormulario();
+    }, (error) => {
       this.mensajeError = error;
       console.log(this.mensajeError.error['mensaje']);
       mensajeResponse = this.mensajeError.error['mensaje'];
       alert(mensajeResponse);
+      this.limpiarFormulario();
     });
   }
 
-  getServicio(){
-    const registro = this.formularioRegistroEquipo.value;
-    this.apiService.getAll('equipo').subscribe((data:any) => {
-      this.lista = data;
-      console.log(this.lista);
-    })
-  }
-  
   setRegistro(){
-    const registroEquipo = {cod_torn:1,
-                            cod_preinscrip: 1,
-                            nombre_equi:      this.formularioRegistroEquipo.value.nombreDelEquipo,
-                            categ_equi:       this.formularioRegistroEquipo.value.categoria,
+    /*const registroEquipo = {cod_torn:         this.codTorneo,
+                            cod_preinscrip:   this.formularioRegistroEquipo.value.nombreDelEquipo.cod_preinscrip,
+                            nombre_equi:      this.formularioRegistroEquipo.value.nombreDelEquipo.nombre_equi,
+                            categ_equi:       this.formularioRegistroEquipo.value.nombreDelEquipo.categ_equi,
                             pais_equi:        this.formularioRegistroEquipo.value.paisEquipo,
-                            discip_equi:      "Basket", 
+                            discip_equi:      "Basquet", 
                             color_equi:       this.formularioRegistroEquipo.value.colorEquipo
-    }        
+    }*/
+    const registroEquipo = {
+      cod_equi:         this.formularioRegistroEquipo.value.nombreDelEquipo.cod_equi,
+      pais_equi:        this.formularioRegistroEquipo.value.paisEquipo,
+      discip_equi:      "Basquet", 
+      color_equi:       this.formularioRegistroEquipo.value.colorEquipo
+    }      
     return registroEquipo;
   }
-  get controls() { return this.formularioRegistroEquipo.controls; }
 
+  limpiarFormulario(){
+    this.formularioRegistroEquipo.reset();
+    this.submitted = false;
+  }
+  
+  get controls() { return this.formularioRegistroEquipo.controls; }
+  get equipoSeleccionado(){ return this.formularioRegistroEquipo.value.nombreDelEquipo}
+
+  //datos fake
+  setRegistroF(nombre: any, categoria: any) {
+    const registroJugador = {
+      nombre_equi: nombre,
+      categ_equi: categoria,
+    };
+    return registroJugador;
+  }
+
+  datosFake() {
+    this.listaEquipos = [this.setRegistroF("1paul", "+30"),
+    this.setRegistroF("2paul", "+40"),
+    this.setRegistroF("3paul", "+50"),
+    this.setRegistroF("4paul", "+30"),
+    this.setRegistroF("2paul", "+40"),
+    this.setRegistroF("3paul", "+50"),
+    this.setRegistroF("4paul", "+30"),
+    ];
+  }
 }

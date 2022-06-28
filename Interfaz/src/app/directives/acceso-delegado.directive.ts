@@ -11,7 +11,6 @@ export class AccesoDelegadoDirective implements OnInit {
     ) { }
 
   ngOnInit(){
-
   }
 
   @Input()

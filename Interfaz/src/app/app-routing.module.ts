@@ -33,17 +33,26 @@ const routes: Routes = [
     {
       path:'preinscripcion',
       component:PreinscripcionComponent,
-      canActivate: [VigilanteGuard]
+      canActivate: [VigilanteGuard],
+      data:{
+        roles: ['delegado']
+      }
     },
     {
       path: 'registro-equipo',
       component: RegistroEquipoComponent,
-      canActivate: [VigilanteGuard]
+      canActivate: [VigilanteGuard],
+      data:{
+        roles: ['delegado']
+      }
     },
     {
       path: 'registro-jugadores',
       component: RegistroJugadoresComponent,
-      canActivate: [VigilanteGuard]
+      canActivate: [VigilanteGuard],
+      data:{
+        roles: ['delegado']
+      }
     },
     {
       path: 'registro-control-partido',

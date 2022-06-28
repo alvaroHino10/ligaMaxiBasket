@@ -86,6 +86,7 @@ import { HeaderVistadeljugadorComponent } from './modules/vista-jugador/header-v
 import { HeaderVistadelorganizadorComponent } from './modules/vista-organizador/header-vistadelorganizador/header-vistadelorganizador.component';
 import { FooterVistadelorganizadorComponent } from './modules/vista-organizador/footer-vistadelorganizador/footer-vistadelorganizador.component';
 import { BobyVistadelorganizadorComponent } from './modules/vista-organizador/boby-vistadelorganizador/boby-vistadelorganizador.component';
+import { BodyJugadoresComponent } from './modules/registro-jugadores/body-jugadores/body-jugadores.component';
 
 @NgModule({
   declarations: [
@@ -153,7 +154,8 @@ import { BobyVistadelorganizadorComponent } from './modules/vista-organizador/bo
     HeaderVistadeljugadorComponent,
     HeaderVistadelorganizadorComponent,
     FooterVistadelorganizadorComponent,
-    BobyVistadelorganizadorComponent
+    BobyVistadelorganizadorComponent,
+    BodyJugadoresComponent
   ],
   imports: [
     BrowserModule,

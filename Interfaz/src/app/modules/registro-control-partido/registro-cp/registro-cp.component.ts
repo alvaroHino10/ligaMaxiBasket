@@ -79,6 +79,7 @@ export class RegistroCpComponent implements OnInit {
     this.apiService.postAndImageNotErrors('controlPartido', registroCP).subscribe(res => {
       this.data = res;
       console.log(this.data);
+      this.limpiarFormulario();
     });/*,(error) => {
       this.mensajeError = error;
       console.log(this.mensajeError.error['mensaje']);
@@ -114,6 +115,11 @@ export class RegistroCpComponent implements OnInit {
     registroCP.append('rol_contr_part',       this.formularioRegistroControlP.value.rol);
     //registroCP.append('correo_jug',    this.formularioRegistroControlP.value.correoElectronico);
     return registroCP;
+  }
+
+  limpiarFormulario(){
+    this.formularioRegistroControlP.reset();
+    this.submitted = false;
   }
 
   get controls() { return this.formularioRegistroControlP.controls; }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ApiService } from 'src/app/api-services/api-services';
+import { RegistroDelegadoComponent } from '../../registro-delegado/registro-delegado.component';
 
 @Component({
   selector: 'app-registro-p',
@@ -18,10 +20,14 @@ export class RegistroPComponent implements OnInit {
   dataPost: any;
   mensajeResponse: any;
   response: any;
+  codDelegado: any;
 
-  constructor(public formulario: FormBuilder, private apiService: ApiService) {
-    this.formularioRegistroPreinscrip = new FormGroup({
+  constructor(public formulario: FormBuilder, 
+    private apiService: ApiService, 
+    //codDelegado: RegistroDelegadoComponent,
+    private route: ActivatedRoute) {
     
+    this.formularioRegistroPreinscrip = new FormGroup({
       nombreDelEquipo: new FormControl('',
                     [Validators.required,
                     Validators.minLength(1),
@@ -41,6 +47,8 @@ export class RegistroPComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.codDelegado = history.state.codDelegadoActual;
+    console.log(history.state.codDelegadoActual);
   }
   
   guardarPreinscripcion(): void {
@@ -56,18 +64,14 @@ export class RegistroPComponent implements OnInit {
   }
   postServicio() {
     var cod = 0;
-    var formDataPreins = new FormData();
-    formDataPreins.append('num_transfer_preinscrip', this.formularioRegistroPreinscrip.value.codigoDeTransaccion);
-    formDataPreins.append('costo_preinscrip', '200');
-    formDataPreins.append("fecha_preinscrip", "2022-05-05");
-    formDataPreins.append('link_img_comprob', this.fileImage, this.fileImage.name);
-
+    var formDataPreins = this.setDatos();
     this.apiService.postAndImageNotErrors('preinscripcion', formDataPreins).subscribe(res => {
       this.response = res;
       console.log("preinscripcion:",this.response['data']);
       cod = (this.response['data'])['cod_preinscrip'];
       this.mensajeResponse = this.response['mensaje'];
       alert(this.mensajeResponse);
+      this.limpiarFormulario();
     });
     /*,(error) => {
       this.mensajeError = error;
@@ -88,6 +92,23 @@ export class RegistroPComponent implements OnInit {
       this.fileImage = event.target.files[0];
       this.formularioRegistroPreinscrip.value.linkImgComprobante = this.fileImage;
     }
+  }
+
+  setDatos(){
+    var fecha = new Date();
+    console.log(fecha);
+    var formDataPreins = new FormData();
+    formDataPreins.append('cod_deleg', this.codDelegado);
+    formDataPreins.append('num_transfer_preinscrip', this.formularioRegistroPreinscrip.value.codigoDeTransaccion);
+    formDataPreins.append('costo_preinscrip', '200');
+    formDataPreins.append("fecha_preinscrip", "2022-05-05");
+    formDataPreins.append('link_img_comprob', this.fileImage, this.fileImage.name);
+    return formDataPreins;
+  }
+
+  limpiarFormulario(){
+    this.formularioRegistroPreinscrip.reset();
+    this.submitted = false;
   }
 
   get controls() { return this.formularioRegistroPreinscrip.controls;}

@@ -1,51 +1,50 @@
-    <body>
+<body>
 
-    <div class="content">
-  
-      <div class="container">
-        <h2 class="text-center">LIGA MAXI BASQUET COCHABAMBA</h2>
-  
-        <div class="table-responsive">
-  
-          <table class="table table-hover">
-            <thead>
-              <tr>
-                <th scope="col">Nombre del Equipo</th>
-                <th scope="col">Pais del Equipo</th>
-                <th scope="col">Color del Equipo</th>
-                <th scope="col">Categoria del Equipo</th>
-              </tr>
-            </thead>
-            
-            <tbody>
-              <tr (click)="informacionPartido()">
-                <td>calceteros</td>
-                <td>Peru</td>
-                <td>Rojo</td>
-                <td>35</td>
-                
-              </tr>
+  <div class="content">
 
-              <tr scope="row">  
-              </tr>
-              <tr *ngFor="let partido of listaPartidos">
-                <td>{{ partido?.fecha }}</td>
-                <td>{{ partido?.hora }}</td>
-                <td>{{ partido?.equipo_1 }}</td>
-                <td>{{ partido?.equipo_2 }}</td>
-                <td>{{ partido?.lugar }}</td>
-                <td>ganador</td>
-              </tr>
-            </tbody>
-  
-          </table>
-        </div>
-        <h4 class="text-center" id="partidoVacio" *ngIf="listaPartidos.length==0">NO EXISTEN EQUIPOS</h4>
-        <div>
-        </div>
-  
+    <div class="container">
+      <h2 class="text-center">LIGA MAXI BASQUET COCHABAMBA</h2>
+
+      <div class="table-responsive">
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Nombre del Equipo</th>
+              <th scope="col">Pais del Equipo</th>
+              <th scope="col">Color del Equipo</th>
+              <th scope="col">Categoria del Equipo</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr (click)="informacionEquipo()">
+              <td>calceteros</td>
+              <td>Peru</td>
+              <td>Rojo</td>
+              <td>35</td>
+            </tr>
+
+            <tr scope="row">
+            </tr>
+            <tr *ngFor="let equipo of listaEquipos">
+              <td>{{ equipo?.fecha }}</td>
+              <td>{{ equipo?.hora }}</td>
+              <td>{{ equipo?.equipo_1 }}</td>
+              <td>{{ equipo?.equipo_2 }}</td>
+              <td>{{ equipo?.lugar }}</td>
+              <td>ganador</td>
+            </tr>
+          </tbody>
+
+        </table>
       </div>
-  
+      <h4 class="text-center" id="equipoVacio" *ngIf="listaEquipos.length==0">NO EXISTEN EQUIPOS</h4>
+      <div>
+      </div>
+
     </div>
-  
-  </body>
+
+  </div>
+
+</body>
