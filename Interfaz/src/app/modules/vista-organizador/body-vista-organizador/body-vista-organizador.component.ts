@@ -1,6 +1,6 @@
+import { ModalOrgEquiposPreinsComponent } from '../modal-org-equipos-preins/modal-org-equipos-preins.component';
+import { ModalOrgEquiposRegisComponent } from '../modal-org-equipos-regis/modal-org-equipos-regis.component';
 import { Component, OnInit } from '@angular/core';
-import { ModalVistaequiposregistradoseneltorneoComponent } from '../modal-vistaequiposregistradoseneltorneo/modal-vistaequiposregistradoseneltorneo.component';
-import { ModalVistaequipospreinscritosComponent } from '../modal-vistaequipospreinscritos/modal-vistaequipospreinscritos.component';
 
 import { Router } from '@angular/router';
 import {NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
@@ -22,11 +22,11 @@ export class BodyVistaOrganizadorComponent implements OnInit {
     this.router.navigate(['registro-preinscripcion'])
   }
   equipospreinscritos(): void {
-    const modalFixture = this.modalService.open(ModalVistaequipospreinscritosComponent,
+    const modalFixture = this.modalService.open(ModalOrgEquiposPreinsComponent,
       { centered: true , size: 'lg', scrollable: true });
   }
   equiposregistrados(): void {
-    const modalFixture = this.modalService.open(ModalVistaequiposregistradoseneltorneoComponent,
+    const modalFixture = this.modalService.open(ModalOrgEquiposRegisComponent,
       { centered: true , size: 'lg', scrollable: true });
   }
   crearpartido(){

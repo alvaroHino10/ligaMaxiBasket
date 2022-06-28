@@ -85,10 +85,10 @@ import { FooterVistadeljugadorComponent } from './modules/vista-jugador/footer-v
 import { HeaderVistadeljugadorComponent } from './modules/vista-jugador/header-vistadeljugador/header-vistadeljugador.component';
 import { HeaderVistadelorganizadorComponent } from './modules/vista-organizador/header-vistadelorganizador/header-vistadelorganizador.component';
 import { BodyJugadoresComponent } from './modules/registro-jugadores/body-jugadores/body-jugadores.component';
-import { ModalVistaequipospreinscritosComponent } from './modules/vista-organizador/modal-vistaequipospreinscritos/modal-vistaequipospreinscritos.component';
-import { ModalVistaequiposregistradoseneltorneoComponent } from './modules/vista-organizador/modal-vistaequiposregistradoseneltorneo/modal-vistaequiposregistradoseneltorneo.component';
 import { BodyVistaOrganizadorComponent } from './modules/vista-organizador/body-vista-organizador/body-vista-organizador.component';
 import { FooterVistaOrganizadorComponent } from './modules/vista-organizador/footer-vista-organizador/footer-vista-organizador.component';
+import { ModalOrgEquiposPreinsComponent } from './modules/vista-organizador/modal-org-equipos-preins/modal-org-equipos-preins.component';
+import { ModalOrgEquiposRegisComponent } from './modules/vista-organizador/modal-org-equipos-regis/modal-org-equipos-regis.component';
 
 
 @NgModule({
@@ -158,10 +158,10 @@ import { FooterVistaOrganizadorComponent } from './modules/vista-organizador/foo
     HeaderVistadelorganizadorComponent,
     
     BodyJugadoresComponent,
-    ModalVistaequipospreinscritosComponent,
-    ModalVistaequiposregistradoseneltorneoComponent,
     BodyVistaOrganizadorComponent,
     FooterVistaOrganizadorComponent,
+    ModalOrgEquiposPreinsComponent,
+    ModalOrgEquiposRegisComponent,
    
   ],
   imports: [
