@@ -17,11 +17,10 @@ export class FixturePartidoComponent implements OnInit {
   listaArbitros: any = [];
   listaApuntadorMesa: any = [];
   public datosPartido;
-
   listaEquiposfake: any ;
   listaArbitrosfake: any ;
   listaAMfake: any ;
-
+  controles : any;
 
   constructor(public activeModal: NgbActiveModal,
     private apiService: ApiService) {
@@ -48,15 +47,28 @@ export class FixturePartidoComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.getEquipos();
-    this.datosFake();
+    this.getEquipos();
+    this.getControlPartido();
+    //this.datosFake();
   }
 
   getEquipos() {
-    this.apiService.getAll('equipo').subscribe((dataequipo: any = []) => {
-      const response = dataequipo;
-      this.listaEquipos = (response['data']);
+    this.apiService.getAll('torneo/1').subscribe((dataequipo: any = []) => {
+      const response = dataequipo['data'];
+      this.listaEquipos = (response)['equipos'];
       console.log(this.listaEquipos);
+      this.getControlPartido();
+    });
+  }
+
+  getControlPartido(){
+    this.apiService.getAll('control-partido').subscribe((dataequipo: any = []) => {
+      this.controles = dataequipo;
+      console.log(this.controles);
+      this.listaArbitros = (dataequipo)['arbitros'];
+      this.listaApuntadorMesa = dataequipo['mesas'];
+      console.log(this.listaArbitros);
+      console.log(this.listaApuntadorMesa);
     });
   }
 
@@ -70,7 +82,7 @@ export class FixturePartidoComponent implements OnInit {
       hora:	this.formPartido.value.horaPartido ,
       equipo_1:	this.formPartido.value.equipo1,
       equipo_2: this.formPartido.value.equipo2,
-      lugar: this.formPartido.value.lugarPartido,
+      lugar: this.formPartido.value.lugarPartido.toLowerCase(),
       primer_juez: this.formPartido.value.primerJuez,
       segundo_juez: this.formPartido.value.segundoJuez,
       apuntador_mesa: this.formPartido.value.apuntadorMesa

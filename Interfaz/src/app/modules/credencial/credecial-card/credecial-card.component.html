@@ -6,30 +6,19 @@
 				<button (click)="downloadPDF()" class="btn btn-dark btn-l col-md-6 mb-2 mt-3">Crear PDF</button>
 			</div>
 			
-			<!--form [formGroup]="credencial" class="container-fluid" (ngSubmit)="actualizarCredencial()">
+			<form [formGroup]="credencial" class="container-fluid">
 			<div class="row">
 				<div class="col-md-6 mb-2">			
 						<label for="" class="form-label">Seleccione un equipo:</label>
-						<select class="form-control" name="equipos" (change)="listaEquipos" formControlName="equipos"
+						<select class="form-control" name="equipos" (change)="listaEquipos" (change)="getJugadores()" formControlName="equipos"
 							required>
 							<option value="" disabled>Seleccionar equipo</option>
 							<option *ngFor="let equipo of listaEquipos" [ngValue]="equipo"> {{ equipo.nombre_equi }}
 							</option>
 						</select>
-					</div>
-
-					<div class="col-md-6 mb-2">
-						
-						<label for="" class="form-label">Seleccione un jugador:</label>
-						<select class="form-control" name="jugadores" (change)="listaJugadores"
-							formControlName="jugadores" required>
-							<option value="" disabled>Seleccionar jugador</option>
-							<option *ngFor="let equipo of listaJugadores" [ngValue]="equipo">{{ equipo.nombre_jug }}
-							</option>
-						</select>
-					</div>
+					</div>			
 				</div>
-			</!--form-->
+			</form>
 			<!--form [formGroup]="credencial" class="container-fluid" (ngSubmit)="actualizarCredencial()">
 				<div class="row">
 					<div class="col-md-6 mb-2">
@@ -143,7 +132,7 @@
 				</div>
 			</div>
 		</div>
-
-
 	</div>
+	
 </body>
+<br><br><br>
