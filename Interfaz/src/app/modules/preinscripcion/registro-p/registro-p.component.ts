@@ -21,6 +21,7 @@ export class RegistroPComponent implements OnInit {
   mensajeResponse: any;
   response: any;
   codDelegado: any;
+  codTorneo : any;
 
   constructor(public formulario: FormBuilder, 
     private apiService: ApiService, 
@@ -47,8 +48,9 @@ export class RegistroPComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.codDelegado = history.state.codDelegadoActual;
+    this.codDelegado = 2//history.state.codDelegadoActual;
     console.log(history.state.codDelegadoActual);
+    //this.setDatos();
   }
   
   guardarPreinscripcion(): void {
@@ -56,12 +58,13 @@ export class RegistroPComponent implements OnInit {
     if (this.formularioRegistroPreinscrip.invalid) {
       this.formularioRegistroPreinscrip.controls;
       alert('Por favor ingrese datos validos, correspondientes a todos los campos');
-      this.getServicio('preinscripcion');
+      this.getServicio('preinscripcion', this.listaResponse);
       return;
     } else {
       this.postServicio();
     }
   }
+
   postServicio() {
     var cod = 0;
     var formDataPreins = this.setDatos();
@@ -70,6 +73,8 @@ export class RegistroPComponent implements OnInit {
       console.log("preinscripcion:",this.response['data']);
       cod = (this.response['data'])['cod_preinscrip'];
       this.mensajeResponse = this.response['mensaje'];
+      this.getCodTorneo();
+      this.guardarEquipo(cod);
       alert(this.mensajeResponse);
       this.limpiarFormulario();
     });
@@ -80,10 +85,31 @@ export class RegistroPComponent implements OnInit {
     return cod;
   }
 
-  getServicio(nombre : string) {
-    this.apiService.getAll(nombre).subscribe((data: any) => {
+  guardarEquipo(codPreinscrip: any){
+    var datosEquipo = {
+      cod_torn:       this.codTorneo,
+      cod_preinscrip:   codPreinscrip,
+      nombre_equi:     this.formularioRegistroPreinscrip.value.nombreDelEquipo,
+      categ_equi:      this.formularioRegistroPreinscrip.value.categoria
+    }
+    //CAMBIAR A EQUIPO DATA PAra mandar a BACKEND
+    this.apiService.post('equipo', datosEquipo).subscribe((data: any) => {
       this.listaResponse = data;
       console.log(this.listaResponse);
+    });
+  }
+
+  getCodTorneo(){
+    this.apiService.getAll('torneo').subscribe((data:any) => {
+      var torneoInf = data['data'];
+      this.codTorneo = torneoInf.length;
+    });    
+  }
+
+  getServicio(nombre : string, valModify: any) {
+    this.apiService.getAll(nombre).subscribe((data: any) => {
+      valModify = data;
+      console.log(valModify);
     });
   }
 
@@ -96,12 +122,12 @@ export class RegistroPComponent implements OnInit {
 
   setDatos(){
     var fecha = new Date();
-    console.log(fecha);
+    var fechaActual = fecha.getFullYear() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getDate();
     var formDataPreins = new FormData();
     formDataPreins.append('cod_deleg', this.codDelegado);
     formDataPreins.append('num_transfer_preinscrip', this.formularioRegistroPreinscrip.value.codigoDeTransaccion);
     formDataPreins.append('costo_preinscrip', '200');
-    formDataPreins.append("fecha_preinscrip", "2022-05-05");
+    formDataPreins.append("fecha_preinscrip", fechaActual);
     formDataPreins.append('link_img_comprob', this.fileImage, this.fileImage.name);
     return formDataPreins;
   }

@@ -37,9 +37,8 @@ export class RegistroEComponent implements OnInit {
 
   }
 
-  ngOnInit(): void {
-    //this.getServicio(); 
-    this.getServicio("torneo", this.torneoActual); 
+  ngOnInit(): void { 
+    this.getCodTorneo();
   }
 
   registrarEquipo(){
@@ -53,26 +52,24 @@ export class RegistroEComponent implements OnInit {
     }  
   }
 
-  getServicio(getDatos: string, varConsole: any){
-    this.apiService.getAll(getDatos).subscribe((data:any) => {
-      this.torneoActual = data['data'];      
-      this.getCodTorneo(this.torneoActual['length']);
+  getCodTorneo(){
+    this.apiService.getAll('torneo').subscribe((data:any) => {
+      var torneoInf = data['data'];
+      this.codTorneo = torneoInf.length;
+      this.getServicio();
+    });    
+  }
+  
+  getServicio(){
+    this.apiService.getAll('torneo/' + this.codTorneo + '/equipos').subscribe((data:any) => {
+      this.torneoActual = data['data'];    
+      console.log(this.torneoActual);  
     });
   }
   
-  getCodTorneo(length : any){
-    this.apiService.getById('torneo', (length)).subscribe((data:any) => {
-      var torneoInf = data['data'];
-      this.codTorneo = torneoInf['cod_torn'];
-      this.listaEquipos = torneoInf['equipos'];
-      console.log(this.listaEquipos);
-    });    
-  }
-
   postServicio() {
     var mensajeResponse;
     var registroEquipo = this.setRegistro();
-
     this.apiService.post('equipo_data', registroEquipo).subscribe((data: any) => {
       this.dataPost = data;
       console.log(this.dataPost);

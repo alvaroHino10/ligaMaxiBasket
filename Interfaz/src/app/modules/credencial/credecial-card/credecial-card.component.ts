@@ -37,41 +37,24 @@ export class CredecialCardComponent implements OnInit {
 
   ngOnInit(): void {
     this.getJsonContent();
-    this.datosFake();
   }
-
-  actualizarCredencial(){
-    this.codEquipo = this.credencial.value.equipos.cod_equi;
-    this.getJsonContent();
-  }
-  
-  get controls() { return this.credencial.controls; }
-  get equipoJugador(){ return this.credencial.value.equipos; }
-  //get jugadorCredencial(){ return this.credencial.value.jugadores }
-  //get imageJugador(){ return this.jugadorCredencial.link_img_jug; }
-
-  getJsonContent() {
-    this.apiService.getAll('equipo').subscribe((dataequipo: any = []) => {
-      const response = dataequipo;
-      this.listaEquipos = (response['data']);
-      console.log(this.listaEquipos);
-    });
-    //Dado el codEquipo generar los jugadores de ese equipo
-    
+ 
+  getJsonContent() { 
     this.apiService.getAll('jugador').subscribe((datajugadores: any = []) => {
       this.listaJugadores = datajugadores['data'];
       console.log(this.listaJugadores);
     });
-    /*
-    this.apiService.getJSON('jugador', 6).subscribe((data: any = []) => {
-    this.jugador = data['jugador'];
-    this.imageJugador = this.jugador.link_img_jug;
-    console.log(this.jugador)
-    console.log(this.imageJugador);
-  });*/
   }
-   // tslint:disable-next-line:typedef
-   downloadPDF() {
+  
+  getCodTorneo(length : any){
+    this.apiService.getById('torneo', (length)).subscribe((data:any) => {
+      var torneoInf = data['data'];
+      this.listaEquipos = torneoInf['equipos'];
+      console.log(this.listaEquipos);
+    });    
+  }
+
+  downloadPDF() {
     const DATA = document.getElementById('credencialcita');
     const doc = new jsPDF('p', 'pt', 'a4');
     const options = {
@@ -92,8 +75,12 @@ export class CredecialCardComponent implements OnInit {
     }).then((docResult) => {
       docResult.save(`${new Date().toISOString()}${""}.pdf`);
     });
-  }  
-
+  }
+  
+  get controls() { return this.credencial.controls; }
+  get equipoJugador(){ return this.credencial.value.equipos; }
+  //get jugadorCredencial(){ return this.credencial.value.jugadores }
+  //get imageJugador(){ return this.jugadorCredencial.link_img_jug; }
 
   //datos fake
   setRegistro(nombre: any, p_Ap: any, m_ap: any, fecha: any, telf: any) {
