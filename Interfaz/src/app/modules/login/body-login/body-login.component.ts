@@ -32,12 +32,17 @@ export class BodyLoginComponent implements OnInit {
   }
 
   iniciarSesion(){
+    var mensajeError;
+    var mensajeResponse;
     var signSesion = this.setDatos();
     this.apiService.post('signin', signSesion).subscribe((res: any = []) => {
       //this.cookieService.set('token', res.token, 4 , '/' );
       console.log(res);
-      this.router.navigate(['/credencial']);
+      this.router.navigate(['/vista-delegado']);
+    }, (error) => {
+      alert('Error al iniciar sesion');
     });
+    ;
     /*this.apiService.post('login', this.datosLogin.value).subscribe((res: any = []) => {
       this.cookieService.set('token_access', res.accessToken, 4 , '/' );
       this.router.navigate(['/']);

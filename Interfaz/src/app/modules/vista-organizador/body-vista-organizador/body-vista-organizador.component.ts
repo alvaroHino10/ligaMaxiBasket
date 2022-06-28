@@ -18,18 +18,18 @@ export class BodyVistaOrganizadorComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  creartorneo(){
-    this.router.navigate(['registro-preinscripcion'])
+  crearTorneo(){
+    this.router.navigate(['/registro-preinscripcion'])
   }
-  equipospreinscritos(): void {
+  equiposPreinscritos(): void {
     const modalFixture = this.modalService.open(ModalOrgEquiposPreinsComponent,
       { centered: true , size: 'lg', scrollable: true });
   }
-  equiposregistrados(): void {
+  equiposRegistrados(): void {
     const modalFixture = this.modalService.open(ModalOrgEquiposRegisComponent,
       { centered: true , size: 'lg', scrollable: true });
   }
-  crearpartido(){
-    this.router.navigate(['credencial'])
+  crearPartido(){
+    this.router.navigate(['/fixture'])
   }
 }

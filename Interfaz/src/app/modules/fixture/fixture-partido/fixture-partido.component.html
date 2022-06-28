@@ -84,7 +84,7 @@
       <label for="equipo1" class="form-label">Apuntador de mesa:</label>
         <select class="form-control" name="apuntadorMesa" (change)="listaApuntadorMesa" formControlName="apuntadorMesa" required>
           <option value="" disabled>Seleccionar apuntador de mesa</option>        
-          <option *ngFor="let apuntadorMesa of listaApuntadorMesa" [ngValue]="apuntadorMesa"> {{ apuntadorMesa.nombre_contr_part + " "+ apuntadorMesa.prim_ap__contr_part }}
+          <option *ngFor="let apuntadorMesa of listaApuntadorMesa" [ngValue]="apuntadorMesa"> {{ apuntadorMesa.nombre_contr_part + " "+ apuntadorMesa.prim_ap_contr_part }}
           </option>
         </select>
         <div *ngIf="(controls.apuntadorMesa.touched && controls.apuntadorMesa.invalid) || submitted" class="text-danger">

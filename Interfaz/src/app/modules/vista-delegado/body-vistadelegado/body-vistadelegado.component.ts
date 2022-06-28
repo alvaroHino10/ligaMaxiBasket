@@ -14,15 +14,15 @@ export class BodyVistadelegadoComponent implements OnInit {
   }
 
   registroPreinscripcion(){
-    this.router.navigate(['registro-preinscripcion'])
+    this.router.navigate(['/preinscripcion'])
   }
   registroEquipo(){
-    this.router.navigate(['registro-equipo'])
+    this.router.navigate(['/registro-equipo'])
   }
   registrojugadores(){
-    this.router.navigate(['registro-jugadores'])
+    this.router.navigate(['/registro-jugadores'])
   }
   credencial(){
-    this.router.navigate(['credencial'])
+    this.router.navigate(['/credencial'])
   }
 }

@@ -129,7 +129,7 @@ export class RegistroFormDelegadoComponent implements OnInit {
       var mensajeResponse = this.dataPost['mensaje'];
       alert(mensajeResponse);
       this.limpiarFormulario();
-      this.router.navigate(['/preinscripcion'],{state: {codDelegadoActual:this.codigoDelegadoActual}});
+      this.router.navigate(['/login'],{state: {codDelegadoActual:this.codigoDelegadoActual}});
     });
   }
 

@@ -17,6 +17,12 @@ export class ApiService {
     return this.http.post<any>(`${environment.url}${dir}`, model);
   }
 
+  postLogin(dir: string, model: object): Observable<any> {
+    const headers = new HttpHeaders();
+    return this.http.post<any>(`${environment.url}${dir}`, model, {
+      headers: headers
+    }).pipe(catchError(this.handleError));
+  }
   postAndImage(dir: string, model: object){
     const headers = new HttpHeaders();
     return this.http.post<any>(`${environment.url}${dir}`, model, {
