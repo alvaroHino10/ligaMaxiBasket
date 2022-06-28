@@ -18,8 +18,8 @@ export class BodyFixtureComponent implements OnInit {
   listaPartidos = [];
   
   partidoNuevo  = {
-    fecha: '',
-    hora:	'',
+    fecha_part: '',
+    hora_ini_part:	'',
     equipo_1:	'',
     equipo_2: '',
     lugar:'',
@@ -48,6 +48,7 @@ export class BodyFixtureComponent implements OnInit {
     this.apiService.getAll('partido').subscribe((data: any = []) => {
       const response = data;
       this.listaPartidos = (response['data']);
+      console.log(this.listaPartidos);
     });
   }
 

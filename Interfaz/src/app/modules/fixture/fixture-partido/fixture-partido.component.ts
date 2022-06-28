@@ -79,7 +79,8 @@ export class FixturePartidoComponent implements OnInit {
   passBack() {
     this.datosPartido  = {
       fecha_part: this.formPartido.value.fechaPartido,
-      hora_ini_part:	new Date(this.formPartido.value.horaPartido),
+      hora_ini_part:	this.formPartido.value.horaPartido,
+      hora_fin_part:  this.formPartido.value.horaPartido,
       equipo_1:	this.formPartido.value.equipo1,
       equipo_2: this.formPartido.value.equipo2,
       lugar: this.formPartido.value.lugarPartido.toLowerCase(),
@@ -87,6 +88,12 @@ export class FixturePartidoComponent implements OnInit {
       segundo_juez: this.formPartido.value.segundoJuez,
       apuntador_mesa: this.formPartido.value.apuntadorMesa
     };
+    this.apiService.post('partido', this.datosPartido).subscribe(res =>{
+      var respuesta = res;
+      console.log(respuesta);
+      alert(respuesta['mensaje']);
+      this.activeModal.close(this.datosPartido); 
+    });
   }
 
   get equiposIguales(){
