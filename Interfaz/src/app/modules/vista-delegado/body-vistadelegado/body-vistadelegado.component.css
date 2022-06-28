@@ -1,27 +1,32 @@
 .boton{
-    width:550px;
+  background-color: rgb(230, 131, 63, 0.5);  
+  -webkit-border-radius: 50px;
+  -moz-border-radius: 50px;
+  border-radius: 50px;
+  font-size:25px;
+  color:rgb(6, 6, 4);
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 100px;
+  padding-right: 100px;
+  
+  text-decoration:none;
+  /*width:550px;
     height:100px;
-    background-color: rgb(230, 131, 63, 0.5);
+    padding: 20px 20px 20px 0;  
     margin: 40px;
     padding:10px;
-    -webkit-border-radius: 50px;
-    -moz-border-radius: 50px;
-    border-radius: 50px;
     font-size:40px;
     line-height:40px;
     text-transform: uppercase;
     float:left;
-    text-align: center;
+    text-align: center;*/
   }
+
   .boton:hover{
     opacity: 0.50;
     -moz-opacity: .50;
     filter:alpha (opacity=50);
-  }
-  .boton a{
-    color:rgb(6, 6, 4);
-    text-decoration:none;
-    padding:5px 5px 5px 0;
   }
 
   @media (max-width: 1916px){

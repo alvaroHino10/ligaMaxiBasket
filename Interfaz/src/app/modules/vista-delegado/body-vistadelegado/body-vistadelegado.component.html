@@ -1,15 +1,20 @@
 <body>
-    <div>
-        <div class="boton"><a href="/registro-jugadores">INSCRIPCION 
-            DE JUGADORES</a></div>
-        <div class="boton"><a href="/registro-equipo">INSCRIPCION 
-            DE EQUIPOS</a></div>
-        <div class="boton"><a href="/credencial">Generar mi credencial</a></div>
-    </div>
-    <div class="content">
+    <div class="container-fluid">
+      <div class="row mb-5 mt-5">
+        <div class="col-md-12 mb-5">
+          <div class="row text-center">
+            <div class="col-md-3">
+              <button class="boton" (click)="registroPreinscripcion()">Preinscripcion de equipo</button>
+              </div>
+            <div class="col-md-3"><a class="boton" href="/registro-equipo">Inscripcion de equipo</a></div>
+            <div class="col-md-3"><a class="boton" href="/registro-jugadores">Inscripcion de jugadores</a></div>
+            <div class="col-md-3"><a class="boton" href="/credencial">Generar mi credencial</a> 
+            </div>
+    </div></div></div></div>
 
+    <div class="content">
         <div class="container">
-          <h2 class="text-center">LIGA MAXI BASQUET COCHABAMBA</h2>
+          <h2 class="text-center">Equipos registrados</h2>
     
           <div class="table-responsive">
     
