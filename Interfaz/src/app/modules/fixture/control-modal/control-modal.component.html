@@ -1,14 +1,244 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>hola
+
+
+
+    
+
+
+    <div class="container">
+        <h1 class="text-center" id="titulo">PUNTAJE DEL PARTIDO</h1>
+        <div class="row">
+          <div class="col-sm">
+            <h5 class="text-center" id="titulo">EQUIPO 1</h5>
+            
+            <h6 class="text-center" id="titulo">CANASTAS SIMPLES</h6>
+        <div class="row text-center  mt-5">
+            <div class="col-md-12 col-12">
+                <button (click)=" numeroEquipo1 = numeroEquipo1 - 1; "  class="btn btn-danger bmd-btn-fab bmd-btn-fab-sm">
+                    <i class="zmdi zmdi-minus"></i>
+                </button>
+    
+                <span> {{ numeroEquipo1 }} </span>
+                    
+                
+                <button (click)=" numeroEquipo1 = numeroEquipo1 + 1; " class="btn btn-primary  bmd-btn-fab bmd-btn-fab-sm">
+                    <i class="zmdi zmdi-plus"></i>
+                </button>
+            </div>
+    
+            <!---Accion de Operaciones con funciones-->
+            <div class="col-md-12 col- mt-5">
+                        
+                <h6 class="text-center" id="titulo">CANASTAS DOBLES</h6>
+    
+                <button (click)=" accionOperacion( -2 ) "  class="btn btn-danger bmd-btn-fab bmd-btn-fab-sm">
+                    <i class="zmdi zmdi-minus"></i>
+                </button>
+                <button (click)=" accionOperacion( +2 ) "  class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
+                    <i class="zmdi zmdi-plus"></i>
+                </button> 
+                
+    
+            </div>
+            <div class="col-md-12 col- mt-5">
+                        
+                <h6 class="text-center" id="titulo">CANASTAS TRIPLES</h6>
+    
+                <button (click)=" accionOperacion( -3 ) "  class="btn btn-danger bmd-btn-fab bmd-btn-fab-sm">
+                    <i class="zmdi zmdi-minus"></i>
+                </button>
+                <button (click)=" accionOperacion( +3 ) "  class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
+                    <i class="zmdi zmdi-plus"></i>
+                </button> 
+                
+    
+            </div>
+            
+
+            <h2 class="text-center">estadisticas de cada jugador</h2>
+      <div class="table-responsive">
+
+        <table class="table custom-table">
+          <thead>
+            <tr>
+              <th scope="col">jugador</th>
+              <th scope="col">canasta simple</th>
+              <th scope="col">canasta doble</th>
+              <th scope="col">canasta triple</th>
+              <th scope="col">falta</th>
+              
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr >
+              <td>juan</td>
+              <td> <button (click)=" numeroEquipo1 = numeroEquipo1 - 1; "  class="btn btn-danger bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-minus"></i>
+            </button>
+
+            <span> {{ numeroEquipo1 }} </span>
+                
+            
+            <button (click)=" numeroEquipo1 = numeroEquipo1 + 1; " class="btn btn-primary  bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-plus"></i>
+            </button></td>
+              <td> <button (click)=" numeroEquipo1 = numeroEquipo1 - 1; "  class="btn btn-danger bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-minus"></i>
+            </button>
+
+            <span> {{ numeroEquipo1 }} </span>
+                
+            
+            <button (click)=" numeroEquipo1 = numeroEquipo1 + 1; " class="btn btn-primary  bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-plus"></i>
+            </button></td>
+              <td> <button (click)=" numeroEquipo1 = numeroEquipo1 - 1; "  class="btn btn-danger bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-minus"></i>
+            </button>
+
+            <span> {{ numeroEquipo1 }} </span>
+                
+            
+            <button (click)=" numeroEquipo1 = numeroEquipo1 + 1; " class="btn btn-primary  bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-plus"></i>
+            </button></td>
+              <td> <button (click)=" numeroEquipo1 = numeroEquipo1 - 1; "  class="btn btn-danger bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-minus"></i>
+            </button>
+
+            <span> {{ numeroEquipo1 }} </span>
+                
+            
+            <button (click)=" numeroEquipo1 = numeroEquipo1 + 1; " class="btn btn-primary  bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-plus"></i>
+            </button></td>
+                      
+            </tr>
+            
+          </tbody>
+
+        </table>
+      </div>
+
+
+
+        </div>
         
-    </h1>
-</body>
-</html>
+          </div>
+          <hr>
+          <div class="col-sm">
+            
+                <h5 class="text-center" id="titulo">EQUIPO 2</h5>
+                <h6 class="text-center" id="titulo">CANASTAS SIMPLES</h6>
+                <div class="row text-center  mt-5">
+                    <div class="col-md-12 col-12">
+                        <button (click)=" numeroEquipo2 = numeroEquipo2 - 1; "  class="btn btn-danger bmd-btn-fab bmd-btn-fab-sm">
+                            <i class="zmdi zmdi-minus"></i>
+                        </button>
+            
+                        <span> {{ numeroEquipo2 }} </span>
+                            
+                        
+                        <button (click)=" numeroEquipo2 = numeroEquipo2 + 1; " class="btn btn-primary  bmd-btn-fab bmd-btn-fab-sm">
+                            <i class="zmdi zmdi-plus"></i>
+                        </button>
+                    </div>
+            
+                    <!---Accion de Operaciones con funciones-->
+                    <div class="col-md-12 col- mt-5">
+                                
+                        <h6 class="text-center" id="titulo">CANASTAS DOBLES</h6>
+            
+                        <button (click)=" accionOperacion2( -2 ) "  class="btn btn-danger bmd-btn-fab bmd-btn-fab-sm">
+                            <i class="zmdi zmdi-minus"></i>
+                        </button>
+                        <button (click)=" accionOperacion2( +2 ) "  class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
+                            <i class="zmdi zmdi-plus"></i>
+                        </button> 
+                        
+            
+                    </div>
+                    <div class="col-md-12 col- mt-5">
+                                
+                        <h6 class="text-center" id="titulo">CANASTAS TRIPLES</h6>
+            
+                        <button (click)=" accionOperacion2( -3 ) "  class="btn btn-danger bmd-btn-fab bmd-btn-fab-sm">
+                            <i class="zmdi zmdi-minus"></i>
+                        </button>
+                        <button (click)=" accionOperacion2( +3 ) "  class="btn btn-primary bmd-btn-fab bmd-btn-fab-sm">
+                            <i class="zmdi zmdi-plus"></i>
+                        </button> 
+                        
+            
+                    </div>
+                </div>
+                <h2 class="text-center">estadisticas de cada jugador</h2>
+      <div class="table-responsive">
+
+        <table class="table custom-table">
+          <thead>
+            <tr>
+              <th scope="col">jugador</th>
+              <th scope="col">canasta simple</th>
+              <th scope="col">canasta doble</th>
+              <th scope="col">canasta triple</th>
+              <th scope="col">falta</th>
+              
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr >
+              <td>juan</td>
+              <td> <button (click)=" numeroEquipo1 = numeroEquipo1 - 1; "  class="btn btn-danger bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-minus"></i>
+            </button>
+
+            <span> {{ numeroEquipo1 }} </span>
+                
+            
+            <button (click)=" numeroEquipo1 = numeroEquipo1 + 1; " class="btn btn-primary  bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-plus"></i>
+            </button></td>
+              <td> <button (click)=" numeroEquipo1 = numeroEquipo1 - 1; "  class="btn btn-danger bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-minus"></i>
+            </button>
+
+            <span> {{ numeroEquipo1 }} </span>
+                
+            
+            <button (click)=" numeroEquipo1 = numeroEquipo1 + 1; " class="btn btn-primary  bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-plus"></i>
+            </button></td>
+              <td> <button (click)=" numeroEquipo1 = numeroEquipo1 - 1; "  class="btn btn-danger bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-minus"></i>
+            </button>
+
+            <span> {{ numeroEquipo1 }} </span>
+                
+            
+            <button (click)=" numeroEquipo1 = numeroEquipo1 + 1; " class="btn btn-primary  bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-plus"></i>
+            </button></td>
+              <td> <button (click)=" numeroEquipo1 = numeroEquipo1 - 1; "  class="btn btn-danger bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-minus"></i>
+            </button>
+
+            <span> {{ numeroEquipo1 }} </span>
+                
+            
+            <button (click)=" numeroEquipo1 = numeroEquipo1 + 1; " class="btn btn-primary  bmd-btn-fab bmd-btn-fab-sm">
+                <i class="zmdi zmdi-plus"></i>
+            </button></td>
+                      
+            </tr>
+            
+          </tbody>
+
+        </table>
+      </div>
+            </div>
+          </div>  
+        </div>
+        <br>
+        
