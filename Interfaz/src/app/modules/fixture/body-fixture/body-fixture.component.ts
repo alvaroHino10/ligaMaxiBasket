@@ -39,7 +39,7 @@ export class BodyFixtureComponent implements OnInit {
     this.cargarPartidos();
   }
 
-  controldelPartido(): void {
+  controlDelPartido(): void {
     const modalFixture = this.modalService.open(ControlModalComponent, { centered: true , size: 'xl', scrollable: true });
 
 }
