@@ -87,6 +87,8 @@ import { HeaderVistadelorganizadorComponent } from './modules/vista-organizador/
 import { FooterVistadelorganizadorComponent } from './modules/vista-organizador/footer-vistadelorganizador/footer-vistadelorganizador.component';
 import { BobyVistadelorganizadorComponent } from './modules/vista-organizador/boby-vistadelorganizador/boby-vistadelorganizador.component';
 import { BodyJugadoresComponent } from './modules/registro-jugadores/body-jugadores/body-jugadores.component';
+import { ModalVistaequipospreinscritosComponent } from './modules/vista-organizador/modal-vistaequipospreinscritos/modal-vistaequipospreinscritos.component';
+import { ModalVistaequiposregistradoseneltorneoComponent } from './modules/vista-organizador/modal-vistaequiposregistradoseneltorneo/modal-vistaequiposregistradoseneltorneo.component';
 
 @NgModule({
   declarations: [
@@ -155,7 +157,9 @@ import { BodyJugadoresComponent } from './modules/registro-jugadores/body-jugado
     HeaderVistadelorganizadorComponent,
     FooterVistadelorganizadorComponent,
     BobyVistadelorganizadorComponent,
-    BodyJugadoresComponent
+    BodyJugadoresComponent,
+    ModalVistaequipospreinscritosComponent,
+    ModalVistaequiposregistradoseneltorneoComponent
   ],
   imports: [
     BrowserModule,
