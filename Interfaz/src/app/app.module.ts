@@ -84,11 +84,12 @@ import { BodyVistadeljugadorComponent } from './modules/vista-jugador/body-vista
 import { FooterVistadeljugadorComponent } from './modules/vista-jugador/footer-vistadeljugador/footer-vistadeljugador.component';
 import { HeaderVistadeljugadorComponent } from './modules/vista-jugador/header-vistadeljugador/header-vistadeljugador.component';
 import { HeaderVistadelorganizadorComponent } from './modules/vista-organizador/header-vistadelorganizador/header-vistadelorganizador.component';
-import { FooterVistadelorganizadorComponent } from './modules/vista-organizador/footer-vistadelorganizador/footer-vistadelorganizador.component';
-import { BobyVistadelorganizadorComponent } from './modules/vista-organizador/boby-vistadelorganizador/boby-vistadelorganizador.component';
 import { BodyJugadoresComponent } from './modules/registro-jugadores/body-jugadores/body-jugadores.component';
 import { ModalVistaequipospreinscritosComponent } from './modules/vista-organizador/modal-vistaequipospreinscritos/modal-vistaequipospreinscritos.component';
 import { ModalVistaequiposregistradoseneltorneoComponent } from './modules/vista-organizador/modal-vistaequiposregistradoseneltorneo/modal-vistaequiposregistradoseneltorneo.component';
+import { BodyVistaOrganizadorComponent } from './modules/vista-organizador/body-vista-organizador/body-vista-organizador.component';
+import { FooterVistaOrganizadorComponent } from './modules/vista-organizador/footer-vista-organizador/footer-vista-organizador.component';
+
 
 @NgModule({
   declarations: [
@@ -155,11 +156,13 @@ import { ModalVistaequiposregistradoseneltorneoComponent } from './modules/vista
     FooterVistadeljugadorComponent,
     HeaderVistadeljugadorComponent,
     HeaderVistadelorganizadorComponent,
-    FooterVistadelorganizadorComponent,
-    BobyVistadelorganizadorComponent,
+    
     BodyJugadoresComponent,
     ModalVistaequipospreinscritosComponent,
-    ModalVistaequiposregistradoseneltorneoComponent
+    ModalVistaequiposregistradoseneltorneoComponent,
+    BodyVistaOrganizadorComponent,
+    FooterVistaOrganizadorComponent,
+   
   ],
   imports: [
     BrowserModule,
