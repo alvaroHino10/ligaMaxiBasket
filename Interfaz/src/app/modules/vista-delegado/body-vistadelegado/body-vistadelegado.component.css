@@ -1,17 +1,17 @@
 .boton{
-    width:400px;
-    height:400px;
-    background-color:#eebc58;
-    margin: 5px;
+    width:550px;
+    height:100px;
+    background-color: rgb(230, 131, 63, 0.5);
+    margin: 40px;
     padding:10px;
     -webkit-border-radius: 50px;
     -moz-border-radius: 50px;
     border-radius: 50px;
-    font-size:11px;
-    line-height:32px;
+    font-size:40px;
+    line-height:40px;
     text-transform: uppercase;
     float:left;
-    
+    text-align: center;
   }
   .boton:hover{
     opacity: 0.50;
@@ -19,7 +19,149 @@
     filter:alpha (opacity=50);
   }
   .boton a{
-    color:#fff;
+    color:rgb(6, 6, 4);
     text-decoration:none;
     padding:5px 5px 5px 0;
+  }
+
+  @media (max-width: 1916px){
+    .boton{
+      
+        width:500px;
+        height:150px;
+        
+        margin: 40px;
+        padding:10px;
+        
+        border-radius: 50px;
+        font-size:55px;
+        line-height:75px;
+     
+    }
+  }
+  @media (max-width: 1748px){
+    .boton{
+      
+        width:450px;
+        height:100px;
+        
+        margin: 30px;
+        padding:10px;
+        
+        
+        font-size:35px;
+        line-height:50px;
+     
+    }
+  }
+  @media (max-width: 1550px){
+    .boton{
+      
+        width:400px;
+        height:70px;
+        
+        margin: 20px;
+        padding:10px;
+        
+        
+        font-size:27px;
+        
+     
+    }
+  }
+  @media (max-width: 1316px){
+    .boton{
+      
+        width:350px;
+        height:70px;
+    
+        margin: 15px;
+        padding:10px;
+        font-size:20px;
+     
+    }
+  }
+  @media (max-width: 1160px){
+    .boton{
+      
+        width:250px;
+        height:70px;
+    
+        margin: 30px;
+        padding:10px;
+        font-size:20px;
+        line-height:25px;
+    }
+  }
+  @media (max-width: 924px){
+    .boton{
+      
+        width:200px;
+        height:50px;
+    
+        margin: 10px;
+        padding:10px;
+        font-size:20px;
+        line-height:20px;
+    }
+  }
+  @media (max-width: 676px){
+    .boton{
+      
+        width:150px;
+        height:50px;
+    
+        margin: 10px;
+        padding:10px;
+        font-size:15px;
+        line-height:15px;
+    }
+  }
+  @media (max-width: 520px){
+    .boton{
+      
+        width:120px;
+        height:50px;
+    
+        margin: 10px;
+        padding:10px;
+        font-size:13px;
+        line-height:13px;
+    }
+  }
+  @media (max-width: 446px){
+    .boton{
+      
+        width:100px;
+        height:50px;
+    
+        margin: 8px;
+        padding:10px;
+        font-size:10px;
+        line-height:10  px;
+    }
+  }
+  @media (max-width: 368px){
+    .boton{
+      
+        width:80px;
+        height:50px;
+    
+        margin: 8px;
+        padding:10px;
+        font-size:10px;
+        line-height:10px;
+    }
+  }
+  @media (max-width: 308px){
+    .boton{
+      
+        width:60px;
+        height:50px;
+    
+        margin: 8px;
+        padding:12px;
+        font-size:7px;
+        line-height:8px;
+    }
   }
