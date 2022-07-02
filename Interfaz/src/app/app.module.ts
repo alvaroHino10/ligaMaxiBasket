@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule , HTTP_INTERCEPTORS } from '@angular/common/http';
 import { QRCodeModule } from 'angular2-qrcode';
 
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -86,6 +86,7 @@ import { FooterVistaOrganizadorComponent } from './modules/vista-organizador/foo
 import { ModalOrgEquiposPreinsComponent } from './modules/vista-organizador/modal-org-equipos-preins/modal-org-equipos-preins.component';
 import { ModalOrgEquiposRegisComponent } from './modules/vista-organizador/modal-org-equipos-regis/modal-org-equipos-regis.component';
 
+import { TokenInterceptorService } from './api-services/token-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -168,7 +169,13 @@ import { ModalOrgEquiposRegisComponent } from './modules/vista-organizador/modal
     NgbModule,
     NgxCaptchaModule
   ],
-  providers: [ CookieService ],
+  providers: [ CookieService, 
+  {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptorService,
+    multi: true
+  }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

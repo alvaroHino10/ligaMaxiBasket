@@ -152,6 +152,8 @@ export class RegistroFormDelegadoComponent implements OnInit {
     this.submitted = false;
   }
   
-  get controls() {return this.formularioDelegado.controls}
+  get controls() {return this.formularioDelegado.controls;}
+
+  getToken(){ return localStorage.getItem('token'); }
 
 }
