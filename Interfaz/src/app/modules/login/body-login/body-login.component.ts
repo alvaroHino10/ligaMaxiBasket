@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ApiService } from 'src/app/api-services/api-services';
 import { CookieService } from 'ngx-cookie-service';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/api-services/auth.service';
 
 @Component({
   selector: 'app-body-login',
@@ -15,7 +16,9 @@ export class BodyLoginComponent implements OnInit {
   textoContrasenia: boolean;
 
   constructor(private apiService: ApiService, private router: Router, 
-    private cookieService: CookieService) {
+    //private cookieService: CookieService,
+    private authService: AuthService) {
+
     this.siteKey='6Lf-yJcgAAAAAHxzd7sG7Y0dEZo_avSBaU7RaG5-';
     this.datosLogin = new FormGroup({
       correoElectronico: new FormControl('',
@@ -35,28 +38,23 @@ export class BodyLoginComponent implements OnInit {
     var mensajeError;
     var mensajeResponse;
     var signSesion = this.setDatos();
-    this.apiService.post('signin', signSesion).subscribe((res: any = []) => {
-      //this.cookieService.set('token', res.token, 4 , '/' );
-      console.log(res);
+/*    this.apiService.post('signin', signSesion).subscribe((res: any = []) => {
+      this.authService.singIn
       this.router.navigate(['/vista-delegado']);
-    }, (error) => {
+    },(error) => {
       alert('Error al iniciar sesion');
-    });
-    ;
-    /*this.apiService.post('login', this.datosLogin.value).subscribe((res: any = []) => {
-      this.cookieService.set('token_access', res.accessToken, 4 , '/' );
-      this.router.navigate(['/']);
     });*/
-    //para pruebas
-    //this.cookieService.set('token_access', this.siteKey, 4 , '/' );
-    //this.router.navigate(['/']);
+
+    this.authService.singIn(signSesion).subscribe((res: any = []) => {
+      this.setToken(res);
+      this.router.navigate(['/vista-delegado']);
+    });
   }
 
   setDatos(){
     var datos = {
       email: this.datosLogin.value.correoElectronico,
       password: this.datosLogin.value.password,
-      token: this.cookieService.get('token')
     }
     return datos;
   }
@@ -66,5 +64,7 @@ export class BodyLoginComponent implements OnInit {
   }
   get controls(){ return this.datosLogin.controls}
 
-
+  setToken(res: any){ 
+    sessionStorage.setItem('token', res.token);
+  }
 }

@@ -1,27 +1,30 @@
-import { Injectable , Injector } from '@angular/core';
-import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { RegistroFormDelegadoComponent } from '../modules/registro-delegado/registro-form-delegado/registro-form-delegado.component';
+import { Injectable, Injector } from '@angular/core';
+import { HttpErrorResponse, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 
-export class TokenInterceptorService implements HttpInterceptor{
+export class TokenInterceptorService implements HttpInterceptor {
+  tokenID: any;
+  constructor(private authService: AuthService) { }
 
-  constructor(private injector: Injector) { }
-    
-  intercept(req: HttpRequest<any>, next: HttpHandler){
-    let delegado = this.injector.get(RegistroFormDelegadoComponent);
-    let tokenizedRequest = req.clone({      
-      setHeaders: {
-        Authorization: `Bearer ${delegado.getToken()}`// xx.yy.zz'
-        //                      JSON web token
+  intercept(req: HttpRequest<any>, next: HttpHandler) {
+    let request = req;
+    if (this.authService.loggedIn()) {
+      const token: string = this.authService.getToken();
+      if (token) {
+        request = req.clone({
+          setHeaders: {
+            //Autorizaciòn de tipo Bearer + token
+            Authorization: `Bearer ${token}`
+          }
+        });
+        console.log(request);
       }
-    });
-
-    return next.handle(tokenizedRequest);
+    }
+    return next.handle(request);
   }
-
-  
 }

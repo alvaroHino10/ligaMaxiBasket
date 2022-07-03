@@ -59,10 +59,6 @@ export class ApiService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
-
-  // This method is in charge for saving an object in the database
-
-
   //Este método interactúa
   /*getAll(dir:string, model?:object): Observable<any>{
     return this.http.get<any>(`${this.url}${dir}`, model);

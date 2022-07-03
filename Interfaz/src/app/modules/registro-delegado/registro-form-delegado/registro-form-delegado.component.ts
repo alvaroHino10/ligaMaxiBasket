@@ -124,7 +124,7 @@ export class RegistroFormDelegadoComponent implements OnInit {
     } 
     this.apiService.post('signup', delegadoSignUp).subscribe(signData => {
       this.dataSign = signData;
-      this.cookieService.set('token_access', this.dataSign.token, 4 , '/' );
+      this.cookieService.set('token', this.dataSign.token, 4 , '/' );
       console.log(this.dataSign);
       var mensajeResponse = this.dataPost['mensaje'];
       alert(mensajeResponse);
@@ -154,6 +154,5 @@ export class RegistroFormDelegadoComponent implements OnInit {
   
   get controls() {return this.formularioDelegado.controls;}
 
-  getToken(){ return localStorage.getItem('token'); }
 
 }
