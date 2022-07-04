@@ -29,8 +29,8 @@
             </tr>
             <tr *ngFor="let equipo of listaEquipos">
               <td>{{ equipo?.nombre_equi }}</td>
-              <td>{{ equipo?.pais_equi }}</td>
-              <td>{{ equipo?.color_equi }}</td>          
+              <td>{{ equipo?.equipo_data?.pais_equi }}</td>
+              <td>{{ equipo?.equipo_data?.color_equi }}</td>          
               <td>{{ equipo?.categ_equi }}</td>
             </tr>
           </tbody>

@@ -17,7 +17,6 @@ export class RoleDirective {
   set appRole(val : boolean){
     val = this.existeAcceso;
     this.viewContainer.clear();
-    console.log('value', val);
     if(val){
       this.viewContainer.createEmbeddedView(this.templateRef);  
     }

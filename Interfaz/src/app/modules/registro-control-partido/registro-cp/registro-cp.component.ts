@@ -78,7 +78,7 @@ export class RegistroCpComponent implements OnInit {
       this.data = res;
       console.log(this.data);
       alert(this.data['mensaje']);
-      //this.limpiarFormulario();
+      this.limpiarFormulario();
     });/*,(error) => {
       this.mensajeError = error;
       console.log(this.mensajeError.error['mensaje']);
@@ -87,10 +87,6 @@ export class RegistroCpComponent implements OnInit {
 
   getControlPartido(){
     this.apiService.getAll("control-partido");
-    console.log(this.apiService.getAll("control-partido").subscribe( res => {
-      var lista = res;
-      console.log(lista);
-    }));
   }
 
   subirImagen(event: any) {

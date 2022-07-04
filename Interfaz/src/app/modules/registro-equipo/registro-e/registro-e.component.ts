@@ -86,14 +86,6 @@ export class RegistroEComponent implements OnInit {
   }
 
   setRegistro(){
-    /*const registroEquipo = {cod_torn:         this.codTorneo,
-                            cod_preinscrip:   this.formularioRegistroEquipo.value.nombreDelEquipo.cod_preinscrip,
-                            nombre_equi:      this.formularioRegistroEquipo.value.nombreDelEquipo.nombre_equi,
-                            categ_equi:       this.formularioRegistroEquipo.value.nombreDelEquipo.categ_equi,
-                            pais_equi:        this.formularioRegistroEquipo.value.paisEquipo,
-                            discip_equi:      "Basquet", 
-                            color_equi:       this.formularioRegistroEquipo.value.colorEquipo
-    }*/
     const registroEquipo = {
       cod_equi:         this.formularioRegistroEquipo.value.nombreDelEquipo.cod_equi,
       pais_equi:        this.formularioRegistroEquipo.value.paisEquipo,

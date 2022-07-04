@@ -7,7 +7,7 @@
   <form [formGroup]="formPartido" class="container-fluid" (ngSubmit)="passBack()">
     <div class="row mt-3">
       <div class="col-md-5 text-center">
-        <label for="equipo1" class="form-label">Equipo 1:</label>
+        <label for="equipo1" class="form-label">Equipo A:</label>
         <select class="form-control" name="equipo1" (change)="listaEquiposfake" formControlName="equipo1" required>
           <option value="" disabled>Seleccionar equipo</option>
           <option *ngFor="let equipo of listaEquipos" [ngValue]="equipo"> {{ equipo.nombre_equi }}
@@ -16,7 +16,7 @@
       </div>
       <div class="col-md-2 text-danger text-center"><b id="versus">VS</b></div>
       <div class="col-md-5 text-center me-0">
-        <label for="equipo2" class="form-label">Equipo 2:</label>
+        <label for="equipo2" class="form-label">Equipo B:</label>
         <select class="form-control" name="equipo2" (change)="listaEquiposfake" formControlName="equipo2" required>
           <option value="" disabled>Seleccionar equipo</option>
           <option *ngFor="let equipo of listaEquipos" [ngValue]="equipo"> {{ equipo.nombre_equi }}
@@ -56,7 +56,7 @@
     </div>
 
     <div class="mt-3">
-      <label for="equipo1" class="form-label">1er Juez:</label>
+      <label for="juez-1" class="form-label">1er Juez:</label>
         <select class="form-control" name="primerJuez" (change)="listaArbitros" formControlName="primerJuez" required>
           <option value="" disabled>Seleccionar juez</option>
           <option *ngFor="let juez of listaArbitros" [ngValue]="juez"> {{ juez.nombre_contr_part + " "+ juez.prim_ap_contr_part }}
@@ -68,7 +68,7 @@
         <div *ngIf="arbitrosIguales" class="text-danger">El primer juez no puede ser igual al segundo juez</div>
     </div>
     <div class="mt-3">
-      <label for="equipo1" class="form-label">2do Juez:</label>
+      <label for="juez-2" class="form-label">2do Juez:</label>
         <select class="form-control" name="segundoJuez" (change)="listaArbitros" formControlName="segundoJuez" required>
           <option value="" disabled>Seleccionar juez</option>
           <option *ngFor="let juez of listaArbitros" [ngValue]="juez"> {{ juez.nombre_contr_part + " "+ juez.prim_ap_contr_part }}
@@ -81,7 +81,7 @@
     </div>
 
     <div class="mt-3">
-      <label for="equipo1" class="form-label">Apuntador de mesa:</label>
+      <label for="mesa" class="form-label">Apuntador de mesa:</label>
         <select class="form-control" name="apuntadorMesa" (change)="listaApuntadorMesa" formControlName="apuntadorMesa" required>
           <option value="" disabled>Seleccionar apuntador de mesa</option>        
           <option *ngFor="let apuntadorMesa of listaApuntadorMesa" [ngValue]="apuntadorMesa"> {{ apuntadorMesa.nombre_contr_part + " "+ apuntadorMesa.prim_ap_contr_part }}
@@ -91,6 +91,18 @@
           <div *ngIf="controls.apuntadorMesa.errors?.required">Por favor, seleccione un juez</div>
         </div>
     </div>     
+
+    <div class="mt-3">
+      <label for="fiscal" class="form-label">Fiscal:</label>
+        <select class="form-control" name="fiscal" (change)="listaFiscales" formControlName="fiscal" required>
+          <option value="" disabled>Seleccionar fiscal de partido</option>        
+          <option *ngFor="let fiscal of listaFiscales" [ngValue]="fiscal"> {{ fiscal.nombre_contr_part + " "+ fiscal.prim_ap_contr_part }}
+          </option>
+        </select>
+        <div *ngIf="(controls.fiscal.touched && controls.fiscal.invalid) || submitted" class="text-danger">
+          <div *ngIf="controls.fiscal.errors?.required">Por favor, seleccione un fiscal</div>
+        </div>
+    </div>
   </form>
 
 </div>
