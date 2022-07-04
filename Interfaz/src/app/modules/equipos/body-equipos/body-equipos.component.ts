@@ -24,10 +24,9 @@ export class BodyEquiposComponent implements OnInit {
   }
 
   getEquipos() {
-    this.apiService.getAll('torneo/1').subscribe((dataequipo: any = []) => {
-      const response = dataequipo['data'];
-      this.listaEquipos = (response)['equipos'];
-      console.log(this.listaEquipos);
+    this.apiService.getAll('equipo_data').subscribe((dataequipo: any = []) => {
+      this.listaEquipos = dataequipo.data;
+      console.log(this.listaEquipos)
     });
   }
 }

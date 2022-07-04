@@ -22,7 +22,7 @@ export class TokenInterceptorService implements HttpInterceptor {
             Authorization: `Bearer ${token}`
           }
         });
-        console.log(request);
+        //console.log(request);
       }
     }
     return next.handle(request);

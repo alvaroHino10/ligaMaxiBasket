@@ -15,6 +15,7 @@ export class BodyHomeComponent implements OnInit {
 
   clickRegistroHome () {
     this.router.navigate(['/registro-delegado']);
+    //this.router.navigate(['/registro-delegado']);
   };
   
   

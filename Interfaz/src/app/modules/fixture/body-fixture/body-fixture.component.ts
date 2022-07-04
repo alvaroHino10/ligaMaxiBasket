@@ -71,5 +71,5 @@ export class BodyFixtureComponent implements OnInit {
     });
   }
 
-  get existeAcceso(){ return this.cookieService.check('token_access');}
+  //get existeAcceso(){ return this.cookieService.check('token_access');}
 }

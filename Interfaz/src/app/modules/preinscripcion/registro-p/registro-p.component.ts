@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api-services/api-services';
 import { RegistroDelegadoComponent } from '../../registro-delegado/registro-delegado.component';
 
@@ -24,9 +24,10 @@ export class RegistroPComponent implements OnInit {
   codTorneo : any;
 
   constructor(public formulario: FormBuilder, 
-    private apiService: ApiService, 
+    private apiService: ApiService, private router: Router) {
     //codDelegado: RegistroDelegadoComponent,
-    private route: ActivatedRoute) {
+    //private route: ActivatedRoute,
+    
     
     this.formularioRegistroPreinscrip = new FormGroup({
       nombreDelEquipo: new FormControl('',
@@ -77,6 +78,7 @@ export class RegistroPComponent implements OnInit {
       this.guardarEquipo(cod);
       alert(this.mensajeResponse);
       this.limpiarFormulario();
+      this.router.navigate(['/vista-delegado']);
     });/*,(error) => {
       this.mensajeError = error;
       console.log(this.mensajeError.error['mensaje']);

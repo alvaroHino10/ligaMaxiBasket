@@ -70,9 +70,7 @@ import { FooterEquiposComponent } from './modules/equipos/footer-equipos/footer-
 import { HeaderEquiposComponent } from './modules/equipos/header-equipos/header-equipos.component';
 import { Error404Component } from './modules/error404/error404.component';
 
-import { CookieService } from 'ngx-cookie-service';
 import { ModalEquipoComponent } from './modules/equipos/modal-equipo/modal-equipo.component';
-import { AccesoDelegadoDirective } from './directives/acceso-delegado.directive';
 import { ControlModalComponent } from './modules/fixture/control-modal/control-modal.component';
 import { VistaDelegadoComponent } from './modules/vista-delegado/vista-delegado.component';
 import { VistaOrganizadorComponent } from './modules/vista-organizador/vista-organizador.component';
@@ -86,7 +84,9 @@ import { FooterVistaOrganizadorComponent } from './modules/vista-organizador/foo
 import { ModalOrgEquiposPreinsComponent } from './modules/vista-organizador/modal-org-equipos-preins/modal-org-equipos-preins.component';
 import { ModalOrgEquiposRegisComponent } from './modules/vista-organizador/modal-org-equipos-regis/modal-org-equipos-regis.component';
 
+import { CookieService } from 'ngx-cookie-service';
 import { TokenInterceptorService } from './api-services/token-interceptor.service';
+import { RoleDirective } from './directives/role.directive';
 
 @NgModule({
   declarations: [
@@ -141,22 +141,19 @@ import { TokenInterceptorService } from './api-services/token-interceptor.servic
     Error404Component,
     BodyDelegadoComponent,
     ModalEquipoComponent,
-    AccesoDelegadoDirective,
     ControlModalComponent,
     VistaDelegadoComponent,
     VistaOrganizadorComponent,
     FooterVistadelegadoComponent,
     HeaderVistadelegadoComponent,
     BodyVistadelegadoComponent,
-
-    HeaderVistadelorganizadorComponent,
-    
+    HeaderVistadelorganizadorComponent,    
     BodyJugadoresComponent,
     BodyVistaOrganizadorComponent,
     FooterVistaOrganizadorComponent,
     ModalOrgEquiposPreinsComponent,
     ModalOrgEquiposRegisComponent,
-   
+    RoleDirective,
   ],
   imports: [
     BrowserModule,
