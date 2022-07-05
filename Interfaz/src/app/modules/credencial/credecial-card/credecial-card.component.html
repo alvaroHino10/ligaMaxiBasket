@@ -53,45 +53,29 @@
 							</div>
 						</div>
 
-						<!--div *ngIf="(controls.equipos.errors?.required) || (controls.jugadores.errors?.required)"
-					class="alert alert-primary" role="alert">
-					<h3 class="alert-primary text-center">GENERANDO CREDENCIAL...</h3>
-					<div *ngIf="(controls.equipos.touched && controls.equipos.invalid)" class="text-danger text-center">
-						<div *ngIf="controls.equipos.errors?.required">
-							<h3>Por favor, selecciona un equipo</h3>
-						</div>
-					</div>
-					<div *ngIf="(controls.jugadores.touched && controls.jugadores.invalid)"
-						class="text-danger text-center">
-						<div *ngIf="controls.jugadores.errors?.required">
-							<h3>Por favor, selecciona un jugador</h3>
-						</div>
-					</div>
-				</div-->
-
 						<div class="col-md-8">
 							<!--Nombre completo-->
 							<div class="form-group p-2 text-black row mx-2">
 								<label for="nombre" class="formulario">Nombre completo:</label>
-								<label *ngIf="!controls.jugadores.invalid">
-									{{jugadorCredencial.nombre_jug + " " +
-									jugadorCredencial.prim_ap_jug + " " +
-									jugadorCredencial.seg_ap_jug}}</label>
+								<label>
+									{{jugadorCredencial?.nombre_jug + " " +
+									jugadorCredencial?.prim_ap_jug + " " +
+									jugadorCredencial?.seg_ap_jug}}
+								</label>
 							</div>
 
-							<div class="row">
+							<div class="row text-center">
 								<div class="col-md-4">
 									<!--Fecha de nacimiento-->
 									<div class="form-group p-2 text-black mx-2">
 										<label for="Fecha-de-Nacimiento" class="formulario">Fecha de Nacimiento:</label>
-										<label *ngIf="!controls.jugadores.invalid">
-											{{jugadorCredencial.fecha_nac_jug}}</label>
+										<label>{{jugadorCredencial?.fecha_nac_jug}}</label>
 									</div>
 
 									<!--Equipo-->
 									<div class="form-group p-2 text-black mx-2">
 										<label for="Equipo" class="formulario">Equipo:</label>
-										<label *ngIf="!controls.equipos.invalid">{{ equipoJugador.nombre_equi }}</label>
+										<label>{{ equipoJugador?.nombre_equi }}</label>
 									</div>
 								</div>
 
@@ -100,29 +84,28 @@
 									<div class="form-group p-2 text-black row ">
 										<label for="Numero-de-Identificacion" class="formulario">N° de
 											Identificacion:</label>
-										<label
-											*ngIf="!controls.jugadores.invalid">{{jugadorCredencial.num_iden_jug}}</label>
+										<label>{{jugadorCredencial?.num_iden_jug}}</label>
 									</div>
 									<!--Telefono-->
 									<div class="form-group p-2 text-black row">
 										<label for="Telefono:" class="formulario">Categoria:</label>
-										<label *ngIf="!controls.jugadores.invalid">{{equipoJugador.categ_equi}}</label>
+										<label>{{equipoJugador?.categ_equi}}</label>
 									</div>
 								</div>
 								<div class="col-md-4">
 									<!--Telefono-->
-									<div class="form-group p-2 text-black row">
+									<div class="form-group p-2 text-black row mt-2">
+										<label for=""></label>
 										<label for="Telefono:" class="formulario">Telefono:</label>
-										<label
-											*ngIf="!controls.jugadores.invalid">{{jugadorCredencial.telf_jug}}</label>
+										<label>{{jugadorCredencial?.telf_jug}}</label>
 									</div>
 								</div>
 							</div>
 						</div>
 						<div class="col-md-4 text-center mb-2">
 							<div class="p-3">
-								<img src="../../../../assets/Imagenes/Logo.jpg" class="img-fluid"
-									alt="Imagen jugador" />
+								<img src="../../../../assets/Imagenes/Logo.jpg" class="img-fluid" alt="Imagen jugador" />
+								<!--mg class="img-fluid" src="{{imageJugador}}" alt="Imagen jugador"/-->							
 							</div>
 							<div class="QR" id="QR">
 								<qr-code [value]="urlActual"></qr-code>
@@ -133,6 +116,5 @@
 			</div>
 		</div>
 	</div>
-	
 </body>
-<br><br><br>
+<br><br>

@@ -6,6 +6,7 @@ import pdfFonts from 'pdfmake/build/vfs_fonts';
 pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
+import { ImageElementContainer } from 'html2canvas/dist/types/dom/replaced-elements/image-element-container';
 
 @Component({
   selector: 'app-credecial-card',
@@ -41,7 +42,6 @@ export class CredecialCardComponent implements OnInit {
  
   getCodTorneo(){
     this.apiService.getAll('torneo').subscribe((data:any) => {
-      console.log(data);
       this.torneoActual = data['data'];
       this.codTorneo = this.torneoActual.length;
       this.getServicio();
@@ -54,6 +54,18 @@ export class CredecialCardComponent implements OnInit {
       console.log(this.listaEquipos);  
     });
   }
+
+  getJugadores(){
+    var codEquiData = this.credencial.value.equipos.equipo_data.cod_equi_data;
+    this.apiService.getById('equipo_data', codEquiData).subscribe(res => {
+      this.listaJugadores = res.data.jugadores;
+      console.log(this.listaJugadores);
+    });
+    //this.listaJugadores = 
+    
+  }
+
+
 
   downloadPDF() {
     const DATA = document.getElementById('credencialcita');
@@ -80,14 +92,14 @@ export class CredecialCardComponent implements OnInit {
   
   get controls() { return this.credencial.controls; }
   get equipoJugador(){ return this.credencial.value.equipos; }
-
-  getJugadores(){
-    this.listaJugadores = this.credencial.value.equipos;
-    console.log(this.listaJugadores);
-    return this.listaJugadores;
-  }
-
-  //get imageJugador(){ return this.jugadorCredencial.link_img_jug; }
+  get imageJugador(){ 
+    var imagen = "http://25.79.31.175:8000/api/jugador/1" ;
+  /*  this.apiService.getJSON('jugador', 1).subscribe((data: any = []) => {
+      console.log(data.data);
+      imagen = this.jugador.link_img_jug;
+    });  */
+    //console.log(this.listaJugadores[0].link_img_jug);
+    return imagen; }
 
   //datos fake
   setRegistro(nombre: any, p_Ap: any, m_ap: any, fecha: any, telf: any) {
