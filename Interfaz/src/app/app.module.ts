@@ -92,6 +92,7 @@ import { VistaOrganizadorTablaComponent } from './modules/vista-organizador-tabl
 import { FooterOrganizadorComponent } from './modules/vista-organizador-tabla/footer-organizador/footer-organizador.component';
 import { HeaderOrganizadorComponent } from './modules/vista-organizador-tabla/header-organizador/header-organizador.component';
 import { BodyOrganizadorComponent } from './modules/vista-organizador-tabla/body-organizador/body-organizador.component';
+import { ModalCredencialDelegadoComponent } from './modules/vista-delegado/modal-credencial-delegado/modal-credencial-delegado.component';
 
 
 @NgModule({
@@ -165,6 +166,7 @@ import { BodyOrganizadorComponent } from './modules/vista-organizador-tabla/body
     FooterOrganizadorComponent,
     HeaderOrganizadorComponent,
     BodyOrganizadorComponent,
+    ModalCredencialDelegadoComponent,
     
   ],
   imports: [

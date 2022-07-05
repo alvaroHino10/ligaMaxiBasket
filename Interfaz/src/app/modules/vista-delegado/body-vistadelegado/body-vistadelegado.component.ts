@@ -1,7 +1,8 @@
+import { ModalCredencialDelegadoComponent } from './../modal-credencial-delegado/modal-credencial-delegado.component';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/api-services/api-services';
-
+import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-body-vistadelegado',
   templateUrl: './body-vistadelegado.component.html',
@@ -9,7 +10,7 @@ import { ApiService } from 'src/app/api-services/api-services';
 })
 export class BodyVistadelegadoComponent implements OnInit {
   listaEquipos : any = [];
-  constructor(private router: Router, private apiService: ApiService) { }
+  constructor(private modalService: NgbModal, private router: Router, private apiService: ApiService) { }
 
   ngOnInit(): void {
     this.getListaEquipos();
@@ -33,5 +34,12 @@ export class BodyVistadelegadoComponent implements OnInit {
   }
   credencial(){
     this.router.navigate(['/credencial']);
+  }
+
+
+  generarcredencial(): void {
+    const modalFixture = this.modalService.open(ModalCredencialDelegadoComponent, { centered: true, size: 'xl', scrollable: true });
+
+    
   }
 }
