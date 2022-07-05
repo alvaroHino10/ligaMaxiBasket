@@ -22,8 +22,9 @@ export class BodyVistaOrganizadorComponent implements OnInit {
     this.router.navigate(['/registro-preinscripcion'])
   }
   equiposPreinscritos(): void {
-    const modalFixture = this.modalService.open(ModalOrgEquiposPreinsComponent,
-      { centered: true , size: 'lg', scrollable: true });
+    /*const modalFixture = this.modalService.open(ModalOrgEquiposPreinsComponent,
+      { centered: true , size: 'lg', scrollable: true });*/
+      this.router.navigate(['../vista-organizador-tabla']);
   }
   equiposRegistrados(): void {
     const modalFixture = this.modalService.open(ModalOrgEquiposRegisComponent,

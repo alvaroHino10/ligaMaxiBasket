@@ -126,14 +126,15 @@ export class RegistroJComponent implements OnInit {
     var registroJugador = this.setRegistro();
     var mensajeResponse;
 
-    this.apiService
-      .postAndImageNotErrors("jugador", registroJugador)
+    this.apiService.postAndImageNotErrors("jugador", registroJugador)
       .subscribe((res) => {
+
         this.dataPost = res;
         console.log(this.dataPost);
         mensajeResponse = this.dataPost["mensaje"];
         alert(mensajeResponse);
         this.limpiarFormulario();
+        
       }),
       (error) => {
         this.mensajeError = error;
@@ -141,7 +142,7 @@ export class RegistroJComponent implements OnInit {
         mensajeResponse = this.mensajeError.error["mensaje"];
         alert(mensajeResponse);        
       };
-    this.getServicio();
+
   }
 
   getServicio() {
@@ -161,7 +162,7 @@ export class RegistroJComponent implements OnInit {
     registroJugador.append("correo_jug", this.formularioRegistroJugador.value.correoElectronico);
     registroJugador.append("num_iden_jug", this.formularioRegistroJugador.value.numeroIdentidad );
     //registroJugador.append('equipo_jug', this.formularioRegistroJugador.value.equipo);
-    registroJugador.append("nacion_jug",this.formularioRegistroJugador.value.paisJugador);
+    registroJugador.append("nacion_jug",this.formularioRegistroJugador.value.nacionJugador);
     registroJugador.append("est_civil_jug", this.formularioRegistroJugador.value.estadoCivil);
     registroJugador.append("fecha_nac_jug",this.formularioRegistroJugador.value.fechaNacimiento);
     registroJugador.append("telf_jug",this.formularioRegistroJugador.value.telefono);
