@@ -1,3 +1,7 @@
+
+import { VistaOrganizadorTablaComponent } from './modules/vista-organizador-tabla/vista-organizador-tabla.component';
+
+
 import { FixtureComponent } from "./modules/fixture/fixture.component";
 import { NgModule } from "@angular/core";
 import { Router, RouterModule, Routes } from "@angular/router";
@@ -39,7 +43,7 @@ const routes: Routes = [
   {
     path: "registro-equipo",
     component: RegistroEquipoComponent,
-    canActivate: [VigilanteGuard],
+    //canActivate: [VigilanteGuard],
     data: {
       roles: ["delegado"],
     },
@@ -83,6 +87,10 @@ const routes: Routes = [
   {
     path: "vista-delegado",
     component: VistaDelegadoComponent,
+  },
+  {
+    path: "vista-organizador-tabla",
+    component: VistaOrganizadorTablaComponent,
   },
   {
     path: "error404",

@@ -1,0 +1,8 @@
+*{
+    position: fixed;
+    bottom: 0;
+    height: 50px;
+    width: 100vw;
+    background: #1B190B;
+    color: #FFFFFF;
+  }

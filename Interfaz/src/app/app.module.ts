@@ -88,6 +88,12 @@ import { CookieService } from 'ngx-cookie-service';
 import { TokenInterceptorService } from './api-services/token-interceptor.service';
 import { RoleDirective } from './directives/role.directive';
 
+import { VistaOrganizadorTablaComponent } from './modules/vista-organizador-tabla/vista-organizador-tabla.component';
+import { FooterOrganizadorComponent } from './modules/vista-organizador-tabla/footer-organizador/footer-organizador.component';
+import { HeaderOrganizadorComponent } from './modules/vista-organizador-tabla/header-organizador/header-organizador.component';
+import { BodyOrganizadorComponent } from './modules/vista-organizador-tabla/body-organizador/body-organizador.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -154,6 +160,12 @@ import { RoleDirective } from './directives/role.directive';
     ModalOrgEquiposPreinsComponent,
     ModalOrgEquiposRegisComponent,
     RoleDirective,
+  
+    VistaOrganizadorTablaComponent,
+    FooterOrganizadorComponent,
+    HeaderOrganizadorComponent,
+    BodyOrganizadorComponent,
+    
   ],
   imports: [
     BrowserModule,
