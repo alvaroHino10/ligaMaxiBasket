@@ -3,6 +3,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { ApiService } from 'src/app/api-services/api-services';
+import { AuthService } from 'src/app/api-services/auth.service';
 
 @Component({
   selector: 'app-registro-form-delegado',
@@ -20,10 +21,10 @@ export class RegistroFormDelegadoComponent implements OnInit {
   textoContraseniaConf: boolean;
   token: any;
   codigoDelegadoActual :any;
-
   
   constructor(public formulario: FormBuilder, 
     private apiService: ApiService, 
+    private authService: AuthService,
     private router: Router,
     private cookieService: CookieService,
     private route: ActivatedRoute
@@ -63,17 +64,16 @@ export class RegistroFormDelegadoComponent implements OnInit {
       imgDelegado: new FormControl('', Validators.required)
       });
   }
- 
-  mostrarContrasenia(val: boolean) {
-    val? this.textoContrasenia = !this.textoContrasenia:
-     this.textoContraseniaConf = !this.textoContraseniaConf;
-  }
 
   ngOnInit(): void {
   }
 
   guardarDelegado(){
     this.submitted = true;
+    if(!this.confirmacion){
+      alert('Porfavor revise los datos ingresados');
+      return;
+    }else
     if (this.formularioDelegado.invalid) {
       this.formularioDelegado.controls;
       alert('Por favor ingrese datos validos, correspondientes a todos los campos');
@@ -85,17 +85,13 @@ export class RegistroFormDelegadoComponent implements OnInit {
   }
 
   postServicio() {
-    //POR PROBAR (Post con imagen de delegado):
-    
-    var mensajeError;
     var datos = this.setRegistro();
     this.apiService.postAndImageNotErrors('delegado', datos).subscribe(res => {
       this.dataPost = res;
       console.log(this.dataPost);
-      this.postDatosSign();
-      
+      this.postDatosSign();      
     });/*, (error) => {
-      mensajeError = error;
+      var mensajeError = error;
       console.log(mensajeError.error['mensaje']);
       mensajeResponse = mensajeError.error['mensaje'];
       alert(mensajeResponse);
@@ -122,13 +118,14 @@ export class RegistroFormDelegadoComponent implements OnInit {
       password:                 this.formularioDelegado.value.password,
       password_confirmation:    this.formularioDelegado.value.passwordConf
     } 
-    this.apiService.post('signup', delegadoSignUp).subscribe(signData => {
-      this.dataSign = signData;
-      this.cookieService.set('token', this.dataSign.token, 4 , '/' );
+    var mensajeResponse;
+    this.authService.signUp(delegadoSignUp).subscribe( signDatos => {
+      this.dataSign = signDatos;
       console.log(this.dataSign);
-      var mensajeResponse = this.dataPost['mensaje'];
-      alert(mensajeResponse);
+      //this.cookieService.set('token', this.dataSign.token, 4 , '/' );
       this.limpiarFormulario();
+      mensajeResponse = this.dataPost['mensaje'];
+      alert(mensajeResponse);
       this.router.navigate(['/login'],{state: {codDelegadoActual:this.codigoDelegadoActual}});
     });
   }
@@ -152,7 +149,21 @@ export class RegistroFormDelegadoComponent implements OnInit {
     this.submitted = false;
   }
   
+  mostrarContrasenia(val: boolean) {
+    val? this.textoContrasenia = !this.textoContrasenia:
+     this.textoContraseniaConf = !this.textoContraseniaConf;
+  }
+
   get controls() {return this.formularioDelegado.controls;}
 
-
+  get confirmacion(){
+    var pass = this.formularioDelegado.value.password;
+    var passConf = this.formularioDelegado.value.passwordConf;
+    if(pass.length == passConf.length){
+      if(pass == passConf){
+        return true;
+      }
+    }
+    return false;   
+  }
 }

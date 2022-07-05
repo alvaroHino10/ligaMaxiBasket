@@ -119,7 +119,7 @@
 
       <!--INPUT CONTRASEÑA-->
       <div class="input-group mb-3">
-        <label for="email">Contraseña:</label>
+        <label for="password">Contraseña:</label>
         <div class="input-group">
           <input [type]="textoContrasenia ? 'text' : 'password'" class="form-control" formControlName="password" required />
           <div class="input-group-append">
@@ -134,7 +134,7 @@
         </div>
       </div>
       <div class="input-group mb-3">
-        <label for="email">Confirmar contraseña:</label>
+        <label for="passwordConf">Confirmar contraseña:</label>
         <div class="input-group">
           <input [type]="textoContraseniaConf ? 'text' : 'password'" class="form-control" formControlName="passwordConf" required />
           <div class="input-group-append">
@@ -144,8 +144,9 @@
             </span>
           </div>
         </div>
-        <div *ngIf="(controls.passwordConf.touched && controls.passwordConf.invalid) || submitted" class="text-danger">
+        <div *ngIf="(controls.passwordConf.touched && controls.passwordConf.invalid) || submitted || !confirmacion" class="text-danger">
           <div *ngIf="controls.passwordConf.errors?.required">Por favor, vuelve a ingresar tu contraseña</div>
+          <div *ngIf="!confirmacion">No existe coincidencia con la contraseña</div>
         </div>
       </div>
 
