@@ -75,7 +75,7 @@
       <label for="" class="form-label">Equipo del jugador:</label>
       <select class="form-control" name="equipo" (change)="listaEquipos" formControlName="equipo" required>
         <option value="" disabled>Seleccionar equipo</option>
-        <option *ngFor="let equipos of listaEquipos" [ngValue]="equipos"> {{ equipos.nombre_equi + "  " + equipos.categ_equi }}
+        <option *ngFor="let equipos of listaEquipos" [ngValue]="equipos"> {{ equipos.nombre_equi + " : " + equipos.categ_equi }}
         </option>
       </select>
       <div *ngIf="(controls.equipo.touched && controls.equipo.invalid) || submitted" class="text-danger">
@@ -87,11 +87,11 @@
     <div class="mb-3">
       <label class="form-label">Pais jugador:</label>
       <select class="form-control" name="nacionJugador" formControlName="nacionJugador" required>
+        <option value="" disabled>Seleccionar pais</option>
         <option *ngFor="let pais of paises" [value]="pais.value">{{ pais.name }}</option>  
       </select>
       <div *ngIf="(controls.nacionJugador.touched && controls.nacionJugador.invalid) || submitted" class="text-danger">
         <div *ngIf="controls.nacionJugador.errors?.required">Por favor, ingresa el pais del equipo</div>
-        <div *ngIf="controls.nacionJugador.errors?.pattern">Por favor, ingresa caracteres validos</div>
       </div>
     </div>
 

@@ -50,7 +50,6 @@ export class RegistroPComponent implements OnInit {
 
   ngOnInit() {
     this.codDelegado = 1//history.state.codDelegadoActual;
-    console.log(history.state.codDelegadoActual);
     this.codTorneo = this.getCodTorneo();
     //this.setDatos();
   }

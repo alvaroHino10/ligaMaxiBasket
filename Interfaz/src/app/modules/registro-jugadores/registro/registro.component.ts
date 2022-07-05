@@ -1,17 +1,13 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { ApiService } from "src/app/api-services/api-services";
-import data from "./data.json";
+import data from "../../../../assets/Archivos/data.json";
 
-interface CountryOption {
+interface CountryOption { 
   name: string;
   value: string;
 }
+
 @Component({
   selector: "app-registro",
   templateUrl: "./registro.component.html",
@@ -61,30 +57,28 @@ export class RegistroJComponent implements OnInit {
         Validators.maxLength(15),
       ]),
       equipo: new FormControl("", Validators.required),
-      nacionJugador: new FormControl("bolivia", [
-        Validators.required,
-        Validators.pattern("^[a-zA-Z áéíóúÁÉÍÓÚñÑs]*$"),
-      ]),
+      nacionJugador: new FormControl("", 
+        Validators.required ),
       estadoCivil: new FormControl("", Validators.required),
       fechaNacimiento: new FormControl("", Validators.required),
       telefono: new FormControl("", [
         Validators.required,
         Validators.pattern("^[0-9]*$"),
         Validators.minLength(5),
-        Validators.maxLength(15),
-      ]),
+        Validators.maxLength(15)]),
+
       sexo: new FormControl("", Validators.required),
+      
       domicilio: new FormControl("", [
         Validators.required,
         Validators.pattern("^[a-zA-Z áéíóúÁÉÍÓÚñÑs]*$"),
         Validators.minLength(1),
-        Validators.maxLength(80),
-      ]),
+        Validators.maxLength(80)]),
+
       numeroJugador: new FormControl("", [
         Validators.required,
         Validators.min(1),
-        Validators.max(80),
-      ]),
+        Validators.max(80)]),
       linkImgJug: new FormControl("", Validators.required),
     });
   }
@@ -93,8 +87,8 @@ export class RegistroJComponent implements OnInit {
   }
 
   getEquipos() {
-    this.apiService.getAll("equipo").subscribe((dataequipo: any = []) => {
-      this.listaEquipos = dataequipo["data"];
+    this.apiService.getAll("torneo/1").subscribe((dataequipo: any = []) => {
+      this.listaEquipos = dataequipo.data.equipos;
       console.log(this.listaEquipos);
     });
   }
@@ -102,9 +96,7 @@ export class RegistroJComponent implements OnInit {
   registrarJugador() {
     this.submitted = true;
     if (this.formularioRegistroJugador.invalid) {
-      alert(
-        "Por favor ingrese datos validos, correspondientes a todos los campos"
-      );
+      alert("Por favor ingrese datos validos, correspondientes a todos los campos");
       console.log(this.formularioRegistroJugador.controls.invalid);
       return;
     } else {
@@ -119,9 +111,7 @@ export class RegistroJComponent implements OnInit {
     if (categEqui == this.categoriaJugador) {
       return true;
     }
-    alert(
-      "La categoria del jugador no corresponde a la categoria de su equipo"
-    );
+    alert("La categoria del jugador no corresponde a la categoria de su equipo");
     return false;
   }
 
@@ -143,13 +133,13 @@ export class RegistroJComponent implements OnInit {
         console.log(this.dataPost);
         mensajeResponse = this.dataPost["mensaje"];
         alert(mensajeResponse);
+        this.limpiarFormulario();
       }),
       (error) => {
         this.mensajeError = error;
         console.log(this.mensajeError.error["mensaje"]);
         mensajeResponse = this.mensajeError.error["mensaje"];
-        alert(mensajeResponse);
-        //this.limpiarFormulario();
+        alert(mensajeResponse);        
       };
     this.getServicio();
   }
@@ -164,59 +154,20 @@ export class RegistroJComponent implements OnInit {
 
   setRegistro() {
     var registroJugador = new FormData();
-    registroJugador.append(
-      "cod_equi",
-      this.formularioRegistroJugador.value.equipo.cod_equi
-    );
-    registroJugador.append(
-      "nombre_jug",
-      this.formularioRegistroJugador.value.nombre.toLowerCase()
-    );
-    registroJugador.append(
-      "prim_ap_jug",
-      this.formularioRegistroJugador.value.primerApellido.toLowerCase()
-    );
-    registroJugador.append(
-      "seg_ap_jug",
-      this.formularioRegistroJugador.value.segundoApellido.toLowerCase()
-    );
-    registroJugador.append(
-      "correo_jug",
-      this.formularioRegistroJugador.value.correoElectronico
-    );
-    registroJugador.append(
-      "num_iden_jug",
-      this.formularioRegistroJugador.value.numeroIdentidad
-    );
+    registroJugador.append("cod_equi_data",    this.formularioRegistroJugador.value.equipo.cod_equi);
+    registroJugador.append("nombre_jug",  this.formularioRegistroJugador.value.nombre.toLowerCase());
+    registroJugador.append("prim_ap_jug", this.formularioRegistroJugador.value.primerApellido.toLowerCase());
+    registroJugador.append("seg_ap_jug", this.formularioRegistroJugador.value.segundoApellido.toLowerCase());
+    registroJugador.append("correo_jug", this.formularioRegistroJugador.value.correoElectronico);
+    registroJugador.append("num_iden_jug", this.formularioRegistroJugador.value.numeroIdentidad );
     //registroJugador.append('equipo_jug', this.formularioRegistroJugador.value.equipo);
-    registroJugador.append(
-      "nacion_jug",
-      this.formularioRegistroJugador.value.paisJugador
-    );
-    registroJugador.append(
-      "est_civil_jug",
-      this.formularioRegistroJugador.value.estadoCivil
-    );
-    registroJugador.append(
-      "fecha_nac_jug",
-      this.formularioRegistroJugador.value.fechaNacimiento
-    );
-    registroJugador.append(
-      "telf_jug",
-      this.formularioRegistroJugador.value.telefono
-    );
-    registroJugador.append(
-      "sexo_jug",
-      this.formularioRegistroJugador.value.sexo
-    );
-    registroJugador.append(
-      "dom_jug",
-      this.formularioRegistroJugador.value.domicilio
-    );
-    registroJugador.append(
-      "num_equi_jug",
-      this.formularioRegistroJugador.value.numeroJugador
-    );
+    registroJugador.append("nacion_jug",this.formularioRegistroJugador.value.paisJugador);
+    registroJugador.append("est_civil_jug", this.formularioRegistroJugador.value.estadoCivil);
+    registroJugador.append("fecha_nac_jug",this.formularioRegistroJugador.value.fechaNacimiento);
+    registroJugador.append("telf_jug",this.formularioRegistroJugador.value.telefono);
+    registroJugador.append("sexo_jug",this.formularioRegistroJugador.value.sexo);
+    registroJugador.append("dom_jug",this.formularioRegistroJugador.value.domicilio.toLowerCase());
+    registroJugador.append("num_equi_jug",this.formularioRegistroJugador.value.numeroJugador);
     registroJugador.append("link_img_jug", this.fileImage);
     return registroJugador;
   }

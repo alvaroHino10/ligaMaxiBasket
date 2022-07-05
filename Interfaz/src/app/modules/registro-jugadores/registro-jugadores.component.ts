@@ -10,7 +10,6 @@ export class RegistroJugadoresComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    console.log('RegistroJugadoresComponent')
   }
 
 }

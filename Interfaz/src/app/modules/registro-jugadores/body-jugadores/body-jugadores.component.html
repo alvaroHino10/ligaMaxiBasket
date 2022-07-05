@@ -1,6 +1,6 @@
 <body>
     <div class="content">
-      <div class="container">
+      <div *ngIf="equipoSeleccionado" class="container">
         <h2 class="text-center">Equipo X</h2>
         <div class="table-responsive mb-4">
   
@@ -21,12 +21,6 @@
   
             <tbody>
               <tr scope="row">
-              </tr>
-              <tr>
-                <td>calceteros</td>
-                <td>Peru</td>
-                <td>Rojo</td>
-                <td>35</td>
               </tr>
 
               <tr *ngFor="let jugador of listaJugadores">

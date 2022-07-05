@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from 'src/app/api-services/api-services';
+import { RegistroJComponent } from '../registro/registro.component';
 
 @Component({
   selector: 'app-body-jugadores',
@@ -15,9 +16,14 @@ export class BodyJugadoresComponent implements OnInit {
   }
 
   getJugadores(){
-    this.apiService.getAll('jugadores').subscribe((data: any) => {
+    /*this.apiService.getAll('jugadores').subscribe((data: any) => {
       this.listaJugadores = data;
-    });
+    });*/
+  }
+
+  get equipoSeleccionado(){
+    return false;
+    //return this.jugadores.formularioRegistroJugador.value.
   }
 
 }

@@ -1,12 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  Validators,
-} from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { ApiService } from "src/app/api-services/api-services";
-import data from "./data.json";
+import data from "../../.././../assets/Archivos/data.json";
 
 interface CountryOption {
   name: string;
@@ -34,7 +29,7 @@ export class RegistroEComponent implements OnInit {
     this.paises = data.paises;
     this.formularioRegistroEquipo = new FormGroup({
       nombreDelEquipo: new FormControl("", Validators.required),
-      paisEquipo: new FormControl("bolivia", Validators.required),
+      paisEquipo: new FormControl("", Validators.required),
 
       colorEquipo: new FormControl("", [
         Validators.required,

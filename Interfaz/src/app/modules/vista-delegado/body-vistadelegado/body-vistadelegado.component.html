@@ -29,12 +29,11 @@
               </thead>
     
               <tbody>
-                <tr >
-                  <td>calceteros</td>
-                  <td>45</td>
+                <tr *ngFor="let equipo of listaEquipos">
+                  <td>{{ equipo?.nombre_equi }}</td>        
+                  <td>{{ equipo?.categ_equi }}</td>
                   <td><a href="/credencial">Credencial</a></td>
-                </tr>
-    
+                </tr>   
                 
               </tbody>
     
