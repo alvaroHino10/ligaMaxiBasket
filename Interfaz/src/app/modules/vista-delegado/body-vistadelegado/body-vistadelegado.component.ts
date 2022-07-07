@@ -37,6 +37,6 @@ export class BodyVistadelegadoComponent implements OnInit {
   }
 
   generarcredencial(): void {
-    const modalFixture = this.modalService.open(ModalCredencialDelegadoComponent, { centered: true, size: 'xl', scrollable: false });    
+    const modalFixture = this.modalService.open(ModalCredencialDelegadoComponent, { centered: true, size: 'lg', scrollable: false });    
   }
 }

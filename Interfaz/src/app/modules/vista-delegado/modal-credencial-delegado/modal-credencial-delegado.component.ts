@@ -7,6 +7,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { ImageElementContainer } from 'html2canvas/dist/types/dom/replaced-elements/image-element-container';
+import { AuthService } from 'src/app/api-services/auth.service';
 
 @Component({
   selector: 'app-modal-credencial-delegado',
@@ -16,7 +17,9 @@ import { ImageElementContainer } from 'html2canvas/dist/types/dom/replaced-eleme
 export class ModalCredencialDelegadoComponent implements OnInit {
   public urlActual: any;
   public credencial: FormGroup;
-  constructor(private apiService: ApiService) {
+  delegado: any;
+
+  constructor(private authService:AuthService) {
     this.urlActual = window.location.href;
     console.log(this.urlActual);
     this.credencial = new FormGroup({
@@ -25,9 +28,11 @@ export class ModalCredencialDelegadoComponent implements OnInit {
     });
   }
 
-
   ngOnInit(): void {
+    this.delegado = this.authService.getUserDelegado();
+    console.log(this.delegado);
   }
+
   downloadPDF() {
     const DATA = document.getElementById('credencialcita');
     const doc = new jsPDF('p', 'pt', 'a4');
@@ -49,6 +54,10 @@ export class ModalCredencialDelegadoComponent implements OnInit {
     }).then((docResult) => {
       docResult.save(`${new Date().toISOString()}${""}.pdf`);
     });
+  }
+
+  get imagenDelegado(){
+    return this.delegado.link_img_deleg;
   }
 
 }

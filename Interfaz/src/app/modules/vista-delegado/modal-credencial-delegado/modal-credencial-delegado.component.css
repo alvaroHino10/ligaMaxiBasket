@@ -1,29 +1,28 @@
 /*Reseteamos el margen de html y body*/
-html,body{ margin: 0;}
+html,
+body {
+	margin: 0;
+}
 
 
-#credencial{
-  border-style: solid;
-  border-radius: 3rem;
-  border-color: black;
-  background: rgba(230, 131, 63, 0.5);
- 
-    width: 600px;       
-    height: 410px;
-    position: absolute;
-   
-    right: 50%;
-    margin-right: -100px;
+#credencial {
+	border-style: solid;
+	border-radius: 3rem;
+	border-color: black;
+	background: rgba(230, 131, 63, 0.5);
+	width: 600px;
+	
+}
+
+#credencialcita {
+	background-color: white;
 
 }
 
-#credencialcita{
-  background-color: white;
-  height: 100vh;
+#cabezal {
+	height: 170px;
 }
-#cabezal{
-height: 170px;
-}
+
 .formulario {
 	font-weight: 700;
 	padding: 10px;
@@ -32,9 +31,9 @@ height: 170px;
 }
 
 .form-control {
-    background: rgba(0, 0, 0, 0.4);
-    color:white;
-    border-radius: 10px;
+	background: rgba(0, 0, 0, 0.4);
+	color: white;
+	border-radius: 10px;
 }
 
 
@@ -62,7 +61,7 @@ height: 170px;
 .titulo {
 	font-size: 2rem;
 	margin-top: 0px;
-    margin-bottom: 0px ;
+	margin-bottom: 0px;
 	text-transform: uppercase;
 	color: #ffffff;
 }

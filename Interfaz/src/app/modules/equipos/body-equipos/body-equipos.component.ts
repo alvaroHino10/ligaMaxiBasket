@@ -18,9 +18,10 @@ export class BodyEquiposComponent implements OnInit {
     this.getEquipos();
   }
 
-  informacionEquipo(): void {
-    const modalFixture = this.modalService.open(ModalEquipoComponent,
+  informacionEquipo(equipoJugadores: any): void {
+    const modalJugadores = this.modalService.open(ModalEquipoComponent,
       { centered: true , size: 'lg', scrollable: true });
+    modalJugadores.componentInstance.equipo = equipoJugadores;
   }
 
   getEquipos() {

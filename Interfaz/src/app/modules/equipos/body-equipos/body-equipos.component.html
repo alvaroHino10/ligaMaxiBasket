@@ -17,17 +17,10 @@
             </tr>
           </thead>
 
-          <tbody>
-            <tr (click)="informacionEquipo()">
-              <!--td>calceteros</td>
-              <td>Peru</td>
-              <td>Rojo</td>
-              <td>35</td-->
-            </tr>
-
+          <tbody>            
             <tr scope="row">
             </tr>
-            <tr *ngFor="let equipo of listaEquipos" (click)="informacionEquipo()">
+            <tr *ngFor="let equipo of listaEquipos" (click)="informacionEquipo(equipo)">
               <td>{{ equipo?.nombre_equi }}</td>
               <td>{{ equipo?.equipo_data?.pais_equi }}</td>
               <td>{{ equipo?.equipo_data?.color_equi }}</td>          

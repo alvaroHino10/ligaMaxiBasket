@@ -4,8 +4,6 @@ import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
 import {NgbModal, NgbModalOptions} from '@ng-bootstrap/ng-bootstrap';
-import { ApiService } from 'src/app/api-services/api-services';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-body-vista-organizador',
@@ -14,7 +12,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class BodyVistaOrganizadorComponent implements OnInit {
 
-  constructor(private router: Router, private modalService: NgbModal, private apiService : ApiService, private cookieService : CookieService) { }
+  constructor(private router: Router, private modalService: NgbModal) { }
 
   ngOnInit(): void {
   }
@@ -31,6 +29,10 @@ export class BodyVistaOrganizadorComponent implements OnInit {
       { centered: true , size: 'lg', scrollable: true });
   }
   crearPartido(){
-    this.router.navigate(['/fixture'])
+    this.router.navigate(['/fixture']);
+  }
+
+  registrarControl_P(){
+    this.router.navigate(['/registro-control-partido'])
   }
 }

@@ -12,4 +12,8 @@ export class BodyOrganizadorComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  validar(){
+    
+  }
+
 }
