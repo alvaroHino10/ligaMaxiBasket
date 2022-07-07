@@ -24,11 +24,9 @@
             <tr *ngFor="let partido of listaPartidos" (click)="controlDelPartido(partido)">
               <td>{{ partido?.fecha_part }}</td>
               <td>{{ partido?.hora_ini_part.substr(0,5) }}</td>
-              <td>{{ partido?.equipo_A }}</td>
-              <td>{{ partido?.equipo_B }}</td>
+              <td *ngFor="let equipo of getEquipos(partido)">{{equipo?.nombre_equi}}</td>
               <td>{{ partido?.lugar }}</td>
               <td>Equipo ganador</td>
-              <!--td (click)="controlDelPartido()">Mesa</td-->
             </tr>
           </tbody>
         </table>

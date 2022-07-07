@@ -42,7 +42,7 @@ export class BodyFixtureComponent implements OnInit {
   }
 
   cargarPartidos() {
-    this.apiService.getAll('partido').subscribe((data: any = []) => {
+    this.apiService.getAll('torneo/1/partidos').subscribe((data: any = []) => {
       const response = data;
       console.log(data);
       this.listaPartidos = (response['data']);
@@ -51,7 +51,6 @@ export class BodyFixtureComponent implements OnInit {
 
   agregarPartido(): void {
     const modalFixture = this.modalService.open(FixturePartidoComponent, this.modalOptions );
-    
     modalFixture.result.then((result) => {
       if (result) {
       }
@@ -62,6 +61,10 @@ export class BodyFixtureComponent implements OnInit {
     const modalFixture = this.modalService.open(ControlModalComponent, { centered: true, size: 'xl', scrollable: true });    
     modalFixture.componentInstance.partido = partidoActual;
     this.modalService.activeInstances.subscribe()
+  }
+
+  getEquipos(partidoActual: any){
+    return partidoActual.equipos;
   }
 
 }
