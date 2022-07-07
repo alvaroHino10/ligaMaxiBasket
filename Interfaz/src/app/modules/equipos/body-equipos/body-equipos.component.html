@@ -19,15 +19,15 @@
 
           <tbody>
             <tr (click)="informacionEquipo()">
-              <td>calceteros</td>
+              <!--td>calceteros</td>
               <td>Peru</td>
               <td>Rojo</td>
-              <td>35</td>
+              <td>35</td-->
             </tr>
 
             <tr scope="row">
             </tr>
-            <tr *ngFor="let equipo of listaEquipos">
+            <tr *ngFor="let equipo of listaEquipos" (click)="informacionEquipo()">
               <td>{{ equipo?.nombre_equi }}</td>
               <td>{{ equipo?.equipo_data?.pais_equi }}</td>
               <td>{{ equipo?.equipo_data?.color_equi }}</td>          
@@ -37,7 +37,7 @@
 
         </table>
       </div>
-      <!--h4 class="text-center" id="equipoVacio" *ngIf="listaEquipos.length==0">NO EXISTEN EQUIPOS</h4-->
+      <h4 class="text-center" id="equipoVacio" *ngIf="listaEquipos.length==0">NO EXISTEN EQUIPOS REGISTRADOS</h4>
       <div>
       </div>
 

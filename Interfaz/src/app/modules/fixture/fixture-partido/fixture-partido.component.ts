@@ -27,9 +27,9 @@ export class FixturePartidoComponent implements OnInit {
     private apiService: ApiService) {
 
     this.formPartido = new FormGroup({
-      equipo1: new FormControl('',
+      equipoA: new FormControl('',
         Validators.required),
-      equipo2: new FormControl('',
+      equipoB: new FormControl('',
         Validators.required),
       fechaPartido: new FormControl('',
         Validators.required),
@@ -50,28 +50,26 @@ export class FixturePartidoComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getControlPartido();
     this.getEquipos();
+    this.getControlPartido();
   }
 
   getEquipos() {
-    console.log(this.apiService.getAll('torneo/1/equipos').subscribe((dataequipo: any = []) => {
+    this.apiService.getAll('torneo/1/equipos').subscribe((dataequipo: any = []) => {
       //const response = dataequipo['da//ta'];
       this.listaEquipos = dataequipo['data'];//(response)['equipos'];
       console.log(this.listaEquipos);
- //     this.getControlPartido();
-    }));
+      this.getControlPartido();
+    });
   }
 
   getControlPartido(){
-    console.log(this.apiService.getAll('control-partido').subscribe((dataequipo: any ) => {
-      console.log(dataequipo);
-      /*this.listaArbitros = data['arbitros'];
+    this.apiService.getAll('control-partido').subscribe((data: any ) => {
+      console.log(data);
+      this.listaArbitros = data['arbitros'];
       this.listaApuntadorMesa = data['mesas'];
-      this.listaFiscales = data['fiscales'];**/
-      
-    }));
-    
+      this.listaFiscales = data['fiscales'];
+    });
   }
 
   crearPartido() {
@@ -84,15 +82,15 @@ export class FixturePartidoComponent implements OnInit {
       var respuesta = res;
       console.log(respuesta);
       alert(respuesta['mensaje']); //Post para equipo con su codigo de partido, otro post para el otro equipo. 
-      this.activeModal.close(this.datosPartido); //
+      this.activeModal.close(this.datosPartido); 
     });
   }
 
   get equiposIguales(){
-    if(this.formPartido.value.equipo1 == "" || this.formPartido.value.equipo2 == ""){
+    if(this.formPartido.value.equipoA == "" || this.formPartido.value.equipoB == ""){
       return false;
     }
-    return (this.formPartido.value.equipo1 == this.formPartido.value.equipo2);
+    return (this.formPartido.value.equipoA == this.formPartido.value.equipoB);
   }
 
   get controls() { return this.formPartido.controls; }
@@ -105,18 +103,21 @@ export class FixturePartidoComponent implements OnInit {
   }
 
   setDatosPartido(){
-    this.datosPartido  = {
+    var infoPartido = {
       fecha_part: this.formPartido.value.fechaPartido,
+      //lugar_part: this.formPartido.value.lugarPartido.toLowerCase(),
       hora_ini_part:	this.formPartido.value.horaPartido,
-      hora_fin_part:  this.formPartido.value.horaPartido,
-      equipo_1:	this.formPartido.value.equipo1,
-      equipo_2: this.formPartido.value.equipo2,
-      lugar: this.formPartido.value.lugarPartido.toLowerCase(),
-      primer_juez: this.formPartido.value.primerJuez,
-      segundo_juez: this.formPartido.value.segundoJuez,
-      apuntador_mesa: this.formPartido.value.apuntadorMesa
+      hora_fin_part:  this.formPartido.value.horaPartido
+    }
+    this.datosPartido  = {
+      equipo_A:   this.formPartido.value.equipoA.equipo_data.cod_equi_data,
+      equipo_B:   this.formPartido.value.equipoB.equipo_data.cod_equi_data,
+      arbitro_1: this.formPartido.value.primerJuez.cod_contr_part,
+      arbitro_2: this.formPartido.value.segundoJuez.cod_contr_part,
+      fiscal:    this.formPartido.value.fiscal.cod_contr_part,
+      mesa: this.formPartido.value.apuntadorMesa.cod_contr_part,
+      partido: infoPartido
     };
-
   }
 
   //datos fake

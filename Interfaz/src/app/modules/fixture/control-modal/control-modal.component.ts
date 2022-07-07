@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-control-modal',
@@ -6,28 +6,27 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./control-modal.component.css']
 })
 export class ControlModalComponent implements OnInit {
-  
 
-  constructor() { }
-  numeroEquipo1:number = 0;
-  numeroEquipo2:number = 0;
+  @Input() public partido;
 
-  /***Funcion Sumar y Restar */
-  
-/**fin  */
+  puntaje_A: number = 0;
+  puntaje_B: number = 0;
 
-
-  //espera un numero como respuesta
-  accionOperacion( valor:number ){
-    this.numeroEquipo1 +=valor;
-    
-  }
-  accionOperacion2( valor:number ){
-    this.numeroEquipo2 +=valor;
-    
+  constructor() {
   }
 
   ngOnInit(): void {
+    console.log(this.partido);
   }
 
+  accion_p_a(valor: number) {
+    if (valor >= 1) {
+      this.puntaje_A += valor;
+    }
+  }
+  accion_p_b(valor: number) {
+    if (valor >= 1) {
+      this.puntaje_A += valor;
+    }
+  }
 }

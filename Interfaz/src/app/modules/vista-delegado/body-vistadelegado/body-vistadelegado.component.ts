@@ -36,10 +36,7 @@ export class BodyVistadelegadoComponent implements OnInit {
     this.router.navigate(['/credencial']);
   }
 
-
   generarcredencial(): void {
-    const modalFixture = this.modalService.open(ModalCredencialDelegadoComponent, { centered: true, size: 'xl', scrollable: true });
-
-    
+    const modalFixture = this.modalService.open(ModalCredencialDelegadoComponent, { centered: true, size: 'xl', scrollable: false });    
   }
 }

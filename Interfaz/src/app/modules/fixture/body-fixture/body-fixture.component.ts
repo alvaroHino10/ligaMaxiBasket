@@ -4,7 +4,6 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FixturePartidoComponent } from '../fixture-partido/fixture-partido.component';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from 'src/app/api-services/api-services';
-import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-body-fixture',
@@ -28,10 +27,13 @@ export class BodyFixtureComponent implements OnInit {
     apuntador_mesa: ''
   };
 
-  constructor(private modalService: NgbModal, private apiService: ApiService, private cookieService: CookieService) {
+  constructor(private modalService: NgbModal, private apiService: ApiService) {
     this.modalOptions = {
       backdrop: 'static',
-      backdropClass: 'customBackdrop'
+      backdropClass: 'light-blue-backdrop',
+      centered: true, 
+      size: 'xl',
+      scrollable: true 
     }
   }
 
@@ -39,30 +41,27 @@ export class BodyFixtureComponent implements OnInit {
     this.cargarPartidos();
   }
 
-  controlDelPartido(): void {
-    const modalFixture = this.modalService.open(ControlModalComponent, { centered: true, size: 'xl', scrollable: true });
-  }
-
   cargarPartidos() {
     this.apiService.getAll('partido').subscribe((data: any = []) => {
       const response = data;
+      console.log(data);
       this.listaPartidos = (response['data']);
     });
   }
 
   agregarPartido(): void {
-    const modalFixture = this.modalService.open(FixturePartidoComponent, { centered: true, size: 'xl', scrollable: true });
-
+    const modalFixture = this.modalService.open(FixturePartidoComponent, this.modalOptions );
+    
     modalFixture.result.then((result) => {
       if (result) {
-        this.partidoNuevo = result;
-        this.partidoNuevo.equipo_1 = this.partidoNuevo['equipo_1']['nombre_equi'];
-        this.partidoNuevo.equipo_2 = this.partidoNuevo['equipo_2']['nombre_equi'];
-        this.listaPartidos.push(this.partidoNuevo);
-        console.log(this.listaPartidos);
       }
     });
   }
 
-  //get existeAcceso(){ return this.cookieService.check('token_access');}
+  controlDelPartido(partidoActual: any): void {
+    const modalFixture = this.modalService.open(ControlModalComponent, { centered: true, size: 'xl', scrollable: true });    
+    modalFixture.componentInstance.partido = partidoActual;
+    this.modalService.activeInstances.subscribe()
+  }
+
 }

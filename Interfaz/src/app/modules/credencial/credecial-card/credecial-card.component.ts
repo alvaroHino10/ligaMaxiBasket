@@ -57,6 +57,7 @@ export class CredecialCardComponent implements OnInit {
 
   getJugadores(){
     var codEquiData = this.credencial.value.equipos.equipo_data.cod_equi_data;
+    console.log(this.credencial.value.equipos);
     this.apiService.getById('equipo_data', codEquiData).subscribe(res => {
       this.listaJugadores = res.data.jugadores;
       console.log(this.listaJugadores);
@@ -64,8 +65,6 @@ export class CredecialCardComponent implements OnInit {
     //this.listaJugadores = 
     
   }
-
-
 
   downloadPDF() {
     const DATA = document.getElementById('credencialcita');

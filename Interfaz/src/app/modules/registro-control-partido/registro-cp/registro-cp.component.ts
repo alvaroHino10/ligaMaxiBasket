@@ -38,7 +38,7 @@ export class RegistroCpComponent implements OnInit {
 
     numeroIdentidad: new FormControl('',
         [Validators.required,
-        Validators.pattern("^[0-9]*$"),//'^\\s*(?:\\+?(\\d{1,3}))?[-. (]*(\\d{3})[-. )]*(\\d{4})[-. ]*(\\d{3})(?: *x(\\d+))?\\s*$'),
+        Validators.pattern("^[0-9]*$"),
         Validators.minLength(5),
         Validators.maxLength(15)]),
   
@@ -59,13 +59,13 @@ export class RegistroCpComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getControlPartido();
   }
 
   registrarControl() {
     this.submitted = true;
     if (this.formularioRegistroControlP.invalid) {
       alert('Por favor ingrese datos validos, correspondientes a todos los campos');
+      this.getControlPartido();
       return;
     } else {
       this.postServicio();
@@ -86,7 +86,9 @@ export class RegistroCpComponent implements OnInit {
   }
 
   getControlPartido(){
-    this.apiService.getAll("control-partido");
+    this.apiService.getAll("control-partido").subscribe(res =>{
+      console.log(res);
+    });
   }
 
   subirImagen(event: any) {

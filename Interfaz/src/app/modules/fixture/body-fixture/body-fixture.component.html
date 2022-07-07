@@ -10,39 +10,30 @@
             <tr>
               <th scope="col">Fecha</th>
               <th scope="col">Hora</th>
-              <th scope="col">Equipo 1</th>
-              <th scope="col">Equipo 2</th>
+              <th scope="col">Equipo A</th>
+              <th scope="col">Equipo B</th>
               <th scope="col">Lugar</th>
               <th scope="col">Resultado</th>
-              <th scope="col">Control del Partido</th>
+              <!--th scope="col">Control del Partido</th-->
             </tr>
           </thead>
 
           <tbody>
-            <!--tr >
-              <td>calceteros</td>
-              <td>Peru</td>
-              <td>Rojo</td>
-              <td>calceteros</td>
-              <td>Peru</td>
-              <td>Rojo</td>
-              <td (click)="controlDelPartido()">35</td>
-            </tr-->
             <tr scope="row">
             </tr>
-            <tr *ngFor="let partido of listaPartidos">
+            <tr *ngFor="let partido of listaPartidos" (click)="controlDelPartido(partido)">
               <td>{{ partido?.fecha_part }}</td>
-              <td>{{ partido?.hora_ini_part }}</td>
-              <td>{{ partido?.equipo_1 }}</td>
-              <td>{{ partido?.equipo_2 }}</td>
+              <td>{{ partido?.hora_ini_part.substr(0,5) }}</td>
+              <td>{{ partido?.equipo_A }}</td>
+              <td>{{ partido?.equipo_B }}</td>
               <td>{{ partido?.lugar }}</td>
-              <td>ganador</td>
-              <td (click)="controlDelPartido()">Mesa</td>
+              <td>Equipo ganador</td>
+              <!--td (click)="controlDelPartido()">Mesa</td-->
             </tr>
           </tbody>
-
         </table>
       </div>
+      
       <h4 class="text-center" id="partidoVacio" *ngIf="listaPartidos.length==0">NO EXISTEN PARTIDOS</h4>
       <div>
         <button *appRole="true" class="btn btn-dark btn-m mt-3" (click)="agregarPartido()">
