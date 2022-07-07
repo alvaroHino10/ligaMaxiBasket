@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/api-services/auth.service';
 
 @Component({
   selector: 'app-header-vistadelegado',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderVistadelegadoComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService: AuthService,
+    private router: Router) { }
 
   ngOnInit(): void {
+  }
+
+  cerrarSesion(){
+    this.authService.logout();
+    this.router.navigate(['']);
   }
 
 }

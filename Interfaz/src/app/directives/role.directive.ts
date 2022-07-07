@@ -15,10 +15,10 @@ export class RoleDirective {
 
   @Input()
   set appRole(val : boolean){
-    val = this.existeAcceso;
+    var acceso = this.existeAcceso;
     this.viewContainer.clear();
-    if(val){
-      this.viewContainer.createEmbeddedView(this.templateRef);  
+    if(acceso){
+      this.viewContainer.createEmbeddedView(this.templateRef); 
     }
   }
 
