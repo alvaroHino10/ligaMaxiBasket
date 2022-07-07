@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { ApiService } from "src/app/api-services/api-services";
 import data from "../../.././../assets/Archivos/data.json";
 
@@ -25,7 +26,10 @@ export class RegistroEComponent implements OnInit {
   torneoActual: any;
   codTorneo: any;
 
-  constructor(public formulario: FormBuilder, private apiService: ApiService) {
+  constructor(public formulario: FormBuilder,
+    private apiService: ApiService,
+    private router: Router) {
+
     this.paises = data.paises;
     this.formularioRegistroEquipo = new FormGroup({
       nombreDelEquipo: new FormControl("", Validators.required),
@@ -84,6 +88,7 @@ export class RegistroEComponent implements OnInit {
         mensajeResponse = this.dataPost["mensaje"];
         alert(mensajeResponse);
         this.limpiarFormulario();
+        this.router.navigate(['/vista-delegado']);
       },
       (error) => {
         this.mensajeError = error;
@@ -99,8 +104,8 @@ export class RegistroEComponent implements OnInit {
     const registroEquipo = {
       cod_equi: this.formularioRegistroEquipo.value.nombreDelEquipo.cod_equi,
       pais_equi: this.formularioRegistroEquipo.value.paisEquipo,
-      discip_equi: "Basquet",
-      color_equi: this.formularioRegistroEquipo.value.colorEquipo,
+      discip_equi: "basquet",
+      color_equi: this.formularioRegistroEquipo.value.colorEquipo.toLowerCase(),
     };
     return registroEquipo;
   }

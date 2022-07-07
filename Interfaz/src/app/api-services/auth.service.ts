@@ -33,6 +33,18 @@ export class AuthService {
     sessionStorage.removeItem('token');
   }
 
+  getUserDelegado(){
+    var delegado = sessionStorage.getItem('delegadoActual');
+    if(delegado){
+      return this.http.get<any>(`${this.url}${'delegado'}/${delegado}`);
+    }
+    return delegado;
+  }
+
+  getDelegadoID(){
+    return sessionStorage.getItem('delegadoActual');
+  }
+
   private handleError(error: HttpErrorResponse) {
     if (error.status === 0) {
       console.error('An error occurred:', error.error);
@@ -43,6 +55,3 @@ export class AuthService {
   }
 }
 
-function catchError(handleError: (error: HttpErrorResponse) => Observable<never>): import("rxjs").OperatorFunction<any, unknown> {
-  throw new Error("Function not implemented.");
-}

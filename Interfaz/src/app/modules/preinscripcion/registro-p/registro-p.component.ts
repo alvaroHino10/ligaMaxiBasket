@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api-services/api-services';
+import { AuthService } from 'src/app/api-services/auth.service';
 import { RegistroDelegadoComponent } from '../../registro-delegado/registro-delegado.component';
 
 @Component({
@@ -24,10 +25,9 @@ export class RegistroPComponent implements OnInit {
   codTorneo : any;
 
   constructor(public formulario: FormBuilder, 
-    private apiService: ApiService, private router: Router) {
-    //codDelegado: RegistroDelegadoComponent,
-    //private route: ActivatedRoute,
-    
+    private apiService: ApiService, 
+    private router: Router,
+    private authService: AuthService) {   
     
     this.formularioRegistroPreinscrip = new FormGroup({
       nombreDelEquipo: new FormControl('',
@@ -49,9 +49,8 @@ export class RegistroPComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.codDelegado = 1//history.state.codDelegadoActual;
+    this.codDelegado = this.authService.getDelegadoID();
     this.codTorneo = this.getCodTorneo();
-    //this.setDatos();
   }
   
   guardarPreinscripcion(): void {
@@ -74,10 +73,7 @@ export class RegistroPComponent implements OnInit {
       console.log("preinscripcion:",this.response['data']);
       cod = (this.response['data'])['cod_preinscrip'];
       this.mensajeResponse = this.response['mensaje'];
-      this.guardarEquipo(cod);
-      alert(this.mensajeResponse);
-      this.limpiarFormulario();
-      this.router.navigate(['/vista-delegado']);
+      this.guardarEquipo(cod);      
     });/*,(error) => {
       this.mensajeError = error;
       console.log(this.mensajeError.error['mensaje']);
@@ -94,10 +90,11 @@ export class RegistroPComponent implements OnInit {
       nombre_equi:     this.formularioRegistroPreinscrip.value.nombreDelEquipo,
       categ_equi:      this.formularioRegistroPreinscrip.value.categoria
     }
-    //CAMBIAR A EQUIPO DATA PAra mandar a BACKEND??
-    this.apiService.post('equipo', datosEquipo).subscribe((data: any) => {
+    this.apiService.postError('equipo', datosEquipo).subscribe((data: any) => {
       this.listaResponse = data;
-      console.log(this.listaResponse);
+      alert(this.mensajeResponse);
+      this.limpiarFormulario();
+      this.router.navigate(['/vista-delegado']);
     });
   }
 

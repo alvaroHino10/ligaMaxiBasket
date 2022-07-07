@@ -2,7 +2,8 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse, HttpHeaders } from "@angular/common/http"; // Comunicar con la API para enviar información
 import { environment } from "src/environments/environment";
-import { Observable, throwError } from "rxjs"; //observa lo que sucede en el entorno html
+import { Observable, throwError } from "rxjs"; 
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: "root",
@@ -17,12 +18,12 @@ export class ApiService {
     return this.http.post<any>(`${environment.url}${dir}`, model);
   }
 
-  postLogin(dir: string, model: object): Observable<any> {
+  postError(dir: string, model: object): Observable<any> {
     const headers = new HttpHeaders();
-    return this.http.post<any>(`${environment.url}${dir}`, model, {
-      headers: headers
-    }).pipe(catchError(this.handleError));
+    return this.http.post<any>(`${environment.url}${dir}`, model)
+    .pipe(catchError(this.handleError));
   }
+  
   postAndImage(dir: string, model: object){
     const headers = new HttpHeaders();
     return this.http.post<any>(`${environment.url}${dir}`, model, {
@@ -46,23 +47,17 @@ export class ApiService {
   }
 
   private handleError(error: HttpErrorResponse) {
-    if (error.status === 0) {
-      // A client-side or network error occurred. Handle it accordingly.
-      console.error('An error occurred:', error.error);
+    if (error.error instanceof ErrorEvent) {
+      console.error('An error occurred:', error.error.message);
     } else {
-      // The backend returned an unsuccessful response code.
-      // The response body may contain clues as to what went wrong.
       console.error(
-        `Backend returned code ${error.status}, body was: `, error.error);
+        `Backend returned code ${error.status}, ` +
+        `body was: ${error.error}`);
+      alert(error.error.mensaje);
     }
     // Return an observable with a user-facing error message.
-    return throwError(() => new Error('Something bad happened; please try again later.'));
+    return throwError(error);
   }
-
-  //Este método interactúa
-  /*getAll(dir:string, model?:object): Observable<any>{
-    return this.http.get<any>(`${this.url}${dir}`, model);
-  }*/
 
   getById(dir:string, id:number): Observable<any>{
     return this.http.get<any>(`${this.url}${dir}/${id}`);
@@ -72,8 +67,5 @@ export class ApiService {
     return this.http.put<any>(`${environment.url}${dir}`, model);
   }*/
 
-}
-function catchError(handleError: (error: HttpErrorResponse) => Observable<never>): import("rxjs").OperatorFunction<any, unknown> {
-  throw new Error("Function not implemented.");
 }
 

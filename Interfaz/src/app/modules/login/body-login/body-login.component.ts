@@ -14,6 +14,7 @@ export class BodyLoginComponent implements OnInit {
   public datosLogin : FormGroup;
   siteKey: string;
   textoContrasenia: boolean;
+  delegadoActual: any;
 
   constructor(private apiService: ApiService, private router: Router, 
     //private cookieService: CookieService,
@@ -38,14 +39,9 @@ export class BodyLoginComponent implements OnInit {
     var mensajeError;
     var mensajeResponse;
     var signSesion = this.setDatos();
-/*    this.apiService.post('signin', signSesion).subscribe((res: any = []) => {
-      this.authService.singIn
-      this.router.navigate(['/vista-delegado']);
-    },(error) => {
-      alert('Error al iniciar sesion');
-    });*/
 
     this.authService.singIn(signSesion).subscribe((res: any = []) => {
+      console.log(res);
       this.setToken(res);
       this.router.navigate(['/vista-delegado']);
     });
@@ -66,5 +62,6 @@ export class BodyLoginComponent implements OnInit {
 
   setToken(res: any){ 
     sessionStorage.setItem('token', res.token);
+    sessionStorage.setItem('delegadoActual', res.data.cod_deleg);
   }
 }
