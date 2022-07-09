@@ -65,12 +65,11 @@ import { CookieService } from 'ngx-cookie-service';
 import { TokenInterceptorService } from './api-services/token-interceptor.service';
 import { RoleDirective } from './directives/role.directive';
 
-import { VistaOrganizadorTablaComponent } from './modules/vista-organizador-tabla/vista-organizador-tabla.component';
-import { BodyOrganizadorComponent } from './modules/vista-organizador-tabla/body-organizador/body-organizador.component';
 import { ModalCredencialDelegadoComponent } from './modules/vista-delegado/modal-credencial-delegado/modal-credencial-delegado.component';
 import { EstructuraComponent } from './modules/estructura/estructura.component';
 import { HeaderModulesComponent } from './modules/estructura/header-modules/header-modules.component';
 import { FooterModulesComponent } from './modules/estructura/footer-modules/footer-modules.component';
+import { TablaPreinsComponent } from './modules/vista-organizador/tabla-preins/tabla-preins.component';
 
 
 @NgModule({
@@ -122,13 +121,12 @@ import { FooterModulesComponent } from './modules/estructura/footer-modules/foot
     ModalOrgEquiposPreinsComponent,
     ModalOrgEquiposRegisComponent,
     RoleDirective,
-    VistaOrganizadorTablaComponent,
-    
-    BodyOrganizadorComponent,
+
     ModalCredencialDelegadoComponent,
     EstructuraComponent,
     HeaderModulesComponent,
     FooterModulesComponent,
+    TablaPreinsComponent,
     
   ],
   imports: [

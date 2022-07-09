@@ -1,47 +1,50 @@
 <body>
-    <div class="container-fluid">
-      <div class="row mb-5 mt-5">
-        <div class="col-md-12 mb-5">
-          <div class="row text-center">
-            <div class=" row ">
-              <button class="col" (click)="registroPreinscripcion()">Preinscripcion de equipo</button>
-              <button class="col" (click)="registroEquipo()">Inscripcion de equipo</button>
-              <button class="col" (click)="registrojugadores()">Inscripcion de jugadores</button>
-              <button class="col" (click)="generarcredencial()">Generar mi credencial</button>
-              </div>
-            
-    </div></div></div></div>
-
-    <div class="content">
-        <div class="container">
-          <h2 class="text-center">Equipos registrados</h2>
-    
-          <div class="table-responsive">
-    
-            <table class="table table-hover">
-              <thead>
-                <tr>
-                  <th scope="col">Nombre del Equipo</th>
-                  <th scope="col">Categoria del Equipo</th>
-                  <th scope="col">Desgarga de credencial</th>
-                  
-                </tr>
-              </thead>
-    
-              <tbody>
-                <tr *ngFor="let equipo of listaEquipos">
-                  <td>{{ equipo?.nombre_equi }}</td>        
-                  <td>{{ equipo?.categ_equi }}</td>
-                  <td><a href="/credencial">Credencial</a></td>
-                </tr>   
-                
-              </tbody>
-    
-            </table>
-          
+  <div class="container-fluid">
+    <div class="row mb-5 mt-5">
+      <div class="col-md-12 mb-5">
+        <div class="row text-center">
+          <div class=" row ">
+            <button class="col" (click)="registroPreinscripcion()">Preinscripcion de equipo</button>
+            <button class="col" (click)="registroEquipo()">Inscripcion de equipo</button>
+            <button class="col" (click)="registrojugadores()">Inscripcion de jugadores</button>
+            <button class="col" (click)="generarcredencial()">Generar mi credencial</button>
           </div>
-    
+
         </div>
-    
       </div>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="container">
+      <h2 class="text-center">Equipos registrados</h2>
+
+      <div class="table-responsive">
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Nombre del Equipo</th>
+              <th scope="col">Categoria del Equipo</th>
+              <th scope="col">Desgarga de credencial</th>
+
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngFor="let equipo of listaEquipos">
+              <td>{{ equipo?.nombre_equi }}</td>
+              <td>{{ equipo?.categ_equi }}</td>
+              <td><a href="/credencial">Credencial</a></td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
 </body>
