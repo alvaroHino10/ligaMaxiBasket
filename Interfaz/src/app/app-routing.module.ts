@@ -15,6 +15,7 @@ import { Error404Component } from "./modules/error404/error404.component";
 import { VigilanteGuard } from "./guards/vigilante.guard";
 import { VistaDelegadoComponent } from "./modules/vista-delegado/vista-delegado.component";
 import { VistaOrganizadorComponent } from "./modules/vista-organizador/vista-organizador.component";
+import { PuntajePartidoComponent } from "./modules/fixture/puntaje-partido/puntaje-partido.component";
 
 const routes: Routes = [
   /*{path: '', pathMatch:'full', redirectTo: 'registro-delegado'},
@@ -68,6 +69,10 @@ const routes: Routes = [
   {
     path: "fixture",
     component: FixtureComponent,
+  },
+  {
+    path: "fixture/puntaje",
+    component: PuntajePartidoComponent,
   },
   {
     path: "login",

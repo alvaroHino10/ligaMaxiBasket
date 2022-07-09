@@ -1,5 +1,4 @@
 <body>
-
   <div class="content">
     <div class="container">
       <h2 class="text-center">LIGA MAXI BASQUET COCHABAMBA</h2>
@@ -20,7 +19,17 @@
 
           <tbody>
             <tr scope="row">
+              <td>calceteros</td>
+              <td>45</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td *appRole="false"> <button class="btn btn-primary" (click)="registrarPuntajePartido()"> 
+                Registrar puntaje </button>
+              </td>            
             </tr>
+
             <tr *ngFor="let partido of listaPartidos" (click)="controlDelPartido(partido)">
               <td>{{ partido?.fecha_part }}</td>
               <td>{{ partido?.hora_ini_part.substr(0,5) }}</td>
@@ -31,10 +40,10 @@
           </tbody>
         </table>
       </div>
-      
+
       <h4 class="text-center" id="partidoVacio" *ngIf="listaPartidos.length==0">NO EXISTEN PARTIDOS</h4>
       <div>
-        <button *appRole="true" class="btn btn-dark btn-m mt-3" (click)="agregarPartido()">
+        <button class="btn btn-dark btn-m mt-3" (click)="agregarPartido()">
           Agregar partido
         </button>
       </div>

@@ -4,6 +4,7 @@ import { Component, OnInit, Inject } from '@angular/core';
 import { FixturePartidoComponent } from '../fixture-partido/fixture-partido.component';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from 'src/app/api-services/api-services';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-body-fixture',
@@ -27,7 +28,8 @@ export class BodyFixtureComponent implements OnInit {
     apuntador_mesa: ''
   };
 
-  constructor(private modalService: NgbModal, private apiService: ApiService) {
+  constructor(private modalService: NgbModal, private apiService: ApiService,
+    private router:Router) {
     this.modalOptions = {
       backdrop: 'static',
       backdropClass: 'light-blue-backdrop',
@@ -61,6 +63,11 @@ export class BodyFixtureComponent implements OnInit {
     const modalFixture = this.modalService.open(ControlModalComponent, { centered: true, size: 'xl', scrollable: true });    
     modalFixture.componentInstance.partido = partidoActual;
     this.modalService.activeInstances.subscribe()
+  }
+
+  registrarPuntajePartido(){
+    var partido = {};
+    this.router.navigate(['/fixture/puntaje']);
   }
 
   getEquipos(partidoActual: any){

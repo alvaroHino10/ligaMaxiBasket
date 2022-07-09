@@ -70,6 +70,7 @@ import { EstructuraComponent } from './modules/estructura/estructura.component';
 import { HeaderModulesComponent } from './modules/estructura/header-modules/header-modules.component';
 import { FooterModulesComponent } from './modules/estructura/footer-modules/footer-modules.component';
 import { TablaPreinsComponent } from './modules/vista-organizador/tabla-preins/tabla-preins.component';
+import { PuntajePartidoComponent } from './modules/fixture/puntaje-partido/puntaje-partido.component';
 
 
 @NgModule({
@@ -127,6 +128,7 @@ import { TablaPreinsComponent } from './modules/vista-organizador/tabla-preins/t
     HeaderModulesComponent,
     FooterModulesComponent,
     TablaPreinsComponent,
+    PuntajePartidoComponent,
     
   ],
   imports: [
