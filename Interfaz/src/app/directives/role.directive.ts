@@ -18,7 +18,13 @@ export class RoleDirective {
     var acceso = this.existeAcceso;
     this.viewContainer.clear();
     if(acceso){
-      this.viewContainer.createEmbeddedView(this.templateRef); 
+      if(val){
+        this.viewContainer.createEmbeddedView(this.templateRef); 
+      }        
+    }else{
+      if(!val){
+        this.viewContainer.createEmbeddedView(this.templateRef); 
+      }
     }
   }
 

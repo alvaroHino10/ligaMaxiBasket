@@ -29,11 +29,12 @@ export class VigilanteGuard implements CanActivate {
   }
 
   redirect(){
-    if(!this.authService.loggedIn()){
+   /* if(!this.authService.loggedIn()){
       alert('No tienes permisos');
       this.router.navigate(['']);
       return false;
     }
+    return true;*/
     return true;
   }
 

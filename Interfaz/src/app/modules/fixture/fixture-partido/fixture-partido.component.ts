@@ -51,15 +51,13 @@ export class FixturePartidoComponent implements OnInit {
 
   ngOnInit() {
     this.getEquipos();
-    this.getControlPartido();
+     this.getControlPartido();
   }
 
   getEquipos() {
-    this.apiService.getAll('torneo/1/equipos').subscribe((dataequipo: any = []) => {
-      //const response = dataequipo['da//ta'];
-      this.listaEquipos = dataequipo['data'];//(response)['equipos'];
-      console.log(this.listaEquipos);
-      this.getControlPartido();
+    this.apiService.getAll('torneo/1/equipos').subscribe((dataequipo: any = []) => {      
+      this.listaEquipos = dataequipo['data'];
+      console.log(this.listaEquipos);     
     });
   }
 
@@ -105,7 +103,7 @@ export class FixturePartidoComponent implements OnInit {
   setDatosPartido(){
     var infoPartido = {
       fecha_part: this.formPartido.value.fechaPartido,
-      //lugar_part: this.formPartido.value.lugarPartido.toLowerCase(),
+      lugar_part: this.formPartido.value.lugarPartido.toLowerCase(),
       hora_ini_part:	this.formPartido.value.horaPartido,
       hora_fin_part:  this.formPartido.value.horaPartido
     }

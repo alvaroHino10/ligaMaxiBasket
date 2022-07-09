@@ -25,7 +25,7 @@
               <td>{{ partido?.fecha_part }}</td>
               <td>{{ partido?.hora_ini_part.substr(0,5) }}</td>
               <td *ngFor="let equipo of getEquipos(partido)">{{equipo?.nombre_equi}}</td>
-              <td>{{ partido?.lugar }}</td>
+              <td>{{ partido?.lugar_part }}</td>
               <td>Equipo ganador</td>
             </tr>
           </tbody>

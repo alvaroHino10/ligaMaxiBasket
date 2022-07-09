@@ -99,9 +99,11 @@ export class RegistroJComponent implements OnInit {
       alert("Por favor ingrese datos validos, correspondientes a todos los campos");
       console.log(this.formularioRegistroJugador.controls.invalid);
       return;
-    } else {
-      this.validarCategoria();
-      this.postServicio();
+    } else { 
+      var valido = this.validarCategoria();
+      if(valido){
+        this.postServicio();
+      }      
     }
   }
 
@@ -145,8 +147,7 @@ export class RegistroJComponent implements OnInit {
 
   }
 
-  getServicio() {
-    const registro = this.formularioRegistroJugador.value;
+  getServicio() {  
     this.apiService.getAll("jugadores").subscribe((data: any) => {
       this.listaJugadores = data;
     });
@@ -184,8 +185,7 @@ export class RegistroJComponent implements OnInit {
 
   get categoriaJugador() {
     const fechaNacJug = new Date(
-      this.formularioRegistroJugador.value.fechaNacimiento
-    );
+      this.formularioRegistroJugador.value.fechaNacimiento);      
     const tiempo = Math.abs(Date.now() - fechaNacJug.getTime());
     const edadJug = Math.floor(tiempo / (3600 * 24000) / 365);
     var catJug = 0;

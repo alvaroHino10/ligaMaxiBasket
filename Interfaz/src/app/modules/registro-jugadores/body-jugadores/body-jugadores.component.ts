@@ -16,9 +16,9 @@ export class BodyJugadoresComponent implements OnInit {
   }
 
   getJugadores(){
-    /*this.apiService.getAll('jugadores').subscribe((data: any) => {
+    this.apiService.getAll('jugadores').subscribe((data: any) => {
       this.listaJugadores = data;
-    });*/
+    });
   }
 
   get equipoSeleccionado(){

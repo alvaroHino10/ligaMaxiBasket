@@ -1,21 +1,5 @@
-.frame{
-    position: absolute;
-    width: 1300px;
-    height: 500px;
-    display: flex;
-    position: absolute;
-    left: 0%;
-    right: 0%;
-    top: 0%;
-
-    background: #FFFFFF;
-}
-
-.container-fluid2 {
-    position: absolute;
-    object-position: center;
-    width: 1200px;
-    height: 762px;
-    left: 150px;
-    top: 320px;
+.footer{
+    width: 100%;
+    bottom: 0px;
+    position: fixed;
 }
