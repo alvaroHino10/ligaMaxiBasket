@@ -1,19 +1,18 @@
-
-
 <body>
-    <div class="container-fluid">
-      <div class="row mb-5 mt-5">
-        <div class="col-md-12 mb-5">
-          <div class="row text-center">
-            <div class=" row ">
-              <button class="col" (click)="crearTorneo()">Crear torneo</button>
-              <button class="col" (click)="equiposPreinscritos()">Ver equipos preinscritos</button>
-              <button class="col" (click)="equiposRegistrados()">Ver equipos registrados en el torneo</button>
-              <button class="col" (click)="crearPartido()">Crear un partido</button>
-              <button class="col" (click)="registrarControl_P()">Registrar control partido</button>
-              </div>
-            
-    </div></div></div></div>
-
-    
+  <div class="container-fluid">
+    <div class="row mb-5 mt-5">
+      <div class="col-md-12 mb-5">
+        <div class="row text-center">
+          <div class=" row ">
+            <button class="col" (click)="crearTorneo()">Crear torneo</button>
+            <!--button class="col" (click)="equiposPreinscritos()">Ver equipos preinscritos</button-->
+            <button class="col" (click)="equiposRegistrados()">Ver equipos registrados en el torneo</button>
+            <button class="col" (click)="crearPartido()">Crear un partido</button>
+            <button class="col" (click)="registrarControl_P()">Registrar control partido</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <app-tabla-preins></app-tabla-preins>
 </body>

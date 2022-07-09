@@ -19,11 +19,11 @@ export class BodyVistaOrganizadorComponent implements OnInit {
   crearTorneo(){
     this.router.navigate(['/registro-preinscripcion'])
   }
-  equiposPreinscritos(): void {
+  /*equiposPreinscritos(): void {
     /*const modalFixture = this.modalService.open(ModalOrgEquiposPreinsComponent,
-      { centered: true , size: 'lg', scrollable: true });*/
+      { centered: true , size: 'lg', scrollable: true });
       this.router.navigate(['../vista-organizador-tabla']);
-  }
+  }*/
   equiposRegistrados(): void {
     const modalFixture = this.modalService.open(ModalOrgEquiposRegisComponent,
       { centered: true , size: 'lg', scrollable: true });
