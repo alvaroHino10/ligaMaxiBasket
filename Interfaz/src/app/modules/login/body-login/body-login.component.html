@@ -6,7 +6,7 @@
         <div class="card" style="border-radius: 1rem;">
           <div class="row g-0">
             <div class="col-md-6 col-lg-5 d-none d-md-block">
-              <img src="../../../../assets/Imagenes/basket-login.jpg" alt="login form" class="img-fluid"
+              <img src="../../../../assets/Imagenes/MaxiBasket-login.jpg" alt="login form" class="img-fluid"
                 style="border-radius: 1rem 0 0 1rem;" />
             </div>
             <div class="col-md-6 col-lg-7 d-flex align-items-center">
@@ -23,12 +23,10 @@
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="correoElectronico">Correo</label>
-                    <input type="email" class="form-control form-control-lg" formControlName="correoElectronico"
-                      required />
-                    <div *ngIf="(controls.correoElectronico.touched && controls.correoElectronico.invalid)"
-                      class="text-danger">
-                      <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa tu correo electronico
-                      </div>
+                    <input type="email" class="form-control form-control-lg" formControlName="correoElectronico" required />
+                    <div *ngIf="(controls.correoElectronico.touched && controls.correoElectronico.invalid)" class="text-danger">
+                      <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa tu correo electronico</div>
+                      <div *ngIf="controls.correoElectronico.errors?.minlength">El correo electronico es muy corto</div>
                       <div *ngIf="controls.correoElectronico.errors?.email">Por favor, ingresa un correo valido</div>
                     </div>
                   </div>
@@ -40,12 +38,14 @@
                         formControlName="password" required />
                       <div class="input-group-append">
                         <span class="input-group-text">
-                            <i class="fa" [ngClass]="{'fa-eye': textoContrasenia, 'fa-eye-slash': !textoContrasenia}" aria-hidden="false" (click) = "mostrarContrasenia()"></i>
+                          <i class="fa" [ngClass]="{'fa-eye': textoContrasenia, 'fa-eye-slash': !textoContrasenia}"
+                            aria-hidden="false" (click)="mostrarContrasenia()"></i>
                         </span>
                       </div>
                     </div>
                     <div *ngIf="(controls.password.touched && controls.password.invalid)" class="text-danger">
                       <div *ngIf="controls.password.errors?.required">Por favor, ingresa tu contraseña</div>
+                      <div *ngIf="controls.password.errors?.minlength">La contraseña es muy corta</div>
                     </div>
                   </div>
 
@@ -54,7 +54,8 @@
                   </div>
 
                   <div class="pt-1 mb-4 mt-3">
-                    <button [disabled]="datosLogin.invalid" class="btn btn-dark btn-lg btn-block" type="submit">Ingresar</button>
+                    <button [disabled]="datosLogin.invalid" class="btn btn-dark btn-lg btn-block"
+                      type="submit">Ingresar</button>
                   </div>
                 </form>
 

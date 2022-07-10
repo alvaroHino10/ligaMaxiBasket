@@ -25,7 +25,7 @@
               <td></td>
               <td></td>
               <td></td>
-              <td *appRole="false"> <button class="btn btn-primary" (click)="registrarPuntajePartido()"> 
+              <td *appRole="false"> <button class="btn btn-primary"> 
                 Registrar puntaje </button>
               </td>            
             </tr>
@@ -36,6 +36,9 @@
               <td *ngFor="let equipo of getEquipos(partido)">{{equipo?.nombre_equi}}</td>
               <td>{{ partido?.lugar_part }}</td>
               <td>Equipo ganador</td>
+              <td *appRole="false"> <button class="btn btn-primary" (click)="registrarPuntajePartido(partido)"> 
+                Registrar puntaje </button>
+              </td>                
             </tr>
           </tbody>
         </table>
@@ -43,11 +46,11 @@
 
       <h4 class="text-center" id="partidoVacio" *ngIf="listaPartidos.length==0">NO EXISTEN PARTIDOS</h4>
       <div>
-        <button class="btn btn-dark btn-m mt-3" (click)="agregarPartido()">
+        <button *appRole="false" class="btn btn-dark btn-m mt-3" (click)="agregarPartido()">
           Agregar partido
         </button>
       </div>
     </div>
   </div>
-
+  
 </body>

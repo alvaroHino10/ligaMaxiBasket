@@ -1,10 +1,10 @@
 import { ControlModalComponent } from './../control-modal/control-modal.component';
-import { Component, OnInit, Inject } from '@angular/core';
-//import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog';
+import { Component, OnInit } from '@angular/core';
 import { FixturePartidoComponent } from '../fixture-partido/fixture-partido.component';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { ApiService } from 'src/app/api-services/api-services';
 import { Router } from '@angular/router';
+import { SendDataService } from 'src/app/api-services/send-data.service';
 
 @Component({
   selector: 'app-body-fixture',
@@ -16,7 +16,7 @@ export class BodyFixtureComponent implements OnInit {
   closeResult: string;
   modalOptions: NgbModalOptions;
   listaPartidos = [];
-
+  
   partidoNuevo = {
     fecha_part: '',
     hora_ini_part: '',
@@ -29,7 +29,7 @@ export class BodyFixtureComponent implements OnInit {
   };
 
   constructor(private modalService: NgbModal, private apiService: ApiService,
-    private router:Router) {
+    private router:Router, private dataService: SendDataService) {
     this.modalOptions = {
       backdrop: 'static',
       backdropClass: 'light-blue-backdrop',
@@ -64,9 +64,9 @@ export class BodyFixtureComponent implements OnInit {
     modalFixture.componentInstance.partido = partidoActual;
     this.modalService.activeInstances.subscribe()
   }
-
-  registrarPuntajePartido(){
-    var partido = {};
+  
+  registrarPuntajePartido(partidoActual: any){    
+    this.dataService.savePartido(partidoActual);
     this.router.navigate(['/fixture/puntaje']);
   }
 

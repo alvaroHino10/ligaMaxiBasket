@@ -72,6 +72,7 @@ export class FixturePartidoComponent implements OnInit {
 
   crearPartido() {
     this.submitted = true;
+    this.passBack();
   }
 
   passBack() {

@@ -24,9 +24,12 @@ export class BodyLoginComponent implements OnInit {
     this.datosLogin = new FormGroup({
       correoElectronico: new FormControl('',
             [Validators.required,
+            Validators.minLength(3),
             Validators.email]),
       password: new FormControl('',
-            Validators.required),
+            [Validators.required,    
+            Validators.minLength(3),
+            Validators.required]),
       captcha: new FormControl('',
             Validators.required)
     });
