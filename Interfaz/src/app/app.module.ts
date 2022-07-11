@@ -26,8 +26,6 @@ import { RegistroEComponent } from './modules/registro-equipo/registro-e/registr
 import { CredecialCardComponent } from './modules/credencial/credecial-card/credecial-card.component';
 import { CredencialComponent } from './modules/credencial/credencial.component';
 
-import { NavCreComponent } from './modules/credencial/nav-cre/nav-cre.component';
-
 import { RegistroControlPartidoComponent } from './modules/registro-control-partido/registro-control-partido.component';
 import { RegistroCpComponent } from './modules/registro-control-partido/registro-cp/registro-cp.component';
 
@@ -80,7 +78,6 @@ import { ModalPreinscripcionComponent } from './modules/vista-organizador/modal-
     RegistroEComponent,
     CredencialComponent,
     
-    NavCreComponent,
     CredecialCardComponent,
     BodyHomeComponent,
     RegistroControlPartidoComponent,

@@ -26,10 +26,10 @@ export class BodyVistadelegadoComponent implements OnInit {
 
   getEquipos() {
     this.apiService.getAll('torneo/1/equipos').subscribe((dataequipo: any = []) => {
-      this.equipos = dataequipo.data;  
+      this.equipos = dataequipo.data;
       console.log(dataequipo);
       this.equiposConData();
-    });    
+    });
   }
 
   equiposConData(){

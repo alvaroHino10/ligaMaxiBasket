@@ -11,7 +11,9 @@
   padding-right: 10px;
   margin: 10px;
 }
-
+#equipoVacio{
+  background-color: burlywood;
+}
 .boton:hover {
   opacity: 0.50;
   -moz-opacity: .50;

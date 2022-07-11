@@ -27,7 +27,7 @@
               <td>{{ partido?.hora_ini_part.substr(0,5) }}</td>
               <td *ngFor="let equipo of getEquipos(partido)">{{equipo?.nombre_equi}}</td>
               <td>{{ partido?.lugar_part }}</td>
-              <td>Equipo ganador</td>
+              <td class="text-center">-</td>
               <td *appRole="true"> <button class="btn btn-primary" (click)="registrarPuntajePartido(partido)"> 
                 Registrar puntaje </button>
               </td>                

@@ -18,7 +18,7 @@
     <div class="container">
       <h2 class="text-center">Equipos preinscritos</h2>
       <h4 class="text-center" id="equipoVacio" *ngIf="equiposPreins.length==0">NO EXISTEN EQUIPOS PREINSCRITOS</h4>
-      <div class="table-responsive text-center">
+      <div *ngIf="equiposPreins.length>0" class="table-responsive text-center">
         <table class="table table-hover">
           <thead>
             <tr>
@@ -42,7 +42,7 @@
     <div class="container">
       <h2 class="text-center">Equipos registrados</h2>
       <h4 class="text-center" id="equipoVacio" *ngIf="equiposRegistrados.length==0">NO EXISTEN EQUIPOS REGISTRADOS</h4>
-      <div class="table-responsive text-center">
+      <div *ngIf="equiposRegistrados.length>0" class="table-responsive text-center">
         <table class="table table-hover">
           <thead>
             <tr>

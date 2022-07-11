@@ -154,7 +154,7 @@ export class RegistroJComponent implements OnInit {
     console.log(this.listaJugadores);
   }
 
-  setRegistro() {
+  setRegistro() {    
     var registroJugador = new FormData();
     registroJugador.append("cod_equi_data",    this.formularioRegistroJugador.value.equipo.cod_equi);
     registroJugador.append("nombre_jug",  this.formularioRegistroJugador.value.nombre.toLowerCase());
@@ -162,7 +162,7 @@ export class RegistroJComponent implements OnInit {
     registroJugador.append("seg_ap_jug", this.formularioRegistroJugador.value.segundoApellido.toLowerCase());
     registroJugador.append("correo_jug", this.formularioRegistroJugador.value.correoElectronico);
     registroJugador.append("num_iden_jug", this.formularioRegistroJugador.value.numeroIdentidad );
-    //registroJugador.append('equipo_jug', this.formularioRegistroJugador.value.equipo);
+    //registroJugador.append("fecha_inscrip_jug", fechaActual);
     registroJugador.append("nacion_jug",this.formularioRegistroJugador.value.nacionJugador);
     registroJugador.append("est_civil_jug", this.formularioRegistroJugador.value.estadoCivil);
     registroJugador.append("fecha_nac_jug",this.formularioRegistroJugador.value.fechaNacimiento);
