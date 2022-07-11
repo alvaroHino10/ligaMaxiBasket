@@ -58,7 +58,6 @@ import { VistaOrganizadorComponent } from './modules/vista-organizador/vista-org
 import { BodyVistadelegadoComponent } from './modules/vista-delegado/body-vistadelegado/body-vistadelegado.component';
 import { BodyJugadoresComponent } from './modules/registro-jugadores/body-jugadores/body-jugadores.component';
 import { BodyVistaOrganizadorComponent } from './modules/vista-organizador/body-vista-organizador/body-vista-organizador.component';
-import { ModalOrgEquiposPreinsComponent } from './modules/vista-organizador/modal-org-equipos-preins/modal-org-equipos-preins.component';
 import { ModalOrgEquiposRegisComponent } from './modules/vista-organizador/modal-org-equipos-regis/modal-org-equipos-regis.component';
 
 import { CookieService } from 'ngx-cookie-service';
@@ -71,6 +70,7 @@ import { HeaderModulesComponent } from './modules/estructura/header-modules/head
 import { FooterModulesComponent } from './modules/estructura/footer-modules/footer-modules.component';
 import { TablaPreinsComponent } from './modules/vista-organizador/tabla-preins/tabla-preins.component';
 import { PuntajePartidoComponent } from './modules/fixture/puntaje-partido/puntaje-partido.component';
+import { ModalPreinscripcionComponent } from './modules/vista-organizador/modal-preinscripcion/modal-preinscripcion.component';
 
 
 @NgModule({
@@ -118,8 +118,7 @@ import { PuntajePartidoComponent } from './modules/fixture/puntaje-partido/punta
     BodyVistadelegadoComponent,
     BodyJugadoresComponent,
     BodyVistaOrganizadorComponent,
-    
-    ModalOrgEquiposPreinsComponent,
+      
     ModalOrgEquiposRegisComponent,
     RoleDirective,
 
@@ -129,6 +128,7 @@ import { PuntajePartidoComponent } from './modules/fixture/puntaje-partido/punta
     FooterModulesComponent,
     TablaPreinsComponent,
     PuntajePartidoComponent,
+    ModalPreinscripcionComponent,
     
   ],
   imports: [

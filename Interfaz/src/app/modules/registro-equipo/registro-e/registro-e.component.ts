@@ -71,8 +71,7 @@ export class RegistroEComponent implements OnInit {
 
   getServicio() {
     this.apiService
-      .getAll("torneo/" + this.codTorneo)
-      .subscribe((data: any) => {
+      .getAll("torneo/" + this.codTorneo).subscribe((data: any) => {
         this.listaEquipos = data.data["equipos"];
         console.log(this.listaEquipos);
       });

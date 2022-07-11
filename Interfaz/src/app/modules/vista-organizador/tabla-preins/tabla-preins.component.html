@@ -1,26 +1,33 @@
 <div class="content">
-  <div class="container">
-    <h2 class="text-center">Equipos preinscritos</h2>
-
-    <div class="table-responsive">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th scope="col">Nombre del Equipo</th>
-                <th scope="col">Categoria del Equipo</th>
-                <th scope="col">Desgarga de credencial</th>
-            </tr>
-            </thead>
-
-            <tbody>
-                <tr>
-                    <td>calceteros</td>
-                    <td>45</td>
-                    <td> <a (click)="validar" class="btn btn-primary" data-toggle="button"
-                            aria-pressed="false">Validar</a></td>
-                </tr>
-            </tbody>
-        </table>
+    <div class="container" *ngIf="listaEquipos.length>0">
+        <h2 class="text-center">Equipos preinscritos</h2>        
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre del Equipo</th>
+                        <th scope="col">Categoria del Equipo</th>
+                        <th scope="col">Validar preinscripcion</th>
+                    </tr>
+                </thead>
+                
+                <tbody>
+                    <tr *ngFor="let equipo of listaEquipos">
+                        <td>{{ equipo?.nombre_equi }}</td>
+                        <td>{{ equipo?.categ_equi }}</td>
+                        <td *appRole="false">
+                            <button class="btn btn-primary" (click)="validar(equipo)">
+                                Validar equipo
+                            </button>
+                        </td>
+                    </tr>  
+                   
+                    
+                </tbody>
+                
+            </table>
+            
+        </div>
     </div>
-  </div>
+    <h4 class="text-center" id="partidoVacio" *ngIf="listaEquipos.length==0">No existen equipos preinscritos con validacion pendiente</h4>
 </div>

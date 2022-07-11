@@ -67,6 +67,7 @@ export class BodyFixtureComponent implements OnInit {
   
   registrarPuntajePartido(partidoActual: any){    
     this.dataService.savePartido(partidoActual);
+    console.log(partidoActual);
     this.router.navigate(['/fixture/puntaje']);
   }
 

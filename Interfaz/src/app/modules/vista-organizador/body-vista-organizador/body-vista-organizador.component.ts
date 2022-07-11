@@ -1,4 +1,3 @@
-import { ModalOrgEquiposPreinsComponent } from '../modal-org-equipos-preins/modal-org-equipos-preins.component';
 import { ModalOrgEquiposRegisComponent } from '../modal-org-equipos-regis/modal-org-equipos-regis.component';
 import { Component, OnInit } from '@angular/core';
 
@@ -19,11 +18,6 @@ export class BodyVistaOrganizadorComponent implements OnInit {
   crearTorneo(){
     this.router.navigate(['/registro-preinscripcion'])
   }
-  /*equiposPreinscritos(): void {
-    /*const modalFixture = this.modalService.open(ModalOrgEquiposPreinsComponent,
-      { centered: true , size: 'lg', scrollable: true });
-      this.router.navigate(['../vista-organizador-tabla']);
-  }*/
   equiposRegistrados(): void {
     const modalFixture = this.modalService.open(ModalOrgEquiposRegisComponent,
       { centered: true , size: 'lg', scrollable: true });
