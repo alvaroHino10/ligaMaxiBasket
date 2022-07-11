@@ -1,23 +1,24 @@
-.col{
-  background-color: rgb(230, 131, 63, 0.5);  
+.col {
+  background-color: rgb(230, 131, 63, 0.5);
   -webkit-border-radius: 50px;
   -moz-border-radius: 50px;
   border-radius: 50px;
-  font-size:25px;
-  color:rgb(6, 6, 4);
+  font-size: 25px;
+  color: rgb(6, 6, 4);
   padding-top: 30px;
   padding-bottom: 30px;
   padding-left: 10px;
   padding-right: 10px;
   margin: 10px;
-  
-  
-  }
+}
 
-  .boton:hover{
-    opacity: 0.50;
-    -moz-opacity: .50;
-    filter:alpha (opacity=50);
-  }
+.boton:hover {
+  opacity: 0.50;
+  -moz-opacity: .50;
+  filter: alpha (opacity=50);
+}
 
- 
+.content{
+  border-style: solid;
+  border-color: black;
+}

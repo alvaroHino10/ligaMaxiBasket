@@ -3,15 +3,12 @@ html,
 body {
 	margin: 0;
 }
-
-
 #credencial {
 	border-style: solid;
 	border-radius: 3rem;
 	border-color: black;
 	background: rgba(230, 131, 63, 0.5);
-	width: 600px;
-	
+	width: 600px;	
 }
 
 #credencialcita {

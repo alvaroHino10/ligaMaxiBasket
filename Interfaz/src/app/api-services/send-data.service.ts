@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class SendDataService {
   partido : any;
+  equipo : any;
 
   constructor() { }
 
@@ -14,5 +15,12 @@ export class SendDataService {
 
   getPartido(){
     return this.partido;
+  }
+
+  saveEquipo(equipo : any){
+    this.equipo = equipo;
+  }
+  getEquipo(){
+    return this.equipo;
   }
 }

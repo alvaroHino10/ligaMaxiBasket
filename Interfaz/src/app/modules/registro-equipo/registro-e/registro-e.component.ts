@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ApiService } from "src/app/api-services/api-services";
+import { AuthService } from "src/app/api-services/auth.service";
 import data from "../../.././../assets/Archivos/data.json";
 
 interface CountryOption {
@@ -28,6 +29,7 @@ export class RegistroEComponent implements OnInit {
 
   constructor(public formulario: FormBuilder,
     private apiService: ApiService,
+    private authService: AuthService,
     private router: Router) {
 
     this.paises = data.paises;
@@ -46,6 +48,7 @@ export class RegistroEComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCodTorneo();
+    //this.getServicio();
   }
 
   registrarEquipo() {
@@ -70,11 +73,15 @@ export class RegistroEComponent implements OnInit {
   }
 
   getServicio() {
-    this.apiService
-      .getAll("torneo/" + this.codTorneo).subscribe((data: any) => {
+    this.apiService.getAll("torneo/" + this.codTorneo).subscribe((data: any) => {
         this.listaEquipos = data.data["equipos"];
         console.log(this.listaEquipos);
       });
+    /*var id = this.authService.getDelegadoID();
+    this.apiService.getAll('delegado/'+ id + '/preinscripciones').subscribe((data: any) => {
+      //this.listaEquipos = data;
+      console.log(data);
+    });*/
   }
 
   postServicio() {

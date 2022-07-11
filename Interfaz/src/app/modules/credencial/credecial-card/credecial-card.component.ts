@@ -7,6 +7,7 @@ pdfMake.vfs = pdfFonts.pdfMake.vfs;
 import jsPDF from 'jspdf';
 import html2canvas from 'html2canvas';
 import { ImageElementContainer } from 'html2canvas/dist/types/dom/replaced-elements/image-element-container';
+import { SendDataService } from 'src/app/api-services/send-data.service';
 
 @Component({
   selector: 'app-credecial-card',
@@ -27,7 +28,7 @@ export class CredecialCardComponent implements OnInit {
   torneoActual: any;
   codTorneo: any;
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService, private data:SendDataService) {
     this.urlActual = window.location.href;
     console.log(this.urlActual);
     this.credencial = new FormGroup({
@@ -52,22 +53,21 @@ export class CredecialCardComponent implements OnInit {
     this.apiService.getAll('torneo/' + this.codTorneo + '/equipos').subscribe((data:any) => {
       this.listaEquipos = data['data'];         
       console.log(this.listaEquipos);  
+      this.getJugadores();
     });
   }
 
   getJugadores(){
-    var codEquiData = this.credencial.value.equipos.equipo_data.cod_equi_data;
+    var codEquiData = this.equipoJugador.equipo_data.cod_equi_data;
     console.log(this.credencial.value.equipos);
     this.apiService.getById('equipo_data', codEquiData).subscribe(res => {
       this.listaJugadores = res.data.jugadores;
       console.log(this.listaJugadores);
-    });
-    //this.listaJugadores = 
-    
+    });    
   }
 
   downloadPDF() {
-    const DATA = document.getElementById('credencialcita');
+    const DATA = document.getElementById('credencialPDF');
     const doc = new jsPDF('p', 'pt', 'a4');
     const options = {
       background: 'white',
@@ -90,39 +90,15 @@ export class CredecialCardComponent implements OnInit {
   }
   
   get controls() { return this.credencial.controls; }
-  get equipoJugador(){ return this.credencial.value.equipos; }
+  get equipoJugador(){ return this.data.getEquipo(); }
+  
   get imageJugador(){ 
     var imagen = "http://25.79.31.175:8000/api/jugador/1" ;
-  /*  this.apiService.getJSON('jugador', 1).subscribe((data: any = []) => {
+    /*this.apiService.getJSON('jugador', 1).subscribe((data: any = []) => {
       console.log(data.data);
       imagen = this.jugador.link_img_jug;
     });  */
     //console.log(this.listaJugadores[0].link_img_jug);
     return imagen; }
-
-  //datos fake
-  setRegistro(nombre: any, p_Ap: any, m_ap: any, fecha: any, telf: any) {
-    const registroJugador = {
-      nombre_jug: nombre,
-      prim_ap_jug: p_Ap,
-      seg_ap_jug: m_ap,
-      fecha_nac_jug: fecha,
-      telf_jug: telf,
-      num_iden_jug: telf,
-      link_img_jug: "imagen.png",
-    };
-    return registroJugador;
-  }
-
-  datosFake() {
-    this.listaJugadoresfake = [this.setRegistro("1paul", "martinez", "flores", "06-08-1999", "77486990"),
-    this.setRegistro("2paul", "martinez", "flores", "06-08-1999", "77486990"),
-    this.setRegistro("3paul", "martinez", "flores", "06-08-1999", "77486990"),
-    this.setRegistro("4paul", "martinez", "flores", "06-08-1999", "77486990"),
-    this.setRegistro("5paul", "martinez", "flores", "06-08-1999", "77486990"),
-    this.setRegistro("6paul", "martinez", "flores", "06-08-1999", "77486990"),
-    this.setRegistro("7paul", "martinez", "flores", "06-08-1999", "77486990"),
-    this.setRegistro("8paul", "martinez", "flores", "06-08-1999", "77486990"),
-    ];
-  }
+  
 }

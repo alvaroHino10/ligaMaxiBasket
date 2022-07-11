@@ -4,14 +4,16 @@
 
     <body>
         <div class="pagination justify-content-center mt-2">
-            <button [disabled]="periodoActual>1" class="btn btn-outline-secondary btn-lg mx-2" (click)="cambiarPeriodo(2)">Periodo 1</button>
-            <button [disabled]="periodoActual>2 || periodoActual==1" class="btn btn-outline-secondary btn-lg mx-2" 
-                (click)="cambiarPeriodo(3)">Periodo 2</button>
-            <button [disabled]="periodoActual>3 || periodoActual==1" class="btn btn-outline-secondary btn-lg mx-2" 
-                (click)="cambiarPeriodo(4)">Periodo 3</button>
-            <button [disabled]="periodoActual>4 || periodoActual==1" class="btn btn-outline-secondary btn-lg mx-2"
-                (click)="cambiarPeriodo(5)">Periodo 4</button>
-            <button [disabled]="periodoActual>5 || periodoActual==1" class="btn btn-outline-secondary btn-lg mx-2">Periodo Extra</button>
+            <button [disabled]="periodoActual>1" class="btn btn-outline-secondary btn-lg mx-2"
+                (click)="cambiarPeriodo(1)">Periodo 1</button>
+            <button [disabled]="periodoActual>2 || 1>periodoActual" class="btn btn-outline-secondary btn-lg mx-2" 
+                (click)="cambiarPeriodo(2)">Periodo 2</button>
+            <button [disabled]="periodoActual>3 || 2>periodoActual" class="btn btn-outline-secondary btn-lg mx-2" 
+                (click)="cambiarPeriodo(3)">Periodo 3</button>
+            <button [disabled]="periodoActual>4 || 3>periodoActual" class="btn btn-outline-secondary btn-lg mx-2"
+                (click)="cambiarPeriodo(4)">Periodo 4</button>
+            <button [disabled]="periodoActual>5 || 4>periodoActual" class="btn btn-outline-secondary btn-lg mx-2" 
+                (click)="cambiarPeriodo(5)">Periodo Extra</button>
         </div>
         <div class="row mx-5 mt-3">
             <div class="col-md-12">
@@ -23,9 +25,9 @@
                             <h2 id="puntaje"> {{ puntaje_A }} </h2>
                         </div>
                         <div class="col-md-6 row text-center">
-                        <button class="btn btn-info btn-lg mt-1" (click)="canasta(0,1)">Canasta simple</button>
-                        <button class="btn btn-warning btn-lg mt-1" (click)="canasta(0,2)">Canasta doble</button>
-                        <button class="btn btn-success btn-lg mt-1" (click)="canasta(0,3)">Canasta triple</button>
+                        <button class="btn btn-lg mt-1" id="canasta1" (click)="canasta(0,1)">Canasta simple</button>
+                        <button class="btn btn-lg mt-1" id="canasta2" (click)="canasta(0,2)">Canasta doble</button>
+                        <button class="btn btn-lg mt-1" id="canasta3" (click)="canasta(0,3)">Canasta triple</button>
                         </div>
                         <div class="mt-4">
                             <h2> Jugadores A:</h2>                        
@@ -58,9 +60,9 @@
                         </div>
 
                         <div class="col-md-6 row text-center">
-                            <button class="btn btn-info btn-lg mt-1" (click)="canasta(1,1)">Canasta simple</button>
-                            <button class="btn btn-warning btn-lg mt-1" (click)="canasta(1,2)">Canasta doble</button>
-                            <button class="btn btn-success btn-lg mt-1" (click)="canasta(1,3)">Canasta triple</button>
+                            <button class="btn btn-lg mt-1" id="canasta1" (click)="canasta(1,1)">Canasta simple</button>
+                            <button class="btn btn-lg mt-1" id="canasta2" (click)="canasta(1,2)">Canasta doble</button>
+                            <button class="btn btn-lg mt-1" id="canasta3" (click)="canasta(1,3)">Canasta triple</button>
                         </div>
                         <div class="mt-4">
                             <h2> Jugadores B:</h2>

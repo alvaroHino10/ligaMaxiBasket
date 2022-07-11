@@ -15,16 +15,13 @@ import { HomeComponent } from './modules/home/home.component';
 import { BodyHomeComponent } from './modules/home/body-home/body-home.component';
 
 import { PreinscripcionComponent } from './modules/preinscripcion/preinscripcion.component';
-import { NavegadorPComponent } from './modules/preinscripcion/navegador-p/navegador-p.component';
 import { RegistroPComponent } from './modules/preinscripcion/registro-p/registro-p.component';
 
 import { RegistroJugadoresComponent } from './modules/registro-jugadores/registro-jugadores.component';
 import { RegistroJComponent } from './modules/registro-jugadores/registro/registro.component';
-import { NavegadorComponent } from './modules/registro-jugadores/navegador/navegador.component';
 
 import { RegistroEquipoComponent } from './modules/registro-equipo/registro-equipo.component';
 import { RegistroEComponent } from './modules/registro-equipo/registro-e/registro-e.component';
-import { NavegadorEComponent } from './modules/registro-equipo/navegador-e/navegador-e.component';
 
 import { CredecialCardComponent } from './modules/credencial/credecial-card/credecial-card.component';
 import { CredencialComponent } from './modules/credencial/credencial.component';
@@ -32,7 +29,6 @@ import { CredencialComponent } from './modules/credencial/credencial.component';
 import { NavCreComponent } from './modules/credencial/nav-cre/nav-cre.component';
 
 import { RegistroControlPartidoComponent } from './modules/registro-control-partido/registro-control-partido.component';
-import { NavegadorCpComponent } from './modules/registro-control-partido/navegador-cp/navegador-cp.component';
 import { RegistroCpComponent } from './modules/registro-control-partido/registro-cp/registro-cp.component';
 
 import { FixtureComponent } from './modules/fixture/fixture.component';
@@ -43,7 +39,6 @@ import { LoginComponent } from './modules/login/login.component';
 import { BodyLoginComponent } from './modules/login/body-login/body-login.component';
 
 import { RegistroDelegadoComponent } from './modules/registro-delegado/registro-delegado.component';
-import { NavegadorDelegadoComponent } from './modules/registro-delegado/navegador-delegado/navegador-delegado.component';
 import { RegistroFormDelegadoComponent } from './modules/registro-delegado/registro-form-delegado/registro-form-delegado.component';
 import { BodyDelegadoComponent } from './modules/registro-delegado/body-delegado/body-delegado.component'
 
@@ -79,13 +74,10 @@ import { ModalPreinscripcionComponent } from './modules/vista-organizador/modal-
     HomeComponent,
     PreinscripcionComponent,
     RegistroEquipoComponent,
-    RegistroJugadoresComponent,    
-    NavegadorComponent,
+    RegistroJugadoresComponent, 
     RegistroJComponent,
-    NavegadorPComponent,
     RegistroPComponent,  
-    RegistroEComponent,  
-    NavegadorEComponent,
+    RegistroEComponent,
     CredencialComponent,
     
     NavCreComponent,
@@ -93,7 +85,6 @@ import { ModalPreinscripcionComponent } from './modules/vista-organizador/modal-
     BodyHomeComponent,
     RegistroControlPartidoComponent,
 
-    NavegadorCpComponent,
     RegistroCpComponent,
     FixtureComponent,
     BodyFixtureComponent,
@@ -103,7 +94,6 @@ import { ModalPreinscripcionComponent } from './modules/vista-organizador/modal-
     FixturePartidoComponent,
     RegistroDelegadoComponent,
         
-    NavegadorDelegadoComponent,
     RegistroFormDelegadoComponent,
     EquiposComponent,
     BodyEquiposComponent,    

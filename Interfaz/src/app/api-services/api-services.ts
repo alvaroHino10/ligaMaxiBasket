@@ -59,7 +59,7 @@ export class ApiService {
     return throwError(error);
   }
 
-  getById(dir:string, id:number): Observable<any>{
+  getById(dir:string, id:number) {
     return this.http.get<any>(`${this.url}${dir}/${id}`);
   }
 /*

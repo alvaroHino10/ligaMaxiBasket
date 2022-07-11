@@ -36,14 +36,12 @@ export class AuthService {
 
   getUserDelegado(){
     var delegado = this.getDelegadoID();
-    console.log(delegado);
     var act = this.http.get(`${this.url}delegado/${delegado}`);
-    console.log(act);
     return act;
   }
 
   getDelegadoID(){
-    return parseInt(sessionStorage.getItem('delegadoActual'));
+    return sessionStorage.getItem('delegadoActual');
   }
 
   private handleError(error: HttpErrorResponse) {

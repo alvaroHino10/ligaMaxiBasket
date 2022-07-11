@@ -10,6 +10,7 @@ import { ApiService } from 'src/app/api-services/api-services';
 })
 export class BodyEquiposComponent implements OnInit {
   listaEquipos = [];
+  equipos = [];
   modalOptions:NgbModalOptions;
   constructor(private modalService: NgbModal, 
     private apiService: ApiService) { }
@@ -26,8 +27,17 @@ export class BodyEquiposComponent implements OnInit {
 
   getEquipos() {
     this.apiService.getAll('torneo/1/equipos').subscribe((dataequipo: any = []) => {
-      this.listaEquipos = dataequipo.data;
-      console.log(this.listaEquipos)
-    });
+      this.equipos = dataequipo.data;
+      console.log(this.listaEquipos);
+      this.equiposConData();
+    });    
+  }
+
+  equiposConData(){
+    this.equipos.forEach(element => {
+      if(element.equipo_data != null){
+        this.listaEquipos.push(element);
+      }      
+    });    
   }
 }

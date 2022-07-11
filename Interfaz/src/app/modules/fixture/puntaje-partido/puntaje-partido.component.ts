@@ -24,7 +24,7 @@ export class PuntajePartidoComponent implements OnInit {
 
   anotacionA = false;
   anotacionB = false;
-  periodoActual = 1;
+  periodoActual = 0;
 
   formA :FormGroup;
   formB :FormGroup;
@@ -40,14 +40,13 @@ export class PuntajePartidoComponent implements OnInit {
       this.formB = new FormGroup({
         jugadorB: new FormControl('',
         Validators.required)
-      });
-      
+      });      
   }
 
   ngOnInit(): void {
     this.partido = this.dataService.getPartido(); 
     if(this.partido == null){
-      this.router.navigate(['/fixture']);
+    //  this.router.navigate(['/fixture']);
     }else{
       this.getEquipos();
     }

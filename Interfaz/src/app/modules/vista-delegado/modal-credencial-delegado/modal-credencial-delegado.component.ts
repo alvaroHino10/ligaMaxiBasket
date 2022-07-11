@@ -18,8 +18,9 @@ export class ModalCredencialDelegadoComponent implements OnInit {
   public urlActual: any;
   public credencial: FormGroup;
   delegado: any;
+  imagen: any;
 
-  constructor(private authService:AuthService) {
+  constructor(private authService:AuthService, private apiService:ApiService) {
     this.urlActual = window.location.href;
     console.log(this.urlActual);
     this.credencial = new FormGroup({
@@ -29,12 +30,19 @@ export class ModalCredencialDelegadoComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.delegado = this.authService.getUserDelegado();
-    console.log(this.delegado);
+    var resDeleg ;
+    this.authService.getUserDelegado().subscribe(res =>{
+      resDeleg = res;
+      this.delegado = resDeleg.data;
+      console.log(this.delegado);
+    });      
+    this.apiService.getJSON('delegado', 1).subscribe((data: any) => {
+      this.imagen = data.data.link_img_jug;
+    });  
   }
 
   downloadPDF() {
-    const DATA = document.getElementById('credencialcita');
+    const DATA = document.getElementById('credencialPDF');
     const doc = new jsPDF('p', 'pt', 'a4');
     const options = {
       background: 'white',
@@ -57,7 +65,8 @@ export class ModalCredencialDelegadoComponent implements OnInit {
   }
 
   get imagenDelegado(){
-    return this.delegado.link_img_deleg;
+    var imagen = "http://25.79.31.175:8000/api/delegado/" + this.delegado.cod_deleg + this.delegado.link_img_jug;
+    return imagen;
   }
 
 }
