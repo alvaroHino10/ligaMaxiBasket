@@ -59,11 +59,7 @@ export class BodyFixtureComponent implements OnInit {
     });
   }
 
-  controlDelPartido(partidoActual: any): void {
-    const modalFixture = this.modalService.open(ControlModalComponent, { centered: true, size: 'xl', scrollable: true });    
-    modalFixture.componentInstance.partido = partidoActual;
-    this.modalService.activeInstances.subscribe()
-  }
+
   
   registrarPuntajePartido(partidoActual: any){    
     this.dataService.savePartido(partidoActual);

@@ -1,7 +1,7 @@
 <div>
 <app-header-modules></app-header-modules>
 <div class="container-fluid">
-
+    
     <body>
         <div class="pagination justify-content-center mt-2">
             <button [disabled]="periodoActual>1" class="btn btn-outline-secondary btn-lg mx-2"
@@ -14,6 +14,8 @@
                 (click)="cambiarPeriodo(4)">Periodo 4</button>
             <button [disabled]="periodoActual>5 || 4>periodoActual" class="btn btn-outline-secondary btn-lg mx-2" 
                 (click)="cambiarPeriodo(5)">Periodo Extra</button>
+            <button *ngIf="periodoActual == 4" class="btn btn-danger btn-lg mt-1" 
+            (click)="finalizarPartido()">Finalizar Partido</button>
         </div>
         <div class="row mx-5 mt-3">
             <div class="col-md-12">
@@ -83,6 +85,7 @@
             </div>
         </div>
     </body>
+    
 </div>
 <app-footer-modules class="footer"></app-footer-modules>
 </div>

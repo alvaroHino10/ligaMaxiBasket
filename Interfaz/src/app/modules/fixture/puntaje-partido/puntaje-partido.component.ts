@@ -46,7 +46,7 @@ export class PuntajePartidoComponent implements OnInit {
   ngOnInit(): void {
     this.partido = this.dataService.getPartido(); 
     if(this.partido == null){
-    //  this.router.navigate(['/fixture']);
+      this.router.navigate(['/fixture']);
     }else{
       this.getEquipos();
     }
@@ -88,6 +88,21 @@ export class PuntajePartidoComponent implements OnInit {
 
   cambiarPeriodo(value:any){
     this.periodoActual = value;
+  }
+
+  finalizarPartido(){
+    this.router.navigate(['/fixture']);
+    var equipoGanador ;
+    if(this.puntaje_A == this.puntaje_B){
+      equipoGanador = {nombre_equi: 'Empate'};      
+    }else{
+      if(this.puntaje_A > this.puntaje_B){
+        equipoGanador = this.equipo_A;
+      }else{
+        equipoGanador = this.equipo_B;
+      }      
+    }
+    alert('Ganador:'+ equipoGanador.nombre_equi);
   }
 
   get controlsA(){ return this.formA.controls;}
