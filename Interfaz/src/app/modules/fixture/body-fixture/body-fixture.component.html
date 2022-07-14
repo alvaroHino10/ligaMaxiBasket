@@ -12,14 +12,12 @@
               <th scope="col">Equipo A</th>
               <th scope="col">Equipo B</th>
               <th scope="col">Lugar</th>
-              <th scope="col">Resultado</th>
-              <!--th scope="col">Control del Partido</th-->
+              <th scope="col">Resultado</th>              
             </tr>
           </thead>
 
           <tbody>
             <tr scope="row">
-                          
             </tr>
 
             <tr *ngFor="let partido of listaPartidos">
@@ -28,9 +26,11 @@
               <td *ngFor="let equipo of getEquipos(partido)">{{equipo?.nombre_equi}}</td>
               <td>{{ partido?.lugar_part }}</td>
               <td class="text-center">-</td>
-              <td *appRole="true"> <button class="btn btn-primary" (click)="registrarPuntajePartido(partido)"> 
-                Registrar puntaje </button>
-              </td>                
+              <td *appRole="false"> <button class="btn btn-primary" (click)="registrarJugadores(partido)">
+                  Registrar puntaje </button>
+              <td *appRole="false"> <button class="btn btn-primary" (click)="registrarPuntajePartido(partido)">
+                  Registrar jugadores</button></td>
+
             </tr>
           </tbody>
         </table>

@@ -26,7 +26,8 @@ export class PuntajePartidoComponent implements OnInit {
   formB: FormGroup;
 
   puntajes: any;
-  jugadorActual : any;
+  jugadorActual: any;
+  varUrl: any;
 
   constructor(private dataService: SendDataService,
     private apiService: ApiService,
@@ -64,13 +65,13 @@ export class PuntajePartidoComponent implements OnInit {
   }
 
   canasta(equipo: any, canasta: any) {
-    var varUrl = 'partido/' + this.partido.cod_part + '/equipo';
-    var periodoText = "puntaje_periodo_" + this.periodoActual;
-    var values = this.setAnotacion(equipo, canasta, varUrl, periodoText);
-    this.apiService.post(varUrl, values).subscribe(res => {
-      console.log(res);
-      this.setJugador(canasta);
+    var numero = this.periodoActual + 1;
+    this.varUrl = 'partido/' + this.partido.cod_part + '/equipo/';
+    var periodoText = "puntaje_periodo_" + numero;
+    var values = this.setAnotacion(equipo, canasta, periodoText);
+    this.apiService.post(this.varUrl, values).subscribe(res => {
     });
+    this.setJugador(canasta);
     this.limpiarFormularios();
   }
 
@@ -79,7 +80,7 @@ export class PuntajePartidoComponent implements OnInit {
     this.formB.reset();
   }
 
-  setAnotacion(equipo: any, canasta: any, varUrl: any, text: any) {
+  setAnotacion(equipo: any, canasta: any, text: any) {
     var values;
     if (equipo == 0) {
       this.anotacionA = true;
@@ -87,7 +88,7 @@ export class PuntajePartidoComponent implements OnInit {
         this.puntaje_A += canasta;
         this.anotacionA = false;
         this.jugadorActual = this.formA.value.jugadorA.cod_jug;
-        varUrl = varUrl + this.equipo_A.cod_equi;
+        this.varUrl = this.varUrl + this.equipo_A.cod_equi + "?_method=PUT";
         values = {
           'periodo_especifico': text,
           'operacion_canasta': canasta
@@ -99,7 +100,7 @@ export class PuntajePartidoComponent implements OnInit {
         this.puntaje_B += canasta;
         this.anotacionB = false;
         this.jugadorActual = this.formB.value.jugadorB.cod_jug;
-        varUrl = varUrl + this.equipo_B.cod_equi;
+        this.varUrl = this.varUrl + this.equipo_B.cod_equi + "?_method=PUT";
         values = {
           'periodo_especifico': text,
           'operacion_canasta': canasta
@@ -120,8 +121,9 @@ export class PuntajePartidoComponent implements OnInit {
         valueCanasta = 'canasta_triple';
       }
     }
-    var url = 'jugador/' + this.jugadorActual + valueCanasta;
-    this.apiService.post(url,this.jugadorActual);
+    var url = 'jugador/' + this.jugadorActual + '/' + valueCanasta + '?_method=PUT';
+    console.log(url);
+    this.apiService.post(url, this.jugadorActual).subscribe(res => { });
 
   }
 
@@ -133,23 +135,7 @@ export class PuntajePartidoComponent implements OnInit {
   }
   cambiarPeriodo(value: any) {
     this.periodoActual = value;
-    /*if (this.periodoActual == 1) {
-
-    } else {
-      if (this.periodoActual == 2) {
-
-      } else {
-        if (this.periodoActual == 3) {
-
-        } else {
-          if (this.periodoActual == 4) {
-
-          } else {
-
-          }
-        }
-      }
-    }*/
+    
   }
 
   finalizarPartido() {

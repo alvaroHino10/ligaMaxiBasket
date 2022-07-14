@@ -58,13 +58,20 @@ export class BodyFixtureComponent implements OnInit {
       }
     });
   }
-
-
   
-  registrarPuntajePartido(partidoActual: any){    
+  registrarPuntajePartido(partidoActual:any){    
     this.dataService.savePartido(partidoActual);
     console.log(partidoActual);
     this.router.navigate(['/fixture/puntaje']);
+  }
+
+  registrarJugadores(partidoActual:any){    
+    const modalControl = this.modalService.open(ControlModalComponent, this.modalOptions );
+    modalControl.componentInstance.partido = partidoActual;
+    modalControl.result.then((result) => {
+      if (result) {
+      }
+    });
   }
 
   getEquipos(partidoActual: any){
