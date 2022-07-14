@@ -21,9 +21,4 @@ export class BodyJugadoresComponent implements OnInit {
     });
   }
 
-  get equipoSeleccionado(){
-    return false;
-    //return this.jugadores.formularioRegistroJugador.value.
-  }
-
 }

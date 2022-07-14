@@ -39,8 +39,6 @@ export class BodyLoginComponent implements OnInit {
   }
 
   iniciarSesion(){
-    var mensajeError;
-    var mensajeResponse;
     var signSesion = this.setDatos();
 
     this.authService.singIn(signSesion).subscribe((res: any = []) => {

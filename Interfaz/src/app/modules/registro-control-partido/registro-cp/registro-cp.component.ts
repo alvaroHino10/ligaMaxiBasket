@@ -79,10 +79,7 @@ export class RegistroCpComponent implements OnInit {
       console.log(this.data);
       alert(this.data['mensaje']);
       this.limpiarFormulario();
-    });/*,(error) => {
-      this.mensajeError = error;
-      console.log(this.mensajeError.error['mensaje']);
-    });*/    
+    });  
   }
 
   getControlPartido(){

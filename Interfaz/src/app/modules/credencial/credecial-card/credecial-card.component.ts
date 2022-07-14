@@ -22,8 +22,6 @@ export class CredecialCardComponent implements OnInit {
   listaEquipos: any = [];
   listaJugadores: any = [];
   codEquipo = -1;
-  //imageJugador : any [];
-  //datos fake
   listaJugadoresfake: any ;
   torneoActual: any;
   codTorneo: any;

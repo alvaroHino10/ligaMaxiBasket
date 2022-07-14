@@ -16,17 +16,6 @@ export class BodyFixtureComponent implements OnInit {
   closeResult: string;
   modalOptions: NgbModalOptions;
   listaPartidos = [];
-  
-  partidoNuevo = {
-    fecha_part: '',
-    hora_ini_part: '',
-    equipo_1: '',
-    equipo_2: '',
-    lugar: '',
-    primer_juez: '',
-    segundo_juez: '',
-    apuntador_mesa: ''
-  };
 
   constructor(private modalService: NgbModal, private apiService: ApiService,
     private router:Router, private dataService: SendDataService) {

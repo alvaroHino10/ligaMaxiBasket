@@ -48,7 +48,6 @@ export class RegistroEComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCodTorneo();
-    //this.getServicio();
   }
 
   registrarEquipo() {
@@ -77,11 +76,6 @@ export class RegistroEComponent implements OnInit {
         this.listaEquipos = data.data["equipos"];
         console.log(this.listaEquipos);
       });
-    /*var id = this.authService.getDelegadoID();
-    this.apiService.getAll('delegado/'+ id + '/preinscripciones').subscribe((data: any) => {
-      //this.listaEquipos = data;
-      console.log(data);
-    });*/
   }
 
   postServicio() {
@@ -128,24 +122,4 @@ export class RegistroEComponent implements OnInit {
     return this.formularioRegistroEquipo.value.nombreDelEquipo;
   }
 
-  //datos fake
-  setRegistroF(nombre: any, categoria: any) {
-    const registroJugador = {
-      nombre_equi: nombre,
-      categ_equi: categoria,
-    };
-    return registroJugador;
-  }
-
-  datosFake() {
-    this.listaEquipos = [
-      this.setRegistroF("1paul", "+30"),
-      this.setRegistroF("2paul", "+40"),
-      this.setRegistroF("3paul", "+50"),
-      this.setRegistroF("4paul", "+30"),
-      this.setRegistroF("2paul", "+40"),
-      this.setRegistroF("3paul", "+50"),
-      this.setRegistroF("4paul", "+30"),
-    ];
-  }
 }

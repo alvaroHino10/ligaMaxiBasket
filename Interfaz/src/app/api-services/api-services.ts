@@ -54,8 +54,7 @@ export class ApiService {
         `Backend returned code ${error.status}, ` +
         `body was: ${error.error}`);
       alert(error.error.mensaje);
-    }
-    // Return an observable with a user-facing error message.
+    }    
     return throwError(error);
   }
 

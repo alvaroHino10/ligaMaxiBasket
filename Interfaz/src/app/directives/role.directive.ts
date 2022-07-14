@@ -21,11 +21,11 @@ export class RoleDirective {
       if(val){
         this.viewContainer.createEmbeddedView(this.templateRef); 
       }        
-    }else{
+    }/*else{
       if(!val){
         this.viewContainer.createEmbeddedView(this.templateRef); 
       }
-    }
+    }*/
   }
 
   get existeAcceso(){ return this.authService.loggedIn(); }

@@ -74,12 +74,7 @@ export class RegistroPComponent implements OnInit {
       cod = (this.response['data'])['cod_preinscrip'];
       this.mensajeResponse = this.response['mensaje'];
       this.guardarEquipo(cod);      
-    });/*,(error) => {
-      this.mensajeError = error;
-      console.log(this.mensajeError.error['mensaje']);
-      console.log(this.mensajeError.error['message']);
     });
-*/
     return cod;
   }
 

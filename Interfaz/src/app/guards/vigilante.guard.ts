@@ -11,30 +11,19 @@ export class VigilanteGuard implements CanActivate {
   constructor(private authService: AuthService, private router: Router){
   }
 
-  /*redirect(cookie: boolean, route: ActivatedRouteSnapshot){
-    if(!this.isAuthorized(route) || !cookie){
-      this.router.navigate(['/home']);
-      return false;
-    }    
-    return true;
-  }*/
-
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    //const cookie = this.cookieService.check('token');
-    //var val = this.redirect(cookie, route);
     var val = this.redirect();
     return val;
   }
 
   redirect(){
-   /* if(!this.authService.loggedIn()){
+    if(!this.authService.loggedIn()){
       alert('No tienes permisos');
       this.router.navigate(['']);
       return false;
     }
-    return true;*/
     return true;
   }
 

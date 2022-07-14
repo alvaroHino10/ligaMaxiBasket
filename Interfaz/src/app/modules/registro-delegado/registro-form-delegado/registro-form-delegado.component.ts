@@ -90,12 +90,7 @@ export class RegistroFormDelegadoComponent implements OnInit {
       this.dataPost = res;
       console.log(this.dataPost);
       this.postDatosSign();      
-    });/*, (error) => {
-      var mensajeError = error;
-      console.log(mensajeError.error['mensaje']);
-      mensajeResponse = mensajeError.error['mensaje'];
-      alert(mensajeResponse);
-    });*/
+    });
   }
   
   setRegistro() {
@@ -121,8 +116,7 @@ export class RegistroFormDelegadoComponent implements OnInit {
     var mensajeResponse;
     this.authService.signUp(delegadoSignUp).subscribe( signDatos => {
       this.dataSign = signDatos;
-      console.log(this.dataSign);
-      //this.cookieService.set('token', this.dataSign.token, 4 , '/' );
+      console.log(this.dataSign);      
       this.limpiarFormulario();
       mensajeResponse = this.dataPost['mensaje'];
       alert(mensajeResponse);
