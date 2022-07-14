@@ -1,0 +1,48 @@
+<body>
+  <div class="content">
+    <div class="container">
+      <h2 class="text-center">LIGA MAXI BASQUET COCHABAMBA</h2>
+      <div class="table-responsive">
+
+        <table class="table custom-table">
+          <thead>
+            <tr>
+              <th scope="col">Fecha</th>
+              <th scope="col">Hora</th>
+              <th scope="col">Equipo A</th>
+              <th scope="col">Equipo B</th>
+              <th scope="col">Lugar</th>
+              <th scope="col">Resultado</th>              
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr scope="row">
+            </tr>
+
+            <tr *ngFor="let partido of listaPartidos">
+              <td>{{ partido?.fecha_part }}</td>
+              <td>{{ partido?.hora_ini_part.substr(0,5) }}</td>
+              <td *ngFor="let equipo of getEquipos(partido)">{{equipo?.nombre_equi}}</td>
+              <td>{{ partido?.lugar_part }}</td>
+              <td class="text-center">-</td>
+              <td *appRole="false"> <button class="btn btn-primary" (click)="registrarJugadores(partido)">
+                  Registrar puntaje </button>
+              <td *appRole="false"> <button class="btn btn-primary" (click)="registrarPuntajePartido(partido)">
+                  Registrar jugadores</button></td>
+
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4 class="text-center" id="partidoVacio" *ngIf="listaPartidos.length==0">NO EXISTEN PARTIDOS</h4>
+      <div>
+        <button *appRole="true" class="btn btn-dark btn-m mt-3" (click)="agregarPartido()">
+          Agregar partido
+        </button>
+      </div>
+    </div>
+  </div>
+  
+</body>

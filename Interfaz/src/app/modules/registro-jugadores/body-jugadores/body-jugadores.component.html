@@ -1,0 +1,44 @@
+<body *ngIf="false">
+    <div class="content">
+      <div class="container">
+        <h2 class="text-center">Equipo X</h2>
+        <div class="table-responsive mb-4">
+  
+            <h3>Jugadores registrados: </h3>
+            <table class="table custom-table">
+            
+            <thead>
+              <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Primer apellido</th>
+                <th scope="col">Segundo apellido</th>
+                <th scope="col">Correo electronico</th>
+                <th scope="col">N° Identidad</th>            
+                <th scope="col">Telefono</th>
+                <th scope="col">Numero de camiseta</th>
+              </tr>
+            </thead>
+  
+            <tbody>
+              <tr scope="row">
+              </tr>
+
+              <tr *ngFor="let jugador of listaJugadores">
+                <td>{{ jugador?.nombre_jug }}</td>
+                <td>{{ jugador?.prim_ap_jug }}</td>
+                <td>{{ jugador?.seg_ap_jug }}</td>
+                <td>{{ jugador?.correo_jug }}</td>
+                <td>{{ jugador?.num_iden_jug }}</td>
+                <td>{{ jugador?.telf_jug }}</td>
+                <td>{{ jugador?.num_equi_jug }}</td>
+              </tr>
+              
+            </tbody>
+  
+          </table>
+        </div>
+        
+      </div>
+    </div>
+  
+  </body>

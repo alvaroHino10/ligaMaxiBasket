@@ -1,0 +1,91 @@
+<div>
+<app-header-modules></app-header-modules>
+<div class="container-fluid">
+    
+    <body>
+        <div class="pagination justify-content-center mt-2">
+            <button [disabled]="periodoActual>1" class="btn btn-outline-secondary btn-lg mx-2"
+                (click)="cambiarPeriodo(1)">Periodo 1</button>
+            <button [disabled]="periodoActual>2 || 1>periodoActual" class="btn btn-outline-secondary btn-lg mx-2" 
+                (click)="cambiarPeriodo(2)">Periodo 2</button>
+            <button [disabled]="periodoActual>3 || 2>periodoActual" class="btn btn-outline-secondary btn-lg mx-2" 
+                (click)="cambiarPeriodo(3)">Periodo 3</button>
+            <button [disabled]="periodoActual>4 || 3>periodoActual" class="btn btn-outline-secondary btn-lg mx-2"
+                (click)="cambiarPeriodo(4)">Periodo 4</button>
+            <button [disabled]="periodoActual>5 || 4>periodoActual" class="btn btn-outline-secondary btn-lg mx-2" 
+                (click)="cambiarPeriodo(5)">Periodo Extra</button>
+            <button *ngIf="periodoActual == 4" class="btn btn-danger btn-lg mt-1" 
+            (click)="finalizarPartido()">Finalizar Partido</button>
+        </div>
+        <div class="row mx-5 mt-3">
+            <div class="col-md-12">
+                <div class="row">
+                    <div class="col-md-5 row">
+                        <h2 class="text-center">Equipo A:</h2>
+                        <h1 class="text-center">{{ equipo_A?.nombre_equi }}</h1>
+                        <div class="col-md-6 mt-2 text-center">
+                            <h2 id="puntaje"> {{ puntaje_A }} </h2>
+                        </div>
+                        <div class="col-md-6 row text-center">
+                        <button class="btn btn-lg mt-1" id="canasta1" (click)="canasta(0,1)">Canasta simple</button>
+                        <button class="btn btn-lg mt-1" id="canasta2" (click)="canasta(0,2)">Canasta doble</button>
+                        <button class="btn btn-lg mt-1" id="canasta3" (click)="canasta(0,3)">Canasta triple</button>
+                        </div>
+                        <div class="mt-4">
+                            <h2> Jugadores A:</h2>                        
+                            
+                            <div *ngIf="(controlsA.jugadorA.touched && controlsA.jugadorA.invalid) || anotacionA" class="text-danger">
+                                <div *ngIf="controlsA.jugadorA.errors?.required">
+                                  Por favor, ingresa un jugador del equipo A                                   
+                                </div>
+                              </div>
+                            
+                            <form [formGroup]="formA">
+                                <div class="form-check mb-3 mx-3" *ngFor="let jugadorA of jugadoresA">
+                                    <input type="radio" class="form-check-input" [value]="jugadorA" formControlName="jugadorA">
+                                    {{jugadorA?.num_equi_jug + ": " + jugadorA?.nombre_jug }}
+                                </div>
+                            </form>                          
+                                             
+                        </div>
+                    </div>
+
+                    <div class="col-md-2 text-danger text-center">
+                        <h1><b>VS</b></h1>
+                    </div>
+
+                    <div class="col-md-5 row">
+                        <h2 class="text-center">Equipo B:</h2>
+                        <h1 class="text-center">{{ equipo_B?.nombre_equi }}</h1>
+                        <div class="col-md-6 mt-2 text-center">
+                            <h2 id="puntaje"> {{ puntaje_B }} </h2>
+                        </div>
+
+                        <div class="col-md-6 row text-center">
+                            <button class="btn btn-lg mt-1" id="canasta1" (click)="canasta(1,1)">Canasta simple</button>
+                            <button class="btn btn-lg mt-1" id="canasta2" (click)="canasta(1,2)">Canasta doble</button>
+                            <button class="btn btn-lg mt-1" id="canasta3" (click)="canasta(1,3)">Canasta triple</button>
+                        </div>
+                        <div class="mt-4">
+                            <h2> Jugadores B:</h2>
+                            <div *ngIf="(controlsB.jugadorB.touched) || anotacionB" class="text-danger">
+                                <div *ngIf="controlsB.jugadorB.errors?.required">
+                                  Por favor, ingresa un jugador del equipo B                                   
+                                </div>
+                              </div>
+                            <form [formGroup]="formB">
+                                <div class="form-check mb-3 mx-3" *ngFor="let jugadorB of jugadoresB">
+                                    <input type="radio" class="form-check-input" [value]="jugadorB" formControlName="jugadorB">
+                                    {{jugadorB?.num_equi_jug + ": " + jugadorB?.nombre_jug }}
+                                </div>
+                            </form>                   
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    
+</div>
+<app-footer-modules class="footer"></app-footer-modules>
+</div>

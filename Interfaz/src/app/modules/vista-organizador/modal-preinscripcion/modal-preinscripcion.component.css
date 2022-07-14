@@ -1,0 +1,11 @@
+.container {
+    align-items: center;
+    background: rgba(230, 131, 63, 0.5);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+}
+
+h1 {
+    margin-left: 30px;
+    margin-bottom: 5px;
+}

@@ -1,0 +1,82 @@
+<div class="modal-header">
+	<h4 class="modal-title">Credencial delegado</h4>
+</div>
+<div class="modal-body">
+	
+	<body>
+		<div class="container-fluid">
+			<div class="row mb-5" id="credencialPDF">
+				<div class="col-md-6 mb-2">
+					<div id="credencial" class="mb-4">
+						<div class="row">
+							<div class="col-md-12">
+								<div class="post row">
+									<div class="col-md-3 img">
+										<img src="../assets/Imagenes/Logo.jpg">
+									</div>
+									<div class="col-md-9">
+										<h1 class="text-center titulo">
+											Liga Maxi Basquet Cochabamba
+										</h1>
+										<div class="sub-titulo">Credencial</div>
+									</div>
+								</div>
+							</div>
+	
+							<div class="col-md-8">
+								<!--Nombre completo-->
+								<div class="form-group p-2 text-black row mx-2">
+									<label for="nombre" class="formulario">Nombre completo:</label>
+									<label>
+										{{delegado?.nombre_deleg + " " +
+										delegado?.ap_deleg }}
+									</label>
+								</div>
+	
+								<div class="row text-center">
+									<div class="col-md-4">
+										<!--Fecha de nacimiento-->
+										<div class="form-group p-2 text-black mx-2">
+											<label for="Fecha-de-Nacimiento" class="formulario">Fecha de Nacimiento:</label>
+											<label>{{delegado?.fecha_nac_deleg}}</label>
+										</div>									
+									</div>
+	
+									<div class="col-md-4">
+										<!--Numero de identificacion-->
+										<div class="form-group p-2 text-black row ">
+											<label for="Numero-de-Identificacion" class="formulario">N° de
+												Identificacion:</label>
+											<label>{{delegado?.num_iden_deleg}}</label>
+										</div>
+									</div>
+									<div class="col-md-4">
+										<!--Telefono-->
+										<div class="form-group p-2 text-black row mt-2">
+											<label for=""></label>
+											<label for="Telefono:" class="formulario">Telefono:</label>
+											<label>{{delegado?.telf_deleg}}</label>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4 text-center mb-2">
+								<div class="p-3">
+									<img src="../../../../assets/Imagenes/Logo.jpg" class="img-fluid" alt="Imagen delegado" />
+									<!--mg class="img-fluid" src="{{imagedelegador}}" alt="Imagen delegador"/-->							
+								</div>
+								<div class="QR" id="QR">
+									<qr-code [value]="urlActual"></qr-code>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</body>
+	<div class="col-md-6"></div>
+</div>
+<div class="modal-footer">
+	<button (click)="downloadPDF()" class="btn btn-dark btn-m mt-1">Crear PDF</button>
+</div>

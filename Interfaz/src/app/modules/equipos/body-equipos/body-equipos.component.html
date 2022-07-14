@@ -1,0 +1,39 @@
+<body>
+  <div class="content">
+    <div class="container">
+      <h2 class="text-center">LIGA MAXI BASQUET COCHABAMBA</h2>
+
+      <div class="table-responsive">
+
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">Nombre del Equipo</th>
+              <th scope="col">Pais del Equipo</th>
+              <th scope="col">Color del Equipo</th>
+              <th scope="col">Categoria del Equipo</th>
+            </tr>
+          </thead>
+
+          <tbody>            
+            <tr scope="row">
+            </tr>
+            <tr *ngFor="let equipo of listaEquipos" (click)="informacionEquipo(equipo)">
+              <td>{{ equipo?.nombre_equi }}</td>
+              <td>{{ equipo?.equipo_data?.pais_equi }}</td>
+              <td>{{ equipo?.equipo_data?.color_equi }}</td>          
+              <td>{{ equipo?.categ_equi }}</td>
+            </tr>
+          </tbody>
+
+        </table>
+      </div>
+      <h4 class="text-center" id="equipoVacio" *ngIf="listaEquipos.length==0">NO EXISTEN EQUIPOS REGISTRADOS</h4>
+      <div>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>

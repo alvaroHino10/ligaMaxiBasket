@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="mt-5">
+  <div id="fondo">
+    <h1>Registro de Equipo</h1>
+  </div>
+  <form [formGroup]="formularioRegistroEquipo" (ngSubmit)="registrarEquipo()" class="container-fluid">
+
+    <div class="row">
+      <!--INPUT NOMBRE EQUIPO-->
+      <div class="col-md-6 mb-3">
+        <!--Seleccionar Equipo-->
+        <label for="" class="form-label">Nombre de equipo:</label>
+        <select class="form-control" name="equipo" (change)="listaEquipos" formControlName="nombreDelEquipo" required>
+          <option value="" disabled>Seleccionar equipo</option>
+          <option *ngFor="let equipos of listaEquipos" [ngValue]="equipos"> {{ equipos?.nombre_equi }}
+          </option>
+        </select>
+        <div *ngIf="(controls.nombreDelEquipo.touched && controls.nombreDelEquipo.invalid) || submitted" class="text-danger">
+          <div *ngIf="controls.nombreDelEquipo.errors?.required">Por favor, ingresa el equipo</div>
+        </div>
+      </div>
+      
+      <!--CATEGORIA-->
+      <div class="col-md-5">
+        <label for="" class="form-label">Categoria:</label>
+        <div *ngIf="!controls.nombreDelEquipo.errors?.required" class="form-control">{{equipoSeleccionado?.categ_equi}}</div>
+      </div>
+    </div>
+
+
+    <!--INPUT PAIS-->
+    <div class="mb-3">
+      <label class="form-label">Pais del Equipo:</label>
+      <select class="form-control" name="paisEquipo" formControlName="paisEquipo" required>
+        <option value="" disabled>Seleccionar pais</option>
+        <option *ngFor="let pais of paises" [value]="pais.value">{{ pais.name }}</option>
+      </select>
+      <div *ngIf="(controls.paisEquipo.touched && controls.paisEquipo.invalid) || submitted" class="text-danger">
+        <div *ngIf="controls.paisEquipo.errors?.required">Por favor, ingresa el pais del equipo</div>
+      </div>
+    </div>
+
+    <!--INPUT COLOR EQUIPO-->
+    <div class="mb-3">
+      <label class="form-label">Color del equipo:</label>
+      <input type="text" class="form-control" formControlName="colorEquipo" minlength="3" maxlength="80" required>
+      <div *ngIf="(controls.colorEquipo.touched && controls.colorEquipo.invalid) || submitted" class="text-danger">
+        <div *ngIf="controls.colorEquipo.errors?.required">Por favor, ingresa el color del equipo</div>
+        <div *ngIf="controls.colorEquipo.errors?.minlength">"El color debe tener al menos 3 caracteres"</div>
+        <div *ngIf="controls.colorEquipo.errors?.maxlength">El nombre es demasiado largo</div>
+        <div *ngIf="controls.colorEquipo.errors?.pattern">Por favor, ingresa caracteres validos</div>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-dark btn-m mt-3 mb-2">Guardar</button>
+  </form>
+</body>
+
+</html>

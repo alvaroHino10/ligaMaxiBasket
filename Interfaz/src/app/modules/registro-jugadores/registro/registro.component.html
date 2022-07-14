@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="mt-5">
+  <div id="fondo">
+    <h1>Registro de jugador</h1>
+  </div>
+  <form [formGroup]="formularioRegistroJugador" (ngSubmit)="registrarJugador()" class="container-fluid">
+
+    <!--INPUT NOMBRE(S)-->
+    <div class="mb-3">
+      <label class="form-label">Nombre(s):</label>
+      <input type="text" class="form-control" formControlName="nombre" minlength="2" maxlength="80" required>
+      <div *ngIf="(controls.nombre.touched && controls.nombre.invalid) || submitted" class="text-danger">
+        <div *ngIf="controls.nombre.errors?.required">Por favor, ingresa tu(s) nombre(s)</div>
+        <div *ngIf="controls.nombre.errors?.minlength">El nombre debe tener al menos 2 caracteres</div>
+        <div *ngIf="controls.nombre.errors?.maxlength">El nombre es demasiado largo</div>
+        <div *ngIf="controls.nombre.errors?.pattern">Por favor, ingresa solo caracteres alfabeticos</div>
+      </div>
+    </div>
+
+    <!--INPUT PRIMER APELLIDO-->
+    <div class="mb-3">
+      <label class="form-label">Primer apellido:</label>
+      <input type="text" class="form-control" formControlName="primerApellido" minlength="2" maxlength="80" required>
+      <div *ngIf="(controls.primerApellido.touched && controls.primerApellido.invalid) || submitted"
+        class="text-danger">
+        <div *ngIf="controls.primerApellido.errors?.required">Por favor, ingresa tu primer apellido</div>
+        <div *ngIf="controls.primerApellido.errors?.minlength">El apellido debe tener al menos 2 caracteres</div>
+        <div *ngIf="controls.primerApellido.errors?.maxlength">El apellido es demasiado largo</div>
+        <div *ngIf="controls.primerApellido.errors?.pattern">Por favor, ingresa caracteres validos</div>
+      </div>
+    </div>
+
+    <!--INPUT SEGUNDO APELLIDO-->
+    <div class="mb-3">
+      <label class="form-label">Segundo apellido:</label>
+      <input type="text" class="form-control" formControlName="segundoApellido" minlength="2" maxlength="80" required>
+      <div *ngIf="(controls.segundoApellido.touched && controls.segundoApellido.invalid) || submitted"
+        class="text-danger">
+        <div *ngIf="controls.segundoApellido.errors?.required">Por favor, ingresa tu segundo apellido</div>
+        <div *ngIf="controls.segundoApellido.errors?.minlength">El apellido debe tener al menos 2 caracteres</div>
+        <div *ngIf="controls.segundoApellido.errors?.maxlength">El apellido es demasiado largo</div>
+        <div *ngIf="controls.segundoApellido.errors?.pattern">Por favor, ingresa caracteres validos</div>
+      </div>
+    </div>
+
+    <!--INPUT CORREO ELECTRONICO-->
+    <div class="mb-3">
+      <label for="" class="form-label">Correo electronico:</label>
+      <input type="email" class="form-control" formControlName="correoElectronico" required>
+      <div *ngIf="(controls.correoElectronico.touched && controls.correoElectronico.invalid) || submitted"
+        class="text-danger">
+        <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa tu correo electronico</div>
+        <div *ngIf="controls.correoElectronico.errors?.email">Por favor, ingresa un correo valido</div>
+      </div>
+    </div>
+
+    <!--INPUT NUMERO DE IDENTIDAD-->
+    <div class="mb-3">
+      <label for="" class="form-label">Numero de identidad:</label>
+      <input type="text" class="form-control" formControlName="numeroIdentidad" required>
+      <div *ngIf="(controls.numeroIdentidad.touched && controls.numeroIdentidad.invalid) || submitted"
+        class="text-danger">
+        <div *ngIf="controls.numeroIdentidad.errors?.required">Por favor, ingresa tu numero de identidad</div>
+        <div *ngIf="controls.numeroIdentidad.errors?.pattern">Por favor, ingresa caracteres válidos</div>
+        <div *ngIf="controls.numeroIdentidad.errors?.minlength">El número es demasiado pequeño</div>
+        <div *ngIf="controls.numeroIdentidad.errors?.maxlength">El número es demasiado largo</div>
+      </div>
+    </div>
+
+    <!--INPUT EQUIPO-->
+    <div class="mb-3">
+      <!--Seleccionar Equipo-->
+      <label for="" class="form-label">Equipo del jugador:</label>
+      <select class="form-control" name="equipo" (change)="listaEquipos" formControlName="equipo" required>
+        <option value="" disabled>Seleccionar equipo</option>
+        <option *ngFor="let equipos of listaEquipos" [ngValue]="equipos"> {{ equipos.nombre_equi + " : " + equipos.categ_equi }}
+        </option>
+      </select>
+      <div *ngIf="(controls.equipo.touched && controls.equipo.invalid) || submitted" class="text-danger">
+        <div *ngIf="controls.equipo.errors?.required">Por favor, ingresa el equipo</div>
+      </div>
+    </div>
+
+    <!--INPUT NACION/PAIS-->
+    <div class="mb-3">
+      <label class="form-label">Pais jugador:</label>
+      <select class="form-control" name="nacionJugador" formControlName="nacionJugador" required>
+        <option value="" disabled>Seleccionar pais</option>
+        <option *ngFor="let pais of paises" [value]="pais.value">{{ pais.name }}</option>  
+      </select>
+      <div *ngIf="(controls.nacionJugador.touched && controls.nacionJugador.invalid) || submitted" class="text-danger">
+        <div *ngIf="controls.nacionJugador.errors?.required">Por favor, ingresa el pais del equipo</div>
+      </div>
+    </div>
+
+    <!--INPUT ESTADO CIVIL-->
+    <div class="mb-3">
+      <label class="form-label">Estado civil:</label>
+      <select class="form-control" formControlName="estadoCivil" required>
+        <option value="" disabled>Seleccione el estado civil</option>
+        <option *ngFor="let c of listaEstadoCivil" [ngValue]="c">{{ c }}</option>
+      </select>
+      <div *ngIf="(controls.estadoCivil.touched && controls.estadoCivil.invalid) || submitted" class="text-danger">
+        <div *ngIf="controls.estadoCivil.errors?.required">Por favor, ingresa tu estado civil</div>
+      </div>
+    </div>
+
+    <!--INPUT FECHA NACIMIENTO-->
+    <div class="mb-3">
+      <label for="birthday">Fecha de Nacimiento:</label>
+      <input type="date" id="birthday" name="birthday" formControlName="fechaNacimiento" class="form-control" required>
+      <div *ngIf="(controls.fechaNacimiento.touched && controls.fechaNacimiento.invalid) || submitted"
+        class="text-danger">
+        <div *ngIf="controls.fechaNacimiento.errors?.required">
+          Por favor, ingresa tu fecha de nacimiento
+        </div>
+      </div>
+    </div>
+
+    <!--INPUT TELEFONO-->
+    <div class="mb-3">
+      <label for="" class="form-label">Telefono:</label>
+      <input type="text" class="form-control" formControlName="telefono" required>
+      <div *ngIf="(controls.telefono.touched && controls.telefono.invalid) || submitted" class="text-danger">
+        <div *ngIf="controls.telefono.errors?.required">Por favor, ingresa tu telefono</div>
+        <div *ngIf="controls.telefono.errors?.pattern">Porfavor ingresa caracteres válidos</div>
+        <div *ngIf="controls.telefono.errors?.minlength">El numero es demasiado pequeño</div>
+        <div *ngIf="controls.telefono.errors?.maxlength">El numero es demasiado largo</div>
+      </div>
+    </div>
+
+    <!--INPUT SEXO-->
+    <div class="mb-3">
+      <label class="form-label">Sexo:</label>
+      <select class="form-control" formControlName="sexo" required>
+        <option value="M">Masculino</option>
+        <option value="F">Femenino</option>
+      </select>
+      <div *ngIf="(controls.sexo.touched && controls.sexo.invalid) || submitted" class="text-danger">
+        <div *ngIf="controls.sexo.errors?.required">Por favor, ingresa tu sexo</div>
+      </div>
+    </div>
+
+    <!--INPUT DOMICILIO-->
+    <div class="mb-3">
+      <label class="form-label">Domicilio:</label>
+      <input type="text" class="form-control" formControlName="domicilio" minlength="2" maxlength="80" required>
+      <div *ngIf="(controls.domicilio.touched && controls.domicilio.invalid) || submitted" class="text-danger">
+        <div *ngIf="controls.domicilio.errors?.required">Por favor, ingresa tu domicilio</div>
+        <div *ngIf="controls.domicilio.errors?.minlength">El domicilio debe tener al menos 2 caracteres</div>
+        <div *ngIf="controls.domicilio.errors?.maxlength">El domicilio es demasiado largo</div>
+        <div *ngIf="controls.domicilio.errors?.pattern">Por favor, ingresa caracteres validos</div>
+      </div>
+    </div>
+
+    <!--INPUT NUMERO DE Camiseta JUGADOR EN EL EQUIPO-->
+    <div class="mb-3">
+      <label class="form-label">Numero de camiseta:</label>
+      <input type="number" class="form-control" formControlName="numeroJugador" min="1" max="80" required>
+      <div *ngIf="(controls.numeroJugador.touched && controls.numeroJugador.invalid) || submitted" class="text-danger">
+        <div *ngIf="controls.numeroJugador.errors?.required">Por favor, ingresa el numero del jugador</div>
+        <div *ngIf="controls.numeroJugador.errors?.min || controls.numeroJugador.errors?.max">
+          El número del jugador no es válido
+        </div>
+      </div>
+    </div>
+
+    <!--INPUT FILE IMAGEN-->
+    <div class="file-upload form-group">
+      <label for="linkImgJug">Seleccionar imagen del jugador:</label>
+      <div class="custom-file">
+        <input id="linkImgJug" name="linkImgJug" type="file" class=" form-control" (change)="subirImagen($event)"
+          formControlName="linkImgJug">
+        <div *ngIf="(controls.linkImgJug.touched && controls.linkImgJug.invalid) || submitted" class="text-danger">
+          <div *ngIf="controls.linkImgJug.errors?.required">Por favor, ingresa la imagen del jugador</div>
+        </div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-dark btn-m mt-3 mb-2">Guardar</button>
+  </form>
+</body>
+
+</html>

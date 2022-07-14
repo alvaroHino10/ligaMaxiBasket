@@ -1,0 +1,52 @@
+body{
+  background-image: url(/assets/Imagenes/Fondo.jpg);
+  /*background-color: rgb(255, 137, 41);*/
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top;
+  font-family: Arial;
+  letter-spacing: 1.2px;
+  line-height: 30px;
+
+}
+
+.container-fluid h1{
+  font-family: 'Times New Roman';
+  font-size: 50px;
+  letter-spacing: 2px;
+}
+
+/*.content{
+  width: 1800px;
+  height: 1000px;
+  
+  margin: 0px;
+ 
+  position: relative;
+
+}*/
+
+.content h1{
+  font-family: 'Times New Roman';
+  font-size: 50px;
+  padding-left: 20px;
+  margin-top: 9%;
+  letter-spacing: 2px;
+}
+.content .cn{
+  width: 160px;
+  height: 55px;
+  background: #ff8800;
+  border: none;
+  margin-bottom: 10px;
+  margin-left: 20px;
+  font-size: 18px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: .4s ease;
+}
+
+button{
+  background-color: rgba(241, 94, 36, 0.651);
+  border-color: white;
+}
