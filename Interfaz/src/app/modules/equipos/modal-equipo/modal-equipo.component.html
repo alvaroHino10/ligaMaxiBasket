@@ -1,0 +1,38 @@
+<body>
+
+  <div class="content">
+
+    <div class="container">
+      <h2 class="text-center"> {{ "Equipo" + " "+ equipo?.nombre_equi }}</h2>
+      <hr>
+      <h3 class="text-center">El mejor jugador del equipo</h3>
+      <hr>
+      <h3 class="text-center">Jugadores del Equipo</h3>
+      <div class="table-responsive">
+
+        <table class="table table-hover text-center">
+          <thead>
+            <tr>
+              <th scope="col">Nombre del Jugador</th>
+              <th scope="col">Apellido del jugador</th>
+              <th scope="col">Canastas Simples</th>
+              <th scope="col">Canastas Dobles</th>
+              <th scope="col">Canastas Triples</th>
+              <th scope="col">Faltas</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let jugador of listaJugadores">
+              <td> {{ jugador?.nombre_jug }}</td>
+              <td> {{ jugador?.prim_ap_jug }}</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>
+              <td>0</td>              
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</body>

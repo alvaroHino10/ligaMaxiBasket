@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from 'src/app/api-services/api-services';
+import { AuthService } from 'src/app/api-services/auth.service';
+import { RegistroDelegadoComponent } from '../../registro-delegado/registro-delegado.component';
 
 @Component({
   selector: 'app-registro-p',
@@ -11,38 +14,22 @@ export class RegistroPComponent implements OnInit {
   public formularioRegistroPreinscrip: FormGroup;
   public submitted = false;
   fileImage: any;
-  data: any;
   categoria = [];
   public listaCategoria: any = ["+30", "+40", "+50", "+60"];
-  listaPreinscripcion: any = [];
-  listaDelegados: any = [];
+  listaResponse: any = [];
+  mensajeError: any;
+  dataPost: any;
+  mensajeResponse: any;
+  response: any;
+  codDelegado: any;
+  codTorneo : any;
 
-  constructor(public formulario: FormBuilder, private apiService: ApiService) {
+  constructor(public formulario: FormBuilder, 
+    private apiService: ApiService, 
+    private router: Router,
+    private authService: AuthService) {   
+    
     this.formularioRegistroPreinscrip = new FormGroup({
-      nombreDelegado: new FormControl('',
-                    [Validators.required,
-                    Validators.minLength(3),
-                    Validators.maxLength(80),
-                    Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
-      apellidoDelegado: new FormControl('',
-                    [Validators.required,
-                    Validators.minLength(3),
-                    Validators.maxLength(80),
-                    Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
-
-      //numeroIdentificacion: new FormControl ('', 
-      //              [Validators.required, 
-      //                Validators.pattern('^[a-zA-Z\ áéíóúÁÉÍÓÚñÑ\s]*$')]),
-
-      telefono: new FormControl('',
-                    [Validators.required,
-                    Validators.pattern("^[0-9]*$"),
-                    Validators.minLength(5),
-                    Validators.maxLength(15)]),
-      correoElectronico: new FormControl('',
-                    [Validators.required,
-                    Validators.email]),
-
       nombreDelEquipo: new FormControl('',
                     [Validators.required,
                     Validators.minLength(1),
@@ -62,55 +49,63 @@ export class RegistroPComponent implements OnInit {
   }
 
   ngOnInit() {
-
+    this.codDelegado = this.authService.getDelegadoID();
+    this.codTorneo = this.getCodTorneo();
   }
-  get controls() { return this.formularioRegistroPreinscrip.controls; }
-
-
+  
   guardarPreinscripcion(): void {
     this.submitted = true;
     if (this.formularioRegistroPreinscrip.invalid) {
       this.formularioRegistroPreinscrip.controls;
       alert('Por favor ingrese datos validos, correspondientes a todos los campos');
+      this.getServicio('preinscripcion', this.listaResponse);
       return;
     } else {
       this.postServicio();
     }
-    alert('Preinscripcion registrada correctamente');
   }
+
   postServicio() {
-    var myFormData = new FormData();
-
-    myFormData.append('num_transfer_preinscrip', this.formularioRegistroPreinscrip.value.codigoDeTransaccion);
-    myFormData.append('costo_preinscrip', '200');
-    myFormData.append("fecha_preinscrip", "2022-05-05");
-    myFormData.append('link_img_comprob', this.fileImage, this.fileImage.name);
-
-    const delegadoDatos = {cod_preinscrip: 10,
-                          nombre_deleg:   this.formularioRegistroPreinscrip.value.nombreDelegado,
-                          ap_deleg:       this.formularioRegistroPreinscrip.value.apellidoDelegado,
-                          correo_deleg:   this.formularioRegistroPreinscrip.value.correoElectronico,
-                          telf_deleg:     this.formularioRegistroPreinscrip.value.telefono
-    }
-
-    this.apiService.postAndImage('preinscripcion', myFormData).subscribe(res => {
-      this.data = res;
-      console.log(this.data);
+    var cod = 0;
+    var formDataPreins = this.setDatos();
+    this.apiService.postAndImageNotErrors('preinscripcion', formDataPreins).subscribe(res => {
+      this.response = res;
+      console.log("preinscripcion:",this.response['data']);
+      cod = (this.response['data'])['cod_preinscrip'];
+      this.mensajeResponse = this.response['mensaje'];
+      this.guardarEquipo(cod);      
     });
-    this.apiService.post('delegado', delegadoDatos).subscribe();
-    this.getServicio();
+    return cod;
   }
 
-  getServicio() {
-    this.apiService.getPreinscripcion().subscribe((data: any) => {
-      this.listaPreinscripcion = data;
-    })
-    console.log(this.listaPreinscripcion);
+  guardarEquipo(codPreinscrip: any){
+    var datosEquipo = {
+      cod_torn:       this.codTorneo,
+      cod_preinscrip:   codPreinscrip,
+      nombre_equi:     this.formularioRegistroPreinscrip.value.nombreDelEquipo,
+      categ_equi:      this.formularioRegistroPreinscrip.value.categoria
+    }
+    this.apiService.postError('equipo', datosEquipo).subscribe((data: any) => {
+      this.listaResponse = data;
+      alert(this.mensajeResponse);
+      this.limpiarFormulario();
+      this.router.navigate(['/vista-delegado']);
+    });
+  }
 
-    this.apiService.getDelegados().subscribe((data: any) => {
-      this.listaDelegados = data;
-    })
-    console.log(this.listaDelegados);
+  getCodTorneo(){
+    this.apiService.getAll('torneo').subscribe((data:any) => {
+      console.log(data);
+      var torneoInf = data['data'];
+      this.codTorneo = torneoInf.length;
+    });    
+  }
+
+  getServicio(nombre : string, valModify: any) {
+    this.apiService.getAll(nombre).subscribe((data: any) => {
+      valModify = data;
+      console.log(valModify);
+    });
   }
 
   subirImagen(event: any) {
@@ -119,4 +114,23 @@ export class RegistroPComponent implements OnInit {
       this.formularioRegistroPreinscrip.value.linkImgComprobante = this.fileImage;
     }
   }
+
+  setDatos(){
+    var fecha = new Date();
+    var fechaActual = fecha.getFullYear() + "-" + (fecha.getMonth() + 1) + "-" + fecha.getDate();
+    var formDataPreins = new FormData();
+    formDataPreins.append('cod_deleg', this.codDelegado);
+    formDataPreins.append('num_transfer_preinscrip', this.formularioRegistroPreinscrip.value.codigoDeTransaccion);
+    formDataPreins.append('costo_preinscrip', '200');
+    formDataPreins.append("fecha_preinscrip", fechaActual);
+    formDataPreins.append('link_img_comprob', this.fileImage, this.fileImage.name);
+    return formDataPreins;
+  }
+
+  limpiarFormulario(){
+    this.formularioRegistroPreinscrip.reset();
+    this.submitted = false;
+  }
+
+  get controls() { return this.formularioRegistroPreinscrip.controls;}
 }

@@ -1,0 +1,18 @@
+#fondo { 
+    background-color: whitesmoke;
+    font-family: 'verdana'; 
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    
+}
+
+.container {
+    background-color: rgba(230, 130, 63, 0.767);
+    border-radius: 20px;
+}
+
+#right{
+    text-align: right;
+    font-style: italic;
+    font-size: smaller;
+}

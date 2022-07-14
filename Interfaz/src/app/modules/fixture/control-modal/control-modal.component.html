@@ -1,0 +1,58 @@
+<div class="container">
+  <h1 class="text-center" id="titulo">PUNTAJE DEL PARTIDO</h1>
+  <div class="row">
+    <div class="col-sm">
+      <h5 class="text-center" id="titulo">EQUIPO A: {{ equipo_A?.nombre_equi }}</h5>
+
+      <h6 class="text-center" id="titulo">Canastas simples</h6>
+      <div class="row text-center mt-5">
+        <div class="col-md-12 col-12">
+          <h1> {{ puntaje_A }} </h1>
+          <button (click)="accion_p_a( -1 )" class="btn btn-danger">-1</button>
+          <button (click)="accion_p_a( +1 )" class="btn btn-primary">+1</button>
+        </div>
+
+        <div class="col-md-12 col- mt-5">
+          <h6 class="text-center" id="titulo">Canastas dobles:</h6>
+          <button (click)="accion_p_a( -2 )" class="btn btn-danger">-2</button>          
+          <button (click)="accion_p_a( +2 )" class="btn btn-primary">+2</button>
+        </div>
+        <div class="col-md-12 col- mt-5">
+          <h6 class="text-center" id="titulo">Canastas triples</h6>
+          <button (click)=" accion_p_a( -3 ) " class="btn btn-danger">-3</button>          
+          <button (click)=" accion_p_a( +3 ) " class="btn btn-primary">+3</button>
+        </div>
+      </div>
+    </div>
+    
+    <hr>
+
+    <div class="col-sm">
+      <h5 class="text-center" id="titulo">EQUIPO B: {{ equipo_B?.nombre_equi }}</h5>
+      <h6 class="text-center" id="titulo">Canastas simples</h6>
+      <div class="row text-center mt-5">
+        <div class="col-md-12 col-12">
+          <h1> {{ puntaje_B }} </h1>
+          <button (click)="accion_p_b( -1 )" class="btn btn-danger">-1</button>
+          <button (click)="accion_p_b( +1 )" class="btn btn-primary">+1</button>
+        </div>
+
+        <div class="col-md-12 col- mt-5">
+          <h6 class="text-center" id="titulo">Canastas dobles:</h6>
+          <button (click)="accion_p_b( -2 )" class="btn btn-danger">-2</button>          
+          <button (click)="accion_p_b( +2 )" class="btn btn-primary">+2</button>
+        </div>
+        <div class="col-md-12 col- mt-5">
+          <h6 class="text-center" id="titulo">Canastas triples</h6>
+          <button (click)=" accion_p_b( -3 ) " class="btn btn-danger">-3</button>          
+          <button (click)=" accion_p_b( +3 ) " class="btn btn-primary">+3</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+<div id="right" class="mx-2">
+  Porfavor no cierre esta ventana hasta finalizar el partido
+  <button class="btn btn-success btn-m mb-1" (click)="finalizarPuntaje()">Finalizar partido</button>
+</div>

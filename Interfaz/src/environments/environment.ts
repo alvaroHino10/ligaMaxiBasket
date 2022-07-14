@@ -4,7 +4,6 @@
 
 export const environment = {
   production: false,
-  //url : 'http://25.79.31.175:8000/api/' //IP alvaro
   url : 'http://localhost:8000/api/'
 };
 

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<link href="//use.fontawesome.com/releases/v5.0.1/css/all.css" rel="stylesheet">
+<body>
+    <div id="fondo">
+        <h1>Registro de delegado</h1>
+    </div>
+    <form [formGroup]="formularioDelegado" (ngSubmit)="guardarDelegado()" class="container-fluid">
+    
+    <!--INPUT NOMBRE DELEGADO-->
+    <div class="mb-3">
+        <label class="form-label">Nombre delegado:</label>
+        <input type="text" class="form-control" formControlName="nombreDelegado" 
+              minlength="3"maxlength="80" required>
+        <div *ngIf="(controls.nombreDelegado.touched && controls.nombreDelegado.invalid) 
+                || submitted" class="text-danger">
+         <div *ngIf="controls.nombreDelegado.errors?.required">Por favor, ingresa el nombre del delegado</div>
+         <div *ngIf="controls.nombreDelegado.errors?.minlength">El nombre debe tener al menos 3 caracteres</div>
+         <div *ngIf="controls.nombreDelegado.errors?.maxlength">El nombre es demasiado largo</div>
+         <div *ngIf="controls.nombreDelegado.errors?.pattern">Por favor, ingresa solo caracteres alfabeticos</div>
+        </div>
+     </div>
+     
+    <!--INPUT APELLIDO-->
+    <div class="mb-3">
+        <label class="form-label">Apellido(s) delegado:</label>
+        <input type="text" class="form-control" formControlName="apellidoDelegado" minlength="3"
+            maxlength="80" required>
+        <div *ngIf="(controls.apellidoDelegado.touched && controls.apellidoDelegado.invalid) || submitted"
+            class="text-danger">
+            <div *ngIf="controls.apellidoDelegado.errors?.required">Por favor, ingresa el apellido del delegado</div>
+            <div *ngIf="controls.apellidoDelegado.errors?.minlength">"El apellido debe tener al menos 3 caracteres"</div>
+            <div *ngIf="controls.apellidoDelegado.errors?.maxlength">El apellido es demasiado largo</div>
+            <div *ngIf="controls.apellidoDelegado.errors?.pattern">Por favor, ingresa solo caracteres alfabeticos</div>
+        </div>
+    </div>
+
+    <!--INPUT NUMERO DE IDENTIDAD-->
+    <div class="mb-3">
+        <label for="" class="form-label">Numero de identificacion personal:</label>
+        <input type="text" class="form-control" formControlName="numeroIdentificacion" minlength="5" maxlength="80" required>
+        <div *ngIf="(controls.numeroIdentificacion.touched && controls.numeroIdentificacion.invalid) || submitted" class="text-danger">
+            <div *ngIf="controls.numeroIdentificacion.errors?.required">
+                Por favor, ingresa el numero de tu identificacion personal
+            </div>
+            <div *ngIf="controls.numeroIdentificacion.errors?.pattern">
+                Por favor, ingresa solo caracteres válidos
+            </div>
+            <div *ngIf="controls.numeroIdentificacion.errors?.minlength">El número es demasiado pequeño</div>
+        <div *ngIf="controls.numeroIdentificacion.errors?.maxlength">El número es demasiado largo</div>
+        </div>
+    </div>
+
+    <!--INPUT FECHA NACIMIENTO-->
+    <div class="mb-3">
+      <label for="birthday">Fecha de Nacimiento:</label>
+      <input type="date" id="birthday" name="birthday" formControlName="fechaNacimiento" class="form-control" required>
+      <div *ngIf="(controls.fechaNacimiento.touched && controls.fechaNacimiento.invalid) || submitted"
+        class="text-danger">
+        <div *ngIf="controls.fechaNacimiento.errors?.required">
+          Por favor, ingresa tu fecha de nacimiento
+        </div>
+      </div>
+    </div>
+
+    <!--INPUT SEXO-->
+    <div class="mb-3">
+        <label class="form-label">Sexo:</label>
+        <select class="form-control" formControlName="sexo" required>
+          <option value="" disabled>Seleccionar sexo</option>
+          <option value="M">Masculino</option>
+          <option value="F">Femenino</option>
+        </select>
+        <div *ngIf="(controls.sexo.touched && controls.sexo.invalid) || submitted" class="text-danger">
+          <div *ngIf="controls.sexo.errors?.required">Por favor, ingresa tu sexo</div>
+        </div>
+      </div>
+
+    <!--INPUT TELEFONO-->
+    <div class="mb-3">
+        <label for="" class="form-label">Telefono delegado:</label>
+        <input type="text" class="form-control" formControlName="telefono" required>
+        <div *ngIf="(controls.telefono.touched && controls.telefono.invalid) || submitted" class="text-danger">
+            <div *ngIf="controls.telefono.errors?.required">Por favor, ingresa un telefono valido</div>
+            <div *ngIf="controls.telefono.errors?.pattern">Porfavor ingresa caracteres válidos</div>
+            <div *ngIf="controls.telefono.errors?.minlength">El numero es demasiado corto</div>
+            <div *ngIf="controls.telefono.errors?.maxlength">El numero es demasiado largo</div>
+        </div>
+    </div>
+
+    <!--INPUT FILE IMAGEN-->
+    <div class="file-upload form-group mb-3">
+        <label for="imgDelegado">Seleccionar imagen del delegado:</label>
+        <div class="custom-file">
+          <input id="imgDelegado" name="imgDelegado" type="file" class="form-control"
+            (change)="subirImagen($event)" formControlName="imgDelegado">
+          <div *ngIf="(controls.imgDelegado.touched && controls.imgDelegado.invalid) || submitted"
+            class="text-danger">
+            <div *ngIf="controls.imgDelegado.errors?.required">
+              Por favor, ingresa la imagen del delegado
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <h5><b>Informacion para inicio de sesion</b></h5>
+      </div>
+      <!--INPUT CORREO ELECTRONICO-->
+      <div class="mb-3">
+        <label for="" class="form-label">Correo electronico:</label>
+        <input type="email" class="form-control" formControlName="correoElectronico" required>
+        <div *ngIf="(controls.correoElectronico.touched && controls.correoElectronico.invalid) || submitted"
+          class="text-danger">
+          <div *ngIf="controls.correoElectronico.errors?.required">Por favor, ingresa tu correo electronico</div>
+          <div *ngIf="controls.correoElectronico.errors?.email">Por favor, ingresa un correo valido</div>
+        </div>
+      </div>
+
+      <!--INPUT CONTRASEÑA-->
+      <div class="input-group mb-3">
+        <label for="password">Contraseña:</label>
+        <div class="input-group">
+          <input [type]="textoContrasenia ? 'text' : 'password'" class="form-control" formControlName="password" required />
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <i class="fa" [ngClass]="{'fa-eye-slash': !textoContrasenia, 'fa-eye': textoContrasenia}"
+                (click)="mostrarContrasenia(true)"></i>
+            </span>
+          </div>
+        </div>
+        <div *ngIf="(controls.password.touched && controls.password.invalid) || submitted" class="text-danger">
+          <div *ngIf="controls.password.errors?.required">Por favor, ingresa tu contraseña</div>
+        </div>
+      </div>
+      <div class="input-group mb-3">
+        <label for="passwordConf">Confirmar contraseña:</label>
+        <div class="input-group">
+          <input [type]="textoContraseniaConf ? 'text' : 'password'" class="form-control" formControlName="passwordConf" required />
+          <div class="input-group-append">
+            <span class="input-group-text">
+              <i class="fa" [ngClass]="{'fa-eye-slash': !textoContraseniaConf, 'fa-eye': textoContraseniaConf}"
+                (click)="mostrarContrasenia(false)"></i>
+            </span>
+          </div>
+        </div>
+        <div *ngIf="(controls.passwordConf.touched && controls.passwordConf.invalid) || submitted || !confirmacion" class="text-danger">
+          <div *ngIf="controls.passwordConf.errors?.required">Por favor, vuelve a ingresar tu contraseña</div>
+          <div *ngIf="!confirmacion">No existe coincidencia con la contraseña</div>
+        </div>
+      </div>
+
+    <button type="submit" class="btn btn-dark btn-m mt-3 mb-2">Guardar</button>
+  </form>
+</body>

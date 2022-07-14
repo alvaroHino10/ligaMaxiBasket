@@ -1,0 +1,31 @@
+<body>
+
+  <div class="content">
+
+    <div class="container">
+      <h2 class="text-center">Equipos registrados</h2>
+      <div class="table-responsive">
+        <table class="table table-hover text-center">
+          <thead>
+            <tr>
+              <th scope="col">Nombre del Equipo</th>
+              <th scope="col">Categoria del Equipo</th>
+              <th scope="col">Jugadores registrados</th>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let equipo of listaEquipos">
+              <td>{{ equipo?.nombre_equi }}</td>
+              <td>{{ equipo?.categ_equi }}</td>
+              <td>{{ equipo?.equipo_data.cant_jug_equip }}  </td>
+            </tr>           
+          </tbody>
+
+        </table>
+      </div>
+
+
+    </div>
+  </div>
+</body>
